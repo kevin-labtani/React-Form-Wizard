@@ -10,3 +10,6 @@ handleBlur is used to inform us that a user has touched the field; we use blur (
 useEffect is used to validate the form when a user makes a change and blur  
 nb: typically we'll want to disable the submit button while another submission is going on, that's why isSUbmititng is important.
 To go further we could put formik into context
+
+### Multi-step form with react
+
