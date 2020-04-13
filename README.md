@@ -2,6 +2,12 @@
 
 ## Prototyping
 
+### Multi-step form with react
+
+`Form` is the parent component and keep track of the step (a number corresponding to the specific form step we're at), the state for all the fields and methods `nextStep()` and `prevStep()` to navigate through the form.  
+Then we simply have one component for each page.
+Interaction with back-end would be on Confirm page.
+
 ### Formik clone with react hooks
 
 We start with a classic react class component ans build a Formik clone with hooks in order to handle our forms.  
@@ -10,6 +16,3 @@ handleBlur is used to inform us that a user has touched the field; we use blur (
 useEffect is used to validate the form when a user makes a change and blur  
 nb: typically we'll want to disable the submit button while another submission is going on, that's why isSUbmititng is important.
 To go further we could put formik into context
-
-### Multi-step form with react
-

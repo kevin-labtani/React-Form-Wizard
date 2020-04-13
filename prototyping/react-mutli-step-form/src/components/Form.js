@@ -1,12 +1,12 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import AccountSetup from "./AccountSetup";
 import SocialProfiles from "./SocialProfiles";
 import Confirm from "./Confirm";
 import Success from "./Success";
 
-export class Form extends Component {
-  state = {
-    step: 1,
+function Form() {
+  const [step, setStep] = useState(1);
+  const [contact, setContact] = useState({
     name: "",
     email: "",
     phone: "",
@@ -14,69 +14,49 @@ export class Form extends Component {
     facebook: "",
     twitter: "",
     github: "",
+  });
+
+  // proceed to next step
+  const nextStep = () => setStep(step + 1);
+
+  // go back to prev step
+  const prevStep = () => setStep(step - 1);
+
+  const inputChange = (input) => (e) => {
+    setContact({ ...contact, [input]: e.target.value });
   };
 
-  nextStep = () => {
-    const { step } = this.state;
-    this.setState({ step: step + 1 });
-  };
+  const { name, email, phone, password, facebook, twitter, github } = contact;
 
-  prevStep = () => {
-    const { step } = this.state;
-    this.setState({ step: step - 1 });
-  };
+  const values = { name, email, phone, password, facebook, twitter, github };
 
-  inputChange = (input) => (e) => {
-    this.setState({
-      [input]: e.target.value,
-    });
-  };
+  switch (step) {
+    case 1:
+      return (
+        <AccountSetup
+          nextStep={nextStep}
+          inputChange={inputChange}
+          values={values}
+        />
+      );
+    case 2:
+      return (
+        <SocialProfiles
+          nextStep={nextStep}
+          prevStep={prevStep}
+          inputChange={inputChange}
+          values={values}
+        />
+      );
+    case 3:
+      return (
+        <Confirm nextStep={nextStep} prevStep={prevStep} values={values} />
+      );
+    case 4:
+      return <Success />;
 
-  render() {
-    const { step } = this.state;
-    const {
-      name,
-      email,
-      phone,
-      password,
-      facebook,
-      twitter,
-      github,
-    } = this.state;
-    const values = { name, email, phone, password, facebook, twitter, github };
-
-    switch (step) {
-      case 1:
-        return (
-          <AccountSetup
-            nextStep={this.nextStep}
-            inputChange={this.inputChange}
-            values={values}
-          />
-        );
-      case 2:
-        return (
-          <SocialProfiles
-            nextStep={this.nextStep}
-            prevStep={this.prevStep}
-            inputChange={this.inputChange}
-            values={values}
-          />
-        );
-      case 3:
-        return (
-          <Confirm
-            nextStep={this.nextStep}
-            prevStep={this.prevStep}
-            values={values}
-          />
-        );
-      case 4:
-        return <Success />;
-
-      default:
-        break;
-    }
+    default:
+      break;
   }
 }
 
