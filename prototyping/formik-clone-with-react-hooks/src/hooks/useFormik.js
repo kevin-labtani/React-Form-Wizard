@@ -1,7 +1,13 @@
-import { useReducer } from "react";
+import { useReducer, useEffect } from "react";
 
 function reducer(state, action) {
   switch (action.type) {
+    case "SET_ERRORS":
+      return {
+        ...state,
+        // so we can overwrite errors if they go away; we don't do the spread of prev. errors
+        errors: action.payload,
+      };
     case "SET_FIELD_VALUE":
       return {
         ...state,
@@ -34,6 +40,14 @@ function useFormik(props) {
     errors: {},
     touched: {},
   });
+
+  // validate the form when a user makes a change and blur
+  useEffect(() => {
+    if (props.validate) {
+      const errors = props.validate(state.values);
+      dispatch({ type: "SET_ERRORS", payload: errors });
+    }
+  }, [state.values]);
 
   const handleChange = (event) => {
     // in order to access react synthetic events inside of callbacks, you need to persist them

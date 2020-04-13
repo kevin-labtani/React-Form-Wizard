@@ -10,6 +10,14 @@ function NameForm() {
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
     },
+    validate: (values) => {
+      let errors = {};
+      // dummy validation for the sake of example
+      if (values.name !== "admin") {
+        errors.name = "you are not allowed";
+      }
+      return errors;
+    },
   });
 
   const {
@@ -32,7 +40,11 @@ function NameForm() {
           onChange={handleChange}
           onBlur={handleBlur}
         />
+        {errors.name && touched.name && (
+          <div style={{ color: "red" }}>{errors.name}</div>
+        )}
       </label>
+      <br />
       <label>
         Email:
         <input
@@ -42,6 +54,9 @@ function NameForm() {
           onChange={handleChange}
           onBlur={handleBlur}
         />
+        {errors.email && touched.email && (
+          <div style={{ color: "red" }}>{errors.email}</div>
+        )}
       </label>
       <input type="submit" value="Submit" />
     </form>
