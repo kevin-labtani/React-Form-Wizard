@@ -1,6 +1,15 @@
 import React from "react";
 import useFormik from "./hooks/useFormik";
 
+// how formik 2 actually works:
+// const FormikContext = React.createContext({});
+// function Formik(props) {
+//   const formikProps = useFormik(props)
+//   return (
+//     <FormikContext.Provider value={formikProps}>{props.children}</FormikContext.Provider>
+//   )
+// }
+
 // add delay so we can play around with async/await and seed that isSubmitting get set to true when we submit
 // nb: typically we'll want to disable the submit button while another submission is going o, that's why isSUbmititng is important.
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
