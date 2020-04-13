@@ -1,12 +1,45 @@
 import React from "react";
-import { Formik } from "formik";
-import { TextField, Button } from "@material-ui/core";
+import { Formik, Field, Form, useField } from "formik";
+import {
+  TextField,
+  Button,
+  Checkbox,
+  Radio,
+  FormControlLabel,
+} from "@material-ui/core";
+
+// we're creating a custom radio field as MUI radio component doesn't map cleanly to a formik Field and we want to add a label to the radio button
+const MyRadio = ({ label, ...props }) => {
+  const [field, meta] = useField(props);
+  return (
+    <FormControlLabel
+      {...field} // will dstructure the value, onChange, onBlur, etc
+      control={<Radio />}
+      label={label}
+    />
+  );
+};
+
+// we're doing a custom text field cuz wz want to be able to display errors
+const MyTextField = ({ placeholder, ...props }) => {
+  const [field, meta] = useField(props);
+  const errorText = meta.error && meta.touched ? meta.error : "";
+  return (
+    <TextField placeholder={placeholder} {...field} helperText={errorText} />
+  ); // helperText from MUI
+};
 
 function App() {
   return (
     <div>
       <Formik
-        initialValues={{ firstName: "bob" }}
+        initialValues={{
+          firstName: "",
+          lastName: "",
+          isTall: false,
+          cookies: [],
+          yoghurt: "",
+        }}
         onSubmit={(data, { setSubmitting }) => {
           setSubmitting(true);
           // make async call, disable submit button,...
@@ -14,14 +47,46 @@ function App() {
           setSubmitting(false);
         }}
       >
-        {({ values, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
-          <form onSubmit={handleSubmit}>
-            <TextField
-              name="firstName" // line up with what we want stores in the formik state
-              value={values.firstName}
-              onChange={handleChange}
-              onBlur={handleBlur}
+        {({ values, isSubmitting }) => (
+          <Form>
+            <div>
+              <MyTextField placeholder="first name" name="firstName" />
+            </div>
+            <div>
+              <Field
+                placeholder="last name"
+                name="lastName"
+                type="input"
+                as={TextField}
+              />
+            </div>
+            <div>You're tall: </div>
+            <Field name="isTall" type="checkbox" as={Checkbox} />
+            {/* we're creating a checkbox group: */}
+            <div>cookies:</div>
+            <Field
+              name="cookies"
+              type="checkbox"
+              value="chocolate chip"
+              as={Checkbox}
             />
+            <Field
+              name="cookies"
+              type="checkbox"
+              value="pecan nut"
+              as={Checkbox}
+            />
+            <Field name="cookies" type="checkbox" value="sugar" as={Checkbox} />
+            <div>Yoghurt: </div>
+            <MyRadio name="yoghurt" type="radio" value="peach" label="peach" />
+            <MyRadio
+              name="yoghurt"
+              type="radio"
+              value="bluberry"
+              label="bluberry"
+            />
+            <MyRadio name="yoghurt" type="radio" value="apple" label="apple" />
+
             <div>
               <Button type="submit" disabled={isSubmitting}>
                 submit
@@ -29,7 +94,7 @@ function App() {
             </div>
             {/* pre for debugging */}
             <pre>{JSON.stringify(values, null, 2)}</pre>
-          </form>
+          </Form>
         )}
       </Formik>
     </div>

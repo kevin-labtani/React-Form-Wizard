@@ -4,7 +4,7 @@
 
 ### Multi-step form with react
 
-`Form` is the parent component and keep track of the step (a number corresponding to the specific form step we're at), the state for all the fields and methods `nextStep()` and `prevStep()` to navigate through the form. We use a switch statement to keep track of which component to serve to the user.    
+`Form` is the parent component and keep track of the step (a number corresponding to the specific form step we're at), the state for all the fields and methods `nextStep()` and `prevStep()` to navigate through the form. We use a switch statement to keep track of which component to serve to the user.  
 Then we simply have one component for each page.  
 Interaction with back-end would be on Confirm page.  
 You could process the form at each steps in the `cont()` or `back()` function.
@@ -19,5 +19,22 @@ nb: typically we'll want to disable the submit button while another submission i
 To go further we could put formik into context
 
 ### Using formik 2.0
-we're using yup for validation and material-ui for the ui.  
+
+We're using yup for validation and material-ui for the ui.  
 `useFormik` doesn't allow you to wrap your componenet in a context, so we use the `Formik` instead.  
+Note how we can simplify our code using the formik `Field` component:
+
+```js
+<Field placeholder="first name" name="firstName" type="input" as={TextField}/>
+// is equivalent to: (and the placeholder prop is passed to MUI TextField)
+<TextField
+  placeholder="first name"
+  name="firstName" // line up with what we want stores in the formik state
+  value={values.firstName}
+  onChange={handleChange}
+  onBlur={handleBlur}
+/>
+```
+
+we can also use the `Form` component to not have to manually pass a `handleSubmit()` method to the form  
+When an UI component doesn't map cleanly to a formik `Field` we can create a custom Field component
