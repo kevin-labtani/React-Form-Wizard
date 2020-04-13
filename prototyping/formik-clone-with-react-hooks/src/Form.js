@@ -1,13 +1,18 @@
 import React from "react";
 import useFormik from "./hooks/useFormik";
 
+// add delay so we can play around with async/await and seed that isSubmitting get set to true when we submit
+// nb: typically we'll want to disable the submit button while another submission is going o, that's why isSUbmititng is important.
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
 function NameForm() {
   const formik = useFormik({
     initialValues: {
       name: "",
       email: "",
     },
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
+      await sleep(1000);
       alert(JSON.stringify(values, null, 2));
     },
     validate: (values) => {
@@ -27,10 +32,13 @@ function NameForm() {
     values,
     touched,
     errors,
+    submitError,
   } = formik;
 
   return (
     <form onSubmit={handleSubmit}>
+      {/* submitError doesn't actually exist here, jsut an example */}
+      {submitError && submitError}
       <label>
         Name:
         <input

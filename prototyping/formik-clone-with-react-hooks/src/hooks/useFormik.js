@@ -1,4 +1,5 @@
 import { useReducer, useEffect } from "react";
+import { setNestedObjectValues } from "../utils";
 
 function reducer(state, action) {
   switch (action.type) {
@@ -24,6 +25,25 @@ function reducer(state, action) {
           ...action.payload,
         },
       };
+    case "SUBMIT_ATTEMPT":
+      return {
+        ...state,
+        isSubmitting: true,
+        // takes an object and sets every single field of it to true
+        touched: setNestedObjectValues(state.values, true),
+      };
+    case "SUBMIT_SUCCESS":
+      return {
+        ...state,
+        isSubmitting: false,
+      };
+    case "SUBMIT_FAIL":
+      return {
+        ...state,
+        isSubmitting: false,
+        // can do a bunch of other things here...
+        submitError: action.payload,
+      };
     default:
       return state;
   }
@@ -39,6 +59,7 @@ function useFormik(props) {
     values: props.initialValues,
     errors: {},
     touched: {},
+    isSubmitting: false,
   });
 
   // validate the form when a user makes a change and blur
@@ -68,12 +89,26 @@ function useFormik(props) {
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // validate
     // touch every field so user sees all error messages
-    // pass on our form values to onSubmit
-    props.onSubmit(state.values);
+    dispatch({ type: "SUBMIT_ATTEMPT" });
+    // validate
+    const errors = props.validate(state.values);
+    if (!Object.keys(errors).length) {
+      try {
+        // if error object is empty
+        // pass on our form values to onSubmit
+        await props.onSubmit(state.values);
+        dispatch({ type: "SUBMIT_SUCCESS" });
+      } catch (submitError) {
+        // api is down, name isn't good,...
+        dispatch({ type: "SUBMIT_FAIL", payload: submitError });
+      }
+    } else {
+      dispatch({ type: "SET_ERRORS", payload: errors });
+      dispatch({ type: "SUBMIT_FAIL" });
+    }
   };
   return { handleChange, handleBlur, handleSubmit, ...state };
 }
