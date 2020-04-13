@@ -25,15 +25,7 @@ function NameForm() {
     },
   });
 
-  const {
-    handleSubmit,
-    handleChange,
-    handleBlur,
-    values,
-    touched,
-    errors,
-    submitError,
-  } = formik;
+  const { handleSubmit, getFieldProps, touched, errors, submitError } = formik;
 
   return (
     <form onSubmit={handleSubmit}>
@@ -41,13 +33,7 @@ function NameForm() {
       {submitError && submitError}
       <label>
         Name:
-        <input
-          type="text"
-          name="name"
-          value={values.name}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        />
+        <input type="text" {...getFieldProps("name")} />
         {errors.name && touched.name && (
           <div style={{ color: "red" }}>{errors.name}</div>
         )}
@@ -55,13 +41,7 @@ function NameForm() {
       <br />
       <label>
         Email:
-        <input
-          type="text"
-          name="email"
-          value={values.email}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        />
+        <input type="text" {...getFieldProps("email")} />
         {errors.email && touched.email && (
           <div style={{ color: "red" }}>{errors.email}</div>
         )}

@@ -70,24 +70,30 @@ function useFormik(props) {
     }
   }, [state.values]);
 
-  const handleChange = (event) => {
+  const handleChange = (fieldName) => (event) => {
     // in order to access react synthetic events inside of callbacks, you need to persist them
     event.persist();
     dispatch({
       type: "SET_FIELD_VALUE",
-      payload: { [event.target.name]: event.target.value },
+      payload: { [fieldName]: event.target.value },
     });
   };
 
   // check whether a field has been touched
-  const handleBlur = (event) => {
-    // in order to access react synthetic events inside of callbacks, you need to persist them
-    event.persist();
+  const handleBlur = (fieldName) => (event) => {
     dispatch({
       type: "SET_FIELD_TOUCHED",
-      payload: { [event.target.name]: true },
+      payload: { [fieldName]: true },
     });
   };
+
+  // used to make the form less verbose, we'll spread it to replace value, onChange and onBlur
+  // we use currying so we don't need eg. name="email" prop in the form
+  const getFieldProps = (fieldName) => ({
+    value: state.values[fieldName],
+    onChange: handleChange(fieldName),
+    onBlur: handleBlur(fieldName),
+  });
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -110,7 +116,7 @@ function useFormik(props) {
       dispatch({ type: "SUBMIT_FAIL" });
     }
   };
-  return { handleChange, handleBlur, handleSubmit, ...state };
+  return { handleChange, handleBlur, handleSubmit, getFieldProps, ...state };
 }
 
 export default useFormik;
