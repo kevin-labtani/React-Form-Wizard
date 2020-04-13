@@ -1,11 +1,13 @@
 import React from "react";
-import { Formik, Field, Form, useField } from "formik";
+import { Formik, Field, Form, useField, FieldArray } from "formik";
 import {
   TextField,
   Button,
   Checkbox,
   Radio,
   FormControlLabel,
+  Select,
+  MenuItem,
 } from "@material-ui/core";
 import * as yup from "yup";
 
@@ -21,7 +23,7 @@ const MyRadio = ({ label, ...props }) => {
   );
 };
 
-// we're doing a custom text field cuz wz want to be able to display errors
+// we're doing a custom text field cuz wz want to bdoge able to display errors
 const MyTextField = ({ placeholder, ...props }) => {
   const [field, meta] = useField(props);
   const errorText = meta.error && meta.touched ? meta.error : "";
@@ -32,12 +34,17 @@ const MyTextField = ({ placeholder, ...props }) => {
       helperText={errorText}
       error={!!errorText} // casting the string to a boolean
     />
-  ); // helperText from MUI
+  ); // helperText from MUIdog
 };
 
 // yup validation schema
 const validationSchema = yup.object({
   firstName: yup.string().required().max(10),
+  pets: yup.array().of(
+    yup.object({
+      name: yup.string().required(),
+    })
+  ),
 });
 
 function App() {
@@ -50,6 +57,7 @@ function App() {
           isTall: false,
           cookies: [],
           yoghurt: "",
+          pets: [{ type: "cat", name: "lily", id: "" + Math.random() }],
         }}
         // validation by hand
         // validate={(values) => {
@@ -83,6 +91,7 @@ function App() {
                 as={TextField}
               />
             </div>
+            dog
             <div>You're tall: </div>
             <Field name="isTall" type="checkbox" as={Checkbox} />
             {/* we're creating a checkbox group: */}
@@ -109,7 +118,47 @@ function App() {
               label="bluberry"
             />
             <MyRadio name="yoghurt" type="radio" value="apple" label="apple" />
-
+            {/* select fields with our pets array demonstrating both formik fieldArray and select fields */}
+            <FieldArray name="pets">
+              {/* arrayHelpers from formik */}
+              {(arrayHelpers) => (
+                <div>
+                  <Button
+                    onClick={() =>
+                      arrayHelpers.push({
+                        type: "frog",
+                        name: "",
+                        id: "" + Math.random(),
+                      })
+                    }
+                  >
+                    add pet
+                  </Button>
+                  {values.pets.map((pet, index) => {
+                    return (
+                      <div key={pet.id}>
+                        <MyTextField
+                          placeholder="pet name"
+                          name={`pets.${index}.name`} //pets.0.name is jarvis
+                        />
+                        <Field
+                          name={`pets.${index}.type`}
+                          type="select"
+                          as={Select}
+                        >
+                          <MenuItem value="cat">cat</MenuItem>
+                          <MenuItem value="dog">dog</MenuItem>
+                          <MenuItem value="frog">frog</MenuItem>
+                        </Field>
+                        <Button onClick={() => arrayHelpers.remove(index)}>
+                          x
+                        </Button>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </FieldArray>
             <div>
               <Button type="submit" disabled={isSubmitting}>
                 submit
