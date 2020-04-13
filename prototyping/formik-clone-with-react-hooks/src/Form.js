@@ -1,48 +1,51 @@
-import React, { Component } from "react";
+import React from "react";
+import useFormik from "./hooks/useFormik";
 
-class NameForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { name: "", email: "" };
+function NameForm() {
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      email: "",
+    },
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+  const {
+    handleSubmit,
+    handleChange,
+    handleBlur,
+    values,
+    touched,
+    errors,
+  } = formik;
 
-  handleChange(event) {
-    this.setState({ [event.target.name]: event.target.value });
-  }
-
-  handleSubmit(event) {
-    alert("A name was submitted: " + this.state.value);
-    event.preventDefault();
-  }
-
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Name:
-          <input
-            type="text"
-            name="name"
-            value={this.state.value}
-            onChange={this.handleChange}
-          />
-        </label>
-        <label>
-          Email:
-          <input
-            type="text"
-            name="email"
-            value={this.state.value}
-            onChange={this.handleChange}
-          />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
-    );
-  }
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>
+        Name:
+        <input
+          type="text"
+          name="name"
+          value={values.name}
+          onChange={handleChange}
+          onBlur={handleBlur}
+        />
+      </label>
+      <label>
+        Email:
+        <input
+          type="text"
+          name="email"
+          value={values.email}
+          onChange={handleChange}
+          onBlur={handleBlur}
+        />
+      </label>
+      <input type="submit" value="Submit" />
+    </form>
+  );
 }
 
 export default NameForm;
