@@ -25,7 +25,12 @@ const MyTextField = ({ placeholder, ...props }) => {
   const [field, meta] = useField(props);
   const errorText = meta.error && meta.touched ? meta.error : "";
   return (
-    <TextField placeholder={placeholder} {...field} helperText={errorText} />
+    <TextField
+      placeholder={placeholder}
+      {...field}
+      helperText={errorText}
+      error={!!errorText} // casting the string to a boolean
+    />
   ); // helperText from MUI
 };
 
@@ -40,6 +45,15 @@ function App() {
           cookies: [],
           yoghurt: "",
         }}
+        validate={(values) => {
+          const errors = {};
+
+          if (values.firstName.includes("bob")) {
+            errors.firstName = "no bob allowed!";
+          }
+
+          return errors;
+        }}
         onSubmit={(data, { setSubmitting }) => {
           setSubmitting(true);
           // make async call, disable submit button,...
@@ -47,7 +61,7 @@ function App() {
           setSubmitting(false);
         }}
       >
-        {({ values, isSubmitting }) => (
+        {({ values, errors, isSubmitting }) => (
           <Form>
             <div>
               <MyTextField placeholder="first name" name="firstName" />
@@ -94,6 +108,7 @@ function App() {
             </div>
             {/* pre for debugging */}
             <pre>{JSON.stringify(values, null, 2)}</pre>
+            <pre>{JSON.stringify(errors, null, 2)}</pre>
           </Form>
         )}
       </Formik>
