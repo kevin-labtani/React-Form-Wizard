@@ -7,6 +7,7 @@ import {
   Radio,
   FormControlLabel,
 } from "@material-ui/core";
+import * as yup from "yup";
 
 // we're creating a custom radio field as MUI radio component doesn't map cleanly to a formik Field and we want to add a label to the radio button
 const MyRadio = ({ label, ...props }) => {
@@ -34,6 +35,11 @@ const MyTextField = ({ placeholder, ...props }) => {
   ); // helperText from MUI
 };
 
+// yup validation schema
+const validationSchema = yup.object({
+  firstName: yup.string().required().max(10),
+});
+
 function App() {
   return (
     <div>
@@ -45,15 +51,18 @@ function App() {
           cookies: [],
           yoghurt: "",
         }}
-        validate={(values) => {
-          const errors = {};
+        // validation by hand
+        // validate={(values) => {
+        //   const errors = {};
 
-          if (values.firstName.includes("bob")) {
-            errors.firstName = "no bob allowed!";
-          }
+        //   if (values.firstName.includes("bob")) {
+        //     errors.firstName = "no bob allowed!";
+        //   }
 
-          return errors;
-        }}
+        //   return errors;
+        // }}
+        // validate with yup:
+        validationSchema={validationSchema}
         onSubmit={(data, { setSubmitting }) => {
           setSubmitting(true);
           // make async call, disable submit button,...
