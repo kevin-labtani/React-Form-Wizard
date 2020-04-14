@@ -9,6 +9,18 @@ function App() {
     alert(JSON.stringify(data, null, 2));
   };
 
+  // async validation
+  const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+  // validate userName through a function
+  const validateUsername = async (value) => {
+    await sleep(1000);
+    if (value !== "bill") {
+      return false;
+    } else {
+      return true;
+    }
+  };
+
   return (
     <form className="App" onSubmit={handleSubmit(onSubmit)}>
       <h1>Sign Up</h1>
@@ -35,7 +47,10 @@ function App() {
       </select>
       {errors.gender && <p>This is required</p>}
       <label>Username</label>
-      <input name="username" ref={register({ required: true })} />
+      <input
+        name="username"
+        ref={register({ required: true, validate: validateUsername })}
+      />
       {errors.username && <p>This is required</p>}
       <label>Email</label>
       <input name="email" ref={register({ required: true })} />
