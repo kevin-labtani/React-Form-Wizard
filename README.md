@@ -39,6 +39,6 @@ Note how we can simplify our code using the formik `Field` component:
 we can also use the `Form` component to not have to manually pass a `handleSubmit()` method to the form  
 When an UI component doesn't map cleanly to a formik `Field` we can create a custom Field component
 
-### Multi step form with react-hook-form
+### Multi-step form with react-hook-form
 
-We're using react-router ofr routing and little-state-machine as our equivalent of redux and for persistent storage out of the box
+We're using react-router for routing and little-state-machine as our equivalent of redux and for persistent storage.

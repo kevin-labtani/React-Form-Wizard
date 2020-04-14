@@ -2,7 +2,7 @@ import React from "react";
 import { useStateMachine } from "little-state-machine";
 import updateAction from "./updateAction";
 
-const Result = props => {
+const Result = (props) => {
   const { state } = useStateMachine(updateAction);
 
   return (

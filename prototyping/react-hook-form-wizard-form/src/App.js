@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import {
   BrowserRouter as Router,
   Route,
@@ -13,8 +12,17 @@ import Result from "./Result";
 
 import "./styles.css";
 
-createStore();
+// global store for all the form data
+createStore({
+  yourDetails: {
+    firstName: "",
+    lastName: "",
+    age: "",
+    yearsOfExp: "",
+  },
+});
 
+// navigation on top and our 3 routes
 const Pages = () => {
   const location = useLocation();
   return (
