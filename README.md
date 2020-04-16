@@ -1,5 +1,17 @@
 # Catch-Up Wizard Form
 
+## Question types
+
+- multiple_choice
+- single_choice
+- yes_no
+- legal
+- rating
+- short_text
+- opinion_scale
+- email
+- number
+
 ## Prototyping
 
 ### Multi-step form with react
@@ -48,3 +60,7 @@ Errors auto clear when user corrects them.
 ### Multi-step form with react-hook-form
 
 We're using react-router for routing and little-state-machine as our equivalent of redux and for persistent storage.
+
+### Multi-step form with formik
+
+Let's compare our implementation of a multi step form with formik tot he react-hook-form implementation
