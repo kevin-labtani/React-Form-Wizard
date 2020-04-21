@@ -9,7 +9,7 @@ const Step1 = (props) => {
   const { handleSubmit, errors, register } = useForm({
     defaultValues: state.yourDetails, // could also hook up default values ùanually in the inputs
   });
-  const { push } = useHistory();
+  const { push, goBack } = useHistory();
   const onSubmit = (data) => {
     // send data to the store
     action(data);
@@ -37,6 +37,7 @@ const Step1 = (props) => {
         />
         <ErrorMessage errors={errors} name="lastName" as="p" />
       </label>
+      <input type="button" value="prev step" onClick={() => goBack()} />
       <input type="submit" value="next step" />
     </form>
   );
