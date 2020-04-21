@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import { StateMachineProvider, createStore } from "little-state-machine";
+import Pages from "./components/Pages";
 
-function App() {
+import "./styles.css";
+
+// global store for all the form data
+createStore({
+  yourDetails: {
+    firstName: "",
+    lastName: "",
+    age: "",
+    yearsOfExp: "",
+  },
+});
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <StateMachineProvider>
+      <div className="container">
+        <h1>Hike-Up Form Wizard</h1>
+        <Router>
+          <Pages />
+        </Router>
+      </div>
+    </StateMachineProvider>
   );
-}
+};
 
 export default App;

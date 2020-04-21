@@ -71,6 +71,6 @@ We'll be using the following packages:
 
 - react-router-dom for routing
 - react-hook-form for form creation and validation
-- little-state-machine for state management
+- little-state-machine for state management  
 
-and bootstrap for styling
+bootstrap for styling
