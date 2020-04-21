@@ -64,3 +64,13 @@ We're using react-router for routing and little-state-machine as our equivalent 
 ### Multi-step form with formik
 
 Let's compare our implementation of a multi step form with formik tot he react-hook-form implementation
+
+### Final prototype
+
+We'll be using the following packages:
+
+- react-router-dom for routing
+- react-hook-form for form creation and validation
+- little-state-machine for state management
+
+and bootstrap for styling
