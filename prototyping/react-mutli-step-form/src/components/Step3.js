@@ -15,7 +15,7 @@ function SocialProfiles(props) {
 
   return (
     <div className="form-container">
-      <h1 className="mb-5">Social Profiles</h1>
+      <h1 className="mb-5">Step 3</h1>
       <div className="form-group">
         <label htmlFor="facebook">Facebook URL</label>
         <input

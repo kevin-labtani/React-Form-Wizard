@@ -1,16 +1,17 @@
 import React from "react";
 
-function AccountSetup(props) {
+function Step1(props) {
   const cont = (e) => {
     e.preventDefault();
-    props.nextStep();
+
+    values.email === "admin@admin" ? props.goToStep(3) : props.nextStep();
   };
 
   const { values, inputChange } = props;
 
   return (
     <div className="form-container">
-      <h1 className="mb-5">Account Setup</h1>
+      <h1 className="mb-5">Step 1</h1>
       <div className="form-group">
         <label htmlFor="name">Name</label>
         <input
@@ -31,26 +32,6 @@ function AccountSetup(props) {
           value={values.email}
         />
       </div>
-      <div className="form-group">
-        <label htmlFor="phone">Phone Number</label>
-        <input
-          type="text"
-          className="form-control"
-          name="phone"
-          onChange={inputChange("phone")}
-          value={values.phone}
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          className="form-control"
-          name="password"
-          onChange={inputChange("password")}
-          value={values.password}
-        />
-      </div>
 
       <br />
 
@@ -63,4 +44,4 @@ function AccountSetup(props) {
   );
 }
 
-export default AccountSetup;
+export default Step1;

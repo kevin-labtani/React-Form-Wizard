@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import AccountSetup from "./AccountSetup";
-import SocialProfiles from "./SocialProfiles";
+import Step1 from "./Step1";
+import Step2 from "./Step2";
+import Step3 from "./Step3";
 import Confirm from "./Confirm";
 import Success from "./Success";
 
@@ -22,6 +23,9 @@ function Form() {
   // go back to prev step
   const prevStep = () => setStep(step - 1);
 
+  // go to step n
+  const goToStep = (n) => setStep(n);
+
   const inputChange = (input) => (e) => {
     setContact({ ...contact, [input]: e.target.value });
   };
@@ -33,15 +37,16 @@ function Form() {
   switch (step) {
     case 1:
       return (
-        <AccountSetup
+        <Step1
           nextStep={nextStep}
           inputChange={inputChange}
           values={values}
+          goToStep={goToStep}
         />
       );
     case 2:
       return (
-        <SocialProfiles
+        <Step2
           nextStep={nextStep}
           prevStep={prevStep}
           inputChange={inputChange}
@@ -50,9 +55,18 @@ function Form() {
       );
     case 3:
       return (
-        <Confirm nextStep={nextStep} prevStep={prevStep} values={values} />
+        <Step3
+          nextStep={nextStep}
+          prevStep={prevStep}
+          inputChange={inputChange}
+          values={values}
+        />
       );
     case 4:
+      return (
+        <Confirm nextStep={nextStep} prevStep={prevStep} values={values} />
+      );
+    case 5:
       return <Success />;
 
     default:
