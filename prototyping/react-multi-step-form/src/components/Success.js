@@ -3,7 +3,7 @@ import React from "react";
 function Success() {
   return (
     <div>
-      <h1 className="text-white">Account Created Successfully!</h1>
+      <h1 className="text-white">Thank you for your submission!</h1>
     </div>
   );
 }

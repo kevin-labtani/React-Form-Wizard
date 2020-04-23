@@ -7,7 +7,6 @@ import Confirm from "./Confirm";
 import Success from "./Success";
 
 function Form() {
-  // const [step, setStep] = useState(1); replaced with router
   const [contact, setContact] = useState({
     name: "",
     email: "",
@@ -17,16 +16,6 @@ function Form() {
     twitter: "",
     github: "",
   });
-
-  // replaced with router
-  // // proceed to next step
-  // const nextStep = () => setStep(step + 1);
-
-  // // go back to prev step
-  // const prevStep = () => setStep(step - 1);
-
-  // // go to step n
-  // const goToStep = (n) => setStep(n);
 
   const inputChange = (input) => (e) => {
     setContact({ ...contact, [input]: e.target.value });
@@ -81,45 +70,6 @@ function Form() {
       </Switch>
     </>
   );
-
-  // switch (step) {
-  //   case 1:
-  //     return (
-  //       <Step1
-  //         nextStep={nextStep}
-  //         inputChange={inputChange}
-  //         values={values}
-  //         goToStep={goToStep}
-  //       />
-  //     );
-  //   case 2:
-  //     return (
-  //       <Step2
-  //         nextStep={nextStep}
-  //         prevStep={prevStep}
-  //         inputChange={inputChange}
-  //         values={values}
-  //       />
-  //     );
-  //   case 3:
-  //     return (
-  //       <Step3
-  //         nextStep={nextStep}
-  //         prevStep={prevStep}
-  //         inputChange={inputChange}
-  //         values={values}
-  //       />
-  //     );
-  //   case 4:
-  //     return (
-  //       <Confirm nextStep={nextStep} prevStep={prevStep} values={values} />
-  //     );
-  //   case 5:
-  //     return <Success />;
-
-  //   default:
-  //     break;
-  // }
 }
 
 export default Form;

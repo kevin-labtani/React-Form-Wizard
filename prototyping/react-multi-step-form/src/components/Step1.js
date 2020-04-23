@@ -7,7 +7,7 @@ function Step1(props) {
 
   const cont = (e) => {
     e.preventDefault();
-    values.email === "admin@admin" ? push("/step3") : push("/step2");
+    values.email === "admin@demo" ? push("/step3") : push("/step2");
   };
 
   return (
