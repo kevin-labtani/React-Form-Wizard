@@ -1,10 +1,9 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-function Confirm(props) {
-  const {
-    values: { name, email, phone, password, facebook, twitter, github },
-  } = props;
+function Confirm({ values }) {
+  const { name, email, phone, password, facebook, twitter, github } = values;
+
   const { push, goBack } = useHistory();
 
   const cont = (e) => {

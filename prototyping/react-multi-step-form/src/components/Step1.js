@@ -1,8 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-function Step1(props) {
-  const { values, inputChange } = props;
+function Step1({ values, inputChange }) {
   const { push } = useHistory();
 
   const cont = (e) => {
