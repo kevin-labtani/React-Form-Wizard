@@ -21,18 +21,6 @@ function Form() {
     setContact({ ...contact, [input]: e.target.value });
   };
 
-  const { name, email, phone, password, facebook, twitter, github } = contact;
-
-  const values = {
-    name,
-    email,
-    phone,
-    password,
-    facebook,
-    twitter,
-    github,
-  };
-
   return (
     <>
       <Switch>
@@ -40,27 +28,27 @@ function Form() {
           exact
           path="/"
           render={(routeProps) => (
-            <Step1 {...routeProps} inputChange={inputChange} values={values} />
+            <Step1 {...routeProps} inputChange={inputChange} values={contact} />
           )}
         />
         <Route
           exact
           path="/step2"
           render={(routeProps) => (
-            <Step2 {...routeProps} inputChange={inputChange} values={values} />
+            <Step2 {...routeProps} inputChange={inputChange} values={contact} />
           )}
         />
         <Route
           exact
           path="/step3"
           render={(routeProps) => (
-            <Step3 {...routeProps} inputChange={inputChange} values={values} />
+            <Step3 {...routeProps} inputChange={inputChange} values={contact} />
           )}
         />
         <Route
           exact
           path="/confirm"
-          render={(routeProps) => <Confirm {...routeProps} values={values} />}
+          render={(routeProps) => <Confirm {...routeProps} values={contact} />}
         />
         <Route
           exact
