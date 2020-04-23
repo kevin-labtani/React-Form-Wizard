@@ -1,13 +1,14 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 function Step1(props) {
+  const { values, inputChange } = props;
+  const { push } = useHistory();
+
   const cont = (e) => {
     e.preventDefault();
-
-    values.email === "admin@admin" ? props.goToStep(3) : props.nextStep();
+    values.email === "admin@admin" ? push("/step3") : push("/step2");
   };
-
-  const { values, inputChange } = props;
 
   return (
     <div className="form-container">

@@ -1,17 +1,19 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
-function SocialProfiles(props) {
+function Step3(props) {
+  const { values, inputChange } = props;
+  const { push, goBack } = useHistory();
+
   const cont = (e) => {
     e.preventDefault();
-    props.nextStep();
+    push("/confirm");
   };
 
   const back = (e) => {
     e.preventDefault();
-    props.prevStep();
+    goBack();
   };
-
-  const { values, inputChange } = props;
 
   return (
     <div className="form-container">
@@ -65,4 +67,4 @@ function SocialProfiles(props) {
   );
 }
 
-export default SocialProfiles;
+export default Step3;

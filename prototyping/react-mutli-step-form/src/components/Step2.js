@@ -1,17 +1,19 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 function Step2(props) {
+  const { values, inputChange } = props;
+  const { push, goBack } = useHistory();
+
   const cont = (e) => {
     e.preventDefault();
-    props.nextStep();
+    push("/step3");
   };
 
   const back = (e) => {
     e.preventDefault();
-    props.prevStep();
+    goBack();
   };
-
-  const { values, inputChange } = props;
 
   return (
     <div className="form-container">

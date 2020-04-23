@@ -1,35 +1,37 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 function Confirm(props) {
+  const {
+    values: { name, email, phone, password, facebook, twitter, github },
+  } = props;
+  const { push, goBack } = useHistory();
+
   const cont = (e) => {
     e.preventDefault();
-    props.nextStep();
+    push("/success");
   };
 
   const back = (e) => {
     e.preventDefault();
-    props.prevStep();
+    goBack();
   };
-
-  const {
-    values: { name, email, phone, password, facebook, twitter, github },
-  } = props;
 
   return (
     <div className="form-container">
       <h1 className="mb-5">Confirm</h1>
-      <ul class="list-group">
-        <li class="list-group-item">Name: {name}</li>
-        <li class="list-group-item">Email: {email}</li>
-        <li class="list-group-item">Phone Number: {phone}</li>
-        <li class="list-group-item">Password: {password}</li>
-        <li class="list-group-item">
+      <ul className="list-group">
+        <li className="list-group-item">Name: {name}</li>
+        <li className="list-group-item">Email: {email}</li>
+        <li className="list-group-item">Phone Number: {phone}</li>
+        <li className="list-group-item">Password: {password}</li>
+        <li className="list-group-item">
           Facebook URL: <a href={facebook}>{facebook}</a>
         </li>
-        <li class="list-group-item">
+        <li className="list-group-item">
           Twitter URL: <a href={twitter}>{twitter}</a>
         </li>
-        <li class="list-group-item">
+        <li className="list-group-item">
           Github URL: <a href={github}>{github}</a>
         </li>
       </ul>
