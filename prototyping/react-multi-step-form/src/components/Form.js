@@ -17,7 +17,7 @@ function Form() {
     github: "",
   });
 
-  // get data from localSotrage
+  // load data from localSotrage
   useEffect(() => {
     const data = localStorage.getItem("contact");
     if (data) {
