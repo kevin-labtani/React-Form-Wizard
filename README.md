@@ -79,3 +79,9 @@ We'll be using the following packages:
 
 I ran into problems with conditional routing due to the fact that react-hook-form works with uncontrolled components and having to push() to a specific route dependent on state at the same time as having to update said state
 
+## Survey Wizard
+
+We'll be continuing with the react-multi-step-form prototype.  
+The app is created with [create-react-app (cra)](https://create-react-app.dev/), using npx by running `npx create-react-app .` in the app folder  
+We are using bootstrap for styling, see [here](https://blog.logrocket.com/how-to-use-bootstrap-with-react-a354715d1121/) for options on how to install bootstrap in react project, as of now we added bootstrap as a dependency, and webpack is running in the background of cra, so do a `npm install bootstrap` and import the css in our `index.js`, we'll need to add popper.js and jquery if we want to use bootstrap's js components  
+Routing is handled by [react-router-dom](https://reacttraining.com/react-router/web/guides/quick-start), so `npm install react-router-dom`  
