@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-function Step1({ values, inputChange }) {
+const Step1 = ({ values, inputChange }) => {
   const { push } = useHistory();
 
   const cont = (e) => {
@@ -42,6 +42,6 @@ function Step1({ values, inputChange }) {
       </div>
     </div>
   );
-}
+};
 
 export default Step1;

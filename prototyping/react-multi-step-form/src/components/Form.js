@@ -6,7 +6,7 @@ import Step3 from "./Step3";
 import Confirm from "./Confirm";
 import Success from "./Success";
 
-function Form() {
+const Form = () => {
   const [contact, setContact] = useState({
     name: "",
     email: "",
@@ -71,6 +71,6 @@ function Form() {
       </Switch>
     </>
   );
-}
+};
 
 export default Form;

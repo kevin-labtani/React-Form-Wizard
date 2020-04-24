@@ -4,7 +4,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Form from "./components/Form";
 import Navbar from "./layout/Navbar";
 
-function App() {
+const App = () => {
   return (
     <>
       <Navbar />
@@ -17,6 +17,6 @@ function App() {
       </div>
     </>
   );
-}
+};
 
 export default App;

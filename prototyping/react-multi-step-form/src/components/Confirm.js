@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-function Confirm({ values }) {
+const Confirm = ({ values }) => {
   const { name, email, phone, password, facebook, twitter, github } = values;
 
   const { push, goBack } = useHistory();
@@ -52,6 +52,6 @@ function Confirm({ values }) {
       </div>
     </div>
   );
-}
+};
 
 export default Confirm;
