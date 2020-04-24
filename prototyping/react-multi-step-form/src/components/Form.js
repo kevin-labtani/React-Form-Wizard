@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
@@ -16,6 +16,19 @@ function Form() {
     twitter: "",
     github: "",
   });
+
+  // get data from localSotrage
+  useEffect(() => {
+    const data = localStorage.getItem("contact");
+    if (data) {
+      setContact(JSON.parse(data));
+    }
+  }, []);
+
+  // save data to localStorage
+  useEffect(() => {
+    localStorage.setItem("contact", JSON.stringify(contact));
+  }, [contact]);
 
   const inputChange = (input) => (e) => {
     setContact({ ...contact, [input]: e.target.value });
