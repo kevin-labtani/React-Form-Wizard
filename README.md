@@ -69,7 +69,7 @@ Let's compare our implementation of a multi step form with formik tot he react-h
 
 Example from formik doc
 
-### Final prototype
+### React hook form wizard form final
 
 We'll be using the following packages:
 
@@ -77,4 +77,5 @@ We'll be using the following packages:
 - react-hook-form for form creation and validation
 - little-state-machine for state management
 
-bootstrap for styling
+I ran into problems with conditional routing due to the fact that react-hook-form works with uncontrolled components and having to push() to a specific route dependent on state at the same time as having to update said state
+
