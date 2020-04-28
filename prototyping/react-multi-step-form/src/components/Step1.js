@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
+import AlertContext from "../context/alert/alertContext";
 
 const Step1 = ({ values, inputChange }) => {
+  const alertContext = useContext(AlertContext);
+  const { setAlert } = alertContext;
+
   const { push } = useHistory();
 
   const cont = (e) => {
     e.preventDefault();
-    values.email === "admin@demo" ? push("/step3") : push("/step2");
+    if (values.name === "" || values.email === "") {
+      setAlert("Please fill in all fields", "danger");
+    } else if (values.name !== "kevin") {
+      setAlert("User not authorized", "danger");
+    } else {
+      values.email === "admin@demo" ? push("/step3") : push("/step2");
+    }
   };
 
   return (
