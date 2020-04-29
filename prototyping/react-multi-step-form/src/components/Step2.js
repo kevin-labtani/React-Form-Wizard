@@ -25,6 +25,7 @@ const Step2 = ({ values, inputChange }) => {
           type="radio"
           value="sandwich"
           id="radio1"
+          checked={values.lunch === "sandwich"}
           onChange={inputChange("lunch")}
         />
         <label className="form-check-label" htmlFor="radio1">
@@ -38,6 +39,7 @@ const Step2 = ({ values, inputChange }) => {
           type="radio"
           value="tuna"
           id="radio2"
+          checked={values.lunch === "tuna"}
           onChange={inputChange("lunch")}
         />
         <label className="form-check-label" htmlFor="radio2">
@@ -51,6 +53,7 @@ const Step2 = ({ values, inputChange }) => {
           type="radio"
           value="fries"
           id="radio3"
+          checked={values.lunch === "fries"}
           onChange={inputChange("lunch")}
         />
         <label className="form-check-label" htmlFor="radio3">
