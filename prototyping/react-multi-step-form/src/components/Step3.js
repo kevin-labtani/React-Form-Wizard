@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-const Step3 = ({ values, inputChange }) => {
+const Step3 = ({ values, inputChange, checkboxChange }) => {
   const { push, goBack } = useHistory();
 
   const cont = (e) => {
@@ -38,14 +38,19 @@ const Step3 = ({ values, inputChange }) => {
         />
       </div>
       <div className="form-group">
-        <label htmlFor="github">Github URL</label>
-        <input
-          type="text"
-          className="form-control"
-          name="github"
-          onChange={inputChange("github")}
-          value={values.github}
-        />
+        <div className="form-check">
+          <input
+            className="form-check-input"
+            type="checkbox"
+            id="contactCheck"
+            value="true"
+            checked={values.contactCheck}
+            onChange={checkboxChange("contactCheck")}
+          />
+          <label className="form-check-label" htmlFor="contactCheck">
+            Please send me emails
+          </label>
+        </div>
       </div>
 
       <br />

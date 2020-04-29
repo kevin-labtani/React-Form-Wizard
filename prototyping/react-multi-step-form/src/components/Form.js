@@ -10,10 +10,10 @@ const Form = () => {
   const [contact, setContact] = useState({
     name: "",
     email: "",
-    lunch:"",
+    lunch: "",
     facebook: "",
     twitter: "",
-    github: "",
+    contactCheck: "",
   });
 
   // load data from localSotrage
@@ -31,6 +31,10 @@ const Form = () => {
 
   const inputChange = (input) => (e) => {
     setContact({ ...contact, [input]: e.target.value });
+  };
+
+  const checkboxChange = (input) => (e) => {
+    setContact({ ...contact, [input]: e.target.checked });
   };
 
   return (
@@ -54,7 +58,12 @@ const Form = () => {
           exact
           path="/step3"
           render={(routeProps) => (
-            <Step3 {...routeProps} inputChange={inputChange} values={contact} />
+            <Step3
+              {...routeProps}
+              inputChange={inputChange}
+              checkboxChange={checkboxChange}
+              values={contact}
+            />
           )}
         />
         <Route
