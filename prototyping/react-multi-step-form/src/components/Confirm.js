@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 
 const Confirm = ({ values }) => {
-  const { name, email, phone, password, facebook, twitter, github } = values;
+  const { name, email, lunch, facebook, twitter, github } = values;
 
   const { push, goBack } = useHistory();
 
@@ -22,8 +22,7 @@ const Confirm = ({ values }) => {
       <ul className="list-group">
         <li className="list-group-item">Name: {name}</li>
         <li className="list-group-item">Email: {email}</li>
-        <li className="list-group-item">Phone Number: {phone}</li>
-        <li className="list-group-item">Password: {password}</li>
+        <li className="list-group-item">Lunch: {lunch}</li>
         <li className="list-group-item">
           Facebook URL: <a href={facebook}>{facebook}</a>
         </li>

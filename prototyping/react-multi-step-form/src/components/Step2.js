@@ -17,25 +17,45 @@ const Step2 = ({ values, inputChange }) => {
   return (
     <div className="form-container">
       <h1 className="mb-5">Step 2</h1>
-      <div className="form-group">
-        <label htmlFor="phone">Phone Number</label>
+      <h3>What do you want for lunch?</h3>
+      <div className="form-check">
         <input
-          type="text"
-          className="form-control"
-          name="phone"
-          onChange={inputChange("phone")}
-          value={values.phone}
+          className="form-check-input"
+          name="lunch"
+          type="radio"
+          value="sandwich"
+          id="radio1"
+          onChange={inputChange("lunch")}
         />
+        <label className="form-check-label" htmlFor="radio1">
+          Sandwich
+        </label>
       </div>
-      <div className="form-group">
-        <label htmlFor="password">Password</label>
+      <div className="form-check">
         <input
-          type="password"
-          className="form-control"
-          name="password"
-          onChange={inputChange("password")}
-          value={values.password}
+          className="form-check-input"
+          name="lunch"
+          type="radio"
+          value="tuna"
+          id="radio2"
+          onChange={inputChange("lunch")}
         />
+        <label className="form-check-label" htmlFor="radio2">
+          Tuna
+        </label>
+      </div>
+      <div className="form-check">
+        <input
+          className="form-check-input"
+          name="lunch"
+          type="radio"
+          value="fries"
+          id="radio3"
+          onChange={inputChange("lunch")}
+        />
+        <label className="form-check-label" htmlFor="radio3">
+          French fries
+        </label>
       </div>
 
       <br />
@@ -54,6 +74,6 @@ const Step2 = ({ values, inputChange }) => {
       </div>
     </div>
   );
-}
+};
 
 export default Step2;

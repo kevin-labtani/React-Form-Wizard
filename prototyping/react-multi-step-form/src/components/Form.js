@@ -10,8 +10,7 @@ const Form = () => {
   const [contact, setContact] = useState({
     name: "",
     email: "",
-    phone: "",
-    password: "",
+    lunch:"",
     facebook: "",
     twitter: "",
     github: "",
