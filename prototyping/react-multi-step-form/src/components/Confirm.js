@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 
 const Confirm = ({ values }) => {
-  const { name, email, lunch, contactCheck, opinion, yn, number } = values;
+  const { name, email, lunch, contactCheck, opinion, yn, number, pizza, spaghetti, soup } = values;
 
   const { push, goBack } = useHistory();
 
@@ -29,6 +29,11 @@ const Confirm = ({ values }) => {
         <li className="list-group-item">Opinion: {opinion}</li>
         <li className="list-group-item">Yes or No: {yn}</li>
         <li className="list-group-item">Number: {number}</li>
+        <li className="list-group-item">
+          Dinner: {pizza ? "pizza" : ""}{" "}
+          {spaghetti ? "spaghetti" : ""}{" "}
+          {soup ? "soup" : ""}
+        </li>
       </ul>
 
       <br />

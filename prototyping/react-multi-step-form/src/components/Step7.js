@@ -6,7 +6,7 @@ const Step2 = ({ values, inputChange }) => {
 
   const cont = (e) => {
     e.preventDefault();
-    push("/confirm");
+    push("/step8");
   };
 
   const back = (e) => {
