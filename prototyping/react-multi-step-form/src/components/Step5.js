@@ -1,14 +1,12 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-const Confirm = ({ values }) => {
-  const { name, email, lunch, contactCheck, opinion } = values;
-
+const Step5 = ({ values, inputChange }) => {
   const { push, goBack } = useHistory();
 
   const cont = (e) => {
     e.preventDefault();
-    push("/success");
+    push("/confirm");
   };
 
   const back = (e) => {
@@ -18,18 +16,22 @@ const Confirm = ({ values }) => {
 
   return (
     <div className="form-container">
-      <h1 className="mb-5">Confirm</h1>
-      <ul className="list-group">
-        <li className="list-group-item">Name: {name}</li>
-        <li className="list-group-item">Email: {email}</li>
-        <li className="list-group-item">Lunch: {lunch}</li>
-        <li className="list-group-item">
-          Contactable: {contactCheck.toString()}
-        </li>
-        <li className="list-group-item">Opinion: {opinion}</li>
-      </ul>
+      <h1 className="mb-5">Step 5: opinion scale</h1>
+      <h3>What is your opinion from 1 to 10?</h3>
+      <div className="form-group">
+        <label htmlFor="formControlRange">Example Range input</label>
+        <input
+          type="range"
+          className="form-control-range"
+          id="formControlRange"
+          min="1"
+          max="10"
+          step="1"
+          onChange={inputChange("opinion")}
+          value={values.opinion}
+        />
+      </div>
 
-      <br />
       <br />
 
       <div className="row">
@@ -48,4 +50,4 @@ const Confirm = ({ values }) => {
   );
 };
 
-export default Confirm;
+export default Step5;

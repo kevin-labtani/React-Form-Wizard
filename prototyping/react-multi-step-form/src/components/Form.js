@@ -4,6 +4,7 @@ import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Step3 from "./Step3";
 import Step4 from "./Step4";
+import Step5 from "./Step5";
 import Confirm from "./Confirm";
 import Success from "./Success";
 
@@ -13,6 +14,7 @@ const Form = () => {
     email: "",
     lunch: "",
     contactCheck: "",
+    opinion: "",
   });
 
   // load data from localSotrage
@@ -66,10 +68,16 @@ const Form = () => {
           render={(routeProps) => (
             <Step4
               {...routeProps}
-              inputChange={inputChange}
               checkboxChange={checkboxChange}
               values={contact}
             />
+          )}
+        />
+        <Route
+          exact
+          path="/step5"
+          render={(routeProps) => (
+            <Step5 {...routeProps} inputChange={inputChange} values={contact} />
           )}
         />
         <Route
