@@ -1,12 +1,12 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-const Step3 = ({ values, inputChange, checkboxChange }) => {
+const Step3 = ({ values, inputChange }) => {
   const { push, goBack } = useHistory();
 
   const cont = (e) => {
     e.preventDefault();
-    push("/confirm");
+    push("/step4");
   };
 
   const back = (e) => {
@@ -16,41 +16,49 @@ const Step3 = ({ values, inputChange, checkboxChange }) => {
 
   return (
     <div className="form-container">
-      <h1 className="mb-5">Step 3</h1>
-      <div className="form-group">
-        <label htmlFor="facebook">Facebook URL</label>
+      <h1 className="mb-5">Step 3: single choice</h1>
+      <h3>What do you want for lunch?</h3>
+      <div className="form-check">
         <input
-          type="text"
-          className="form-control"
-          name="facebook"
-          onChange={inputChange("facebook")}
-          value={values.facebook}
+          className="form-check-input"
+          name="lunch"
+          type="radio"
+          value="sandwich"
+          id="radio1"
+          checked={values.lunch === "sandwich"}
+          onChange={inputChange("lunch")}
         />
+        <label className="form-check-label" htmlFor="radio1">
+          Sandwich
+        </label>
       </div>
-      <div className="form-group">
-        <label htmlFor="twitter">Twitter URL</label>
+      <div className="form-check">
         <input
-          type="text"
-          className="form-control"
-          name="twitter"
-          onChange={inputChange("twitter")}
-          value={values.twitter}
+          className="form-check-input"
+          name="lunch"
+          type="radio"
+          value="tuna"
+          id="radio2"
+          checked={values.lunch === "tuna"}
+          onChange={inputChange("lunch")}
         />
+        <label className="form-check-label" htmlFor="radio2">
+          Tuna
+        </label>
       </div>
-      <div className="form-group">
-        <div className="form-check">
-          <input
-            className="form-check-input"
-            type="checkbox"
-            id="contactCheck"
-            value="true"
-            checked={values.contactCheck}
-            onChange={checkboxChange("contactCheck")}
-          />
-          <label className="form-check-label" htmlFor="contactCheck">
-            Please send me emails
-          </label>
-        </div>
+      <div className="form-check">
+        <input
+          className="form-check-input"
+          name="lunch"
+          type="radio"
+          value="fries"
+          id="radio3"
+          checked={values.lunch === "fries"}
+          onChange={inputChange("lunch")}
+        />
+        <label className="form-check-label" htmlFor="radio3">
+          French fries
+        </label>
       </div>
 
       <br />

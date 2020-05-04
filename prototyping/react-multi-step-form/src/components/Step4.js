@@ -1,14 +1,12 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-const Confirm = ({ values }) => {
-  const { name, email, lunch } = values;
-
+const Step4 = ({ values, inputChange, checkboxChange }) => {
   const { push, goBack } = useHistory();
 
   const cont = (e) => {
     e.preventDefault();
-    push("/success");
+    push("/step5");
   };
 
   const back = (e) => {
@@ -18,14 +16,23 @@ const Confirm = ({ values }) => {
 
   return (
     <div className="form-container">
-      <h1 className="mb-5">Confirm</h1>
-      <ul className="list-group">
-        <li className="list-group-item">Name: {name}</li>
-        <li className="list-group-item">Email: {email}</li>
-        <li className="list-group-item">Lunch: {lunch}</li>
-      </ul>
+      <h1 className="mb-5">Step 4: legal</h1>
+      <div className="form-group">
+        <div className="form-check">
+          <input
+            className="form-check-input"
+            type="checkbox"
+            id="contactCheck"
+            value="true"
+            checked={values.contactCheck}
+            onChange={checkboxChange("contactCheck")}
+          />
+          <label className="form-check-label" htmlFor="contactCheck">
+            I accept to be contacted
+          </label>
+        </div>
+      </div>
 
-      <br />
       <br />
 
       <div className="row">
@@ -44,4 +51,4 @@ const Confirm = ({ values }) => {
   );
 };
 
-export default Confirm;
+export default Step4;

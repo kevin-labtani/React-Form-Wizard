@@ -10,10 +10,8 @@ const Step1 = ({ values, inputChange }) => {
 
   const cont = (e) => {
     e.preventDefault();
-    if (values.name === "" || values.email === "") {
+    if (values.email === "") {
       setAlert("Please fill in all fields", "danger");
-    } else if (values.name !== "kevin") {
-      setAlert("User not authorized", "danger");
     } else {
       values.email === "admin@demo" ? push("/step3") : push("/step2");
     }
@@ -21,17 +19,7 @@ const Step1 = ({ values, inputChange }) => {
 
   return (
     <div className="form-container">
-      <h1 className="mb-5">Step 1</h1>
-      <div className="form-group">
-        <label htmlFor="name">Name</label>
-        <input
-          type="text"
-          className="form-control"
-          name="name"
-          onChange={inputChange("name")}
-          value={values.name}
-        />
-      </div>
+      <h1 className="mb-5">Step 1: email</h1>
       <div className="form-group">
         <label htmlFor="email">Email</label>
         <input
