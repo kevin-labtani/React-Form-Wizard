@@ -8,6 +8,7 @@ import Step5 from "./Step5";
 import Step6 from "./Step6";
 import Step7 from "./Step7";
 import Step8 from "./Step8";
+import Step9 from "./Step9";
 import Confirm from "./Confirm";
 import Success from "./Success";
 
@@ -23,6 +24,7 @@ const Form = () => {
     pizza: "",
     spaghetti: "",
     soup: "",
+    pet: [],
   });
 
   // load data from localSotrage
@@ -44,6 +46,23 @@ const Form = () => {
 
   const checkboxChange = (input) => (e) => {
     setContact({ ...contact, [input]: e.target.checked });
+  };
+
+  const multiCheckboxChange = (input) => (e) => {
+    const oldArr = contact[input];
+    if (e.target.checked) {
+      oldArr.push(e.target.value);
+      setContact({
+        ...contact,
+        [input]: oldArr,
+      });
+    } else {
+      const filteredArr = oldArr.filter(pet => pet !== e.target.value);
+      setContact({
+        ...contact,
+        [input]: filteredArr,
+      });
+    }
   };
 
   return (
@@ -109,6 +128,17 @@ const Form = () => {
             <Step8
               {...routeProps}
               checkboxChange={checkboxChange}
+              values={contact}
+            />
+          )}
+        />
+        <Route
+          exact
+          path="/step9"
+          render={(routeProps) => (
+            <Step9
+              {...routeProps}
+              multiCheckboxChange={multiCheckboxChange}
               values={contact}
             />
           )}
