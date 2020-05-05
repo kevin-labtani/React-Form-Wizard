@@ -10,6 +10,7 @@ import Step7 from "./Step7";
 import Step8 from "./Step8";
 import Step9 from "./Step9";
 import Step10 from "./Step10";
+import Step11 from "./Step11";
 import Confirm from "./Confirm";
 import Success from "./Success";
 
@@ -27,6 +28,7 @@ const Form = () => {
     soup: "",
     pet: [],
     bw: "",
+    dessert:""
   });
 
   // load data from localSotrage
@@ -54,24 +56,15 @@ const Form = () => {
     const oldArr = contact[input];
     if (e.target.checked) {
       oldArr.push(e.target.value);
-      setContact({
-        ...contact,
-        [input]: oldArr,
-      });
+      setContact({ ...contact, [input]: oldArr });
     } else {
       const filteredArr = oldArr.filter((pet) => pet !== e.target.value);
-      setContact({
-        ...contact,
-        [input]: filteredArr,
-      });
+      setContact({ ...contact, [input]: filteredArr });
     }
   };
 
-  const YesNoCheckboxChange = (input) => (e) => {
-    setContact({
-      ...contact,
-      [input]: e.target.value,
-    });
+  const SingleCheckboxChange = (input) => (e) => {
+    setContact({ ...contact, [input]: e.target.value });
   };
 
   return (
@@ -158,7 +151,18 @@ const Form = () => {
           render={(routeProps) => (
             <Step10
               {...routeProps}
-              YesNoCheckboxChange={YesNoCheckboxChange}
+              SingleCheckboxChange={SingleCheckboxChange}
+              values={contact}
+            />
+          )}
+        />
+        <Route
+          exact
+          path="/step11"
+          render={(routeProps) => (
+            <Step11
+              {...routeProps}
+              SingleCheckboxChange={SingleCheckboxChange}
               values={contact}
             />
           )}

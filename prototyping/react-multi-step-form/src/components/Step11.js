@@ -1,12 +1,12 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-const Step10 = ({ values, SingleCheckboxChange }) => {
+const Step11 = ({ values, SingleCheckboxChange }) => {
   const { push, goBack } = useHistory();
 
   const cont = (e) => {
     e.preventDefault();
-    push("/step11");
+    push("/confirm");
   };
 
   const back = (e) => {
@@ -16,32 +16,45 @@ const Step10 = ({ values, SingleCheckboxChange }) => {
 
   return (
     <div className="form-container">
-      <h1 className="mb-5">Step 10: yes or no - alt</h1>
-      <h3>Pick Black or White</h3>
+      <h1 className="mb-5">Step 11: Single Choice - alt</h1>
+      <h3>What do you want for dessert?</h3>
       <div className="form-check">
         <input
           className="form-check-input"
           type="checkbox"
-          value="black"
+          value="tiramisu"
           id="checkbox1"
-          checked={(values.bw === "black")}
-          onChange={SingleCheckboxChange("bw")}
+          checked={values.dessert === "tiramisu"}
+          onChange={SingleCheckboxChange("dessert")}
         />
         <label className="form-check-label" htmlFor="checkbox1">
-          Black
+          Tiramisu
         </label>
       </div>
       <div className="form-check">
         <input
           className="form-check-input"
           type="checkbox"
-          value="white"
+          value="ice-cream"
           id="checkbox2"
-          checked={values.bw === "white"}
-          onChange={SingleCheckboxChange("bw")}
+          checked={values.dessert === "ice-cream"}
+          onChange={SingleCheckboxChange("dessert")}
         />
         <label className="form-check-label" htmlFor="checkbox2">
-          White
+          Ice cream
+        </label>
+      </div>
+      <div className="form-check">
+        <input
+          className="form-check-input"
+          type="checkbox"
+          value="cake"
+          id="checkbox2"
+          checked={values.dessert === "cake"}
+          onChange={SingleCheckboxChange("dessert")}
+        />
+        <label className="form-check-label" htmlFor="checkbox2">
+          Cake
         </label>
       </div>
 
@@ -63,4 +76,4 @@ const Step10 = ({ values, SingleCheckboxChange }) => {
   );
 };
 
-export default Step10;
+export default Step11;
