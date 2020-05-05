@@ -1,12 +1,12 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-const Step9 = ({ values, multiCheckboxChange }) => {
+const Step10 = ({ values, YesNoCheckboxChange }) => {
   const { push, goBack } = useHistory();
 
   const cont = (e) => {
     e.preventDefault();
-    push("/step10");
+    push("/confirm");
   };
 
   const back = (e) => {
@@ -16,45 +16,32 @@ const Step9 = ({ values, multiCheckboxChange }) => {
 
   return (
     <div className="form-container">
-      <h1 className="mb-5">Step 9: multiple choice - alt</h1>
-      <h3>What is your favorite pet?</h3>
+      <h1 className="mb-5">Step 10: yes or no - alt</h1>
+      <h3>Pick Black or White</h3>
       <div className="form-check">
         <input
           className="form-check-input"
           type="checkbox"
-          value="cat"
+          value="black"
           id="checkbox1"
-          checked={values.pet.includes("cat")}
-          onChange={multiCheckboxChange("pet")}
+          checked={(values.bw === "black")}
+          onChange={YesNoCheckboxChange("bw")}
         />
         <label className="form-check-label" htmlFor="checkbox1">
-          Cat
+          Black
         </label>
       </div>
       <div className="form-check">
         <input
           className="form-check-input"
           type="checkbox"
-          value="dog"
+          value="white"
           id="checkbox2"
-          checked={values.pet.includes("dog")}
-          onChange={multiCheckboxChange("pet")}
+          checked={values.bw === "white"}
+          onChange={YesNoCheckboxChange("bw")}
         />
         <label className="form-check-label" htmlFor="checkbox2">
-          Dog
-        </label>
-      </div>
-      <div className="form-check">
-        <input
-          className="form-check-input"
-          type="checkbox"
-          value="fish"
-          id="checkbox3"
-          checked={values.pet.includes("fish")}
-          onChange={multiCheckboxChange("pet")}
-        />
-        <label className="form-check-label" htmlFor="checkbox3">
-          Fish
+          White
         </label>
       </div>
 
@@ -76,4 +63,4 @@ const Step9 = ({ values, multiCheckboxChange }) => {
   );
 };
 
-export default Step9;
+export default Step10;

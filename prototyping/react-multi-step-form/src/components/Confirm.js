@@ -14,6 +14,7 @@ const Confirm = ({ values }) => {
     spaghetti,
     soup,
     pet,
+    bw,
   } = values;
 
   const { push, goBack } = useHistory();
@@ -51,6 +52,7 @@ const Confirm = ({ values }) => {
             <span key={el}>{el} </span>
           ))}
         </li>
+        <li className="list-group-item">Black or White: {bw}</li>
       </ul>
 
       <br />
