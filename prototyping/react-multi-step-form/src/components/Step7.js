@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
+import AlertContext from "../context/alert/alertContext";
 
 const Step2 = ({ values, inputChange }) => {
+  const alertContext = useContext(AlertContext);
+  const { setAlert } = alertContext;
+
   const { push, goBack } = useHistory();
 
   const cont = (e) => {
     e.preventDefault();
-    push("/step8");
+    if (values.number < 0 || values.number > 10) {
+      setAlert("Please enter a number between 0 and 10", "danger");
+    } else {
+      push("/step8");
+    }
   };
 
   const back = (e) => {
@@ -25,6 +33,8 @@ const Step2 = ({ values, inputChange }) => {
           name="number"
           onChange={inputChange("number")}
           value={values.number}
+          min={0}
+          max={10}
         />
       </div>
 
