@@ -14,6 +14,12 @@ const Step4 = ({ values, checkboxChangePush }) => {
     goBack();
   };
 
+  // alternative way to auto push to next step
+  // const checkboxChangePush = (e) => {
+  //   checkboxChange("contactCheck")(e);
+  //   cont(e);
+  // };
+
   return (
     <div className="form-container">
       <h1 className="mb-5">Step 4: legal</h1>
