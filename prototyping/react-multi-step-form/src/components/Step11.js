@@ -6,7 +6,7 @@ const Step11 = ({ values, SingleCheckboxChange }) => {
 
   const cont = (e) => {
     e.preventDefault();
-    push("/confirm");
+    push("/step12");
   };
 
   const back = (e) => {
