@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useHistory } from "react-router-dom";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Step3 from "./Step3";
@@ -16,6 +16,8 @@ import Confirm from "./Confirm";
 import Success from "./Success";
 
 const Form = () => {
+  const { push } = useHistory();
+
   const [contact, setContact] = useState({
     name: "",
     email: "",
@@ -52,6 +54,13 @@ const Form = () => {
 
   const checkboxChange = (input) => (e) => {
     setContact({ ...contact, [input]: e.target.checked });
+  };
+
+  // auto push to next question
+  // currently implemented on step4 as an example
+  const checkboxChangePush = (input, next) => (e) => {
+    setContact({ ...contact, [input]: e.target.checked });
+    push(next);
   };
 
   const multiCheckboxChange = (input) => (e) => {
@@ -99,7 +108,7 @@ const Form = () => {
           render={(routeProps) => (
             <Step4
               {...routeProps}
-              checkboxChange={checkboxChange}
+              checkboxChangePush={checkboxChangePush}
               values={contact}
             />
           )}

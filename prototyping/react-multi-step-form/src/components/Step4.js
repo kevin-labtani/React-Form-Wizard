@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-const Step4 = ({ values, checkboxChange }) => {
+const Step4 = ({ values, checkboxChangePush }) => {
   const { push, goBack } = useHistory();
 
   const cont = (e) => {
@@ -25,7 +25,7 @@ const Step4 = ({ values, checkboxChange }) => {
             id="contactCheck"
             value="true"
             checked={values.contactCheck}
-            onChange={checkboxChange("contactCheck")}
+            onChange={checkboxChangePush("contactCheck", "/step5")}
           />
           <label className="form-check-label" htmlFor="contactCheck">
             I accept to be contacted
