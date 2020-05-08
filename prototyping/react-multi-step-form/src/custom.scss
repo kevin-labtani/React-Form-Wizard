@@ -1,0 +1,66 @@
+$hu-green: #00b7af;
+$hu-blue: #2e84dd;
+$hu-red: #ff435a;
+$hu-nav: #26405a; /*menu nav*/
+$hu-green-1: #54bdbf; /*button*/
+$hu-green-2: #009b94; /* button focus */
+$hu-grey: #8c8c8c;
+$hu-grey-1: #e3e6e9;
+$hu-dark: #151515;
+
+/* graph */
+$hu-g1-1: #e3f4db;
+$hu-g1-2: #c7edc3;
+$hu-g1-3: #ace5b3;
+$hu-g1-4: #95dcae;
+$hu-g1-5: #7fd3af;
+$hu-g1-6: #69c9b6;
+$hu-g1-7: #54bdbf;
+
+$hu-g1-h1: #aadd92;
+$hu-g1-h2: #87d87e;
+$hu-g1-h3: #6ed17b;
+$hu-g1-h4: #5dc983;
+$hu-g1-h5: #4cc18f;
+$hu-g1-h6: #40b39d;
+$hu-g1-h6: #3b9ea0;
+
+/*not used*/
+/* 25 40 55 darken of blue*/
+/*
+    $hu-panel-1: #2176ce;
+    $hu-panel-1a: #1c62ac;
+    $hu-panel-1b: #164f89;
+    $hu-panel-1c: #103b67;
+    */
+/* 10 25 40 55 darken of green*/
+/*
+    $hu-panel-4: #00a49d;
+    $hu-panel-4a: #008983;
+    $hu-panel-4b: #006d69;
+
+    $hu-light-grey-1: #F2F5F7;
+    $hu-panel-p1: #00B7AF;
+    $hu-panel-6: #67C3CD;
+    $hu-panel-7: #75C8D7;
+    $hu-panel-8: #89CEDF;
+    $hu-panel-9: #A0D6E1;
+    $hu-panel-10: #B5DFEF;
+    $hu-panel-12: #A6A6A6;
+    $hu-panel-13: #BFBFBF;
+    $hu-panel-14: #D9D9D9;
+    $hu-panel-15: #F2F2F2;
+    $hu-panel-16: #76aee8;
+    */
+
+// Override default variables before the import
+$theme-colors: (
+  "primary": $hu-green,
+  "secondary": $hu-blue,
+  "danger": $hu-red,
+);
+
+$enable-rounded: false;
+
+// Import Bootstrap and its default variables
+@import "~bootstrap/scss/bootstrap.scss";
