@@ -5,7 +5,6 @@ const Confirm = ({ values }) => {
   const {
     name,
     email,
-    lunch,
     contactCheck,
     opinion,
     yn,
@@ -37,7 +36,6 @@ const Confirm = ({ values }) => {
       <ul className="list-group">
         <li className="list-group-item">Name: {name}</li>
         <li className="list-group-item">Email: {email}</li>
-        <li className="list-group-item">Lunch: {lunch}</li>
         <li className="list-group-item">
           Contactable: {contactCheck.toString()}
         </li>

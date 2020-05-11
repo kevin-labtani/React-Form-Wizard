@@ -10,7 +10,6 @@ import Step7 from "./Step7";
 import Step8 from "./Step8";
 import Step9 from "./Step9";
 import Step10 from "./Step10";
-import Step11 from "./Step11";
 import Step12 from "./Step12";
 import Confirm from "./Confirm";
 import Success from "./Success";
@@ -21,7 +20,6 @@ const Form = () => {
   const [contact, setContact] = useState({
     name: "",
     email: "",
-    lunch: "",
     contactCheck: "",
     opinion: "",
     yn: "",
@@ -99,7 +97,11 @@ const Form = () => {
           exact
           path="/step3"
           render={(routeProps) => (
-            <Step3 {...routeProps} inputChange={inputChange} values={contact} />
+            <Step3
+              {...routeProps}
+              SingleCheckboxChange={SingleCheckboxChange}
+              values={contact}
+            />
           )}
         />
         <Route
@@ -161,17 +163,6 @@ const Form = () => {
           path="/step10"
           render={(routeProps) => (
             <Step10
-              {...routeProps}
-              SingleCheckboxChange={SingleCheckboxChange}
-              values={contact}
-            />
-          )}
-        />
-        <Route
-          exact
-          path="/step11"
-          render={(routeProps) => (
-            <Step11
               {...routeProps}
               SingleCheckboxChange={SingleCheckboxChange}
               values={contact}
