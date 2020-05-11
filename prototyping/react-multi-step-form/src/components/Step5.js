@@ -16,7 +16,7 @@ const Step5 = ({ values, inputChange }) => {
 
   return (
     <div className="form-container">
-      <h1 className="mb-5">Step 5: opinion scale</h1>
+      <h1 className="mb-5 text-center">Step 5: opinion scale</h1>
       <h3>What is your opinion from 1 to 10?</h3>
       <div className="form-group">
         <label htmlFor="formControlRange">Example Range input</label>

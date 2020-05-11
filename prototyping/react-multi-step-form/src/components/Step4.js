@@ -22,7 +22,7 @@ const Step4 = ({ values, checkboxChangePush }) => {
 
   return (
     <div className="form-container">
-      <h1 className="mb-5">Step 4: legal</h1>
+      <h1 className="mb-5 text-center">Step 4: legal</h1>
       <div className="form-group">
         <div className="form-check">
           <input

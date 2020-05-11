@@ -1,5 +1,4 @@
 import React from "react";
-import "./App.css";
 import { BrowserRouter as Router } from "react-router-dom";
 import AlertState from "./context/alert/AlertState";
 import Form from "./components/Form";

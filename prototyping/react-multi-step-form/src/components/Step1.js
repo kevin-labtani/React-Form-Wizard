@@ -19,7 +19,7 @@ const Step1 = ({ values, inputChange }) => {
 
   return (
     <div className="form-container">
-      <h1 className="mb-5">Step 1: email</h1>
+      <h1 className="mb-5 text-center">Step 1: email</h1>
       <div className="form-group">
         <label htmlFor="email">Email</label>
         <input

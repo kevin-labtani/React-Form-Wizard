@@ -16,7 +16,7 @@ const Step3 = ({ values, inputChange }) => {
 
   return (
     <div className="form-container">
-      <h1 className="mb-5">Step 3: single choice</h1>
+      <h1 className="mb-5 text-center">Step 3: single choice</h1>
       <h3>What do you want for lunch?</h3>
       <div className="form-check">
         <input

@@ -16,7 +16,7 @@ const Step10 = ({ values, SingleCheckboxChange }) => {
 
   return (
     <div className="form-container">
-      <h1 className="mb-5">Step 10: yes or no - alt</h1>
+      <h1 className="mb-5 text-center">Step 10: yes or no - alt</h1>
       <h3>Pick Black or White</h3>
       <div className="form-check">
         <input
@@ -24,7 +24,7 @@ const Step10 = ({ values, SingleCheckboxChange }) => {
           type="checkbox"
           value="black"
           id="checkbox1"
-          checked={(values.bw === "black")}
+          checked={values.bw === "black"}
           onChange={SingleCheckboxChange("bw")}
         />
         <label className="form-check-label" htmlFor="checkbox1">
