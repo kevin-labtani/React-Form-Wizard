@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-const Step6 = ({ values, inputChange }) => {
+const Step6 = ({ values, SingleCheckboxChange }) => {
   const { push, goBack } = useHistory();
 
   const cont = (e) => {
@@ -21,28 +21,26 @@ const Step6 = ({ values, inputChange }) => {
       <div className="form-check">
         <input
           className="form-check-input"
-          name="yn"
-          type="radio"
+          type="checkbox"
           value="yes"
-          id="radio1"
+          id="checkbox1"
           checked={values.yn === "yes"}
-          onChange={inputChange("yn")}
+          onChange={SingleCheckboxChange("yn")}
         />
-        <label className="form-check-label" htmlFor="radio1">
+        <label className="form-check-label" htmlFor="checkbox1">
           Yes
         </label>
       </div>
       <div className="form-check">
         <input
           className="form-check-input"
-          name="yn"
-          type="radio"
+          type="checkbox"
           value="no"
-          id="radio2"
-          checked={values.yn === "no"}
-          onChange={inputChange("yn")}
+          id="checkbox2"
+          checked={values.bw === "no"}
+          onChange={SingleCheckboxChange("yn")}
         />
-        <label className="form-check-label" htmlFor="radio2">
+        <label className="form-check-label" htmlFor="checkbox2">
           No
         </label>
       </div>

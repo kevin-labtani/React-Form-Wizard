@@ -16,7 +16,7 @@ const Step10 = ({ values, SingleCheckboxChange }) => {
 
   return (
     <div className="form-container">
-      <h1 className="mb-5 text-center">Step 10: yes or no - alt</h1>
+      <h1 className="mb-5 text-center">Step 6: yes or no</h1>
       <h3>Pick Black or White</h3>
       <div className="form-check">
         <input

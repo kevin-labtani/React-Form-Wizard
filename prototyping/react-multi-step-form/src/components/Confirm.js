@@ -13,7 +13,6 @@ const Confirm = ({ values }) => {
     spaghetti,
     soup,
     pet,
-    bw,
     dessert,
     rating,
   } = values;
@@ -52,7 +51,6 @@ const Confirm = ({ values }) => {
             <span key={el}>{el} </span>
           ))}
         </li>
-        <li className="list-group-item">Black or White: {bw}</li>
         <li className="list-group-item">Dessert: {dessert}</li>
         <li className="list-group-item">Rating: {rating}</li>
       </ul>
