@@ -10,7 +10,7 @@ const Step2 = ({ values, inputChange }) => {
 
   const cont = (e) => {
     e.preventDefault();
-    if (values.number < 0 || values.number > 10) {
+    if (!values.number || values.number < 0 || values.number > 10) {
       setAlert("Please enter a number between 0 and 10", "danger");
     } else {
       push("/step8");

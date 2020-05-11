@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
+import AlertContext from "../context/alert/alertContext";
 
 const Step5 = ({ values, inputChange }) => {
+  const { setAlert } = useContext(AlertContext);
+
   const { push, goBack } = useHistory();
 
   const cont = (e) => {
     e.preventDefault();
-    push("/step6");
+    if (!values.opinion) {
+      setAlert("Veuillez faire un choix", "danger");
+    } else {
+      push("/step6");
+    }
   };
 
   const back = (e) => {

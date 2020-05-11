@@ -1,19 +1,18 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import AlertContext from "../context/alert/alertContext";
-
+import isEmail from "validator/lib/isEmail";
 const Step1 = ({ values, inputChange }) => {
-  const alertContext = useContext(AlertContext);
-  const { setAlert } = alertContext;
+  const { setAlert } = useContext(AlertContext);
 
   const { push } = useHistory();
 
   const cont = (e) => {
     e.preventDefault();
-    if (values.email === "") {
-      setAlert("Please fill in all fields", "danger");
+    if (!isEmail(values.email)) {
+      setAlert("Veuillez entrer une adresse email valide", "danger");
     } else {
-      values.email === "admin@demo" ? push("/step3") : push("/step2");
+      values.email === "admin@demo.com" ? push("/step3") : push("/step2");
     }
   };
 

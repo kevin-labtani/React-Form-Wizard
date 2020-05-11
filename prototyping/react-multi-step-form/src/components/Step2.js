@@ -3,15 +3,14 @@ import { useHistory } from "react-router-dom";
 import AlertContext from "../context/alert/alertContext";
 
 const Step2 = ({ values, inputChange }) => {
-  const alertContext = useContext(AlertContext);
-  const { setAlert } = alertContext;
+  const { setAlert } = useContext(AlertContext);
 
   const { push, goBack } = useHistory();
 
   const cont = (e) => {
     e.preventDefault();
     if (values.name === "") {
-      setAlert("Please fill in all fields", "danger");
+      setAlert("Veuillez remplir ce champ", "danger");
     } else if (values.name !== "kevin") {
       setAlert("User not authorized", "danger");
     } else {

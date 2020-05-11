@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
+import AlertContext from "../context/alert/alertContext";
 
 const Step3 = ({ values, SingleCheckboxChange }) => {
+  const { setAlert } = useContext(AlertContext);
+
   const { push, goBack } = useHistory();
 
   const cont = (e) => {
     e.preventDefault();
-    push("/step4");
+    if (!values.dessert) {
+      setAlert("Veuillez remplir ce champ", "danger");
+    } else {
+      push("/step4");
+    }
   };
 
   const back = (e) => {
