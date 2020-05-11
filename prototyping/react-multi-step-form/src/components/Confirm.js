@@ -9,9 +9,6 @@ const Confirm = ({ values }) => {
     opinion,
     yn,
     number,
-    pizza,
-    spaghetti,
-    soup,
     pet,
     dessert,
     rating,
@@ -41,10 +38,6 @@ const Confirm = ({ values }) => {
         <li className="list-group-item">Opinion: {opinion}</li>
         <li className="list-group-item">Yes or No: {yn}</li>
         <li className="list-group-item">Number: {number}</li>
-        <li className="list-group-item">
-          Dinner: {pizza ? "pizza" : ""} {spaghetti ? "spaghetti" : ""}{" "}
-          {soup ? "soup" : ""}
-        </li>
         <li className="list-group-item">
           Pets:{" "}
           {pet.map((el) => (

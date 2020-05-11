@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-const Step8 = ({ values, checkboxChange }) => {
+const Step8 = ({ values, multiCheckboxChange }) => {
   const { push, goBack } = useHistory();
 
   const cont = (e) => {
@@ -17,44 +17,44 @@ const Step8 = ({ values, checkboxChange }) => {
   return (
     <div className="form-container">
       <h1 className="mb-5 text-center">Step 8: multiple choice</h1>
-      <h3>What do you want for dinner?</h3>
+      <h3>What is your favorite pet?</h3>
       <div className="form-check">
         <input
           className="form-check-input"
           type="checkbox"
-          value="pizza"
+          value="cat"
           id="checkbox1"
-          checked={values.pizza}
-          onChange={checkboxChange("pizza")}
+          checked={values.pet.includes("cat")}
+          onChange={multiCheckboxChange("pet")}
         />
         <label className="form-check-label" htmlFor="checkbox1">
-          Pizza
+          Cat
         </label>
       </div>
       <div className="form-check">
         <input
           className="form-check-input"
           type="checkbox"
-          value="spaghetti"
+          value="dog"
           id="checkbox2"
-          checked={values.spaghetti}
-          onChange={checkboxChange("spaghetti")}
+          checked={values.pet.includes("dog")}
+          onChange={multiCheckboxChange("pet")}
         />
         <label className="form-check-label" htmlFor="checkbox2">
-          Spaghetti
+          Dog
         </label>
       </div>
       <div className="form-check">
         <input
           className="form-check-input"
           type="checkbox"
-          value="soup"
+          value="fish"
           id="checkbox3"
-          checked={values.soup}
-          onChange={checkboxChange("soup")}
+          checked={values.pet.includes("fish")}
+          onChange={multiCheckboxChange("pet")}
         />
         <label className="form-check-label" htmlFor="checkbox3">
-          Soup
+          Fish
         </label>
       </div>
 

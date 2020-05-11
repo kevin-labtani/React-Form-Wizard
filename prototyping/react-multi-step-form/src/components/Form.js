@@ -9,7 +9,6 @@ import Step6 from "./Step6";
 import Step7 from "./Step7";
 import Step8 from "./Step8";
 import Step9 from "./Step9";
-import Step12 from "./Step12";
 import Confirm from "./Confirm";
 import Success from "./Success";
 
@@ -23,9 +22,6 @@ const Form = () => {
     opinion: "",
     yn: "",
     number: "",
-    pizza: "",
-    spaghetti: "",
-    soup: "",
     pet: [],
     dessert: "",
     rating: "",
@@ -48,9 +44,9 @@ const Form = () => {
     setContact({ ...contact, [input]: e.target.value });
   };
 
-  const checkboxChange = (input) => (e) => {
-    setContact({ ...contact, [input]: e.target.checked });
-  };
+  // const checkboxChange = (input) => (e) => {
+  //   setContact({ ...contact, [input]: e.target.checked });
+  // };
 
   // auto push to next question
   // currently implemented on step4 as an example
@@ -144,7 +140,7 @@ const Form = () => {
           render={(routeProps) => (
             <Step8
               {...routeProps}
-              checkboxChange={checkboxChange}
+              multiCheckboxChange={multiCheckboxChange}
               values={contact}
             />
           )}
@@ -153,22 +149,7 @@ const Form = () => {
           exact
           path="/step9"
           render={(routeProps) => (
-            <Step9
-              {...routeProps}
-              multiCheckboxChange={multiCheckboxChange}
-              values={contact}
-            />
-          )}
-        />
-        <Route
-          exact
-          path="/step12"
-          render={(routeProps) => (
-            <Step12
-              {...routeProps}
-              inputChange={inputChange}
-              values={contact}
-            />
+            <Step9 {...routeProps} inputChange={inputChange} values={contact} />
           )}
         />
         <Route

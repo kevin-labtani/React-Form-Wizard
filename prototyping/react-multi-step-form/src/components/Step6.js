@@ -37,7 +37,7 @@ const Step6 = ({ values, SingleCheckboxChange }) => {
           type="checkbox"
           value="no"
           id="checkbox2"
-          checked={values.bw === "no"}
+          checked={values.yn === "no"}
           onChange={SingleCheckboxChange("yn")}
         />
         <label className="form-check-label" htmlFor="checkbox2">
