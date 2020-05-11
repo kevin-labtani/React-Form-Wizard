@@ -86,5 +86,7 @@ The app is created with [create-react-app (cra)](https://create-react-app.dev/),
 We are using bootstrap for styling, see [here](https://blog.logrocket.com/how-to-use-bootstrap-with-react-a354715d1121/) for options on how to install bootstrap in react project, as of now we added bootstrap as a dependency, and webpack is running in the background of cra, so do a `npm install bootstrap` and import the css in our `index.js`, we'll need to add popper.js and jquery if we want to use bootstrap's js components  
 Routing is handled by [react-router-dom](https://reacttraining.com/react-router/web/guides/quick-start), so `npm install react-router-dom`
 We need `uuid` for random id generation, `npm install uuid`
+We use `sass` to write our css, `npm install node-sass`
+We'll use `validator.js` for validation, `npm install validator`
 
 TODO: integrate font-awesome?
