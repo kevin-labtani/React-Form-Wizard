@@ -11,8 +11,8 @@ const Step2 = ({ values, inputChange }) => {
     e.preventDefault();
     if (values.name === "") {
       setAlert("Veuillez remplir ce champ", "danger");
-    } else if (values.name !== "kevin") {
-      setAlert("User not authorized", "danger");
+    } else if (values.name.length > 256) {
+      setAlert("Votre réponse doit faire moins de 256 caractères", "danger");
     } else {
       push("/step3");
     }
@@ -32,6 +32,7 @@ const Step2 = ({ values, inputChange }) => {
           type="text"
           className="form-control"
           name="name"
+          maxlength="256"
           onChange={inputChange("name")}
           value={values.name}
         />
