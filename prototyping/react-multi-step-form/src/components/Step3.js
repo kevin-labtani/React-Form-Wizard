@@ -56,11 +56,11 @@ const Step3 = ({ values, SingleCheckboxChange }) => {
           className="form-check-input"
           type="checkbox"
           value="cake"
-          id="checkbox2"
+          id="checkbox3"
           checked={values.dessert === "cake"}
           onChange={SingleCheckboxChange("dessert")}
         />
-        <label className="form-check-label" htmlFor="checkbox2">
+        <label className="form-check-label" htmlFor="checkbox3">
           Cake
         </label>
       </div>

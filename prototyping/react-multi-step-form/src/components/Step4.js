@@ -59,17 +59,6 @@ const Step4 = ({ values, SingleCheckboxChangePush }) => {
               No
             </label>
           </div>
-          {/* <input
-            className="form-check-input"
-            type="checkbox"
-            id="contactCheck"
-            value="true"
-            checked={values.contactCheck}
-            onChange={checkboxChangePush("contactCheck", "/step5")}
-          />
-          <label className="form-check-label" htmlFor="contactCheck">
-            I accept to be contacted
-          </label> */}
         </div>
       </div>
 
