@@ -32,7 +32,7 @@ const Step2 = ({ values, inputChange }) => {
           type="text"
           className="form-control"
           name="name"
-          maxlength="256"
+          maxLength="256"
           onChange={inputChange("name")}
           value={values.name}
         />

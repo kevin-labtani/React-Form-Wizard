@@ -49,9 +49,13 @@ const Form = () => {
   // };
 
   // auto push to next question
-  // currently implemented on step4 as an example
-  const checkboxChangePush = (input, next) => (e) => {
-    setContact({ ...contact, [input]: e.target.checked });
+  // was implemented on step4 as an example
+  // const checkboxChangePush = (input, next) => (e) => {
+  //   setContact({ ...contact, [input]: e.target.checked });
+  //   push(next);
+  // };
+  const SingleCheckboxChangePush = (input, next) => (e) => {
+    setContact({ ...contact, [input]: e.target.value });
     push(next);
   };
 
@@ -104,7 +108,7 @@ const Form = () => {
           render={(routeProps) => (
             <Step4
               {...routeProps}
-              checkboxChangePush={checkboxChangePush}
+              SingleCheckboxChangePush={SingleCheckboxChangePush}
               values={contact}
             />
           )}

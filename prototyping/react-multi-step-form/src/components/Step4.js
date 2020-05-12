@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
+import AlertContext from "../context/alert/alertContext";
 
-const Step4 = ({ values, checkboxChangePush }) => {
+const Step4 = ({ values, SingleCheckboxChangePush }) => {
+  const { setAlert } = useContext(AlertContext);
+
   const { push, goBack } = useHistory();
 
   const cont = (e) => {
     e.preventDefault();
-    push("/step5");
+    if (!values.contactCheck) {
+      setAlert("Veuillez faire un choix", "danger");
+    } else {
+      push("/step5");
+    }
   };
 
   const back = (e) => {
@@ -23,9 +30,36 @@ const Step4 = ({ values, checkboxChangePush }) => {
   return (
     <div className="form-container">
       <h1 className="mb-5 text-center">Step 4: legal</h1>
+      <h3>I accept to be contacted</h3>
       <div className="form-group">
         <div className="form-check">
-          <input
+          <div className="form-check">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              value="yes"
+              id="checkbox1"
+              checked={values.contactCheck === "yes"}
+              onChange={SingleCheckboxChangePush("contactCheck", "/step5")}
+            />
+            <label className="form-check-label" htmlFor="checkbox1">
+              Yes
+            </label>
+          </div>
+          <div className="form-check">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              value="no"
+              id="checkbox2"
+              checked={values.contactCheck === "no"}
+              onChange={SingleCheckboxChangePush("contactCheck", "/step5")}
+            />
+            <label className="form-check-label" htmlFor="checkbox2">
+              No
+            </label>
+          </div>
+          {/* <input
             className="form-check-input"
             type="checkbox"
             id="contactCheck"
@@ -35,7 +69,7 @@ const Step4 = ({ values, checkboxChangePush }) => {
           />
           <label className="form-check-label" htmlFor="contactCheck">
             I accept to be contacted
-          </label>
+          </label> */}
         </div>
       </div>
 
