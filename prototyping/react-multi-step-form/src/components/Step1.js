@@ -36,7 +36,7 @@ const Step1 = ({ values, inputChange }) => {
 
       <div className="text-right">
         <button className="btn btn-primary btn-circle" onClick={cont}>
-          <i class="fas fa-arrow-right" />
+          <i className="fas fa-arrow-right" />
         </button>
       </div>
     </div>
