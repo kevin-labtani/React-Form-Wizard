@@ -10,7 +10,6 @@ import Step7 from "./Step7";
 import Step8 from "./Step8";
 import Step9 from "./Step9";
 import Confirm from "./Confirm";
-import Success from "./Success";
 
 const Form = () => {
   const { push } = useHistory();
@@ -160,11 +159,6 @@ const Form = () => {
           exact
           path="/confirm"
           render={(routeProps) => <Confirm {...routeProps} values={contact} />}
-        />
-        <Route
-          exact
-          path="/success"
-          render={(routeProps) => <Success {...routeProps} />}
         />
       </Switch>
     </>

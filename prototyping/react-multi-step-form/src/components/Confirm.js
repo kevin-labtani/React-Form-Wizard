@@ -14,12 +14,7 @@ const Confirm = ({ values }) => {
     rating,
   } = values;
 
-  const { push, goBack } = useHistory();
-
-  const cont = (e) => {
-    e.preventDefault();
-    push("/success");
-  };
+  const { goBack } = useHistory();
 
   const back = (e) => {
     e.preventDefault();
@@ -55,11 +50,6 @@ const Confirm = ({ values }) => {
         <div className="col-6">
           <button className="btn btn-danger" onClick={back}>
             Back
-          </button>
-        </div>
-        <div className="col-6 text-right">
-          <button className="btn btn-primary" onClick={cont}>
-            Continue
           </button>
         </div>
       </div>
