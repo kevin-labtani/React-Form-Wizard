@@ -18,9 +18,11 @@ const Step1 = ({ values, inputChange }) => {
 
   return (
     <div className="form-container">
-      <h3 className="mb-5">Step 1: email</h3>
+      <h3 className="mb-3">Step 1: email</h3>
       <div className="form-group">
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email">
+          <h6>Email</h6>
+        </label>
         <input
           type="email"
           className="form-control"

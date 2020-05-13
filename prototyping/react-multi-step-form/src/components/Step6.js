@@ -23,8 +23,8 @@ const Step6 = ({ values, SingleCheckboxChange }) => {
 
   return (
     <div className="form-container">
-      <h3 className="mb-5">Step 6: yes or no</h3>
-      <h3>Is it yes, or is it no?</h3>
+      <h3 className="mb-3">Step 6: yes or no</h3>
+      <h6>Is it yes, or is it no?</h6>
       <div className="form-check">
         <input
           className="form-check-input"
