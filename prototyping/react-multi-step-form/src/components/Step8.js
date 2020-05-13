@@ -23,7 +23,7 @@ const Step8 = ({ values, multiCheckboxChange }) => {
 
   return (
     <div className="form-container">
-      <h1 className="mb-5 text-center">Step 8: multiple choice</h1>
+      <h3 className="mb-5">Step 8: multiple choice</h3>
       <h3>What is your favorite pet?</h3>
       <div className="form-check">
         <input

@@ -25,7 +25,7 @@ const Step2 = ({ values, inputChange }) => {
 
   return (
     <div className="form-container">
-      <h1 className="mb-5 text-center">Step 2: short text</h1>
+      <h3 className="mb-5">Step 2: short text</h3>
       <div className="form-group">
         <label htmlFor="name">Name</label>
         <input

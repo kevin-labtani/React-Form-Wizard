@@ -24,7 +24,7 @@ const Step2 = ({ values, inputChange }) => {
 
   return (
     <div className="form-container">
-      <h1 className="mb-5 text-center">Step 7: number</h1>
+      <h3 className="mb-5">Step 7: number</h3>
       <div className="form-group">
         <label htmlFor="number">Pick a number</label>
         <input

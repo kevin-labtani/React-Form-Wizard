@@ -18,7 +18,7 @@ const Step1 = ({ values, inputChange }) => {
 
   return (
     <div className="form-container">
-      <h1 className="mb-5 text-center">Step 1: email</h1>
+      <h3 className="mb-5">Step 1: email</h3>
       <div className="form-group">
         <label htmlFor="email">Email</label>
         <input
@@ -34,7 +34,7 @@ const Step1 = ({ values, inputChange }) => {
 
       <div className="text-right">
         <button className="btn btn-primary btn-circle" onClick={cont}>
-          <i class="fas fa-arrow-right"/>
+          <i class="fas fa-arrow-right" />
         </button>
       </div>
     </div>
