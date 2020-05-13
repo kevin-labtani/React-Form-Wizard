@@ -60,9 +60,10 @@ $theme-colors: (
   "secondary": $hu-blue,
   "danger": $hu-red,
   "hu-grey": $hu-grey,
+  "hu-grey-1": $hu-grey-1,
 );
 
-$input-bg: $hu-grey;
+$input-bg: $hu-grey-1;
 $input-color: black;
 
 // Import Bootstrap and its default variables
@@ -75,7 +76,7 @@ $input-color: black;
   align-items: center;
   flex-direction: column;
   height: calc(100vh - 72px - 48px);
-  background: $hu-grey;
+  background: $hu-grey-1;
 }
 
 // form style
@@ -132,8 +133,8 @@ $input-color: black;
 
 // rounded buttons
 .btn-circle {
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   padding: 10px 16px;
   border-radius: 35px;
   font-size: 24px;
