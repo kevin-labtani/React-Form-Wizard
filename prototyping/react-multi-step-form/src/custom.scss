@@ -62,6 +62,9 @@ $theme-colors: (
   "hu-grey": $hu-grey,
 );
 
+$input-bg: $hu-grey;
+$input-color: black;
+
 // Import Bootstrap and its default variables
 @import "~bootstrap/scss/bootstrap.scss";
 
