@@ -48,8 +48,8 @@ const Confirm = ({ values }) => {
 
       <div className="row">
         <div className="col-6">
-          <button className="btn btn-danger" onClick={back}>
-            Back
+          <button className="btn btn-danger btn-circle" onClick={back}>
+            <i class="fas fa-arrow-left" />
           </button>
         </div>
       </div>

@@ -69,13 +69,13 @@ const Step8 = ({ values, multiCheckboxChange }) => {
 
       <div className="row">
         <div className="col-6">
-          <button className="btn btn-danger" onClick={back}>
-            Back
+          <button className="btn btn-danger btn-circle" onClick={back}>
+            <i class="fas fa-arrow-left" />
           </button>
         </div>
         <div className="col-6 text-right">
-          <button className="btn btn-primary" onClick={cont}>
-            Continue
+          <button className="btn btn-primary btn-circle" onClick={cont}>
+            <i class="fas fa-arrow-right" />
           </button>
         </div>
       </div>
