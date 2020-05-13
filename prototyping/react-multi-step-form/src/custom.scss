@@ -140,7 +140,20 @@ $input-color: black;
   line-height: 1.33;
 }
 
+// labels
 h6 {
   font-weight: normal;
   font-style: italic;
+}
+
+// remove arrows on input type number
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }
