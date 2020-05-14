@@ -35,8 +35,14 @@ const Step3 = ({ values, SingleCheckboxChange }) => {
           id="checkbox1"
           checked={values.dessert === "tiramisu"}
           onChange={SingleCheckboxChange("dessert")}
+          hidden
         />
-        <label className="form-check-label" htmlFor="checkbox1">
+        <label
+          className={`btn btn-outline-primary btn-block text-left pl-4 ${
+            values.dessert === "tiramisu" ? "active" : ""
+          }`}
+          htmlFor="checkbox1"
+        >
           Tiramisu
         </label>
       </div>
@@ -48,8 +54,14 @@ const Step3 = ({ values, SingleCheckboxChange }) => {
           id="checkbox2"
           checked={values.dessert === "ice-cream"}
           onChange={SingleCheckboxChange("dessert")}
+          hidden
         />
-        <label className="form-check-label" htmlFor="checkbox2">
+        <label
+          className={`btn btn-outline-primary btn-block text-left pl-4 ${
+            values.dessert === "ice-cream" ? "active" : ""
+          }`}
+          htmlFor="checkbox2"
+        >
           Ice cream
         </label>
       </div>
@@ -61,9 +73,16 @@ const Step3 = ({ values, SingleCheckboxChange }) => {
           id="checkbox3"
           checked={values.dessert === "cake"}
           onChange={SingleCheckboxChange("dessert")}
+          hidden
         />
-        <label className="form-check-label" htmlFor="checkbox3">
-          Cake
+        <label
+          className={`btn btn-outline-primary btn-block text-left pl-4 ${
+            values.dessert === "cake" ? "active" : ""
+          }`}
+          htmlFor="checkbox3"
+        >
+          Cake Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+          Molestias, odit? Reprehenderit, tempore.
         </label>
       </div>
 

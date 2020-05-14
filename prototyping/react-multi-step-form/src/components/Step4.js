@@ -35,32 +35,42 @@ const Step4 = ({ values, SingleCheckboxChangePush }) => {
       <h6>Step 4: legal</h6>
       <div className="form-group">
         <div className="form-check">
-          <div className="form-check">
-            <input
-              className="form-check-input"
-              type="checkbox"
-              value="yes"
-              id="checkbox1"
-              checked={values.contactCheck === "yes"}
-              onChange={SingleCheckboxChangePush("contactCheck", "/step5")}
-            />
-            <label className="form-check-label" htmlFor="checkbox1">
-              Yes
-            </label>
-          </div>
-          <div className="form-check">
-            <input
-              className="form-check-input"
-              type="checkbox"
-              value="no"
-              id="checkbox2"
-              checked={values.contactCheck === "no"}
-              onChange={SingleCheckboxChangePush("contactCheck", "/step5")}
-            />
-            <label className="form-check-label" htmlFor="checkbox2">
-              No
-            </label>
-          </div>
+          <input
+            className="form-check-input"
+            type="checkbox"
+            value="yes"
+            id="checkbox1"
+            checked={values.contactCheck === "yes"}
+            onChange={SingleCheckboxChangePush("contactCheck", "/step5")}
+            hidden
+          />
+          <label
+            className={`btn btn-outline-primary btn-block text-left pl-4 ${
+              values.contactCheck === "yes" ? "active" : ""
+            }`}
+            htmlFor="checkbox1"
+          >
+            Yes
+          </label>
+        </div>
+        <div className="form-check">
+          <input
+            className="form-check-input"
+            type="checkbox"
+            value="no"
+            id="checkbox2"
+            checked={values.contactCheck === "no"}
+            onChange={SingleCheckboxChangePush("contactCheck", "/step5")}
+            hidden
+          />
+          <label
+            className={`btn btn-outline-primary btn-block text-left pl-4 ${
+              values.contactCheck === "no" ? "active" : ""
+            }`}
+            htmlFor="checkbox2"
+          >
+            No
+          </label>
         </div>
       </div>
 

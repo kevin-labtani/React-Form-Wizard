@@ -35,8 +35,14 @@ const Step8 = ({ values, multiCheckboxChange }) => {
           id="checkbox1"
           checked={values.pet.includes("cat")}
           onChange={multiCheckboxChange("pet")}
+          hidden
         />
-        <label className="form-check-label" htmlFor="checkbox1">
+        <label
+          className={`btn btn-outline-primary btn-block text-left pl-4 ${
+            values.pet.includes("cat") ? "active" : ""
+          }`}
+          htmlFor="checkbox1"
+        >
           Cat
         </label>
       </div>
@@ -48,8 +54,14 @@ const Step8 = ({ values, multiCheckboxChange }) => {
           id="checkbox2"
           checked={values.pet.includes("dog")}
           onChange={multiCheckboxChange("pet")}
+          hidden
         />
-        <label className="form-check-label" htmlFor="checkbox2">
+        <label
+          className={`btn btn-outline-primary btn-block text-left pl-4 ${
+            values.pet.includes("dog") ? "active" : ""
+          }`}
+          htmlFor="checkbox2"
+        >
           Dog
         </label>
       </div>
@@ -61,8 +73,14 @@ const Step8 = ({ values, multiCheckboxChange }) => {
           id="checkbox3"
           checked={values.pet.includes("fish")}
           onChange={multiCheckboxChange("pet")}
+          hidden
         />
-        <label className="form-check-label" htmlFor="checkbox3">
+        <label
+          className={`btn btn-outline-primary btn-block text-left pl-4 ${
+            values.pet.includes("fish") ? "active" : ""
+          }`}
+          htmlFor="checkbox3"
+        >
           Fish
         </label>
       </div>

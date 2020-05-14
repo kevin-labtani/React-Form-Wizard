@@ -35,8 +35,14 @@ const Step6 = ({ values, SingleCheckboxChange }) => {
           id="checkbox1"
           checked={values.yn === "yes"}
           onChange={SingleCheckboxChange("yn")}
+          hidden
         />
-        <label className="form-check-label" htmlFor="checkbox1">
+        <label
+          className={`btn btn-outline-primary btn-block text-left pl-4 ${
+            values.yn === "yes" ? "active" : ""
+          }`}
+          htmlFor="checkbox1"
+        >
           Yes
         </label>
       </div>
@@ -48,8 +54,14 @@ const Step6 = ({ values, SingleCheckboxChange }) => {
           id="checkbox2"
           checked={values.yn === "no"}
           onChange={SingleCheckboxChange("yn")}
+          hidden
         />
-        <label className="form-check-label" htmlFor="checkbox2">
+        <label
+          className={`btn btn-outline-primary btn-block text-left pl-4 ${
+            values.yn === "no" ? "active" : ""
+          }`}
+          htmlFor="checkbox2"
+        >
           No
         </label>
       </div>
