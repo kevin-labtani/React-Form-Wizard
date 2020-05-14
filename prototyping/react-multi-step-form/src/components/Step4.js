@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import AlertContext from "../context/alert/alertContext";
+import Alerts from "./layout/Alerts";
 
 const Step4 = ({ values, SingleCheckboxChangePush }) => {
   const { setAlert } = useContext(AlertContext);
@@ -30,6 +31,7 @@ const Step4 = ({ values, SingleCheckboxChangePush }) => {
   return (
     <div className="form-container">
       <h3 className="mb-3">Step 4: legal</h3>
+      <Alerts />
       <h6>I accept to be contacted</h6>
       <div className="form-group">
         <div className="form-check">

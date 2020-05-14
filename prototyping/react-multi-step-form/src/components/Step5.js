@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import AlertContext from "../context/alert/alertContext";
+import Alerts from "./layout/Alerts";
 
 const Step5 = ({ values, inputChange }) => {
   const { setAlert } = useContext(AlertContext);
@@ -24,6 +25,7 @@ const Step5 = ({ values, inputChange }) => {
   return (
     <div className="form-container">
       <h3 className="mb-3">Step 5: opinion scale</h3>
+      <Alerts />
       <div className="form-group">
         <label htmlFor="formControlRange">
           <h6>What is your opinion from 1 to 10?</h6>

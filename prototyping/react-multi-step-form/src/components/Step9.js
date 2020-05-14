@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import AlertContext from "../context/alert/alertContext";
+import Alerts from "./layout/Alerts";
 
 const Step9 = ({ values, inputChange }) => {
   const { setAlert } = useContext(AlertContext);
@@ -24,6 +25,7 @@ const Step9 = ({ values, inputChange }) => {
   return (
     <div className="form-container">
       <h3 className="mb-3">Step 9: rating</h3>
+      <Alerts />
       <h6>How many stars do you rate us?</h6>
       <div className="rating">
         <input

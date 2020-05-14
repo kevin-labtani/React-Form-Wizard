@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import AlertContext from "../context/alert/alertContext";
+import Alerts from "./layout/Alerts";
+
 import isEmail from "validator/lib/isEmail";
 const Step1 = ({ values, inputChange }) => {
   const { setAlert } = useContext(AlertContext);
@@ -19,6 +21,7 @@ const Step1 = ({ values, inputChange }) => {
   return (
     <div className="form-container">
       <h3 className="mb-3">Step 1: email</h3>
+      <Alerts />
       <div className="form-group">
         <label htmlFor="email">
           <h6>Email</h6>

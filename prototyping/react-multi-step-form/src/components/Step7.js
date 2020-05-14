@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import AlertContext from "../context/alert/alertContext";
+import Alerts from "./layout/Alerts";
 
 const Step2 = ({ values, inputChange }) => {
   const alertContext = useContext(AlertContext);
@@ -25,8 +26,11 @@ const Step2 = ({ values, inputChange }) => {
   return (
     <div className="form-container">
       <h3 className="mb-3">Step 7: number</h3>
+      <Alerts />
       <div className="form-group">
-        <label htmlFor="number"><h6>Pick a number</h6></label>
+        <label htmlFor="number">
+          <h6>Pick a number</h6>
+        </label>
         <input
           type="number"
           className="form-control"

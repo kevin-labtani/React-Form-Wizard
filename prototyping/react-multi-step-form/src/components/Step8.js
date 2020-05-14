@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import AlertContext from "../context/alert/alertContext";
+import Alerts from "./layout/Alerts";
 
 const Step8 = ({ values, multiCheckboxChange }) => {
   const { setAlert } = useContext(AlertContext);
@@ -24,6 +25,7 @@ const Step8 = ({ values, multiCheckboxChange }) => {
   return (
     <div className="form-container">
       <h3 className="mb-3">Step 8: multiple choice</h3>
+      <Alerts />
       <h6>What is your favorite pet?</h6>
       <div className="form-check">
         <input
