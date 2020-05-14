@@ -39,6 +39,7 @@ const Step2 = ({ values, inputChange }) => {
           maxLength="256"
           onChange={inputChange("name")}
           value={values.name}
+          autocomplete="off"
         />
       </div>
 
