@@ -30,9 +30,9 @@ const Step4 = ({ values, SingleCheckboxChangePush }) => {
 
   return (
     <div className="form-container">
-      <h3 className="mb-3">Step 4: legal</h3>
+      <h3 className="mb-3">Can we send you emails?</h3>
       <Alerts />
-      <h6>I accept to be contacted</h6>
+      <h6>Step 4: legal</h6>
       <div className="form-group">
         <div className="form-check">
           <div className="form-check">

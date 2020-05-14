@@ -20,11 +20,11 @@ const Step1 = ({ values, inputChange }) => {
 
   return (
     <div className="form-container">
-      <h3 className="mb-3">Step 1: email</h3>
+      <h3 className="mb-3">What's your email?</h3>
       <Alerts />
       <div className="form-group">
         <label htmlFor="email">
-          <h6>Email</h6>
+          <h6>Step 1: email</h6>
         </label>
         <input
           type="email"

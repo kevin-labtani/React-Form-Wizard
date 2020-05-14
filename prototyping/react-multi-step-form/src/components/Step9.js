@@ -24,9 +24,9 @@ const Step9 = ({ values, inputChange }) => {
 
   return (
     <div className="form-container">
-      <h3 className="mb-3">Step 9: rating</h3>
+      <h3 className="mb-3">How many stars do you give us?</h3>
       <Alerts />
-      <h6>How many stars do you rate us?</h6>
+      <h6>Step 9: rating</h6>
       <div className="rating">
         <input
           type="radio"

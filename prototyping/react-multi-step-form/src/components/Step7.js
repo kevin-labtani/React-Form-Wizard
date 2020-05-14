@@ -25,11 +25,11 @@ const Step2 = ({ values, inputChange }) => {
 
   return (
     <div className="form-container">
-      <h3 className="mb-3">Step 7: number</h3>
+      <h3 className="mb-3">Please pick a number between 1 and 10</h3>
       <Alerts />
       <div className="form-group">
         <label htmlFor="number">
-          <h6>Pick a number</h6>
+          <h6>Step 7: number</h6>
         </label>
         <input
           type="number"
