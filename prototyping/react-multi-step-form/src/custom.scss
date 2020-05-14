@@ -54,7 +54,11 @@ $hu-g1-h6: #3b9ea0;
     $hu-panel-16: #76aee8;
     */
 
+@import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
 // Override default variables before the import
+$font-family-sans-serif: "Karla", sans-serif;
+
 $theme-colors: (
   "primary": $hu-green,
   "secondary": $hu-blue,
