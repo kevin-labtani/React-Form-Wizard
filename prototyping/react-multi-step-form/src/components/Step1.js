@@ -28,7 +28,7 @@ const Step1 = ({ values, inputChange }) => {
         </label>
         <input
           type="email"
-          className="form-control"
+          className="form-control form-control-lg"
           name="email"
           onChange={inputChange("email")}
           value={values.email}

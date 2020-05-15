@@ -34,7 +34,7 @@ const Step2 = ({ values, inputChange }) => {
         </label>
         <input
           type="text"
-          className="form-control"
+          className="form-control form-control-lg"
           name="name"
           maxLength="256"
           onChange={inputChange("name")}

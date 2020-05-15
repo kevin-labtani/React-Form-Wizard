@@ -33,7 +33,7 @@ const Step2 = ({ values, inputChange }) => {
         </label>
         <input
           type="number"
-          className="form-control"
+          className="form-control form-control-lg"
           name="number"
           onChange={inputChange("number")}
           value={values.number}
