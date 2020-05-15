@@ -41,6 +41,7 @@ const Step2 = ({ values, inputChange }) => {
           value={values.name}
           autoComplete="off"
           autoFocus
+          placeholder="Enter your name here"
         />
       </div>
 

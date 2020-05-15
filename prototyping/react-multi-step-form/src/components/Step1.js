@@ -34,6 +34,7 @@ const Step1 = ({ values, inputChange }) => {
           value={values.email}
           autoComplete="off"
           autoFocus
+          placeholder="Enter your email here"
         />
       </div>
 

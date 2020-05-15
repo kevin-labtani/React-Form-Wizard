@@ -40,6 +40,7 @@ const Step2 = ({ values, inputChange }) => {
           min={0}
           max={10}
           autoFocus
+          placeholder="Enter a value here"
         />
       </div>
 

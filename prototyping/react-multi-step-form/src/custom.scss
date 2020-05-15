@@ -94,6 +94,18 @@ $input-color: black;
   caret-color: $hu-green;
 }
 
+// input style
+.form-control {
+  border: 0;
+  padding: 0;
+  box-shadow: 0 3px 2px -2px $hu-green; // whatever you set the blur to (3rd value), set the spread (4th value) to the negative of it to have it only show on the bottom
+
+  &:focus {
+    border: 0;
+    box-shadow: none;
+  }
+}
+
 // rating component
 .rating {
   display: flex;
