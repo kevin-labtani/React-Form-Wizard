@@ -28,7 +28,7 @@ const Step5 = ({ values, SingleCheckboxChange }) => {
       <Alerts />
       <h6>Step 5: opinion scale</h6>
       <div className="form-group">
-        <ul className="pagination pagination-lg">
+        <ul className="pagination">
           <li className={`page-item ${values.opinion === "1" ? "active" : ""}`}>
             <input
               type="checkbox"
