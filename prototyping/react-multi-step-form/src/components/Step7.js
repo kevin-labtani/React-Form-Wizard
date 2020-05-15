@@ -39,6 +39,7 @@ const Step2 = ({ values, inputChange }) => {
           value={values.number}
           min={0}
           max={10}
+          autoFocus
         />
       </div>
 

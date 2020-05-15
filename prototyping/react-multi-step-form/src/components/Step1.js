@@ -33,6 +33,7 @@ const Step1 = ({ values, inputChange }) => {
           onChange={inputChange("email")}
           value={values.email}
           autoComplete="off"
+          autoFocus
         />
       </div>
 

@@ -40,6 +40,7 @@ const Step2 = ({ values, inputChange }) => {
           onChange={inputChange("name")}
           value={values.name}
           autoComplete="off"
+          autoFocus
         />
       </div>
 
