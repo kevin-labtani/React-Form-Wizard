@@ -70,12 +70,12 @@ const Step6 = ({ values, SingleCheckboxChange }) => {
 
       <div className="row">
         <div className="col-6">
-          <button className="btn btn-danger btn-circle" onClick={back}>
+          <button className="btn btn-danger rounded-circle" onClick={back}>
             <i className="fas fa-arrow-left" />
           </button>
         </div>
         <div className="col-6 text-right">
-          <button className="btn btn-primary btn-circle" onClick={cont}>
+          <button className="btn btn-primary rounded-circle" onClick={cont}>
             <i className="fas fa-arrow-right" />
           </button>
         </div>
