@@ -150,12 +150,10 @@ $input-color: black;
 
 // rounded buttons
 .btn-circle {
-  width: 60px;
-  height: 60px;
-  padding: 10px 16px;
-  border-radius: 35px;
-  font-size: 24px;
-  line-height: 1.33;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 1.5rem;
 }
 
 // labels
