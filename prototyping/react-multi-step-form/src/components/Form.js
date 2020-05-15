@@ -116,7 +116,11 @@ const Form = () => {
           exact
           path="/step5"
           render={(routeProps) => (
-            <Step5 {...routeProps} inputChange={inputChange} values={contact} />
+            <Step5
+              {...routeProps}
+              SingleCheckboxChange={SingleCheckboxChange}
+              values={contact}
+            />
           )}
         />
         <Route

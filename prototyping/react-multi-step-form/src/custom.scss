@@ -163,6 +163,7 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
+// remove padding on checkboxes styled as buttons
 .form-check {
   padding-left: 0;
 }
