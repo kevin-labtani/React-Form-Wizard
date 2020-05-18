@@ -26,7 +26,7 @@ const Step3 = ({ values, SingleCheckboxChange }) => {
     <div className="form-container">
       <h3 className="mb-3">What do you want for dessert?</h3>
       <Alerts />
-      <h6>Step 3: Single Choice</h6>
+      <p className="subtitles text-muted">Step 3: Single Choice</p>
       <div className="form-check">
         <input
           className="form-check-input"

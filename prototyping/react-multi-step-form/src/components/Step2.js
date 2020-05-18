@@ -30,7 +30,7 @@ const Step2 = ({ values, inputChange }) => {
       <Alerts />
       <div className="form-group">
         <label htmlFor="name">
-          <h6>Step 2: short text</h6>
+          <p className="subtitles text-muted">Step 2: short text</p>
         </label>
         <input
           type="text"

@@ -29,7 +29,7 @@ const Step2 = ({ values, inputChange }) => {
       <Alerts />
       <div className="form-group">
         <label htmlFor="number">
-          <h6>Step 7: number</h6>
+          <p className="subtitles text-muted">Step 7: number</p>
         </label>
         <input
           type="number"

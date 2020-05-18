@@ -32,7 +32,7 @@ const Step4 = ({ values, SingleCheckboxChangePush }) => {
     <div className="form-container">
       <h3 className="mb-3">Can we send you emails?</h3>
       <Alerts />
-      <h6>Step 4: legal</h6>
+      <p className="subtitles text-muted">Step 4: legal</p>
       <div className="form-group">
         <div className="form-check">
           <input

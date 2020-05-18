@@ -24,7 +24,7 @@ const Step1 = ({ values, inputChange }) => {
       <Alerts />
       <div className="form-group">
         <label htmlFor="email">
-          <h6>Step 1: email</h6>
+          <p className="subtitles text-muted">Step 1: email</p>
         </label>
         <input
           type="email"
