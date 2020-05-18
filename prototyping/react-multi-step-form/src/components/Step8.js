@@ -23,7 +23,7 @@ const Step8 = ({ values, multiCheckboxChange }) => {
   };
 
   return (
-    <div className="form-container">
+    <>
       <h3 className="mb-3">What is your favorite pet?</h3>
       <Alerts />
       <p className="subtitles text-muted">Step 8: multiple choice</p>
@@ -99,7 +99,7 @@ const Step8 = ({ values, multiCheckboxChange }) => {
           </button>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

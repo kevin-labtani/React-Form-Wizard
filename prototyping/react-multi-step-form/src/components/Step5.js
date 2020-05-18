@@ -23,7 +23,7 @@ const Step5 = ({ values, SingleCheckboxChange }) => {
   };
 
   return (
-    <div className="form-container">
+    <>
       <h3 className="mb-3">What is your opinion from 1 to 10?</h3>
       <Alerts />
       <p className="subtitles text-muted">Step 5: opinion scale</p>
@@ -188,7 +188,7 @@ const Step5 = ({ values, SingleCheckboxChange }) => {
           </button>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

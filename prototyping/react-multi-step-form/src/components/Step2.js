@@ -25,7 +25,7 @@ const Step2 = ({ values, inputChange }) => {
   };
 
   return (
-    <div className="form-container">
+    <>
       <h3 className="mb-3">What's your name?</h3>
       <Alerts />
       <div className="form-group">
@@ -59,7 +59,7 @@ const Step2 = ({ values, inputChange }) => {
           </button>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

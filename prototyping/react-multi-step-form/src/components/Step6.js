@@ -23,7 +23,7 @@ const Step6 = ({ values, SingleCheckboxChange }) => {
   };
 
   return (
-    <div className="form-container">
+    <>
       <h3 className="mb-3">Is it yes, or is it no?</h3>
       <Alerts />
       <p className="subtitles text-muted">Step 6: yes or no</p>
@@ -80,7 +80,7 @@ const Step6 = ({ values, SingleCheckboxChange }) => {
           </button>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

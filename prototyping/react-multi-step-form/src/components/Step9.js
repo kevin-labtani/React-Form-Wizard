@@ -23,7 +23,7 @@ const Step9 = ({ values, inputChange }) => {
   };
 
   return (
-    <div className="form-container">
+    <>
       <h3 className="mb-3">How many stars do you give us?</h3>
       <Alerts />
       <p className="subtitles text-muted">Step 9: rating</p>
@@ -89,7 +89,7 @@ const Step9 = ({ values, inputChange }) => {
           </button>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -19,7 +19,7 @@ const Step1 = ({ values, inputChange }) => {
   };
 
   return (
-    <div className="form-container">
+    <>
       <h3 className="mb-3">What's your email?</h3>
       <Alerts />
       <div className="form-group">
@@ -45,7 +45,7 @@ const Step1 = ({ values, inputChange }) => {
           <i className="fas fa-arrow-right" />
         </button>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -23,7 +23,7 @@ const Step3 = ({ values, SingleCheckboxChange }) => {
   };
 
   return (
-    <div className="form-container">
+    <>
       <h3 className="mb-3">What do you want for dessert?</h3>
       <Alerts />
       <p className="subtitles text-muted">Step 3: Single Choice</p>
@@ -100,7 +100,7 @@ const Step3 = ({ values, SingleCheckboxChange }) => {
           </button>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

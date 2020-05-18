@@ -29,7 +29,7 @@ const Step4 = ({ values, SingleCheckboxChangePush }) => {
   // };
 
   return (
-    <div className="form-container">
+    <>
       <h3 className="mb-3">Can we send you emails?</h3>
       <Alerts />
       <p className="subtitles text-muted">Step 4: legal</p>
@@ -88,7 +88,7 @@ const Step4 = ({ values, SingleCheckboxChangePush }) => {
           </button>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

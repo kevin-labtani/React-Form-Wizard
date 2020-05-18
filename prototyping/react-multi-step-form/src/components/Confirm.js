@@ -22,7 +22,7 @@ const Confirm = ({ values }) => {
   };
 
   return (
-    <div className="form-container">
+    <>
       <h1 className="mb-5">Confirm</h1>
       <ul className="list-group">
         <li className="list-group-item">
@@ -52,7 +52,7 @@ const Confirm = ({ values }) => {
           </button>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

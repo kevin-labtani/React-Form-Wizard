@@ -74,7 +74,7 @@ const Form = () => {
   };
 
   return (
-    <>
+    <div className="form-container">
       <Switch>
         <Route
           exact
@@ -165,7 +165,7 @@ const Form = () => {
           render={(routeProps) => <Confirm {...routeProps} values={contact} />}
         />
       </Switch>
-    </>
+    </div>
   );
 };
 
