@@ -35,6 +35,8 @@ $text-muted: $hu-grey;
 
 $border-radius-lg: 1rem; // default is .3rem
 
+$enable-responsive-font-sizes: true;
+
 // Import Bootstrap and its default variables
 @import "~bootstrap/scss/bootstrap.scss";
 
