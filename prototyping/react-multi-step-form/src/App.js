@@ -8,15 +8,15 @@ import Footer from "./components/layout/Footer";
 const App = () => {
   return (
     <AlertState>
-      <Navbar />
-      <div className="App">
+      <div className="min-vh-100 d-flex flex-column justify-content-between bg-hu-grey">
+        <Navbar />
         <div className="container">
           <Router>
             <Form />
           </Router>
         </div>
+        <Footer />
       </div>
-      <Footer />
     </AlertState>
   );
 };

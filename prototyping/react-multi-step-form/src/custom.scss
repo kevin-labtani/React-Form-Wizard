@@ -80,16 +80,6 @@ $text-muted: $hu-grey;
 // Import Bootstrap and its default variables
 @import "~bootstrap/scss/bootstrap.scss";
 
-// App style
-.App {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: calc(100vh - 72px - 48px);
-  background: $hu-grey;
-}
-
 // form container style
 .form-container {
   background: $hu-grey-1;
@@ -156,19 +146,10 @@ $text-muted: $hu-grey;
   filter: grayscale(100%);
 }
 
-// rounded buttons, use bootstrap rounder-cicle instead
-// .btn-circle {
-//   width: 50px;
-//   height: 50px;
-//   border-radius: 50%;
-//   font-size: 1.5rem;
-// }
-
 // subtitles
 .subtitles {
   font-style: italic;
 }
-
 label > .subtitles {
   margin-bottom: 0rem;
 }
