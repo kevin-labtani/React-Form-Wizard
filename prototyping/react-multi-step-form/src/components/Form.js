@@ -74,7 +74,7 @@ const Form = () => {
   };
 
   return (
-    <div className="form-container">
+    <div className="col-8 offset-2 rounded-lg px-5 py-4 shadow bg-hu-grey-1">
       <Switch>
         <Route
           exact

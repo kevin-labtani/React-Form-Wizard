@@ -2,13 +2,14 @@
 $hu-green: #00b7af;
 $hu-blue: #2e84dd;
 $hu-red: #ff435a;
-$hu-nav: #26405a; 
+$hu-nav: #26405a;
 $hu-green-1: #54bdbf;
 $hu-green-2: #009b94;
 $hu-grey: #8c8c8c;
 $hu-grey-1: #e3e6e9;
 $hu-dark: #151515;
 
+// import fonts
 @import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
 
@@ -32,22 +33,14 @@ $input-placeholder-color: $hu-grey;
 // subtitles
 $text-muted: $hu-grey;
 
+$border-radius-lg: 1rem; // default is .3rem
+
 // Import Bootstrap and its default variables
 @import "~bootstrap/scss/bootstrap.scss";
 
-// form container style
-.form-container {
-  background: $hu-grey-1;
-  border-radius: 20px;
-  padding: 30px 80px;
-  max-width: 800px;
-  margin: 0 auto;
-  box-shadow: 0 15px 16px 0.17px rgba(0, 0, 0, 0.05);
-  caret-color: $hu-green;
-}
-
 // input style
 .form-control {
+  caret-color: $hu-green;
   border: 0;
   padding: 0;
   box-shadow: 0 3px 2px -2px $hu-green; // whatever you set the blur to (3rd value), set the spread (4th value) to the negative of it to have it only show on the bottom
@@ -56,6 +49,11 @@ $text-muted: $hu-grey;
     border: 0;
     box-shadow: none;
   }
+}
+
+// remove padding on checkboxes styled as buttons
+.form-check {
+  padding-left: 0;
 }
 
 // rating component
@@ -119,9 +117,4 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type="number"] {
   -moz-appearance: textfield;
-}
-
-// remove padding on checkboxes styled as buttons
-.form-check {
-  padding-left: 0;
 }

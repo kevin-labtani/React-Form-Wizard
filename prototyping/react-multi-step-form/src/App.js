@@ -11,9 +11,11 @@ const App = () => {
       <div className="min-vh-100 d-flex flex-column justify-content-between bg-hu-grey">
         <Navbar />
         <div className="container">
-          <Router>
-            <Form />
-          </Router>
+          <div className="row">
+            <Router>
+              <Form />
+            </Router>
+          </div>
         </div>
         <Footer />
       </div>
