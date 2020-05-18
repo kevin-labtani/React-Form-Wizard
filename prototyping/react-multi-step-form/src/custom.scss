@@ -76,7 +76,6 @@ $input-placeholder-color: $hu-grey;
 
 // subtitles
 $text-muted: $hu-grey;
-$label-margin-bottom: 0; //so we have the same margin on question with inputs and with checkboxes(buttons)
 
 // Import Bootstrap and its default variables
 @import "~bootstrap/scss/bootstrap.scss";
@@ -168,6 +167,10 @@ $label-margin-bottom: 0; //so we have the same margin on question with inputs an
 // subtitles
 .subtitles {
   font-style: italic;
+}
+
+label > .subtitles {
+  margin-bottom: 0rem;
 }
 
 // remove arrows on input type number
