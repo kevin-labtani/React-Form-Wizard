@@ -55,9 +55,11 @@ $hu-g1-h6: #3b9ea0;
     */
 
 @import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 
 // Override default variables before the import
-$font-family-sans-serif: "Karla", sans-serif;
+$headings-font-family: "Karla", sans-serif;
+$font-family-sans-serif: 'Quicksand', sans-serif;
 
 $theme-colors: (
   "primary": $hu-green,
@@ -161,6 +163,7 @@ $input-color: black;
 h6 {
   font-weight: normal;
   font-style: italic;
+  font-family: $font-family-sans-serif;
 }
 
 // remove arrows on input type number
