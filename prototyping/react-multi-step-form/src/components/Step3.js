@@ -27,7 +27,7 @@ const Step3 = ({ values, SingleCheckboxChange }) => {
       <h3 className="mb-3">What do you want for dessert?</h3>
       <Alerts />
       <p className="subtitles text-muted">Step 3: Single Choice</p>
-      <div className="form-check">
+      <div className="form-check pl-0">
         <input
           className="form-check-input"
           type="checkbox"
@@ -46,7 +46,7 @@ const Step3 = ({ values, SingleCheckboxChange }) => {
           Tiramisu
         </label>
       </div>
-      <div className="form-check">
+      <div className="form-check pl-0">
         <input
           className="form-check-input"
           type="checkbox"
@@ -65,7 +65,7 @@ const Step3 = ({ values, SingleCheckboxChange }) => {
           Ice cream
         </label>
       </div>
-      <div className="form-check">
+      <div className="form-check pl-0">
         <input
           className="form-check-input"
           type="checkbox"

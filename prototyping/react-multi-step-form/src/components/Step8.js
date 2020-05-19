@@ -27,7 +27,7 @@ const Step8 = ({ values, multiCheckboxChange }) => {
       <h3 className="mb-3">What is your favorite pet?</h3>
       <Alerts />
       <p className="subtitles text-muted">Step 8: multiple choice</p>
-      <div className="form-check">
+      <div className="form-check pl-0">
         <input
           className="form-check-input"
           type="checkbox"
@@ -46,7 +46,7 @@ const Step8 = ({ values, multiCheckboxChange }) => {
           Cat
         </label>
       </div>
-      <div className="form-check">
+      <div className="form-check pl-0">
         <input
           className="form-check-input"
           type="checkbox"
@@ -65,7 +65,7 @@ const Step8 = ({ values, multiCheckboxChange }) => {
           Dog
         </label>
       </div>
-      <div className="form-check">
+      <div className="form-check pl-0">
         <input
           className="form-check-input"
           type="checkbox"
