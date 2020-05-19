@@ -116,3 +116,10 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+// resize opinion scale on phone
+@media screen and (max-width: 540px) {
+  .page-link {
+    padding: 2px 2px;
+  }
+}
