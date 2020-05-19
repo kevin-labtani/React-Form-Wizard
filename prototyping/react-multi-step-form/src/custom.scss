@@ -117,7 +117,12 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-// resize opinion scale on phone
+// resize "buttons" on mobile for opinion scale
+@media screen and (max-width: 1024px) {
+  .page-link {
+    padding: 4px 8px;
+  }
+}
 @media screen and (max-width: 540px) {
   .page-link {
     padding: 2px 2px;
