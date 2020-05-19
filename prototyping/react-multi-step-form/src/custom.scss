@@ -61,7 +61,7 @@ $enable-responsive-font-sizes: true;
   justify-content: flex-end;
   overflow: hidden;
   flex-direction: row-reverse;
-  height: 80px;
+  height: 4rem;
   position: relative;
   margin-left: -5px;
 
@@ -125,6 +125,6 @@ input[type="number"] {
 }
 @media screen and (max-width: 540px) {
   .page-link {
-    padding: 2px 2px;
+    padding: 4px 4px;
   }
 }

@@ -34,7 +34,7 @@ const Step4 = ({ values, SingleCheckboxChangePush }) => {
       <Alerts />
       <p className="subtitles text-muted">Step 4: legal</p>
       <div className="form-group">
-        <div className="form-check pl-0 col-lg-2">
+        <div className="form-check pl-0 col-md-2">
           <input
             className="form-check-input"
             type="checkbox"
@@ -53,7 +53,7 @@ const Step4 = ({ values, SingleCheckboxChangePush }) => {
             Yes
           </label>
         </div>
-        <div className="form-check pl-0 col-lg-2">
+        <div className="form-check pl-0 col-md-2">
           <input
             className="form-check-input"
             type="checkbox"

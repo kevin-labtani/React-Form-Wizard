@@ -27,7 +27,7 @@ const Step6 = ({ values, SingleCheckboxChange }) => {
       <h3 className="mb-3">Is it yes, or is it no?</h3>
       <Alerts />
       <p className="subtitles text-muted">Step 6: yes or no</p>
-      <div className="form-check pl-0 col-lg-2">
+      <div className="form-check pl-0 col-md-2">
         <input
           className="form-check-input"
           type="checkbox"
@@ -46,7 +46,7 @@ const Step6 = ({ values, SingleCheckboxChange }) => {
           Yes
         </label>
       </div>
-      <div className="form-check pl-0 col-lg-2">
+      <div className="form-check pl-0 col-md-2">
         <input
           className="form-check-input"
           type="checkbox"
