@@ -29,6 +29,12 @@ const Step5 = ({ values, SingleCheckboxChange }) => {
       <p className="subtitles text-muted">Step 5: opinion scale</p>
       <div className="form-group">
         <ul className="pagination">
+          <li className="page-item disabled">
+            <input type="checkbox" id="rating-left" hidden />
+            <label className="page-link" htmlFor="rating-left">
+              -
+            </label>
+          </li>
           <li className={`page-item ${values.opinion === "1" ? "active" : ""}`}>
             <input
               type="checkbox"
@@ -169,6 +175,12 @@ const Step5 = ({ values, SingleCheckboxChange }) => {
             />
             <label className="page-link" htmlFor="rating-10">
               10
+            </label>
+          </li>
+          <li className="page-item disabled">
+            <input type="checkbox" id="rating-right" hidden />
+            <label className="page-link" htmlFor="rating-right">
+              +
             </label>
           </li>
         </ul>
