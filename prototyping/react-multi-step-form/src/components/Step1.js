@@ -25,7 +25,7 @@ const Step1 = ({ values, inputChange }) => {
           {/* <img
             src="//placehold.it/300"
             alt=""
-            class="rounded-circle img-fluid"
+            className="rounded-circle img-fluid"
           /> */}
           <i className="fas fa-user-circle avatar" />
         </div>
