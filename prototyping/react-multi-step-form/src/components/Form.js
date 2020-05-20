@@ -74,7 +74,6 @@ const Form = () => {
   };
 
   return (
-    <div className="col-10 offset-1 col-lg-8 offset-lg-2 rounded-lg px-lg-5 py-4 my-2 shadow bg-hu-grey-1">
       <Switch>
         <Route
           exact
@@ -165,7 +164,6 @@ const Form = () => {
           render={(routeProps) => <Confirm {...routeProps} values={contact} />}
         />
       </Switch>
-    </div>
   );
 };
 

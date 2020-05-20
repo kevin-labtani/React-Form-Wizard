@@ -20,30 +20,46 @@ const Step1 = ({ values, inputChange }) => {
 
   return (
     <>
-      <h3 className="mb-3">What's your email?</h3>
-      <Alerts />
-      <div className="form-group">
-        <label htmlFor="email">
-          <p className="subtitles text-muted">Step 1: email</p>
-        </label>
-        <input
-          type="email"
-          className="form-control form-control-lg"
-          name="email"
-          onChange={inputChange("email")}
-          value={values.email}
-          autoComplete="off"
-          autoFocus
-          placeholder="Enter your email here"
-        />
+      <div className="row">
+        <div className="col-2 offset-1 col-lg-1 offset-lg-2 text-center align-self-center">
+          {/* <img
+            src="//placehold.it/300"
+            alt=""
+            class="rounded-circle img-fluid"
+          /> */}
+          <i className="fas fa-user-circle avatar" />
+        </div>
+        <div className="col-8 col-lg-7 rounded-lg px-lg-4 py-4 my-2 shadow bg-hu-grey-1 speech-bubble">
+          <h3>What's your email?</h3>
+        </div>
       </div>
+      <div className="row">
+        <div className="col-10 offset-1 col-lg-8 offset-lg-2 rounded-lg px-lg-5 py-4 my-2 shadow bg-hu-grey-1">
+          <Alerts />
+          <div className="form-group">
+            <label htmlFor="email">
+              <p className="subtitles text-muted">Step 1: email</p>
+            </label>
+            <input
+              type="email"
+              className="form-control form-control-lg"
+              name="email"
+              onChange={inputChange("email")}
+              value={values.email}
+              autoComplete="off"
+              autoFocus
+              placeholder="Enter your email here"
+            />
+          </div>
 
-      <br />
+          <br />
 
-      <div className="text-right">
-        <button className="btn btn-primary rounded-circle" onClick={cont}>
-          <i className="fas fa-arrow-right" />
-        </button>
+          <div className="text-right">
+            <button className="btn btn-primary rounded-circle" onClick={cont}>
+              <i className="fas fa-arrow-right" />
+            </button>
+          </div>
+        </div>
       </div>
     </>
   );

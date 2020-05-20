@@ -117,6 +117,29 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
+// speech bubble for questions
+.speech-bubble {
+  position: relative;
+}
+.speech-bubble:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border: 0.6rem solid transparent;
+  border-right-color: $hu-grey-1;
+  border-left: 0;
+  margin-top: -0.6rem;
+  margin-left: -0.6rem;
+}
+.avatar {
+  font-size: 3rem;
+  color: $hu-grey-1;
+  margin-bottom: -1rem;
+}
+
 // resize "buttons" on mobile for opinion scale
 @media screen and (max-width: 1024px) {
   .page-link {
@@ -126,5 +149,8 @@ input[type="number"] {
 @media screen and (max-width: 540px) {
   .page-link {
     padding: 4px 4px;
+  }
+  .avatar {
+    font-size: 2rem;
   }
 }
