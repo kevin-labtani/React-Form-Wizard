@@ -37,8 +37,9 @@ const Step5 = ({ values, SingleCheckboxChange }) => {
           <h3>What is your opinion from 1 to 10?</h3>
         </div>
       </div>
+
       <div className="row">
-        <div className="col-10 offset-1 col-lg-8 offset-lg-2 rounded-lg px-lg-5 py-4 my-2 shadow bg-hu-grey-1">
+        <div className="col-8 offset-1 col-lg-7 offset-lg-2 rounded-lg px-lg-5 py-4 my-2 shadow bg-hu-grey-1 speech-bubble-answer">
           <Alerts />
           <p className="subtitles text-muted">Step 5: opinion scale</p>
           <div className="form-group">
@@ -237,9 +238,19 @@ const Step5 = ({ values, SingleCheckboxChange }) => {
               </li>
             </ul>
           </div>
+        </div>
+        <div className="col-2 col-lg-1 text-center align-self-center">
+          {/* <img
+            src="//placehold.it/300"
+            alt=""
+            className="rounded-circle img-fluid"
+          /> */}
+          <i className="fas fa-user-circle avatar" />
+        </div>
+      </div>
 
-          <br />
-
+      <div className="row">
+        <div className="col-10 offset-1 col-lg-8 offset-lg-2 my-3">
           <div className="row">
             <div className="col-6">
               <button className="btn btn-danger rounded-circle" onClick={back}>
