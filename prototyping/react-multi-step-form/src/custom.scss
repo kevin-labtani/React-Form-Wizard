@@ -134,11 +134,30 @@ input[type="number"] {
   margin-top: -0.6rem;
   margin-left: -0.6rem;
 }
+
+// speech bubble for answers
+.speech-bubble-answer {
+  position: relative;
+}
+.speech-bubble-answer:after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border: 0.6rem solid transparent;
+  border-left-color: $hu-grey-1;
+  border-right: 0;
+  margin-top: -0.6rem;
+  margin-right: -0.6rem;
+}
 .avatar {
   font-size: 3rem;
   color: $hu-grey-1;
   margin-bottom: -1rem;
 }
+
 
 // resize "buttons" on mobile for opinion scale
 @media screen and (max-width: 1024px) {
