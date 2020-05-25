@@ -118,10 +118,10 @@ input[type="number"] {
 }
 
 // speech bubble for questions
-.speech-bubble {
+.speech-bubble-question {
   position: relative;
 }
-.speech-bubble:after {
+.speech-bubble-question:after {
   content: "";
   position: absolute;
   left: 0;

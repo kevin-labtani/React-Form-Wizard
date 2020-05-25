@@ -33,7 +33,7 @@ const Step5 = ({ values, SingleCheckboxChange }) => {
           /> */}
           <i className="fas fa-user-circle avatar" />
         </div>
-        <div className="col-8 col-lg-7 rounded-lg px-lg-4 py-4 my-2 shadow bg-hu-grey-1 speech-bubble">
+        <div className="col-8 col-lg-7 rounded-lg px-lg-4 py-4 my-2 shadow bg-hu-grey-1 speech-bubble-question">
           <h3>What is your opinion from 1 to 10?</h3>
         </div>
       </div>
