@@ -7,8 +7,8 @@ import Footer from "./components/layout/Footer";
 const App = () => {
   return (
     <AlertState>
-      <div className="min-vh-100 d-flex flex-column justify-content-center bg-hu-grey">
-        <div className="container">
+      <div className="min-vh-100 d-flex flex-column bg-hu-grey">
+        <div className="container my-auto">
           <Router>
             <Form />
           </Router>
