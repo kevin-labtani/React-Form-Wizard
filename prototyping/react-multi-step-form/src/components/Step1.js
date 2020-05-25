@@ -69,7 +69,7 @@ const Step1 = ({ values, inputChange }) => {
         </div>
       </div>
       <div className="row">
-        <div className="col-lg-8 offset-lg-2 my-3">
+        <div className="col-10 offset-1 col-lg-8 offset-lg-2 my-3">
           <div className="row">
             <div className="col-6">
               <button className="btn btn-danger rounded-circle" onClick={back}>
