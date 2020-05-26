@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import AlertContext from "../context/alert/alertContext";
 import Alerts from "./layout/Alerts";
+import AvatarAnswer from "./AvatarAnswer";
+import AvatarQuestion from "./AvatarQuestion";
 
 const Step3 = ({ values, SingleCheckboxChange }) => {
   const { setAlert } = useContext(AlertContext);
@@ -25,14 +27,7 @@ const Step3 = ({ values, SingleCheckboxChange }) => {
   return (
     <>
       <div className="row">
-        <div className="col-2 offset-1 col-lg-1 offset-lg-2 text-center align-self-center">
-          {/* <img
-            src="//placehold.it/300"
-            alt=""
-            className="rounded-circle img-fluid"
-          /> */}
-          <i className="fas fa-user-circle avatar" />
-        </div>
+        <AvatarQuestion />
         <div className="col-8 col-lg-7 rounded-lg px-lg-4 py-4 my-2 shadow bg-hu-grey-1 speech-bubble-question">
           <h3>What do you want for dessert?</h3>
         </div>
@@ -101,14 +96,7 @@ const Step3 = ({ values, SingleCheckboxChange }) => {
             </label>
           </div>
         </div>
-        <div className="col-2 col-lg-1 text-center align-self-center">
-          {/* <img
-            src="//placehold.it/300"
-            alt=""
-            className="rounded-circle img-fluid"
-          /> */}
-          <i className="fas fa-user-circle avatar" />
-        </div>
+        <AvatarAnswer />
       </div>
 
       <div className="row">
