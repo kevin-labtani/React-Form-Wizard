@@ -6,7 +6,12 @@ import AvatarAnswer from "./AvatarAnswer";
 import Question from "./Question";
 import Navigation from "./Navigation";
 
-const Step5 = ({ values, SingleCheckboxChange, questionTitle }) => {
+const Step5 = ({
+  values,
+  SingleCheckboxChange,
+  questionTitle,
+  opinionRange,
+}) => {
   const { setAlert } = useContext(AlertContext);
 
   const { push, goBack } = useHistory();
@@ -25,6 +30,29 @@ const Step5 = ({ values, SingleCheckboxChange, questionTitle }) => {
     goBack();
   };
 
+  // generate opinion scale
+  const scale = [];
+  for (let index = 1; index <= opinionRange; index++) {
+    scale.push(
+      <li
+        className={`page-item ${values.opinion === `${index}` ? "active" : ""}`}
+      >
+        <input
+          type="checkbox"
+          name="rating"
+          id={`rating-${index}`}
+          value={`${index}`}
+          checked={values.opinion === `${index}`}
+          onChange={SingleCheckboxChange("opinion")}
+          hidden
+        />
+        <label className="page-link" htmlFor={`rating-${index}`}>
+          {index}
+        </label>
+      </li>
+    );
+  }
+
   return (
     <>
       <Question questionTitle={questionTitle} />
@@ -41,186 +69,7 @@ const Step5 = ({ values, SingleCheckboxChange, questionTitle }) => {
                   -
                 </label>
               </li>
-              <li
-                className={`page-item ${
-                  values.opinion === "1" ? "active" : ""
-                }`}
-              >
-                <input
-                  type="checkbox"
-                  name="rating"
-                  id="rating-1"
-                  value="1"
-                  checked={values.opinion === "1"}
-                  onChange={SingleCheckboxChange("opinion")}
-                  hidden
-                />
-                <label className="page-link" htmlFor="rating-1">
-                  1
-                </label>
-              </li>
-              <li
-                className={`page-item ${
-                  values.opinion === "2" ? "active" : ""
-                }`}
-              >
-                <input
-                  type="checkbox"
-                  name="rating"
-                  id="rating-2"
-                  value="2"
-                  checked={values.opinion === "2"}
-                  onChange={SingleCheckboxChange("opinion")}
-                  hidden
-                />
-                <label className="page-link" htmlFor="rating-2">
-                  2
-                </label>
-              </li>
-              <li
-                className={`page-item ${
-                  values.opinion === "3" ? "active" : ""
-                }`}
-              >
-                <input
-                  type="checkbox"
-                  name="rating"
-                  id="rating-3"
-                  value="3"
-                  checked={values.opinion === "3"}
-                  onChange={SingleCheckboxChange("opinion")}
-                  hidden
-                />
-                <label className="page-link" htmlFor="rating-3">
-                  3
-                </label>
-              </li>
-              <li
-                className={`page-item ${
-                  values.opinion === "4" ? "active" : ""
-                }`}
-              >
-                <input
-                  type="checkbox"
-                  name="rating"
-                  id="rating-4"
-                  value="4"
-                  checked={values.opinion === "4"}
-                  onChange={SingleCheckboxChange("opinion")}
-                  hidden
-                />
-                <label className="page-link" htmlFor="rating-4">
-                  4
-                </label>
-              </li>
-              <li
-                className={`page-item ${
-                  values.opinion === "5" ? "active" : ""
-                }`}
-              >
-                <input
-                  type="checkbox"
-                  name="rating"
-                  id="rating-5"
-                  value="5"
-                  checked={values.opinion === "5"}
-                  onChange={SingleCheckboxChange("opinion")}
-                  hidden
-                />
-                <label className="page-link" htmlFor="rating-5">
-                  5
-                </label>
-              </li>
-              <li
-                className={`page-item ${
-                  values.opinion === "6" ? "active" : ""
-                }`}
-              >
-                <input
-                  type="checkbox"
-                  name="rating"
-                  id="rating-6"
-                  value="6"
-                  checked={values.opinion === "6"}
-                  onChange={SingleCheckboxChange("opinion")}
-                  hidden
-                />
-                <label className="page-link" htmlFor="rating-6">
-                  6
-                </label>
-              </li>
-              <li
-                className={`page-item ${
-                  values.opinion === "7" ? "active" : ""
-                }`}
-              >
-                <input
-                  type="checkbox"
-                  name="rating"
-                  id="rating-7"
-                  value="7"
-                  checked={values.opinion === "7"}
-                  onChange={SingleCheckboxChange("opinion")}
-                  hidden
-                />
-                <label className="page-link" htmlFor="rating-7">
-                  7
-                </label>
-              </li>
-              <li
-                className={`page-item ${
-                  values.opinion === "8" ? "active" : ""
-                }`}
-              >
-                <input
-                  type="checkbox"
-                  name="rating"
-                  id="rating-8"
-                  value="8"
-                  checked={values.opinion === "8"}
-                  onChange={SingleCheckboxChange("opinion")}
-                  hidden
-                />
-                <label className="page-link" htmlFor="rating-8">
-                  8
-                </label>
-              </li>
-              <li
-                className={`page-item ${
-                  values.opinion === "9" ? "active" : ""
-                }`}
-              >
-                <input
-                  type="checkbox"
-                  name="rating"
-                  id="rating-9"
-                  value="9"
-                  checked={values.opinion === "9"}
-                  onChange={SingleCheckboxChange("opinion")}
-                  hidden
-                />
-                <label className="page-link" htmlFor="rating-9">
-                  9
-                </label>
-              </li>
-              <li
-                className={`page-item ${
-                  values.opinion === "10" ? "active" : ""
-                }`}
-              >
-                <input
-                  type="checkbox"
-                  name="rating"
-                  id="rating-10"
-                  value="10"
-                  checked={values.opinion === "10"}
-                  onChange={SingleCheckboxChange("opinion")}
-                  hidden
-                />
-                <label className="page-link" htmlFor="rating-10">
-                  10
-                </label>
-              </li>
+              {scale}
               <li className="page-item disabled">
                 <input type="checkbox" id="rating-right" hidden />
                 <label className="page-link" htmlFor="rating-right">
@@ -240,6 +89,7 @@ const Step5 = ({ values, SingleCheckboxChange, questionTitle }) => {
 
 Step5.defaultProps = {
   questionTitle: "What is your opinion from 1 to 10?",
+  opinionRange: 10,
 };
 
 export default Step5;
