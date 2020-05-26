@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Route, Switch, useHistory } from "react-router-dom";
+import QuestionsContext from "../context/questions/questionsContext";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Step3 from "./Step3";
@@ -12,6 +13,13 @@ import Step9 from "./Step9";
 import Confirm from "./Confirm";
 
 const Form = () => {
+  const { getQuestions, questions } = useContext(QuestionsContext);
+
+  useEffect(() => {
+    getQuestions();
+    // eslint-disable-next-line
+  }, []);
+
   const { push } = useHistory();
 
   const [contact, setContact] = useState({
