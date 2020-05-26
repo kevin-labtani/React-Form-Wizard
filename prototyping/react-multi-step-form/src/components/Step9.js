@@ -6,7 +6,7 @@ import AvatarAnswer from "./AvatarAnswer";
 import Question from "./Question";
 import Navigation from "./Navigation";
 
-const Step9 = ({ values, inputChange, questionTitle }) => {
+const Step9 = ({ values, inputChange, questionTitle, ratingRange }) => {
   const { setAlert } = useContext(AlertContext);
 
   const { push, goBack } = useHistory();
@@ -25,6 +25,24 @@ const Step9 = ({ values, inputChange, questionTitle }) => {
     goBack();
   };
 
+  // generate rating range
+  const range = [];
+  for (let index = ratingRange; index > 0; index--) {
+    range.push(
+      <>
+        <input
+          type="radio"
+          name="rating"
+          id={`rating-${index}`}
+          value={`${index}`}
+          checked={values.rating === `${index}`}
+          onChange={inputChange("rating")}
+        />
+        <label htmlFor={`rating-${index}`}></label>
+      </>
+    );
+  }
+
   return (
     <>
       <Question questionTitle={questionTitle} />
@@ -33,53 +51,7 @@ const Step9 = ({ values, inputChange, questionTitle }) => {
         <div className="col-8 offset-1 col-lg-7 offset-lg-2 rounded-lg px-lg-5 py-4 my-2 shadow bg-hu-grey-1 speech-bubble-answer">
           <Alerts />
           <p className="subtitles text-muted">Step 9: rating</p>
-          <div className="rating">
-            <input
-              type="radio"
-              name="rating"
-              id="rating-5"
-              value="5"
-              checked={values.rating === "5"}
-              onChange={inputChange("rating")}
-            />
-            <label htmlFor="rating-5"></label>
-            <input
-              type="radio"
-              name="rating"
-              id="rating-4"
-              value="4"
-              checked={values.rating === "4"}
-              onChange={inputChange("rating")}
-            />
-            <label htmlFor="rating-4"></label>
-            <input
-              type="radio"
-              name="rating"
-              id="rating-3"
-              value="3"
-              checked={values.rating === "3"}
-              onChange={inputChange("rating")}
-            />
-            <label htmlFor="rating-3"></label>
-            <input
-              type="radio"
-              name="rating"
-              id="rating-2"
-              value="2"
-              checked={values.rating === "2"}
-              onChange={inputChange("rating")}
-            />
-            <label htmlFor="rating-2"></label>
-            <input
-              type="radio"
-              name="rating"
-              id="rating-1"
-              value="1"
-              checked={values.rating === "1"}
-              onChange={inputChange("rating")}
-            />
-            <label htmlFor="rating-1"></label>
-          </div>
+          <div className="rating">{range}</div>
         </div>
         <AvatarAnswer />
       </div>
@@ -91,6 +63,7 @@ const Step9 = ({ values, inputChange, questionTitle }) => {
 
 Step9.defaultProps = {
   questionTitle: "How many stars do you give us?",
+  ratingRange: 10,
 };
 
 export default Step9;
