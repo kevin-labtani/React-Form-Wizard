@@ -3,10 +3,10 @@ import { useHistory } from "react-router-dom";
 import AlertContext from "../context/alert/alertContext";
 import Alerts from "./layout/Alerts";
 import AvatarAnswer from "./AvatarAnswer";
-import AvatarQuestion from "./AvatarQuestion";
+import Question from "./Question";
 import Navigation from "./Navigation";
 
-const Step9 = ({ values, inputChange }) => {
+const Step9 = ({ values, inputChange, questionTitle }) => {
   const { setAlert } = useContext(AlertContext);
 
   const { push, goBack } = useHistory();
@@ -27,12 +27,7 @@ const Step9 = ({ values, inputChange }) => {
 
   return (
     <>
-      <div className="row">
-        <AvatarQuestion />
-        <div className="col-8 col-lg-7 rounded-lg px-lg-4 py-4 my-2 shadow bg-hu-grey-1 speech-bubble-question">
-          <h3>How many stars do you give us?</h3>
-        </div>
-      </div>
+      <Question questionTitle={questionTitle} />
 
       <div className="row">
         <div className="col-8 offset-1 col-lg-7 offset-lg-2 rounded-lg px-lg-5 py-4 my-2 shadow bg-hu-grey-1 speech-bubble-answer">
@@ -92,6 +87,10 @@ const Step9 = ({ values, inputChange }) => {
       <Navigation fwd={fwd} back={back} />
     </>
   );
+};
+
+Step9.defaultProps = {
+  questionTitle: "How many stars do you give us?",
 };
 
 export default Step9;

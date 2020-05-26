@@ -3,10 +3,10 @@ import { useHistory } from "react-router-dom";
 import AlertContext from "../context/alert/alertContext";
 import Alerts from "./layout/Alerts";
 import AvatarAnswer from "./AvatarAnswer";
-import AvatarQuestion from "./AvatarQuestion";
+import Question from "./Question";
 import Navigation from "./Navigation";
 
-const Step8 = ({ values, multiCheckboxChange }) => {
+const Step8 = ({ values, multiCheckboxChange, questionTitle }) => {
   const { setAlert } = useContext(AlertContext);
 
   const { push, goBack } = useHistory();
@@ -27,12 +27,7 @@ const Step8 = ({ values, multiCheckboxChange }) => {
 
   return (
     <>
-      <div className="row">
-        <AvatarQuestion />
-        <div className="col-8 col-lg-7 rounded-lg px-lg-4 py-4 my-2 shadow bg-hu-grey-1 speech-bubble-question">
-          <h3>What is your favorite pet?</h3>
-        </div>
-      </div>
+      <Question questionTitle={questionTitle} />
 
       <div className="row">
         <div className="col-8 offset-1 col-lg-7 offset-lg-2 rounded-lg px-lg-5 py-4 my-2 shadow bg-hu-grey-1 speech-bubble-answer">
@@ -102,6 +97,10 @@ const Step8 = ({ values, multiCheckboxChange }) => {
       <Navigation fwd={fwd} back={back} />
     </>
   );
+};
+
+Step8.defaultProps = {
+  questionTitle: "What is your favorite pet?",
 };
 
 export default Step8;

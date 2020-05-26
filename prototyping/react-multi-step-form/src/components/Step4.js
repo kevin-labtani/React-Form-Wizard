@@ -3,10 +3,10 @@ import { useHistory } from "react-router-dom";
 import AlertContext from "../context/alert/alertContext";
 import Alerts from "./layout/Alerts";
 import AvatarAnswer from "./AvatarAnswer";
-import AvatarQuestion from "./AvatarQuestion";
+import Question from "./Question";
 import Navigation from "./Navigation";
 
-const Step4 = ({ values, SingleCheckboxChangePush }) => {
+const Step4 = ({ values, SingleCheckboxChangePush, questionTitle }) => {
   const { setAlert } = useContext(AlertContext);
 
   const { push, goBack } = useHistory();
@@ -33,12 +33,8 @@ const Step4 = ({ values, SingleCheckboxChangePush }) => {
 
   return (
     <>
-      <div className="row">
-        <AvatarQuestion />
-        <div className="col-8 col-lg-7 rounded-lg px-lg-4 py-4 my-2 shadow bg-hu-grey-1 speech-bubble-question">
-          <h3>Can we send you emails?</h3>
-        </div>
-      </div>
+      <Question questionTitle={questionTitle} />
+
       <div className="row">
         <div className="col-8 offset-1 col-lg-7 offset-lg-2 rounded-lg px-lg-5 py-4 my-2 shadow bg-hu-grey-1 speech-bubble-answer">
           <Alerts />
@@ -90,6 +86,10 @@ const Step4 = ({ values, SingleCheckboxChangePush }) => {
       <Navigation fwd={fwd} back={back} />
     </>
   );
+};
+
+Step4.defaultProps = {
+  questionTitle: "Can we send you emails?",
 };
 
 export default Step4;
