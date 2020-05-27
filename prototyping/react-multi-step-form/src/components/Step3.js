@@ -39,7 +39,7 @@ const Step3 = ({
           <Alerts />
           <p className="subtitles text-muted">Step 3: Single Choice</p>
           {answerArray.map((choice, index) => (
-            <div className="form-check pl-0">
+            <div className="form-check pl-0" key={index}>
               <input
                 className="form-check-input"
                 type="checkbox"
