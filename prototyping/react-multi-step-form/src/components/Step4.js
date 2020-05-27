@@ -11,6 +11,7 @@ const Step4 = ({
   SingleCheckboxChangePush,
   questionTitle,
   questionSubtitle,
+  questionId,
 }) => {
   const { setAlert } = useContext(AlertContext);
 
@@ -18,7 +19,7 @@ const Step4 = ({
 
   const fwd = (e) => {
     e.preventDefault();
-    if (!values.contactCheck) {
+    if (!values[questionId]) {
       setAlert("Veuillez faire un choix", "danger");
     } else {
       push("/step5");
@@ -51,13 +52,13 @@ const Step4 = ({
                 type="checkbox"
                 value="yes"
                 id="checkbox1"
-                checked={values.contactCheck === "yes"}
-                onChange={SingleCheckboxChangePush("contactCheck", "/step5")}
+                checked={values[questionId] === "yes"}
+                onChange={SingleCheckboxChangePush(questionId, "/step5")}
                 hidden
               />
               <label
                 className={`btn btn-outline-primary btn-block text-left pl-4 ${
-                  values.contactCheck === "yes" ? "active" : ""
+                  values[questionId] === "yes" ? "active" : ""
                 }`}
                 htmlFor="checkbox1"
               >
@@ -70,13 +71,13 @@ const Step4 = ({
                 type="checkbox"
                 value="no"
                 id="checkbox2"
-                checked={values.contactCheck === "no"}
-                onChange={SingleCheckboxChangePush("contactCheck", "/step5")}
+                checked={values[questionId] === "no"}
+                onChange={SingleCheckboxChangePush(questionId, "/step5")}
                 hidden
               />
               <label
                 className={`btn btn-outline-primary btn-block text-left pl-4 ${
-                  values.contactCheck === "no" ? "active" : ""
+                  values[questionId] === "no" ? "active" : ""
                 }`}
                 htmlFor="checkbox2"
               >
@@ -96,6 +97,7 @@ const Step4 = ({
 Step4.defaultProps = {
   questionTitle: "Can we send you emails?",
   questionSubtitle: "Step 4: legal",
+  questionId: 4,
 };
 
 export default Step4;

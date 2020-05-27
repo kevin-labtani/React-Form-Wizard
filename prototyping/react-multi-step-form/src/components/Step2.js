@@ -6,16 +6,22 @@ import AvatarAnswer from "./AvatarAnswer";
 import Question from "./Question";
 import Navigation from "./Navigation";
 
-const Step2 = ({ values, inputChange, questionTitle, questionSubtitle }) => {
+const Step2 = ({
+  values,
+  inputChange,
+  questionTitle,
+  questionSubtitle,
+  questionId,
+}) => {
   const { setAlert } = useContext(AlertContext);
 
   const { push, goBack } = useHistory();
 
   const fwd = (e) => {
     e.preventDefault();
-    if (values.name === "") {
+    if (values[questionId] === "") {
       setAlert("Veuillez remplir ce champ", "danger");
-    } else if (values.name.length > 256) {
+    } else if (values[questionId].length > 256) {
       setAlert("Votre réponse doit faire moins de 256 caractères", "danger");
     } else {
       push("/step3");
@@ -43,8 +49,8 @@ const Step2 = ({ values, inputChange, questionTitle, questionSubtitle }) => {
               className="form-control form-control-lg"
               name="name"
               maxLength="256"
-              onChange={inputChange("name")}
-              value={values.name}
+              onChange={inputChange(questionId)}
+              value={values[questionId]}
               autoComplete="off"
               autoFocus
               placeholder="Enter your name here"
@@ -62,6 +68,7 @@ const Step2 = ({ values, inputChange, questionTitle, questionSubtitle }) => {
 Step2.defaultProps = {
   questionTitle: "What's your name?",
   questionSubtitle: "Step 2: short text",
+  questionId: 2,
 };
 
 export default Step2;

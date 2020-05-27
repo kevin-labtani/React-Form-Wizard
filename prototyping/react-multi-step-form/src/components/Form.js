@@ -21,17 +21,16 @@ const Form = () => {
   }, []);
 
   const { push } = useHistory();
-
   const [contact, setContact] = useState({
-    name: "",
-    email: "",
-    contactCheck: "",
-    opinion: "",
-    yn: "",
-    number: "",
-    pet: [],
-    dessert: "",
-    rating: "",
+    1: "",
+    2: "",
+    3: "",
+    4: "",
+    5: "",
+    6: "",
+    7: "",
+    8: [],
+    9: "",
   });
 
   // load data from localSotrage
@@ -82,96 +81,96 @@ const Form = () => {
   };
 
   return (
-      <Switch>
-        <Route
-          exact
-          path="/"
-          render={(routeProps) => (
-            <Step1 {...routeProps} inputChange={inputChange} values={contact} />
-          )}
-        />
-        <Route
-          exact
-          path="/step2"
-          render={(routeProps) => (
-            <Step2 {...routeProps} inputChange={inputChange} values={contact} />
-          )}
-        />
-        <Route
-          exact
-          path="/step3"
-          render={(routeProps) => (
-            <Step3
-              {...routeProps}
-              SingleCheckboxChange={SingleCheckboxChange}
-              values={contact}
-            />
-          )}
-        />
-        <Route
-          exact
-          path="/step4"
-          render={(routeProps) => (
-            <Step4
-              {...routeProps}
-              SingleCheckboxChangePush={SingleCheckboxChangePush}
-              values={contact}
-            />
-          )}
-        />
-        <Route
-          exact
-          path="/step5"
-          render={(routeProps) => (
-            <Step5
-              {...routeProps}
-              SingleCheckboxChange={SingleCheckboxChange}
-              values={contact}
-            />
-          )}
-        />
-        <Route
-          exact
-          path="/step6"
-          render={(routeProps) => (
-            <Step6
-              {...routeProps}
-              SingleCheckboxChange={SingleCheckboxChange}
-              values={contact}
-            />
-          )}
-        />
-        <Route
-          exact
-          path="/step7"
-          render={(routeProps) => (
-            <Step7 {...routeProps} inputChange={inputChange} values={contact} />
-          )}
-        />
-        <Route
-          exact
-          path="/step8"
-          render={(routeProps) => (
-            <Step8
-              {...routeProps}
-              multiCheckboxChange={multiCheckboxChange}
-              values={contact}
-            />
-          )}
-        />
-        <Route
-          exact
-          path="/step9"
-          render={(routeProps) => (
-            <Step9 {...routeProps} inputChange={inputChange} values={contact} />
-          )}
-        />
-        <Route
-          exact
-          path="/confirm"
-          render={(routeProps) => <Confirm {...routeProps} values={contact} />}
-        />
-      </Switch>
+    <Switch>
+      <Route
+        exact
+        path="/"
+        render={(routeProps) => (
+          <Step1 {...routeProps} inputChange={inputChange} values={contact} />
+        )}
+      />
+      <Route
+        exact
+        path="/step2"
+        render={(routeProps) => (
+          <Step2 {...routeProps} inputChange={inputChange} values={contact} />
+        )}
+      />
+      <Route
+        exact
+        path="/step3"
+        render={(routeProps) => (
+          <Step3
+            {...routeProps}
+            SingleCheckboxChange={SingleCheckboxChange}
+            values={contact}
+          />
+        )}
+      />
+      <Route
+        exact
+        path="/step4"
+        render={(routeProps) => (
+          <Step4
+            {...routeProps}
+            SingleCheckboxChangePush={SingleCheckboxChangePush}
+            values={contact}
+          />
+        )}
+      />
+      <Route
+        exact
+        path="/step5"
+        render={(routeProps) => (
+          <Step5
+            {...routeProps}
+            SingleCheckboxChange={SingleCheckboxChange}
+            values={contact}
+          />
+        )}
+      />
+      <Route
+        exact
+        path="/step6"
+        render={(routeProps) => (
+          <Step6
+            {...routeProps}
+            SingleCheckboxChange={SingleCheckboxChange}
+            values={contact}
+          />
+        )}
+      />
+      <Route
+        exact
+        path="/step7"
+        render={(routeProps) => (
+          <Step7 {...routeProps} inputChange={inputChange} values={contact} />
+        )}
+      />
+      <Route
+        exact
+        path="/step8"
+        render={(routeProps) => (
+          <Step8
+            {...routeProps}
+            multiCheckboxChange={multiCheckboxChange}
+            values={contact}
+          />
+        )}
+      />
+      <Route
+        exact
+        path="/step9"
+        render={(routeProps) => (
+          <Step9 {...routeProps} inputChange={inputChange} values={contact} />
+        )}
+      />
+      <Route
+        exact
+        path="/confirm"
+        render={(routeProps) => <Confirm {...routeProps} values={contact} />}
+      />
+    </Switch>
   );
 };
 

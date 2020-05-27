@@ -11,6 +11,7 @@ const Step3 = ({
   SingleCheckboxChange,
   questionTitle,
   questionSubtitle,
+  questionId,
   answerArray,
 }) => {
   const { setAlert } = useContext(AlertContext);
@@ -19,8 +20,8 @@ const Step3 = ({
 
   const fwd = (e) => {
     e.preventDefault();
-    if (!values.dessert) {
-      setAlert("Veuillez remplir ce champ", "danger");
+    if (!values[questionId]) {
+      setAlert("Veuillez faire un choix", "danger");
     } else {
       push("/step4");
     }
@@ -46,13 +47,13 @@ const Step3 = ({
                 type="checkbox"
                 value={`${choice}`}
                 id={`checkbox-${index}`}
-                checked={values.dessert === `${choice}`}
-                onChange={SingleCheckboxChange("dessert")}
+                checked={values[questionId] === `${choice}`}
+                onChange={SingleCheckboxChange(questionId)}
                 hidden
               />
               <label
                 className={`btn btn-outline-primary btn-block text-left pl-4 ${
-                  values.dessert === `${choice}` ? "active" : ""
+                  values[questionId] === `${choice}` ? "active" : ""
                 }`}
                 htmlFor={`checkbox-${index}`}
               >
@@ -72,6 +73,7 @@ const Step3 = ({
 Step3.defaultProps = {
   questionTitle: "What do you want for dessert?",
   questionSubtitle: "Step 3: single choice",
+  questionId: 3,
   answerArray: ["tiramisu", "ice-cream", "cake", "tarte aux pommes"],
 };
 

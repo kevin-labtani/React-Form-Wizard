@@ -11,6 +11,7 @@ const Step6 = ({
   SingleCheckboxChange,
   questionTitle,
   questionSubtitle,
+  questionId,
 }) => {
   const { setAlert } = useContext(AlertContext);
 
@@ -18,7 +19,7 @@ const Step6 = ({
 
   const fwd = (e) => {
     e.preventDefault();
-    if (!values.yn) {
+    if (!values[questionId]) {
       setAlert("Veuillez faire un choix", "danger");
     } else {
       push("/step7");
@@ -44,13 +45,13 @@ const Step6 = ({
               type="checkbox"
               value="yes"
               id="checkbox1"
-              checked={values.yn === "yes"}
-              onChange={SingleCheckboxChange("yn")}
+              checked={values[questionId] === "yes"}
+              onChange={SingleCheckboxChange(questionId)}
               hidden
             />
             <label
               className={`btn btn-outline-primary btn-block text-left pl-4 ${
-                values.yn === "yes" ? "active" : ""
+                values[questionId] === "yes" ? "active" : ""
               }`}
               htmlFor="checkbox1"
             >
@@ -63,13 +64,13 @@ const Step6 = ({
               type="checkbox"
               value="no"
               id="checkbox2"
-              checked={values.yn === "no"}
-              onChange={SingleCheckboxChange("yn")}
+              checked={values[questionId] === "no"}
+              onChange={SingleCheckboxChange(questionId)}
               hidden
             />
             <label
               className={`btn btn-outline-primary btn-block text-left pl-4 ${
-                values.yn === "no" ? "active" : ""
+                values[questionId] === "no" ? "active" : ""
               }`}
               htmlFor="checkbox2"
             >
@@ -87,7 +88,8 @@ const Step6 = ({
 
 Step6.defaultProps = {
   questionTitle: "Is it yes, or is it no?",
-  questionSubtitle: "Step 6: yes or no"
+  questionSubtitle: "Step 6: yes or no",
+  questionId: 6,
 };
 
 export default Step6;

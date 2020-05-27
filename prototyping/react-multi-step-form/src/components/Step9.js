@@ -11,6 +11,7 @@ const Step9 = ({
   inputChange,
   questionTitle,
   questionSubtitle,
+  questionId,
   ratingRange,
 }) => {
   const { setAlert } = useContext(AlertContext);
@@ -19,7 +20,7 @@ const Step9 = ({
 
   const fwd = (e) => {
     e.preventDefault();
-    if (!values.rating) {
+    if (!values[questionId]) {
       setAlert("Veuillez faire un choix", "danger");
     } else {
       push("/confirm");
@@ -41,8 +42,8 @@ const Step9 = ({
           name="rating"
           id={`rating-${index}`}
           value={`${index}`}
-          checked={values.rating === `${index}`}
-          onChange={inputChange("rating")}
+          checked={values[questionId] === `${index}`}
+          onChange={inputChange(questionId)}
         />
         <label htmlFor={`rating-${index}`}></label>
       </React.Fragment>
@@ -70,6 +71,7 @@ const Step9 = ({
 Step9.defaultProps = {
   questionTitle: "How many stars do you give us?",
   questionSubtitle: "Step 9: rating",
+  questionId: 9,
   ratingRange: 10,
 };
 

@@ -11,6 +11,7 @@ const Step8 = ({
   multiCheckboxChange,
   questionTitle,
   questionSubtitle,
+  questionId,
   answerArray,
 }) => {
   const { setAlert } = useContext(AlertContext);
@@ -19,7 +20,7 @@ const Step8 = ({
 
   const fwd = (e) => {
     e.preventDefault();
-    if (values.pet.length === 0) {
+    if (values[questionId].length === 0) {
       setAlert("Veuillez faire un choix", "danger");
     } else {
       push("/step9");
@@ -46,13 +47,13 @@ const Step8 = ({
                 type="checkbox"
                 value={`${choice}`}
                 id={`checkbox-${index}`}
-                checked={values.pet.includes(`${choice}`)}
-                onChange={multiCheckboxChange("pet")}
+                checked={values[questionId].includes(`${choice}`)}
+                onChange={multiCheckboxChange(questionId)}
                 hidden
               />
               <label
                 className={`btn btn-outline-primary btn-block text-left pl-4 ${
-                  values.pet.includes(`${choice}`) ? "active" : ""
+                  values[questionId].includes(`${choice}`) ? "active" : ""
                 }`}
                 htmlFor={`checkbox-${index}`}
               >
@@ -72,6 +73,7 @@ const Step8 = ({
 Step8.defaultProps = {
   questionTitle: "What is your favorite pet?",
   questionSubtitle: "Step 8: multiple choice",
+  questionId: 8,
   answerArray: ["cat", "dog", "fish"],
 };
 

@@ -6,7 +6,13 @@ import AvatarAnswer from "./AvatarAnswer";
 import Question from "./Question";
 import Navigation from "./Navigation";
 
-const Step7 = ({ values, inputChange, questionTitle, questionSubtitle }) => {
+const Step7 = ({
+  values,
+  inputChange,
+  questionTitle,
+  questionSubtitle,
+  questionId,
+}) => {
   const alertContext = useContext(AlertContext);
   const { setAlert } = alertContext;
 
@@ -14,7 +20,7 @@ const Step7 = ({ values, inputChange, questionTitle, questionSubtitle }) => {
 
   const fwd = (e) => {
     e.preventDefault();
-    if (!values.number || values.number < 0 || values.number > 10) {
+    if (!values[questionId] || values[questionId] < 0 || values[questionId] > 10) {
       setAlert("Please enter a number between 0 and 10", "danger");
     } else {
       push("/step8");
@@ -41,8 +47,8 @@ const Step7 = ({ values, inputChange, questionTitle, questionSubtitle }) => {
               type="number"
               className="form-control form-control-lg"
               name="number"
-              onChange={inputChange("number")}
-              value={values.number}
+              onChange={inputChange(questionId)}
+              value={values[questionId]}
               min={0}
               max={10}
               autoFocus
@@ -60,7 +66,8 @@ const Step7 = ({ values, inputChange, questionTitle, questionSubtitle }) => {
 
 Step7.defaultProps = {
   questionTitle: "Please pick a number between 1 and 10",
-  questionSubtitle: "Step 7: number"
+  questionSubtitle: "Step 7: number",
+  questionId: 7,
 };
 
 export default Step7;

@@ -8,17 +8,23 @@ import Navigation from "./Navigation";
 
 import isEmail from "validator/lib/isEmail";
 
-const Step1 = ({ values, inputChange, questionTitle, questionSubtitle }) => {
+const Step1 = ({
+  values,
+  inputChange,
+  questionTitle,
+  questionSubtitle,
+  questionId,
+}) => {
   const { setAlert } = useContext(AlertContext);
 
   const { push, goBack } = useHistory();
 
   const fwd = (e) => {
     e.preventDefault();
-    if (!isEmail(values.email)) {
+    if (!isEmail(values[questionId])) {
       setAlert("Veuillez entrer une adresse email valide", "danger");
     } else {
-      values.email === "admin@demo.com" ? push("/step3") : push("/step2");
+      values[questionId] === "admin@demo.com" ? push("/step3") : push("/step2");
     }
   };
 
@@ -42,8 +48,8 @@ const Step1 = ({ values, inputChange, questionTitle, questionSubtitle }) => {
               type="email"
               className="form-control form-control-lg"
               name="email"
-              onChange={inputChange("email")}
-              value={values.email}
+              onChange={inputChange(questionId)}
+              value={values[questionId]}
               autoComplete="off"
               autoFocus
               placeholder="Enter your email here"
@@ -61,6 +67,7 @@ const Step1 = ({ values, inputChange, questionTitle, questionSubtitle }) => {
 Step1.defaultProps = {
   questionTitle: "What's your email?",
   questionSubtitle: "Step 1: email",
+  questionId: 1,
 };
 
 export default Step1;

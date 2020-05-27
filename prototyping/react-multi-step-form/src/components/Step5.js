@@ -11,6 +11,7 @@ const Step5 = ({
   SingleCheckboxChange,
   questionTitle,
   questionSubtitle,
+  questionId,
   opinionRange,
 }) => {
   const { setAlert } = useContext(AlertContext);
@@ -19,7 +20,7 @@ const Step5 = ({
 
   const fwd = (e) => {
     e.preventDefault();
-    if (!values.opinion) {
+    if (!values[questionId]) {
       setAlert("Veuillez faire un choix", "danger");
     } else {
       push("/step6");
@@ -36,7 +37,9 @@ const Step5 = ({
   for (let index = 1; index <= opinionRange; index++) {
     scale.push(
       <li
-        className={`page-item ${values.opinion === `${index}` ? "active" : ""}`}
+        className={`page-item ${
+          values[questionId] === `${index}` ? "active" : ""
+        }`}
         key={index}
       >
         <input
@@ -44,8 +47,8 @@ const Step5 = ({
           name="rating"
           id={`rating-${index}`}
           value={`${index}`}
-          checked={values.opinion === `${index}`}
-          onChange={SingleCheckboxChange("opinion")}
+          checked={values[questionId] === `${index}`}
+          onChange={SingleCheckboxChange(questionId)}
           hidden
         />
         <label className="page-link" htmlFor={`rating-${index}`}>
@@ -92,6 +95,7 @@ const Step5 = ({
 Step5.defaultProps = {
   questionTitle: "What is your opinion from 1 to 10?",
   questionSubtitle: "Step 5: opinion scale",
+  questionId: 5,
   opinionRange: 10,
 };
 
