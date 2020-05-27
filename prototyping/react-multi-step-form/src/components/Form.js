@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Route, Switch, useHistory } from "react-router-dom";
 import QuestionsContext from "../context/questions/questionsContext";
-import Step1 from "./Step1";
-import Step2 from "./Step2";
-import Step3 from "./Step3";
-import Step4 from "./Step4";
-import Step5 from "./Step5";
-import Step6 from "./Step6";
-import Step7 from "./Step7";
-import Step8 from "./Step8";
-import Step9 from "./Step9";
+import Email from "./questionType/Email";
+import ShortText from "./questionType/ShortText";
+import SingleChoice from "./questionType/SingleChoice";
+import Legal from "./questionType/Legal";
+import OpinionScale from "./questionType/OpinionScale";
+import YesNo from "./questionType/YesNo";
+import Number from "./questionType/Number";
+import MultipleChoice from "./questionType/MultipleChoice";
+import Rating from "./questionType/Rating";
 import Confirm from "./Confirm";
 
 const Form = () => {
@@ -86,21 +86,25 @@ const Form = () => {
         exact
         path="/"
         render={(routeProps) => (
-          <Step1 {...routeProps} inputChange={inputChange} values={contact} />
+          <Email {...routeProps} inputChange={inputChange} values={contact} />
         )}
       />
       <Route
         exact
         path="/step2"
         render={(routeProps) => (
-          <Step2 {...routeProps} inputChange={inputChange} values={contact} />
+          <ShortText
+            {...routeProps}
+            inputChange={inputChange}
+            values={contact}
+          />
         )}
       />
       <Route
         exact
         path="/step3"
         render={(routeProps) => (
-          <Step3
+          <SingleChoice
             {...routeProps}
             SingleCheckboxChange={SingleCheckboxChange}
             values={contact}
@@ -111,7 +115,7 @@ const Form = () => {
         exact
         path="/step4"
         render={(routeProps) => (
-          <Step4
+          <Legal
             {...routeProps}
             SingleCheckboxChangePush={SingleCheckboxChangePush}
             values={contact}
@@ -122,7 +126,7 @@ const Form = () => {
         exact
         path="/step5"
         render={(routeProps) => (
-          <Step5
+          <OpinionScale
             {...routeProps}
             SingleCheckboxChange={SingleCheckboxChange}
             values={contact}
@@ -133,7 +137,7 @@ const Form = () => {
         exact
         path="/step6"
         render={(routeProps) => (
-          <Step6
+          <YesNo
             {...routeProps}
             SingleCheckboxChange={SingleCheckboxChange}
             values={contact}
@@ -144,14 +148,14 @@ const Form = () => {
         exact
         path="/step7"
         render={(routeProps) => (
-          <Step7 {...routeProps} inputChange={inputChange} values={contact} />
+          <Number {...routeProps} inputChange={inputChange} values={contact} />
         )}
       />
       <Route
         exact
         path="/step8"
         render={(routeProps) => (
-          <Step8
+          <MultipleChoice
             {...routeProps}
             multiCheckboxChange={multiCheckboxChange}
             values={contact}
@@ -162,7 +166,7 @@ const Form = () => {
         exact
         path="/step9"
         render={(routeProps) => (
-          <Step9 {...routeProps} inputChange={inputChange} values={contact} />
+          <Rating {...routeProps} inputChange={inputChange} values={contact} />
         )}
       />
       <Route

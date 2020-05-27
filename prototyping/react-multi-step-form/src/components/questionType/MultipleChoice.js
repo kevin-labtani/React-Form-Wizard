@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
-import AlertContext from "../context/alert/alertContext";
-import Alerts from "./layout/Alerts";
-import AvatarAnswer from "./AvatarAnswer";
-import Question from "./Question";
-import Navigation from "./Navigation";
+import AlertContext from "../../context/alert/alertContext";
+import Alerts from "../layout/Alerts";
+import AvatarAnswer from "../AvatarAnswer";
+import Question from "../Question";
+import Navigation from "../Navigation";
 
-const Step8 = ({
+const MultipleChoice = ({
   values,
   multiCheckboxChange,
   questionTitle,
@@ -70,11 +70,11 @@ const Step8 = ({
   );
 };
 
-Step8.defaultProps = {
+MultipleChoice.defaultProps = {
   questionTitle: "What is your favorite pet?",
   questionSubtitle: "Step 8: multiple choice",
   questionId: 8,
   answerArray: ["cat", "dog", "fish"],
 };
 
-export default Step8;
+export default MultipleChoice;

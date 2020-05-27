@@ -1,29 +1,30 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
-import AlertContext from "../context/alert/alertContext";
-import Alerts from "./layout/Alerts";
-import AvatarAnswer from "./AvatarAnswer";
-import Question from "./Question";
-import Navigation from "./Navigation";
+import AlertContext from "../../context/alert/alertContext";
+import Alerts from "../layout/Alerts";
+import AvatarAnswer from "../AvatarAnswer";
+import Question from "../Question";
+import Navigation from "../Navigation";
 
-const Step7 = ({
+const ShortText = ({
   values,
   inputChange,
   questionTitle,
   questionSubtitle,
   questionId,
 }) => {
-  const alertContext = useContext(AlertContext);
-  const { setAlert } = alertContext;
+  const { setAlert } = useContext(AlertContext);
 
   const { push, goBack } = useHistory();
 
   const fwd = (e) => {
     e.preventDefault();
-    if (!values[questionId] || values[questionId] < 0 || values[questionId] > 10) {
-      setAlert("Please enter a number between 0 and 10", "danger");
+    if (values[questionId] === "") {
+      setAlert("Veuillez remplir ce champ", "danger");
+    } else if (values[questionId].length > 256) {
+      setAlert("Votre réponse doit faire moins de 256 caractères", "danger");
     } else {
-      push("/step8");
+      push("/step3");
     }
   };
 
@@ -40,19 +41,19 @@ const Step7 = ({
         <div className="col-8 offset-1 col-lg-7 offset-lg-2 rounded-lg px-lg-5 py-4 my-2 shadow bg-hu-grey-1 speech-bubble-answer">
           <Alerts />
           <div className="form-group">
-            <label htmlFor="number">
+            <label htmlFor="name">
               <p className="subtitles text-muted">{questionSubtitle}</p>
             </label>
             <input
-              type="number"
+              type="text"
               className="form-control form-control-lg"
-              name="number"
+              name="name"
+              maxLength="256"
               onChange={inputChange(questionId)}
               value={values[questionId]}
-              min={0}
-              max={10}
+              autoComplete="off"
               autoFocus
-              placeholder="Enter a value here"
+              placeholder="Enter your name here"
             />
           </div>
         </div>
@@ -64,10 +65,10 @@ const Step7 = ({
   );
 };
 
-Step7.defaultProps = {
-  questionTitle: "Please pick a number between 1 and 10",
-  questionSubtitle: "Step 7: number",
-  questionId: 7,
+ShortText.defaultProps = {
+  questionTitle: "What's your name?",
+  questionSubtitle: "Step 2: short text",
+  questionId: 2,
 };
 
-export default Step7;
+export default ShortText;

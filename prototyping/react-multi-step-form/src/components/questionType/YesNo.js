@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
-import AlertContext from "../context/alert/alertContext";
-import Alerts from "./layout/Alerts";
-import AvatarAnswer from "./AvatarAnswer";
-import Question from "./Question";
-import Navigation from "./Navigation";
+import AlertContext from "../../context/alert/alertContext";
+import Alerts from "../layout/Alerts";
+import AvatarAnswer from "../AvatarAnswer";
+import Question from "../Question";
+import Navigation from "../Navigation";
 
-const Step6 = ({
+const YesNo = ({
   values,
   SingleCheckboxChange,
   questionTitle,
@@ -86,10 +86,10 @@ const Step6 = ({
   );
 };
 
-Step6.defaultProps = {
+YesNo.defaultProps = {
   questionTitle: "Is it yes, or is it no?",
   questionSubtitle: "Step 6: yes or no",
   questionId: 6,
 };
 
-export default Step6;
+export default YesNo;

@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
-import AlertContext from "../context/alert/alertContext";
-import Alerts from "./layout/Alerts";
-import AvatarAnswer from "./AvatarAnswer";
-import Question from "./Question";
-import Navigation from "./Navigation";
+import AlertContext from "../../context/alert/alertContext";
+import Alerts from "../layout/Alerts";
+import AvatarAnswer from "../AvatarAnswer";
+import Question from "../Question";
+import Navigation from "../Navigation";
 
-const Step9 = ({
+const Rating = ({
   values,
   inputChange,
   questionTitle,
@@ -68,11 +68,11 @@ const Step9 = ({
   );
 };
 
-Step9.defaultProps = {
+Rating.defaultProps = {
   questionTitle: "How many stars do you give us?",
   questionSubtitle: "Step 9: rating",
   questionId: 9,
   ratingRange: 10,
 };
 
-export default Step9;
+export default Rating;

@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
-import AlertContext from "../context/alert/alertContext";
-import Alerts from "./layout/Alerts";
-import AvatarAnswer from "./AvatarAnswer";
-import Question from "./Question";
-import Navigation from "./Navigation";
+import AlertContext from "../../context/alert/alertContext";
+import Alerts from "../layout/Alerts";
+import AvatarAnswer from "../AvatarAnswer";
+import Question from "../Question";
+import Navigation from "../Navigation";
 
-const Step3 = ({
+const SingleChoice = ({
   values,
   SingleCheckboxChange,
   questionTitle,
@@ -70,11 +70,11 @@ const Step3 = ({
   );
 };
 
-Step3.defaultProps = {
+SingleChoice.defaultProps = {
   questionTitle: "What do you want for dessert?",
   questionSubtitle: "Step 3: single choice",
   questionId: 3,
   answerArray: ["tiramisu", "ice-cream", "cake", "tarte aux pommes"],
 };
 
-export default Step3;
+export default SingleChoice;

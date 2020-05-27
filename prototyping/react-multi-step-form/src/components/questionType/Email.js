@@ -1,14 +1,14 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
-import AlertContext from "../context/alert/alertContext";
-import Alerts from "./layout/Alerts";
-import AvatarAnswer from "./AvatarAnswer";
-import Question from "./Question";
-import Navigation from "./Navigation";
+import AlertContext from "../../context/alert/alertContext";
+import Alerts from "../layout/Alerts";
+import AvatarAnswer from "../AvatarAnswer";
+import Question from "../Question";
+import Navigation from "../Navigation";
 
 import isEmail from "validator/lib/isEmail";
 
-const Step1 = ({
+const Email = ({
   values,
   inputChange,
   questionTitle,
@@ -64,10 +64,10 @@ const Step1 = ({
   );
 };
 
-Step1.defaultProps = {
+Email.defaultProps = {
   questionTitle: "What's your email?",
   questionSubtitle: "Step 1: email",
   questionId: 1,
 };
 
-export default Step1;
+export default Email;

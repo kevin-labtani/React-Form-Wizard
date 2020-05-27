@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
-import AlertContext from "../context/alert/alertContext";
-import Alerts from "./layout/Alerts";
-import AvatarAnswer from "./AvatarAnswer";
-import Question from "./Question";
-import Navigation from "./Navigation";
+import AlertContext from "../../context/alert/alertContext";
+import Alerts from "../layout/Alerts";
+import AvatarAnswer from "../AvatarAnswer";
+import Question from "../Question";
+import Navigation from "../Navigation";
 
-const Step5 = ({
+const OpinionScale = ({
   values,
   SingleCheckboxChange,
   questionTitle,
@@ -92,11 +92,11 @@ const Step5 = ({
   );
 };
 
-Step5.defaultProps = {
+OpinionScale.defaultProps = {
   questionTitle: "What is your opinion from 1 to 10?",
   questionSubtitle: "Step 5: opinion scale",
   questionId: 5,
   opinionRange: 10,
 };
 
-export default Step5;
+export default OpinionScale;

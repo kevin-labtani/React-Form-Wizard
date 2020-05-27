@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
-import AlertContext from "../context/alert/alertContext";
-import Alerts from "./layout/Alerts";
-import AvatarAnswer from "./AvatarAnswer";
-import Question from "./Question";
-import Navigation from "./Navigation";
+import AlertContext from "../../context/alert/alertContext";
+import Alerts from "../layout/Alerts";
+import AvatarAnswer from "../AvatarAnswer";
+import Question from "../Question";
+import Navigation from "../Navigation";
 
-const Step4 = ({
+const Legal = ({
   values,
   SingleCheckboxChangePush,
   questionTitle,
@@ -94,10 +94,10 @@ const Step4 = ({
   );
 };
 
-Step4.defaultProps = {
+Legal.defaultProps = {
   questionTitle: "Can we send you emails?",
   questionSubtitle: "Step 4: legal",
   questionId: 4,
 };
 
-export default Step4;
+export default Legal;
