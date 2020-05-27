@@ -6,7 +6,12 @@ import AvatarAnswer from "./AvatarAnswer";
 import Question from "./Question";
 import Navigation from "./Navigation";
 
-const Step6 = ({ values, SingleCheckboxChange, questionTitle }) => {
+const Step6 = ({
+  values,
+  SingleCheckboxChange,
+  questionTitle,
+  questionSubtitle,
+}) => {
   const { setAlert } = useContext(AlertContext);
 
   const { push, goBack } = useHistory();
@@ -32,7 +37,7 @@ const Step6 = ({ values, SingleCheckboxChange, questionTitle }) => {
       <div className="row">
         <div className="col-8 offset-1 col-lg-7 offset-lg-2 rounded-lg px-lg-5 py-4 my-2 shadow bg-hu-grey-1 speech-bubble-answer">
           <Alerts />
-          <p className="subtitles text-muted">Step 6: yes or no</p>
+          <p className="subtitles text-muted">{questionSubtitle}</p>
           <div className="form-check pl-0 col-md-2">
             <input
               className="form-check-input"
@@ -82,6 +87,7 @@ const Step6 = ({ values, SingleCheckboxChange, questionTitle }) => {
 
 Step6.defaultProps = {
   questionTitle: "Is it yes, or is it no?",
+  questionSubtitle: "Step 6: yes or no"
 };
 
 export default Step6;

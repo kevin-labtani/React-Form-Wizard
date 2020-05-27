@@ -6,7 +6,12 @@ import AvatarAnswer from "./AvatarAnswer";
 import Question from "./Question";
 import Navigation from "./Navigation";
 
-const Step4 = ({ values, SingleCheckboxChangePush, questionTitle }) => {
+const Step4 = ({
+  values,
+  SingleCheckboxChangePush,
+  questionTitle,
+  questionSubtitle,
+}) => {
   const { setAlert } = useContext(AlertContext);
 
   const { push, goBack } = useHistory();
@@ -38,7 +43,7 @@ const Step4 = ({ values, SingleCheckboxChangePush, questionTitle }) => {
       <div className="row">
         <div className="col-8 offset-1 col-lg-7 offset-lg-2 rounded-lg px-lg-5 py-4 my-2 shadow bg-hu-grey-1 speech-bubble-answer">
           <Alerts />
-          <p className="subtitles text-muted">Step 4: legal</p>
+          <p className="subtitles text-muted">{questionSubtitle}</p>
           <div className="form-group">
             <div className="form-check pl-0 col-md-2">
               <input
@@ -90,6 +95,7 @@ const Step4 = ({ values, SingleCheckboxChangePush, questionTitle }) => {
 
 Step4.defaultProps = {
   questionTitle: "Can we send you emails?",
+  questionSubtitle: "Step 4: legal",
 };
 
 export default Step4;

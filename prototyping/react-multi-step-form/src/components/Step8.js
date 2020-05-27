@@ -6,7 +6,13 @@ import AvatarAnswer from "./AvatarAnswer";
 import Question from "./Question";
 import Navigation from "./Navigation";
 
-const Step8 = ({ values, multiCheckboxChange, questionTitle, answerArray }) => {
+const Step8 = ({
+  values,
+  multiCheckboxChange,
+  questionTitle,
+  questionSubtitle,
+  answerArray,
+}) => {
   const { setAlert } = useContext(AlertContext);
 
   const { push, goBack } = useHistory();
@@ -32,7 +38,7 @@ const Step8 = ({ values, multiCheckboxChange, questionTitle, answerArray }) => {
       <div className="row">
         <div className="col-8 offset-1 col-lg-7 offset-lg-2 rounded-lg px-lg-5 py-4 my-2 shadow bg-hu-grey-1 speech-bubble-answer">
           <Alerts />
-          <p className="subtitles text-muted">Step 8: multiple choice</p>
+          <p className="subtitles text-muted">{questionSubtitle}</p>
           {answerArray.map((choice, index) => (
             <div className="form-check pl-0" key={index}>
               <input
@@ -65,6 +71,7 @@ const Step8 = ({ values, multiCheckboxChange, questionTitle, answerArray }) => {
 
 Step8.defaultProps = {
   questionTitle: "What is your favorite pet?",
+  questionSubtitle: "Step 8: multiple choice",
   answerArray: ["cat", "dog", "fish"],
 };
 

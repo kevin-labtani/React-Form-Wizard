@@ -6,7 +6,7 @@ import AvatarAnswer from "./AvatarAnswer";
 import Question from "./Question";
 import Navigation from "./Navigation";
 
-const Step2 = ({ values, inputChange, questionTitle }) => {
+const Step2 = ({ values, inputChange, questionTitle, questionSubtitle }) => {
   const { setAlert } = useContext(AlertContext);
 
   const { push, goBack } = useHistory();
@@ -36,7 +36,7 @@ const Step2 = ({ values, inputChange, questionTitle }) => {
           <Alerts />
           <div className="form-group">
             <label htmlFor="name">
-              <p className="subtitles text-muted">Step 2: short text</p>
+              <p className="subtitles text-muted">{questionSubtitle}</p>
             </label>
             <input
               type="text"
@@ -61,6 +61,7 @@ const Step2 = ({ values, inputChange, questionTitle }) => {
 
 Step2.defaultProps = {
   questionTitle: "What's your name?",
+  questionSubtitle: "Step 2: short text",
 };
 
 export default Step2;

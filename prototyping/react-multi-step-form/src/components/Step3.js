@@ -10,6 +10,7 @@ const Step3 = ({
   values,
   SingleCheckboxChange,
   questionTitle,
+  questionSubtitle,
   answerArray,
 }) => {
   const { setAlert } = useContext(AlertContext);
@@ -37,7 +38,7 @@ const Step3 = ({
       <div className="row">
         <div className="col-8 offset-1 col-lg-7 offset-lg-2 rounded-lg px-lg-5 py-4 my-2 shadow bg-hu-grey-1 speech-bubble-answer">
           <Alerts />
-          <p className="subtitles text-muted">Step 3: Single Choice</p>
+          <p className="subtitles text-muted">{questionSubtitle}</p>
           {answerArray.map((choice, index) => (
             <div className="form-check pl-0" key={index}>
               <input
@@ -70,6 +71,7 @@ const Step3 = ({
 
 Step3.defaultProps = {
   questionTitle: "What do you want for dessert?",
+  questionSubtitle: "Step 3: single choice",
   answerArray: ["tiramisu", "ice-cream", "cake", "tarte aux pommes"],
 };
 

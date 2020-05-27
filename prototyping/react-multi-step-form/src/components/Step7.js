@@ -6,7 +6,7 @@ import AvatarAnswer from "./AvatarAnswer";
 import Question from "./Question";
 import Navigation from "./Navigation";
 
-const Step7 = ({ values, inputChange, questionTitle }) => {
+const Step7 = ({ values, inputChange, questionTitle, questionSubtitle }) => {
   const alertContext = useContext(AlertContext);
   const { setAlert } = alertContext;
 
@@ -35,7 +35,7 @@ const Step7 = ({ values, inputChange, questionTitle }) => {
           <Alerts />
           <div className="form-group">
             <label htmlFor="number">
-              <p className="subtitles text-muted">Step 7: number</p>
+              <p className="subtitles text-muted">{questionSubtitle}</p>
             </label>
             <input
               type="number"
@@ -60,6 +60,7 @@ const Step7 = ({ values, inputChange, questionTitle }) => {
 
 Step7.defaultProps = {
   questionTitle: "Please pick a number between 1 and 10",
+  questionSubtitle: "Step 7: number"
 };
 
 export default Step7;

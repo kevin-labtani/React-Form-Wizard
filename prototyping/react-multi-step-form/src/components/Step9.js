@@ -6,7 +6,13 @@ import AvatarAnswer from "./AvatarAnswer";
 import Question from "./Question";
 import Navigation from "./Navigation";
 
-const Step9 = ({ values, inputChange, questionTitle, ratingRange }) => {
+const Step9 = ({
+  values,
+  inputChange,
+  questionTitle,
+  questionSubtitle,
+  ratingRange,
+}) => {
   const { setAlert } = useContext(AlertContext);
 
   const { push, goBack } = useHistory();
@@ -50,7 +56,7 @@ const Step9 = ({ values, inputChange, questionTitle, ratingRange }) => {
       <div className="row">
         <div className="col-8 offset-1 col-lg-7 offset-lg-2 rounded-lg px-lg-5 py-4 my-2 shadow bg-hu-grey-1 speech-bubble-answer">
           <Alerts />
-          <p className="subtitles text-muted">Step 9: rating</p>
+          <p className="subtitles text-muted">{questionSubtitle}</p>
           <div className="rating">{range}</div>
         </div>
         <AvatarAnswer />
@@ -63,6 +69,7 @@ const Step9 = ({ values, inputChange, questionTitle, ratingRange }) => {
 
 Step9.defaultProps = {
   questionTitle: "How many stars do you give us?",
+  questionSubtitle: "Step 9: rating",
   ratingRange: 10,
 };
 

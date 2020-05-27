@@ -10,6 +10,7 @@ const Step5 = ({
   values,
   SingleCheckboxChange,
   questionTitle,
+  questionSubtitle,
   opinionRange,
 }) => {
   const { setAlert } = useContext(AlertContext);
@@ -61,7 +62,7 @@ const Step5 = ({
       <div className="row">
         <div className="col-8 offset-1 col-lg-7 offset-lg-2 rounded-lg px-lg-5 py-4 my-2 shadow bg-hu-grey-1 speech-bubble-answer">
           <Alerts />
-          <p className="subtitles text-muted">Step 5: opinion scale</p>
+          <p className="subtitles text-muted">{questionSubtitle}</p>
           <div className="form-group">
             <ul className="pagination">
               <li className="page-item disabled">
@@ -90,6 +91,7 @@ const Step5 = ({
 
 Step5.defaultProps = {
   questionTitle: "What is your opinion from 1 to 10?",
+  questionSubtitle: "Step 5: opinion scale",
   opinionRange: 10,
 };
 

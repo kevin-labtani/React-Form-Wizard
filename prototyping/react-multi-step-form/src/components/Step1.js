@@ -8,7 +8,7 @@ import Navigation from "./Navigation";
 
 import isEmail from "validator/lib/isEmail";
 
-const Step1 = ({ values, inputChange, questionTitle }) => {
+const Step1 = ({ values, inputChange, questionTitle, questionSubtitle }) => {
   const { setAlert } = useContext(AlertContext);
 
   const { push, goBack } = useHistory();
@@ -36,7 +36,7 @@ const Step1 = ({ values, inputChange, questionTitle }) => {
           <Alerts />
           <div className="form-group">
             <label htmlFor="email">
-              <p className="subtitles text-muted">Step 1: email</p>
+              <p className="subtitles text-muted">{questionSubtitle}</p>
             </label>
             <input
               type="email"
@@ -60,6 +60,7 @@ const Step1 = ({ values, inputChange, questionTitle }) => {
 
 Step1.defaultProps = {
   questionTitle: "What's your email?",
+  questionSubtitle: "Step 1: email",
 };
 
 export default Step1;
