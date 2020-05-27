@@ -29,7 +29,7 @@ const Step9 = ({ values, inputChange, questionTitle, ratingRange }) => {
   const range = [];
   for (let index = ratingRange; index > 0; index--) {
     range.push(
-      <>
+      <React.Fragment key={index}>
         <input
           type="radio"
           name="rating"
@@ -39,7 +39,7 @@ const Step9 = ({ values, inputChange, questionTitle, ratingRange }) => {
           onChange={inputChange("rating")}
         />
         <label htmlFor={`rating-${index}`}></label>
-      </>
+      </React.Fragment>
     );
   }
 

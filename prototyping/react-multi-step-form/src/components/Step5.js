@@ -36,6 +36,7 @@ const Step5 = ({
     scale.push(
       <li
         className={`page-item ${values.opinion === `${index}` ? "active" : ""}`}
+        key={index}
       >
         <input
           type="checkbox"
