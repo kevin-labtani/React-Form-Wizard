@@ -23,7 +23,7 @@ const Rating = ({
     if (!values[questionId]) {
       setAlert("Veuillez faire un choix", "danger");
     } else {
-      push("/confirm");
+      push("/step10");
     }
   };
 

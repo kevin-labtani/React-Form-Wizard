@@ -10,6 +10,7 @@ import YesNo from "./questionType/YesNo";
 import Number from "./questionType/Number";
 import MultipleChoice from "./questionType/MultipleChoice";
 import Rating from "./questionType/Rating";
+import PhoneNumber from "./questionType/PhoneNumber";
 import Confirm from "./Confirm";
 
 const Form = () => {
@@ -31,6 +32,7 @@ const Form = () => {
     7: "",
     8: [],
     9: "",
+    10: "",
   });
 
   // load data from localSotrage
@@ -167,6 +169,17 @@ const Form = () => {
         path="/step9"
         render={(routeProps) => (
           <Rating {...routeProps} inputChange={inputChange} values={contact} />
+        )}
+      />
+      <Route
+        exact
+        path="/step10"
+        render={(routeProps) => (
+          <PhoneNumber
+            {...routeProps}
+            inputChange={inputChange}
+            values={contact}
+          />
         )}
       />
       <Route
