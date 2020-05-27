@@ -6,7 +6,7 @@ import AvatarAnswer from "./AvatarAnswer";
 import Question from "./Question";
 import Navigation from "./Navigation";
 
-const Step8 = ({ values, multiCheckboxChange, questionTitle }) => {
+const Step8 = ({ values, multiCheckboxChange, questionTitle, answerArray }) => {
   const { setAlert } = useContext(AlertContext);
 
   const { push, goBack } = useHistory();
@@ -33,63 +33,27 @@ const Step8 = ({ values, multiCheckboxChange, questionTitle }) => {
         <div className="col-8 offset-1 col-lg-7 offset-lg-2 rounded-lg px-lg-5 py-4 my-2 shadow bg-hu-grey-1 speech-bubble-answer">
           <Alerts />
           <p className="subtitles text-muted">Step 8: multiple choice</p>
-          <div className="form-check pl-0">
-            <input
-              className="form-check-input"
-              type="checkbox"
-              value="cat"
-              id="checkbox1"
-              checked={values.pet.includes("cat")}
-              onChange={multiCheckboxChange("pet")}
-              hidden
-            />
-            <label
-              className={`btn btn-outline-primary btn-block text-left pl-4 ${
-                values.pet.includes("cat") ? "active" : ""
-              }`}
-              htmlFor="checkbox1"
-            >
-              Cat
-            </label>
-          </div>
-          <div className="form-check pl-0">
-            <input
-              className="form-check-input"
-              type="checkbox"
-              value="dog"
-              id="checkbox2"
-              checked={values.pet.includes("dog")}
-              onChange={multiCheckboxChange("pet")}
-              hidden
-            />
-            <label
-              className={`btn btn-outline-primary btn-block text-left pl-4 ${
-                values.pet.includes("dog") ? "active" : ""
-              }`}
-              htmlFor="checkbox2"
-            >
-              Dog
-            </label>
-          </div>
-          <div className="form-check pl-0">
-            <input
-              className="form-check-input"
-              type="checkbox"
-              value="fish"
-              id="checkbox3"
-              checked={values.pet.includes("fish")}
-              onChange={multiCheckboxChange("pet")}
-              hidden
-            />
-            <label
-              className={`btn btn-outline-primary btn-block text-left pl-4 ${
-                values.pet.includes("fish") ? "active" : ""
-              }`}
-              htmlFor="checkbox3"
-            >
-              Fish
-            </label>
-          </div>
+          {answerArray.map((choice, index) => (
+            <div className="form-check pl-0" key={index}>
+              <input
+                className="form-check-input"
+                type="checkbox"
+                value={`${choice}`}
+                id={`checkbox-${index}`}
+                checked={values.pet.includes(`${choice}`)}
+                onChange={multiCheckboxChange("pet")}
+                hidden
+              />
+              <label
+                className={`btn btn-outline-primary btn-block text-left pl-4 ${
+                  values.pet.includes(`${choice}`) ? "active" : ""
+                }`}
+                htmlFor={`checkbox-${index}`}
+              >
+                {choice}
+              </label>
+            </div>
+          ))}
         </div>
         <AvatarAnswer />
       </div>
@@ -101,6 +65,7 @@ const Step8 = ({ values, multiCheckboxChange, questionTitle }) => {
 
 Step8.defaultProps = {
   questionTitle: "What is your favorite pet?",
+  answerArray: ["cat", "dog", "fish"],
 };
 
 export default Step8;
