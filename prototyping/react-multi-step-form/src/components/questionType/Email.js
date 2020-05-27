@@ -48,6 +48,7 @@ const Email = ({
               type="email"
               className="form-control form-control-lg"
               name="email"
+              id="email"
               onChange={inputChange(questionId)}
               value={values[questionId]}
               autoComplete="off"

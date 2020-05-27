@@ -48,6 +48,7 @@ const ShortText = ({
               type="text"
               className="form-control form-control-lg"
               name="name"
+              id="name"
               maxLength="256"
               onChange={inputChange(questionId)}
               value={values[questionId]}

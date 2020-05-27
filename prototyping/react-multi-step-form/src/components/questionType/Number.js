@@ -47,6 +47,7 @@ const Number = ({
               type="number"
               className="form-control form-control-lg"
               name="number"
+              id="number"
               onChange={inputChange(questionId)}
               value={values[questionId]}
               min={0}
