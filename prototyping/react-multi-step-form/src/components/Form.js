@@ -12,9 +12,10 @@ import MultipleChoice from "./questionType/MultipleChoice";
 import Rating from "./questionType/Rating";
 import PhoneNumber from "./questionType/PhoneNumber";
 import Confirm from "./Confirm";
+import Spinner from "./layout/Spinner"
 
 const Form = () => {
-  const { getQuestions, questions } = useContext(QuestionsContext);
+  const { getQuestions, questions, loading } = useContext(QuestionsContext);
 
   useEffect(() => {
     getQuestions();
@@ -81,6 +82,10 @@ const Form = () => {
   const SingleCheckboxChange = (input) => (e) => {
     setContact({ ...contact, [input]: e.target.value });
   };
+
+  if (loading) {
+    return <Spinner />;
+  }
 
   return (
     <Switch>
