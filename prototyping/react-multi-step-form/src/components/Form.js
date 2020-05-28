@@ -12,7 +12,7 @@ import MultipleChoice from "./questionType/MultipleChoice";
 import Rating from "./questionType/Rating";
 import PhoneNumber from "./questionType/PhoneNumber";
 import Confirm from "./Confirm";
-import Spinner from "./layout/Spinner"
+import Spinner from "./layout/Spinner";
 
 const Form = () => {
   const { getQuestions, questions, loading } = useContext(QuestionsContext);
@@ -93,7 +93,12 @@ const Form = () => {
         exact
         path="/"
         render={(routeProps) => (
-          <Email {...routeProps} inputChange={inputChange} values={contact} />
+          <Email
+            {...routeProps}
+            inputChange={inputChange}
+            values={contact}
+            data={questions[0]}
+          />
         )}
       />
       <Route
@@ -104,6 +109,7 @@ const Form = () => {
             {...routeProps}
             inputChange={inputChange}
             values={contact}
+            data={questions[1]}
           />
         )}
       />
@@ -115,6 +121,7 @@ const Form = () => {
             {...routeProps}
             SingleCheckboxChange={SingleCheckboxChange}
             values={contact}
+            data={questions[2]}
           />
         )}
       />
@@ -148,6 +155,7 @@ const Form = () => {
             {...routeProps}
             SingleCheckboxChange={SingleCheckboxChange}
             values={contact}
+            data={questions[5]}
           />
         )}
       />
@@ -155,7 +163,12 @@ const Form = () => {
         exact
         path="/step7"
         render={(routeProps) => (
-          <Number {...routeProps} inputChange={inputChange} values={contact} />
+          <Number
+            {...routeProps}
+            inputChange={inputChange}
+            values={contact}
+            data={questions[6]}
+          />
         )}
       />
       <Route
@@ -166,6 +179,7 @@ const Form = () => {
             {...routeProps}
             multiCheckboxChange={multiCheckboxChange}
             values={contact}
+            data={questions[7]}
           />
         )}
       />
@@ -184,6 +198,7 @@ const Form = () => {
             {...routeProps}
             inputChange={inputChange}
             values={contact}
+            data={questions[9]}
           />
         )}
       />

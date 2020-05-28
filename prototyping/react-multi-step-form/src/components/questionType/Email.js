@@ -8,13 +8,13 @@ import Navigation from "../Navigation";
 
 import isEmail from "validator/lib/isEmail";
 
-const Email = ({
-  values,
-  inputChange,
-  questionTitle,
-  questionSubtitle,
-  questionId,
-}) => {
+const Email = ({ values, inputChange, data }) => {
+  const {
+    question_name: questionTitle,
+    question_subtitle: questionSubtitle,
+    question_id: questionId,
+  } = data;
+
   const { setAlert } = useContext(AlertContext);
 
   const { push, goBack } = useHistory();
@@ -24,7 +24,9 @@ const Email = ({
     if (!isEmail(values[questionId])) {
       setAlert("Veuillez entrer une adresse email valide", "danger");
     } else {
-      values[questionId] === "admin@demo.com" ? push("/step3") : push("/step2");
+      values[questionId] === "admin@demo.com"
+        ? push(`/step${questionId + 2}`)
+        : push(`/step${questionId + 1}`);
     }
   };
 
@@ -63,12 +65,6 @@ const Email = ({
       <Navigation fwd={fwd} back={back} />
     </>
   );
-};
-
-Email.defaultProps = {
-  questionTitle: "What's your email?",
-  questionSubtitle: "Step 1: email",
-  questionId: 1,
 };
 
 export default Email;

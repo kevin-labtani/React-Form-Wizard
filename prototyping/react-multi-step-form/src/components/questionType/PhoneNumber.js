@@ -6,13 +6,13 @@ import AvatarAnswer from "../AvatarAnswer";
 import Question from "../Question";
 import Navigation from "../Navigation";
 
-const PhoneNumber = ({
-  values,
-  inputChange,
-  questionTitle,
-  questionSubtitle,
-  questionId,
-}) => {
+const PhoneNumber = ({ values, inputChange, data }) => {
+  const {
+    question_name: questionTitle,
+    question_subtitle: questionSubtitle,
+    question_id: questionId,
+  } = data;
+
   const { setAlert } = useContext(AlertContext);
 
   const { push, goBack } = useHistory();
@@ -64,12 +64,6 @@ const PhoneNumber = ({
       <Navigation fwd={fwd} back={back} />
     </>
   );
-};
-
-PhoneNumber.defaultProps = {
-  questionTitle: "What's your phone number?",
-  questionSubtitle: "Step 10: phone number",
-  questionId: 10,
 };
 
 export default PhoneNumber;

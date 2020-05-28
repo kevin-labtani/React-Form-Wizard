@@ -9,11 +9,15 @@ import Navigation from "../Navigation";
 const SingleChoice = ({
   values,
   SingleCheckboxChange,
-  questionTitle,
-  questionSubtitle,
-  questionId,
-  answerArray,
+  data,
 }) => {
+  const {
+    question_name: questionTitle,
+    question_subtitle: questionSubtitle,
+    question_id: questionId,
+    box_values: boxValues,
+  } = data;
+
   const { setAlert } = useContext(AlertContext);
 
   const { push, goBack } = useHistory();
@@ -40,24 +44,24 @@ const SingleChoice = ({
         <div className="col-8 offset-1 col-lg-7 offset-lg-2 rounded-lg px-lg-5 py-4 my-2 shadow bg-hu-grey-1 speech-bubble-answer">
           <Alerts />
           <p className="subtitles text-muted">{questionSubtitle}</p>
-          {answerArray.map((choice, index) => (
-            <div className="form-check pl-0" key={index}>
+          {boxValues.map((choice, index) => (
+            <div key={index} className="form-check pl-0">
               <input
                 className="form-check-input"
                 type="checkbox"
-                value={`${choice}`}
+                value={`${choice["id"]}`}
                 id={`checkbox-${index}`}
-                checked={values[questionId] === `${choice}`}
+                checked={values[questionId] === `${choice["id"]}`}
                 onChange={SingleCheckboxChange(questionId)}
                 hidden
               />
               <label
                 className={`btn btn-outline-primary btn-block text-left pl-4 ${
-                  values[questionId] === `${choice}` ? "active" : ""
+                  values[questionId] === `${choice["id"]}` ? "active" : ""
                 }`}
                 htmlFor={`checkbox-${index}`}
               >
-                {choice}
+                {choice["label"]}
               </label>
             </div>
           ))}
@@ -68,13 +72,6 @@ const SingleChoice = ({
       <Navigation fwd={fwd} back={back} />
     </>
   );
-};
-
-SingleChoice.defaultProps = {
-  questionTitle: "What do you want for dessert?",
-  questionSubtitle: "Step 3: single choice",
-  questionId: 3,
-  answerArray: ["tiramisu", "ice-cream", "cake", "tarte aux pommes"],
 };
 
 export default SingleChoice;

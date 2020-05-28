@@ -6,14 +6,14 @@ import AvatarAnswer from "../AvatarAnswer";
 import Question from "../Question";
 import Navigation from "../Navigation";
 
-const MultipleChoice = ({
-  values,
-  multiCheckboxChange,
-  questionTitle,
-  questionSubtitle,
-  questionId,
-  answerArray,
-}) => {
+const MultipleChoice = ({ values, multiCheckboxChange, data }) => {
+  const {
+    question_name: questionTitle,
+    question_subtitle: questionSubtitle,
+    question_id: questionId,
+    box_values: boxValues,
+  } = data;
+
   const { setAlert } = useContext(AlertContext);
 
   const { push, goBack } = useHistory();
@@ -40,24 +40,24 @@ const MultipleChoice = ({
         <div className="col-8 offset-1 col-lg-7 offset-lg-2 rounded-lg px-lg-5 py-4 my-2 shadow bg-hu-grey-1 speech-bubble-answer">
           <Alerts />
           <p className="subtitles text-muted">{questionSubtitle}</p>
-          {answerArray.map((choice, index) => (
-            <div className="form-check pl-0" key={index}>
+          {boxValues.map((choice, index) => (
+            <div key={index} className="form-check pl-0">
               <input
                 className="form-check-input"
                 type="checkbox"
-                value={`${choice}`}
+                value={`${choice["id"]}`}
                 id={`checkbox-${index}`}
-                checked={values[questionId].includes(`${choice}`)}
+                checked={values[questionId].includes(`${choice["id"]}`)}
                 onChange={multiCheckboxChange(questionId)}
                 hidden
               />
               <label
                 className={`btn btn-outline-primary btn-block text-left pl-4 ${
-                  values[questionId].includes(`${choice}`) ? "active" : ""
+                  values[questionId].includes(`${choice["id"]}`) ? "active" : ""
                 }`}
                 htmlFor={`checkbox-${index}`}
               >
-                {choice}
+                {choice["label"]}
               </label>
             </div>
           ))}
@@ -68,13 +68,6 @@ const MultipleChoice = ({
       <Navigation fwd={fwd} back={back} />
     </>
   );
-};
-
-MultipleChoice.defaultProps = {
-  questionTitle: "What is your favorite pet?",
-  questionSubtitle: "Step 8: multiple choice",
-  questionId: 8,
-  answerArray: ["cat", "dog", "fish"],
 };
 
 export default MultipleChoice;

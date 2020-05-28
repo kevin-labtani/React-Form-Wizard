@@ -6,13 +6,13 @@ import AvatarAnswer from "../AvatarAnswer";
 import Question from "../Question";
 import Navigation from "../Navigation";
 
-const ShortText = ({
-  values,
-  inputChange,
-  questionTitle,
-  questionSubtitle,
-  questionId,
-}) => {
+const ShortText = ({ values, inputChange, data }) => {
+  const {
+    question_name: questionTitle,
+    question_subtitle: questionSubtitle,
+    question_id: questionId,
+  } = data;
+
   const { setAlert } = useContext(AlertContext);
 
   const { push, goBack } = useHistory();
@@ -64,12 +64,6 @@ const ShortText = ({
       <Navigation fwd={fwd} back={back} />
     </>
   );
-};
-
-ShortText.defaultProps = {
-  questionTitle: "What's your name?",
-  questionSubtitle: "Step 2: short text",
-  questionId: 2,
 };
 
 export default ShortText;

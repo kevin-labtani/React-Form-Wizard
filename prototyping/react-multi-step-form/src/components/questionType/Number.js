@@ -6,13 +6,20 @@ import AvatarAnswer from "../AvatarAnswer";
 import Question from "../Question";
 import Navigation from "../Navigation";
 
-const Number = ({
-  values,
-  inputChange,
-  questionTitle,
-  questionSubtitle,
-  questionId,
-}) => {
+const Number = ({ values, inputChange, data }) => {
+  const {
+    question_name: questionTitle,
+    question_subtitle: questionSubtitle,
+    question_id: questionId,
+    parameters,
+  } = data;
+
+  let min, max;
+  parameters.forEach(param => {
+    if (param["name"] === "max_value") max = param["value"];
+    if (param["name"] === "min_value") min = param["value"];
+  })
+
   const alertContext = useContext(AlertContext);
   const { setAlert } = alertContext;
 
@@ -20,8 +27,12 @@ const Number = ({
 
   const fwd = (e) => {
     e.preventDefault();
-    if (!values[questionId] || values[questionId] < 0 || values[questionId] > 10) {
-      setAlert("Please enter a number between 0 and 10", "danger");
+    if (
+      !values[questionId] ||
+      values[questionId] < min ||
+      values[questionId] > max
+    ) {
+      setAlert(`Please enter a number between ${min} and ${max}`, "danger");
     } else {
       push("/step8");
     }
@@ -50,8 +61,8 @@ const Number = ({
               id="number"
               onChange={inputChange(questionId)}
               value={values[questionId]}
-              min={0}
-              max={10}
+              min={min}
+              max={max}
               autoFocus
               placeholder="Enter a value here"
             />
@@ -63,12 +74,6 @@ const Number = ({
       <Navigation fwd={fwd} back={back} />
     </>
   );
-};
-
-Number.defaultProps = {
-  questionTitle: "Please pick a number between 1 and 10",
-  questionSubtitle: "Step 7: number",
-  questionId: 7,
 };
 
 export default Number;
