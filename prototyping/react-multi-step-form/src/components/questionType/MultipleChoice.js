@@ -14,6 +14,8 @@ const MultipleChoice = ({ values, multiCheckboxChange, data }) => {
     box_values: boxValues,
   } = data;
 
+  boxValues.sort((a, b) => a["id"] - b["id"]);
+
   const { setAlert } = useContext(AlertContext);
 
   const { push, goBack } = useHistory();

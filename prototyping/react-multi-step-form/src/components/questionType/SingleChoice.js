@@ -6,17 +6,15 @@ import AvatarAnswer from "../AvatarAnswer";
 import Question from "../Question";
 import Navigation from "../Navigation";
 
-const SingleChoice = ({
-  values,
-  SingleCheckboxChange,
-  data,
-}) => {
+const SingleChoice = ({ values, SingleCheckboxChange, data }) => {
   const {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
     question_id: questionId,
     box_values: boxValues,
   } = data;
+
+  boxValues.sort((a, b) => a["id"] - b["id"]);
 
   const { setAlert } = useContext(AlertContext);
 
