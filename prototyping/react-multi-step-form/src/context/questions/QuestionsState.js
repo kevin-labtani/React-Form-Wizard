@@ -101,7 +101,81 @@ const QuestionsState = (props) => {
         parameters: null,
         default_next_id: null,
       },
-      {},
+      {
+        assessment_id: 13,
+        assessment_name: "Suivi entretiens",
+        assessment_creation_date: "2020-05-07 08:40:20",
+        question_id: 5,
+        question_name: "What is your opinion from 1 to 10?",
+        question_subtitle: "Step 5: opinion scale",
+        question_type_id: 7,
+        question_type_name: "opinion_scale",
+        box_values: [
+          {
+            id: "31",
+            label: "1",
+            next_id_if_selected: "",
+          },
+          {
+            id: "32",
+            label: "2",
+            next_id_if_selected: "",
+          },
+          {
+            id: "33",
+            label: "3",
+            next_id_if_selected: "",
+          },
+          {
+            id: "34",
+            label: "4",
+            next_id_if_selected: "",
+          },
+          {
+            id: "35",
+            label: "5",
+            next_id_if_selected: "",
+          },
+          {
+            id: "36",
+            label: "6",
+            next_id_if_selected: "",
+          },
+          {
+            id: "37",
+            label: "7",
+            next_id_if_selected: "",
+          },
+          {
+            id: "38",
+            label: "8",
+            next_id_if_selected: "",
+          },
+          {
+            id: "39",
+            label: "9",
+            next_id_if_selected: "",
+          },
+          {
+            id: "40",
+            label: "10",
+            next_id_if_selected: "",
+          },
+        ],
+        parameters: [
+          {
+            id: "54",
+            name: "label_left",
+            value: "-",
+          },
+          {
+            id: "55",
+            name: "label_right",
+            value: "+",
+          },
+        ],
+        default_next_id: null,
+      },
       {
         assessment_id: 13,
         assessment_name: "Suivi entretiens",

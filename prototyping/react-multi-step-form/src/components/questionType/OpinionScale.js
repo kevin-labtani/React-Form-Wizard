@@ -6,14 +6,25 @@ import AvatarAnswer from "../AvatarAnswer";
 import Question from "../Question";
 import Navigation from "../Navigation";
 
-const OpinionScale = ({
-  values,
-  SingleCheckboxChange,
-  questionTitle,
-  questionSubtitle,
-  questionId,
-  opinionRange,
-}) => {
+const OpinionScale = ({ values, SingleCheckboxChange, data }) => {
+  const {
+    question_name: questionTitle,
+    question_subtitle: questionSubtitle,
+    question_id: questionId,
+    box_values: boxValues,
+    parameters,
+  } = data;
+
+  let labelLeft, labelRight;
+  parameters.forEach((param) => {
+    if (param["name"] === "label_left") {
+      labelLeft = param["value"];
+    }
+    if (param["name"] === "label_right") {
+      labelRight = param["value"];
+    }
+  });
+
   const { setAlert } = useContext(AlertContext);
 
   const { push, goBack } = useHistory();
@@ -34,7 +45,7 @@ const OpinionScale = ({
 
   // generate opinion scale
   const scale = [];
-  for (let index = 1; index <= opinionRange; index++) {
+  for (let index = 1; index <= 10; index++) {
     scale.push(
       <li
         className={`page-item ${
@@ -71,14 +82,34 @@ const OpinionScale = ({
               <li className="page-item disabled">
                 <input type="checkbox" id="rating-left" hidden />
                 <label className="page-link" htmlFor="rating-left">
-                  -
+                  {labelLeft}
                 </label>
               </li>
-              {scale}
+              {boxValues.map((choice, index) => (
+                <li
+                  className={`page-item ${
+                    values[questionId] === `${choice["id"]}` ? "active" : ""
+                  }`}
+                  key={index}
+                >
+                  <input
+                    type="checkbox"
+                    name="rating"
+                    value={`${choice["id"]}`}
+                    id={`rating-${index}`}
+                    checked={values[questionId] === `${choice["id"]}`}
+                    onChange={SingleCheckboxChange(questionId)}
+                    hidden
+                  />
+                  <label className="page-link" htmlFor={`rating-${index}`}>
+                    {choice["label"]}
+                  </label>
+                </li>
+              ))}
               <li className="page-item disabled">
                 <input type="checkbox" id="rating-right" hidden />
                 <label className="page-link" htmlFor="rating-right">
-                  +
+                  {labelRight}
                 </label>
               </li>
             </ul>
@@ -90,13 +121,6 @@ const OpinionScale = ({
       <Navigation fwd={fwd} back={back} />
     </>
   );
-};
-
-OpinionScale.defaultProps = {
-  questionTitle: "What is your opinion from 1 to 10?",
-  questionSubtitle: "Step 5: opinion scale",
-  questionId: 5,
-  opinionRange: 10,
 };
 
 export default OpinionScale;

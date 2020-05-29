@@ -145,6 +145,7 @@ const Form = () => {
             {...routeProps}
             SingleCheckboxChange={SingleCheckboxChange}
             values={contact}
+            data={questions[4]}
           />
         )}
       />
