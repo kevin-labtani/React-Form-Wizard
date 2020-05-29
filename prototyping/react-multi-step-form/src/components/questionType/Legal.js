@@ -6,13 +6,14 @@ import AvatarAnswer from "../AvatarAnswer";
 import Question from "../Question";
 import Navigation from "../Navigation";
 
-const Legal = ({
-  values,
-  SingleCheckboxChangePush,
-  questionTitle,
-  questionSubtitle,
-  questionId,
-}) => {
+const Legal = ({ values, SingleCheckboxChangePush, data }) => {
+  const {
+    question_name: questionTitle,
+    question_subtitle: questionSubtitle,
+    question_id: questionId,
+    box_values: boxValues,
+  } = data;
+
   const { setAlert } = useContext(AlertContext);
 
   const { push, goBack } = useHistory();
@@ -40,51 +41,31 @@ const Legal = ({
   return (
     <>
       <Question questionTitle={questionTitle} />
-
       <div className="row">
         <div className="col-8 offset-1 col-lg-7 offset-lg-2 rounded-lg px-lg-5 py-4 my-2 shadow bg-hu-grey-1 speech-bubble-answer">
           <Alerts />
           <p className="subtitles text-muted">{questionSubtitle}</p>
-          <div className="form-group">
-            <div className="form-check pl-0 col-md-2">
+          {boxValues.map((choice, index) => (
+            <div key={index} className="form-check pl-0">
               <input
                 className="form-check-input"
                 type="checkbox"
-                value="yes"
-                id="checkbox1"
-                checked={values[questionId] === "yes"}
+                value={`${choice["id"]}`}
+                id={`checkbox-${index}`}
+                checked={values[questionId] === `${choice["id"]}`}
                 onChange={SingleCheckboxChangePush(questionId, "/step5")}
                 hidden
               />
               <label
                 className={`btn btn-outline-primary btn-block text-left pl-4 ${
-                  values[questionId] === "yes" ? "active" : ""
+                  values[questionId] === `${choice["id"]}` ? "active" : ""
                 }`}
-                htmlFor="checkbox1"
+                htmlFor={`checkbox-${index}`}
               >
-                Yes
+                {choice["label"]}
               </label>
             </div>
-            <div className="form-check pl-0 col-md-2">
-              <input
-                className="form-check-input"
-                type="checkbox"
-                value="no"
-                id="checkbox2"
-                checked={values[questionId] === "no"}
-                onChange={SingleCheckboxChangePush(questionId, "/step5")}
-                hidden
-              />
-              <label
-                className={`btn btn-outline-primary btn-block text-left pl-4 ${
-                  values[questionId] === "no" ? "active" : ""
-                }`}
-                htmlFor="checkbox2"
-              >
-                No
-              </label>
-            </div>
-          </div>
+          ))}
         </div>
         <AvatarAnswer />
       </div>
@@ -92,12 +73,6 @@ const Legal = ({
       <Navigation fwd={fwd} back={back} />
     </>
   );
-};
-
-Legal.defaultProps = {
-  questionTitle: "Can we send you emails?",
-  questionSubtitle: "Step 4: legal",
-  questionId: 4,
 };
 
 export default Legal;

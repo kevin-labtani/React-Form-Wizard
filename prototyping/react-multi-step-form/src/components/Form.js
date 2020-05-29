@@ -133,6 +133,7 @@ const Form = () => {
             {...routeProps}
             SingleCheckboxChangePush={SingleCheckboxChangePush}
             values={contact}
+            data={questions[3]}
           />
         )}
       />

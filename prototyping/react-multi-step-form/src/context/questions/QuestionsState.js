@@ -77,7 +77,30 @@ const QuestionsState = (props) => {
         parameters: null,
         default_next_id: null,
       },
-      {},
+      {
+        assessment_id: 13,
+        assessment_name: "Suivi entretiens",
+        assessment_creation_date: "2020-05-07 08:40:20",
+        question_id: 4,
+        question_name: "Can we send you emails?",
+        question_subtitle: "Step 4: legal",
+        question_type_id: 4,
+        question_type_name: "legal",
+        box_values: [
+          {
+            id: "11",
+            label: "True",
+            next_id_if_selected: "",
+          },
+          {
+            id: "12",
+            label: "False",
+            next_id_if_selected: "",
+          },
+        ],
+        parameters: null,
+        default_next_id: null,
+      },
       {},
       {
         assessment_id: 13,
