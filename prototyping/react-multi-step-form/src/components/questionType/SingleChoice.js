@@ -25,7 +25,7 @@ const SingleChoice = ({ values, SingleCheckboxChange, data }) => {
     if (!values[questionId]) {
       setAlert("Veuillez faire un choix", "danger");
     } else {
-      push("/4");
+      push(`/${questionId + 1}`);
     }
   };
 

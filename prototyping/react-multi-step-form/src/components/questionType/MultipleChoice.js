@@ -25,7 +25,7 @@ const MultipleChoice = ({ values, multiCheckboxChange, data }) => {
     if (values[questionId].length === 0) {
       setAlert("Veuillez faire un choix", "danger");
     } else {
-      push("/9");
+      push(`/${questionId + 1}`);
     }
   };
 

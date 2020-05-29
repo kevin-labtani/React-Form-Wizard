@@ -24,7 +24,7 @@ const ShortText = ({ values, inputChange, data }) => {
     } else if (values[questionId].length > 256) {
       setAlert("Votre réponse doit faire moins de 256 caractères", "danger");
     } else {
-      push("/3");
+      push(`/${questionId + 1}`);
     }
   };
 

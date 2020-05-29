@@ -23,7 +23,7 @@ const YesNo = ({ values, SingleCheckboxChange, data }) => {
     if (!values[questionId]) {
       setAlert("Veuillez faire un choix", "danger");
     } else {
-      push("/7");
+      push(`/${questionId + 1}`);
     }
   };
 

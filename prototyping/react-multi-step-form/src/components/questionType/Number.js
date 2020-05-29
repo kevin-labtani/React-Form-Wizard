@@ -34,7 +34,7 @@ const Number = ({ values, inputChange, data }) => {
     ) {
       setAlert(`Please enter a number between ${min} and ${max}`, "danger");
     } else {
-      push("/8");
+      push(`/${questionId + 1}`);
     }
   };
 

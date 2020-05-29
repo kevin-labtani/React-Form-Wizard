@@ -23,7 +23,7 @@ const Legal = ({ values, SingleCheckboxChangePush, data }) => {
     if (!values[questionId]) {
       setAlert("Veuillez faire un choix", "danger");
     } else {
-      push("/5");
+      push(`/${questionId + 1}`);
     }
   };
 
@@ -53,7 +53,10 @@ const Legal = ({ values, SingleCheckboxChangePush, data }) => {
                 value={`${choice["id"]}`}
                 id={`checkbox-${index}`}
                 checked={values[questionId] === `${choice["id"]}`}
-                onChange={SingleCheckboxChangePush(questionId, "/5")}
+                onChange={SingleCheckboxChangePush(
+                  questionId,
+                  `/${questionId + 1}`
+                )}
                 hidden
               />
               <label
