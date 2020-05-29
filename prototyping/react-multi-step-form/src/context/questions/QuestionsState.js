@@ -319,7 +319,7 @@ const QuestionsState = (props) => {
   // get questions from DB
   const getQuestions = async () => {
     // setLoading();
-    // req user from api
+    // // req user from api
     // const res = await axios.get(
     //   "https://cors-anywhere.herokuapp.com/https://preprod.hike-up.be/api/getATH/0251455c-65b7-4003-836c-2928a9b81b3d/13"
     // );

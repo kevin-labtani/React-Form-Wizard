@@ -22,35 +22,34 @@ const Form = () => {
     // eslint-disable-next-line
   }, []);
 
-  const { push } = useHistory();
-  const [contact, setContact] = useState({
-    1: "",
-    2: "",
-    3: "",
-    4: "",
-    5: "",
-    6: "",
-    7: "",
-    8: [],
-    9: "",
-    10: "",
+  // initialize answer obj
+  let initAnswers = {};
+  questions.forEach((q) => {
+    if (q["question_type_id"] === 1) {
+      initAnswers[q["question_id"]] = [];
+    } else {
+      initAnswers[q["question_id"]] = "";
+    }
   });
+
+  const { push } = useHistory();
+  const [answers, setAnswers] = useState(initAnswers);
 
   // load data from localSotrage
   useEffect(() => {
-    const data = localStorage.getItem("contact");
+    const data = localStorage.getItem("answers");
     if (data) {
-      setContact(JSON.parse(data));
+      setAnswers(JSON.parse(data));
     }
   }, []);
 
   // save data to localStorage
   useEffect(() => {
-    localStorage.setItem("contact", JSON.stringify(contact));
-  }, [contact]);
+    localStorage.setItem("answers", JSON.stringify(answers));
+  }, [answers]);
 
   const inputChange = (input) => (e) => {
-    setContact({ ...contact, [input]: e.target.value });
+    setAnswers({ ...answers, [input]: e.target.value });
   };
 
   // const checkboxChange = (input) => (e) => {
@@ -64,155 +63,215 @@ const Form = () => {
   //   push(next);
   // };
   const SingleCheckboxChangePush = (input, next) => (e) => {
-    setContact({ ...contact, [input]: e.target.value });
+    setAnswers({ ...answers, [input]: e.target.value });
     push(next);
   };
 
   const multiCheckboxChange = (input) => (e) => {
-    const oldArr = contact[input];
+    const oldArr = answers[input];
     if (e.target.checked) {
       oldArr.push(e.target.value);
-      setContact({ ...contact, [input]: oldArr });
+      setAnswers({ ...answers, [input]: oldArr });
     } else {
       const filteredArr = oldArr.filter((pet) => pet !== e.target.value);
-      setContact({ ...contact, [input]: filteredArr });
+      setAnswers({ ...answers, [input]: filteredArr });
     }
   };
 
   const SingleCheckboxChange = (input) => (e) => {
-    setContact({ ...contact, [input]: e.target.value });
+    setAnswers({ ...answers, [input]: e.target.value });
   };
 
   if (loading) {
     return <Spinner />;
   }
 
+  let questionsSwitch = [];
+  questions.forEach((q) => {
+    switch (q["question_type_id"]) {
+      case 1:
+        questionsSwitch.push(
+          <Route
+            exact
+            path={`/${q["question_id"]}`}
+            render={(routeProps) => (
+              <MultipleChoice
+                {...routeProps}
+                multiCheckboxChange={multiCheckboxChange}
+                values={answers}
+                data={q}
+              />
+            )}
+          />
+        );
+        break;
+
+      case 2:
+        questionsSwitch.push(
+          <Route
+            exact
+            path={`/${q["question_id"]}`}
+            render={(routeProps) => (
+              <SingleChoice
+                {...routeProps}
+                SingleCheckboxChange={SingleCheckboxChange}
+                values={answers}
+                data={q}
+              />
+            )}
+          />
+        );
+        break;
+
+      case 3:
+        questionsSwitch.push(
+          <Route
+            exact
+            path={`/${q["question_id"]}`}
+            render={(routeProps) => (
+              <YesNo
+                {...routeProps}
+                SingleCheckboxChange={SingleCheckboxChange}
+                values={answers}
+                data={q}
+              />
+            )}
+          />
+        );
+        break;
+
+      case 4:
+        questionsSwitch.push(
+          <Route
+            exact
+            path={`/${q["question_id"]}`}
+            render={(routeProps) => (
+              <Legal
+                {...routeProps}
+                SingleCheckboxChangePush={SingleCheckboxChangePush}
+                values={answers}
+                data={q}
+              />
+            )}
+          />
+        );
+        break;
+
+      case 5:
+        questionsSwitch.push(
+          <Route
+            exact
+            path={`/${q["question_id"]}`}
+            render={(routeProps) => (
+              <Rating
+                {...routeProps}
+                inputChange={inputChange}
+                values={answers}
+                data={q}
+              />
+            )}
+          />
+        );
+        break;
+
+      case 6:
+        questionsSwitch.push(
+          <Route
+            exact
+            path={`/${q["question_id"]}`}
+            render={(routeProps) => (
+              <ShortText
+                {...routeProps}
+                inputChange={inputChange}
+                values={answers}
+                data={q}
+              />
+            )}
+          />
+        );
+        break;
+
+      case 7:
+        questionsSwitch.push(
+          <Route
+            exact
+            path={`/${q["question_id"]}`}
+            render={(routeProps) => (
+              <OpinionScale
+                {...routeProps}
+                SingleCheckboxChange={SingleCheckboxChange}
+                values={answers}
+                data={q}
+              />
+            )}
+          />
+        );
+        break;
+
+      case 8:
+        questionsSwitch.push(
+          <Route
+            exact
+            path={`/${q["question_id"]}`}
+            render={(routeProps) => (
+              <Email
+                {...routeProps}
+                inputChange={inputChange}
+                values={answers}
+                data={q}
+              />
+            )}
+          />
+        );
+        break;
+
+      case 9:
+        questionsSwitch.push(
+          <Route
+            exact
+            path={`/${q["question_id"]}`}
+            render={(routeProps) => (
+              <Number
+                {...routeProps}
+                inputChange={inputChange}
+                values={answers}
+                data={q}
+              />
+            )}
+          />
+        );
+        break;
+
+      case 10:
+        questionsSwitch.push(
+          <Route
+            exact
+            path={`/${q["question_id"]}`}
+            render={(routeProps) => (
+              <PhoneNumber
+                {...routeProps}
+                inputChange={inputChange}
+                values={answers}
+                data={q}
+              />
+            )}
+          />
+        );
+        break;
+
+      default:
+        break;
+    }
+  });
+
   return (
     <Switch>
-      <Route
-        exact
-        path="/1"
-        render={(routeProps) => (
-          <Email
-            {...routeProps}
-            inputChange={inputChange}
-            values={contact}
-            data={questions[0]}
-          />
-        )}
-      />
-      <Route
-        exact
-        path="/2"
-        render={(routeProps) => (
-          <ShortText
-            {...routeProps}
-            inputChange={inputChange}
-            values={contact}
-            data={questions[1]}
-          />
-        )}
-      />
-      <Route
-        exact
-        path="/3"
-        render={(routeProps) => (
-          <SingleChoice
-            {...routeProps}
-            SingleCheckboxChange={SingleCheckboxChange}
-            values={contact}
-            data={questions[2]}
-          />
-        )}
-      />
-      <Route
-        exact
-        path="/4"
-        render={(routeProps) => (
-          <Legal
-            {...routeProps}
-            SingleCheckboxChangePush={SingleCheckboxChangePush}
-            values={contact}
-            data={questions[3]}
-          />
-        )}
-      />
-      <Route
-        exact
-        path="/5"
-        render={(routeProps) => (
-          <OpinionScale
-            {...routeProps}
-            SingleCheckboxChange={SingleCheckboxChange}
-            values={contact}
-            data={questions[4]}
-          />
-        )}
-      />
-      <Route
-        exact
-        path="/6"
-        render={(routeProps) => (
-          <YesNo
-            {...routeProps}
-            SingleCheckboxChange={SingleCheckboxChange}
-            values={contact}
-            data={questions[5]}
-          />
-        )}
-      />
-      <Route
-        exact
-        path="/7"
-        render={(routeProps) => (
-          <Number
-            {...routeProps}
-            inputChange={inputChange}
-            values={contact}
-            data={questions[6]}
-          />
-        )}
-      />
-      <Route
-        exact
-        path="/8"
-        render={(routeProps) => (
-          <MultipleChoice
-            {...routeProps}
-            multiCheckboxChange={multiCheckboxChange}
-            values={contact}
-            data={questions[7]}
-          />
-        )}
-      />
-      <Route
-        exact
-        path="/9"
-        render={(routeProps) => (
-          <Rating
-            {...routeProps}
-            inputChange={inputChange}
-            values={contact}
-            data={questions[8]}
-          />
-        )}
-      />
-      <Route
-        exact
-        path="/10"
-        render={(routeProps) => (
-          <PhoneNumber
-            {...routeProps}
-            inputChange={inputChange}
-            values={contact}
-            data={questions[9]}
-          />
-        )}
-      />
+      {questionsSwitch}
+
       <Route
         exact
         path="/confirm"
-        render={(routeProps) => <Confirm {...routeProps} values={contact} />}
+        render={(routeProps) => <Confirm {...routeProps} values={answers} />}
       />
     </Switch>
   );
