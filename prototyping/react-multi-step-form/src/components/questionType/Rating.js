@@ -6,14 +6,19 @@ import AvatarAnswer from "../AvatarAnswer";
 import Question from "../Question";
 import Navigation from "../Navigation";
 
-const Rating = ({
-  values,
-  inputChange,
-  questionTitle,
-  questionSubtitle,
-  questionId,
-  ratingRange,
-}) => {
+const Rating = ({ values, inputChange, data }) => {
+  const {
+    question_name: questionTitle,
+    question_subtitle: questionSubtitle,
+    question_id: questionId,
+    parameters,
+  } = data;
+
+  let ratingRange;
+  parameters.forEach((param) => {
+    if (param["name"] === "steps") ratingRange = parseInt(param["value"]);
+  });
+
   const { setAlert } = useContext(AlertContext);
 
   const { push, goBack } = useHistory();
@@ -66,13 +71,6 @@ const Rating = ({
       <Navigation fwd={fwd} back={back} />
     </>
   );
-};
-
-Rating.defaultProps = {
-  questionTitle: "How many stars do you give us?",
-  questionSubtitle: "Step 9: rating",
-  questionId: 9,
-  ratingRange: 10,
 };
 
 export default Rating;

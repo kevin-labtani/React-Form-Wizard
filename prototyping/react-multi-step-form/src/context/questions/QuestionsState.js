@@ -204,7 +204,25 @@ const QuestionsState = (props) => {
         parameters: null,
         default_next_id: null,
       },
-      {},
+      {
+        assessment_id: 13,
+        assessment_name: "Suivi entretiens",
+        assessment_creation_date: "2020-05-07 08:40:20",
+        question_id: 9,
+        question_name: "How many stars do you rate us?",
+        question_subtitle: "Step 9: rating",
+        question_type_id: 5,
+        question_type_name: "rating",
+        box_values: null,
+        parameters: [
+          {
+            id: "22",
+            name: "steps",
+            value: "10",
+          },
+        ],
+        default_next_id: null,
+      },
       {
         assessment_id: 13,
         assessment_name: "Suivi entretiens",

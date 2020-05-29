@@ -188,7 +188,12 @@ const Form = () => {
         exact
         path="/step9"
         render={(routeProps) => (
-          <Rating {...routeProps} inputChange={inputChange} values={contact} />
+          <Rating
+            {...routeProps}
+            inputChange={inputChange}
+            values={contact}
+            data={questions[8]}
+          />
         )}
       />
       <Route
