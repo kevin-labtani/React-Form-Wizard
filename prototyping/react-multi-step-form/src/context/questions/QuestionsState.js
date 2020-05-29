@@ -44,32 +44,32 @@ const QuestionsState = (props) => {
         question_type_name: "single_choice",
         box_values: [
           {
-            id: 15,
+            id: "15",
             label: "Vaillant",
             next_id_if_selected: "",
           },
           {
-            id: 19,
+            id: "19",
             label: "Viessmann",
             next_id_if_selected: "",
           },
           {
-            id: 16,
+            id: "16",
             label: "Saint Roch",
             next_id_if_selected: "",
           },
           {
-            id: 18,
+            id: "18",
             label: "Elco",
             next_id_if_selected: "",
           },
           {
-            id: 17,
+            id: "17",
             label: "Buderus",
             next_id_if_selected: "",
           },
           {
-            id: 20,
+            id: "20",
             label: "Other",
             next_id_if_selected: "",
           },
@@ -90,12 +90,12 @@ const QuestionsState = (props) => {
         question_type_name: "yes_no",
         box_values: [
           {
-            id: 13,
+            id: "13",
             label: "True",
             next_id_if_selected: "",
           },
           {
-            id: 14,
+            id: "14",
             label: "False",
             next_id_if_selected: "",
           },
@@ -115,14 +115,14 @@ const QuestionsState = (props) => {
         box_values: null,
         parameters: [
           {
-            id: 4,
+            id: "4",
             name: "max_value",
-            value: 100,
+            value: "100",
           },
           {
-            id: 3,
+            id: "3",
             name: "min_value",
-            value: 10,
+            value: "10",
           },
         ],
         default_next_id: null,
@@ -138,42 +138,42 @@ const QuestionsState = (props) => {
         question_type_name: "multiple_choice",
         box_values: [
           {
-            id: 6,
+            id: "6",
             label: "Nettoyage du filtre à mazout",
             next_id_if_selected: "",
           },
           {
-            id: 9,
+            id: "9",
             label: "Ramonage du conduit de fumée",
             next_id_if_selected: "",
           },
           {
-            id: 10,
+            id: "10",
             label: "Test de combustion + réglages",
             next_id_if_selected: "",
           },
           {
-            id: 11,
+            id: "11",
             label: "Test de la dureté de l eau",
             next_id_if_selected: "",
           },
           {
-            id: 12,
+            id: "12",
             label: "Other",
             next_id_if_selected: "",
           },
           {
-            id: 5,
+            id: "5",
             label: "Nettoyage du corps de chauffe",
             next_id_if_selected: "",
           },
           {
-            id: 7,
+            id: "7",
             label: "Nettoyage du bruleur",
             next_id_if_selected: "",
           },
           {
-            id: 8,
+            id: "8",
             label: "Changement du gicleur",
             next_id_if_selected: "",
           },

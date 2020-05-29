@@ -16,8 +16,8 @@ const Number = ({ values, inputChange, data }) => {
 
   let min, max;
   parameters.forEach(param => {
-    if (param["name"] === "max_value") max = param["value"];
-    if (param["name"] === "min_value") min = param["value"];
+    if (param["name"] === "max_value") max = parseInt(param["value"]);
+    if (param["name"] === "min_value") min = parseInt(param["value"]);
   })
 
   const alertContext = useContext(AlertContext);
