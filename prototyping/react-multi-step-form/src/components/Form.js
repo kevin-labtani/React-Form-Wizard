@@ -92,6 +92,7 @@ const Form = () => {
       case 1:
         questionsSwitch.push(
           <Route
+            key={`${q["question_id"]}`}
             exact
             path={`/${q["question_id"]}`}
             render={(routeProps) => (
@@ -109,6 +110,7 @@ const Form = () => {
       case 2:
         questionsSwitch.push(
           <Route
+            key={`${q["question_id"]}`}
             exact
             path={`/${q["question_id"]}`}
             render={(routeProps) => (
@@ -126,6 +128,7 @@ const Form = () => {
       case 3:
         questionsSwitch.push(
           <Route
+            key={`${q["question_id"]}`}
             exact
             path={`/${q["question_id"]}`}
             render={(routeProps) => (
@@ -143,6 +146,7 @@ const Form = () => {
       case 4:
         questionsSwitch.push(
           <Route
+            key={`${q["question_id"]}`}
             exact
             path={`/${q["question_id"]}`}
             render={(routeProps) => (
@@ -160,6 +164,7 @@ const Form = () => {
       case 5:
         questionsSwitch.push(
           <Route
+            key={`${q["question_id"]}`}
             exact
             path={`/${q["question_id"]}`}
             render={(routeProps) => (
@@ -177,6 +182,7 @@ const Form = () => {
       case 6:
         questionsSwitch.push(
           <Route
+            key={`${q["question_id"]}`}
             exact
             path={`/${q["question_id"]}`}
             render={(routeProps) => (
@@ -194,6 +200,7 @@ const Form = () => {
       case 7:
         questionsSwitch.push(
           <Route
+            key={`${q["question_id"]}`}
             exact
             path={`/${q["question_id"]}`}
             render={(routeProps) => (
@@ -211,6 +218,7 @@ const Form = () => {
       case 8:
         questionsSwitch.push(
           <Route
+            key={`${q["question_id"]}`}
             exact
             path={`/${q["question_id"]}`}
             render={(routeProps) => (
@@ -228,6 +236,7 @@ const Form = () => {
       case 9:
         questionsSwitch.push(
           <Route
+            key={`${q["question_id"]}`}
             exact
             path={`/${q["question_id"]}`}
             render={(routeProps) => (
@@ -245,6 +254,7 @@ const Form = () => {
       case 10:
         questionsSwitch.push(
           <Route
+            key={`${q["question_id"]}`}
             exact
             path={`/${q["question_id"]}`}
             render={(routeProps) => (
