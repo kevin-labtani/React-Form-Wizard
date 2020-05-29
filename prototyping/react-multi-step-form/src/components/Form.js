@@ -91,7 +91,7 @@ const Form = () => {
     <Switch>
       <Route
         exact
-        path="/"
+        path="/1"
         render={(routeProps) => (
           <Email
             {...routeProps}
@@ -103,7 +103,7 @@ const Form = () => {
       />
       <Route
         exact
-        path="/step2"
+        path="/2"
         render={(routeProps) => (
           <ShortText
             {...routeProps}
@@ -115,7 +115,7 @@ const Form = () => {
       />
       <Route
         exact
-        path="/step3"
+        path="/3"
         render={(routeProps) => (
           <SingleChoice
             {...routeProps}
@@ -127,7 +127,7 @@ const Form = () => {
       />
       <Route
         exact
-        path="/step4"
+        path="/4"
         render={(routeProps) => (
           <Legal
             {...routeProps}
@@ -139,7 +139,7 @@ const Form = () => {
       />
       <Route
         exact
-        path="/step5"
+        path="/5"
         render={(routeProps) => (
           <OpinionScale
             {...routeProps}
@@ -151,7 +151,7 @@ const Form = () => {
       />
       <Route
         exact
-        path="/step6"
+        path="/6"
         render={(routeProps) => (
           <YesNo
             {...routeProps}
@@ -163,7 +163,7 @@ const Form = () => {
       />
       <Route
         exact
-        path="/step7"
+        path="/7"
         render={(routeProps) => (
           <Number
             {...routeProps}
@@ -175,7 +175,7 @@ const Form = () => {
       />
       <Route
         exact
-        path="/step8"
+        path="/8"
         render={(routeProps) => (
           <MultipleChoice
             {...routeProps}
@@ -187,7 +187,7 @@ const Form = () => {
       />
       <Route
         exact
-        path="/step9"
+        path="/9"
         render={(routeProps) => (
           <Rating
             {...routeProps}
@@ -199,7 +199,7 @@ const Form = () => {
       />
       <Route
         exact
-        path="/step10"
+        path="/10"
         render={(routeProps) => (
           <PhoneNumber
             {...routeProps}

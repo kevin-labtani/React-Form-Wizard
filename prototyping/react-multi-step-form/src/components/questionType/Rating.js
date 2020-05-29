@@ -28,7 +28,7 @@ const Rating = ({ values, inputChange, data }) => {
     if (!values[questionId]) {
       setAlert("Veuillez faire un choix", "danger");
     } else {
-      push("/step10");
+      push("/10");
     }
   };
 

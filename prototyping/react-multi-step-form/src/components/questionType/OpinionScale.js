@@ -34,7 +34,7 @@ const OpinionScale = ({ values, SingleCheckboxChange, data }) => {
     if (!values[questionId]) {
       setAlert("Veuillez faire un choix", "danger");
     } else {
-      push("/step6");
+      push("/6");
     }
   };
 
