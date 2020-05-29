@@ -1,4 +1,4 @@
-import { SET_LOADING, GET_QUESTIONS } from "../types";
+import { GET_QUESTIONS } from "../types";
 
 export default (state, action) => {
   switch (action.type) {
@@ -9,11 +9,6 @@ export default (state, action) => {
         loading: false,
       };
 
-    case SET_LOADING:
-      return {
-        ...state,
-        loading: true,
-      };
     default:
       return state;
   }

@@ -1,6 +1,9 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Switch, useHistory } from "react-router-dom";
-import QuestionsContext from "../context/questions/questionsContext";
+import {
+  useQuestions,
+  getQuestions,
+} from "../context/questions/QuestionsState";
 import Email from "./questionType/Email";
 import ShortText from "./questionType/ShortText";
 import SingleChoice from "./questionType/SingleChoice";
@@ -15,12 +18,13 @@ import Confirm from "./Confirm";
 import Spinner from "./layout/Spinner";
 
 const Form = () => {
-  const { getQuestions, questions, loading } = useContext(QuestionsContext);
+  const [questionsState, questionsDispatch] = useQuestions();
+
+  const { questions, loading } = questionsState;
 
   useEffect(() => {
-    getQuestions();
-    // eslint-disable-next-line
-  }, []);
+    getQuestions(questionsDispatch);
+  }, [questionsDispatch]);
 
   // initialize answer obj
   let initAnswers = {};
