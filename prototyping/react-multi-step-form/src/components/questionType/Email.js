@@ -24,9 +24,7 @@ const Email = ({ values, inputChange, data }) => {
     if (!isEmail(values[questionId])) {
       setAlert("Veuillez entrer une adresse email valide", "danger");
     } else {
-      values[questionId] === "admin@demo.com"
-        ? push(`/${questionId + 2}`)
-        : push(`/${questionId + 1}`);
+      push(`/${questionId + 1}`);
     }
   };
 

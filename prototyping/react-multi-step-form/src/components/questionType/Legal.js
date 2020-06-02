@@ -6,13 +6,21 @@ import AvatarAnswer from "../AvatarAnswer";
 import Question from "../Question";
 import Navigation from "../Navigation";
 
-const Legal = ({ values, SingleCheckboxChangePush, data }) => {
+const Legal = ({ values, SingleCheckboxChange, data }) => {
   const {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
     question_id: questionId,
     box_values: boxValues,
   } = data;
+
+  let nextQuestionId = questionId + 1;
+  if (values[questionId]) {
+    let selected = boxValues.find((q) => q["id"] === values[questionId]);
+    if (selected["next_id_if_selected"]) {
+      nextQuestionId = selected["next_id_if_selected"];
+    }
+  }
 
   const { setAlert } = useContext(AlertContext);
 
@@ -23,7 +31,7 @@ const Legal = ({ values, SingleCheckboxChangePush, data }) => {
     if (!values[questionId]) {
       setAlert("Veuillez faire un choix", "danger");
     } else {
-      push(`/${questionId + 1}`);
+      push(`/${nextQuestionId}`);
     }
   };
 
@@ -53,10 +61,7 @@ const Legal = ({ values, SingleCheckboxChangePush, data }) => {
                 value={`${choice["id"]}`}
                 id={`checkbox-${index}`}
                 checked={values[questionId] === `${choice["id"]}`}
-                onChange={SingleCheckboxChangePush(
-                  questionId,
-                  `/${questionId + 1}`
-                )}
+                onChange={SingleCheckboxChange(questionId)}
                 hidden
               />
               <label

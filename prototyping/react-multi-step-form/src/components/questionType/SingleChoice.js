@@ -16,6 +16,14 @@ const SingleChoice = ({ values, SingleCheckboxChange, data }) => {
 
   boxValues.sort((a, b) => a["id"] - b["id"]);
 
+  let nextQuestionId = questionId + 1;
+  if (values[questionId]) {
+    let selected = boxValues.find((q) => q["id"] === values[questionId]);
+    if (selected["next_id_if_selected"]) {
+      nextQuestionId = selected["next_id_if_selected"];
+    }
+  }
+
   const { setAlert } = useContext(AlertContext);
 
   const { push, goBack } = useHistory();
@@ -25,7 +33,7 @@ const SingleChoice = ({ values, SingleCheckboxChange, data }) => {
     if (!values[questionId]) {
       setAlert("Veuillez faire un choix", "danger");
     } else {
-      push(`/${questionId + 1}`);
+      push(`/${nextQuestionId}`);
     }
   };
 

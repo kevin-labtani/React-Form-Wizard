@@ -26,7 +26,7 @@ const Form = () => {
     getQuestions(questionsDispatch);
   }, [questionsDispatch]);
 
-  // initialize answer obj
+  // initialize answer obj NEED TO CHANGE THIS
   let initAnswers = {};
   questions.forEach((q) => {
     if (q["question_type_id"] === 1) {
@@ -66,10 +66,10 @@ const Form = () => {
   //   setContact({ ...contact, [input]: e.target.checked });
   //   push(next);
   // };
-  const SingleCheckboxChangePush = (input, next) => (e) => {
-    setAnswers({ ...answers, [input]: e.target.value });
-    push(next);
-  };
+  // const SingleCheckboxChangePush = (input, next) => (e) => {
+  //   setAnswers({ ...answers, [input]: e.target.value });
+  //   push(next);
+  // };
 
   const multiCheckboxChange = (input) => (e) => {
     const oldArr = answers[input];
@@ -156,7 +156,7 @@ const Form = () => {
             render={(routeProps) => (
               <Legal
                 {...routeProps}
-                SingleCheckboxChangePush={SingleCheckboxChangePush}
+                SingleCheckboxChange={SingleCheckboxChange}
                 values={answers}
                 data={q}
               />

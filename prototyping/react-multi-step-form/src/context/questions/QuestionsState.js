@@ -64,7 +64,7 @@ const QuestionsState = (props) => {
           {
             id: "15",
             label: "Vaillant",
-            next_id_if_selected: "",
+            next_id_if_selected: "5",
           },
           {
             id: "19",
