@@ -1,6 +1,15 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
+import { useQuestions } from "../../context/questions/QuestionsState";
 
 const Footer = () => {
+  let location = useLocation();
+  let currentLoc = location.pathname.slice(1);
+
+  const [questionsState] = useQuestions();
+  const { questions } = questionsState;
+  let progress = ((currentLoc - 1) / questions.length) * 100;
+
   return (
     <footer className="footer bg-hu-grey">
       <div className="container">
@@ -10,9 +19,8 @@ const Footer = () => {
               <div
                 className="progress-bar"
                 role="progressbar"
-                style={{ width: "35%" }}
+                style={{ width: `${progress}%` }}
               >
-                35%
               </div>
             </div>
           </div>

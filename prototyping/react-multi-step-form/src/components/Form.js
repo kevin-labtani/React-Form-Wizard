@@ -36,7 +36,7 @@ const Form = () => {
     }
   });
 
-  const { push } = useHistory();
+  const { push } = useHistory(); //for autopush option
   const [answers, setAnswers] = useState(initAnswers);
 
   // load data from localSotrage

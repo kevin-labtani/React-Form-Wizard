@@ -9,14 +9,14 @@ const App = () => {
   return (
     <QuestionsState>
       <AlertState>
-        <div className="min-vh-100 d-flex flex-column bg-hu-grey">
-          <div className="container my-auto">
-            <Router>
+        <Router>
+          <div className="min-vh-100 d-flex flex-column bg-hu-grey">
+            <div className="container my-auto">
               <Form />
-            </Router>
+            </div>
+            <Footer />
           </div>
-          <Footer />
-        </div>
+        </Router>
       </AlertState>
     </QuestionsState>
   );
