@@ -17,9 +17,9 @@ const SingleChoice = ({ values, SingleCheckboxChange, data }) => {
   boxValues.sort((a, b) => a["id"] - b["id"]);
 
   let nextQuestionId = questionId + 1;
-  if (values[questionId]) {
+  if (Number.isInteger(parseInt(values[questionId]))) {
     let selected = boxValues.find((q) => q["id"] === values[questionId]);
-    if (selected["next_id_if_selected"]) {
+    if (selected && selected["next_id_if_selected"]) {
       nextQuestionId = selected["next_id_if_selected"];
     }
   }
