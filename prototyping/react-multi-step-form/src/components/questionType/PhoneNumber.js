@@ -6,7 +6,7 @@ import AvatarAnswer from "../AvatarAnswer";
 import Question from "../Question";
 import Navigation from "../Navigation";
 
-const PhoneNumber = ({ values, inputChange, data }) => {
+const PhoneNumber = ({ values, inputChange, data, totalQuestions }) => {
   const {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
@@ -17,6 +17,11 @@ const PhoneNumber = ({ values, inputChange, data }) => {
 
   const { push, goBack } = useHistory();
 
+  let nextQuestion = questionId + 1;
+  if (questionId === totalQuestions) {
+    nextQuestion = "thankyou";
+  }
+
   const fwd = (e) => {
     e.preventDefault();
     if (values[questionId] === "") {
@@ -24,7 +29,7 @@ const PhoneNumber = ({ values, inputChange, data }) => {
     } else if (values[questionId].length > 256) {
       setAlert("Votre réponse doit faire moins de 256 caractères", "danger");
     } else {
-      push("/confirm");
+      push(`/${nextQuestion}`);
     }
   };
 

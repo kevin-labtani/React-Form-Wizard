@@ -14,7 +14,8 @@ import Number from "./questionType/Number";
 import MultipleChoice from "./questionType/MultipleChoice";
 import Rating from "./questionType/Rating";
 import PhoneNumber from "./questionType/PhoneNumber";
-import Confirm from "./Confirm";
+import ThankYou from "./ThankYou";
+import Welcome from "./Welcome";
 import Spinner from "./layout/Spinner";
 
 const Form = () => {
@@ -267,6 +268,7 @@ const Form = () => {
                 inputChange={inputChange}
                 values={answers}
                 data={q}
+                totalQuestions={questions.length}
               />
             )}
           />
@@ -280,12 +282,18 @@ const Form = () => {
 
   return (
     <Switch>
+      <Route
+        exact
+        path="/"
+        render={(routeProps) => <Welcome {...routeProps} />}
+      />
+
       {questionsSwitch}
 
       <Route
         exact
-        path="/confirm"
-        render={(routeProps) => <Confirm {...routeProps} values={answers} />}
+        path="/thankyou"
+        render={(routeProps) => <ThankYou {...routeProps} />}
       />
     </Switch>
   );
