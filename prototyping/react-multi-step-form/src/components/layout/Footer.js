@@ -25,7 +25,9 @@ const Footer = () => {
                 className="progress-bar"
                 role="progressbar"
                 style={{ width: `${progress}%` }}
-              ></div>
+              >
+                {progress}%
+              </div>
             </div>
           </div>
         </div>
