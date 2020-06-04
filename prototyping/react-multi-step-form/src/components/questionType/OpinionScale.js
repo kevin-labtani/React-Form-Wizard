@@ -25,6 +25,14 @@ const OpinionScale = ({ values, SingleCheckboxChange, data }) => {
     }
   });
 
+    let nextQuestionId = questionId + 1;
+    if (Number.isInteger(parseInt(values[questionId]))) {
+      let selected = boxValues.find((q) => q["id"] === values[questionId]);
+      if (selected && selected["next_id_if_selected"]) {
+        nextQuestionId = selected["next_id_if_selected"];
+      }
+    }
+
   const { setAlert } = useContext(AlertContext);
 
   const { push, goBack } = useHistory();
@@ -34,7 +42,7 @@ const OpinionScale = ({ values, SingleCheckboxChange, data }) => {
     if (!values[questionId]) {
       setAlert("Veuillez faire un choix", "danger");
     } else {
-      push(`/${questionId + 1}`);
+      push(`/${nextQuestionId}`);
     }
   };
 
