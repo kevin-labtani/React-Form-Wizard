@@ -291,7 +291,7 @@ const Form = () => {
           <Route
             key={`${q["question_id"]}`}
             exact
-            path="/thankyou"
+            path={`/${q["question_id"]}`}
             render={(routeProps) => <ThankYou {...routeProps} data={q} />}
           />
         );

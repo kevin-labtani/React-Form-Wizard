@@ -13,6 +13,7 @@ const Email = ({ values, inputChange, data }) => {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
     question_id: questionId,
+    default_next_id: nextQuestionId,
   } = data;
 
   const { setAlert } = useContext(AlertContext);
@@ -24,7 +25,7 @@ const Email = ({ values, inputChange, data }) => {
     if (!isEmail(values[questionId])) {
       setAlert("Veuillez entrer une adresse email valide", "danger");
     } else {
-      push(`/${questionId + 1}`);
+      push(`/${nextQuestionId}`);
     }
   };
 

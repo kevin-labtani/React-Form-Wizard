@@ -6,13 +6,14 @@ const Welcome = ({ data }) => {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
     question_picture: questionPicture,
+    default_next_id: nextQuestionId,
   } = data;
 
   const { push } = useHistory();
 
   const fwd = (e) => {
     e.preventDefault();
-    push("/1");
+    push(`/${nextQuestionId}`);
   };
 
   return (

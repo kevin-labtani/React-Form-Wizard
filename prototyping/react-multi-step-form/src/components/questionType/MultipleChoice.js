@@ -12,6 +12,7 @@ const MultipleChoice = ({ values, multiCheckboxChange, data }) => {
     question_subtitle: questionSubtitle,
     question_id: questionId,
     box_values: boxValues,
+    default_next_id: nextQuestionId,
   } = data;
 
   boxValues.sort((a, b) => a["id"] - b["id"]);
@@ -25,7 +26,7 @@ const MultipleChoice = ({ values, multiCheckboxChange, data }) => {
     if (values[questionId].length === 0) {
       setAlert("Veuillez faire un choix", "danger");
     } else {
-      push(`/${questionId + 1}`);
+      push(`/${nextQuestionId}`);
     }
   };
 

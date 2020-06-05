@@ -12,13 +12,14 @@ const YesNo = ({ values, SingleCheckboxChange, data }) => {
     question_subtitle: questionSubtitle,
     question_id: questionId,
     box_values: boxValues,
+    default_next_id: nextQuestionId,
   } = data;
 
-  let nextQuestionId = questionId + 1;
+  let nextQuestion = nextQuestionId;
   if (Number.isInteger(parseInt(values[questionId]))) {
     let selected = boxValues.find((q) => q["id"] === values[questionId]);
     if (selected && selected["next_id_if_selected"]) {
-      nextQuestionId = selected["next_id_if_selected"];
+      nextQuestion = selected["next_id_if_selected"];
     }
   }
 
@@ -31,7 +32,7 @@ const YesNo = ({ values, SingleCheckboxChange, data }) => {
     if (!values[questionId]) {
       setAlert("Veuillez faire un choix", "danger");
     } else {
-      push(`/${nextQuestionId}`);
+      push(`/${nextQuestion}`);
     }
   };
 

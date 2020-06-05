@@ -11,6 +11,7 @@ const Number = ({ values, inputChange, data }) => {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
     question_id: questionId,
+    default_next_id: nextQuestionId,
     parameters,
   } = data;
 
@@ -34,7 +35,7 @@ const Number = ({ values, inputChange, data }) => {
     ) {
       setAlert(`Please enter a number between ${min} and ${max}`, "danger");
     } else {
-      push(`/${questionId + 1}`);
+      push(`/${nextQuestionId}`);
     }
   };
 

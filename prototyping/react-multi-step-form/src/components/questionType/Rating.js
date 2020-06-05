@@ -11,6 +11,7 @@ const Rating = ({ values, inputChange, data }) => {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
     question_id: questionId,
+    default_next_id: nextQuestionId,
     parameters,
   } = data;
 
@@ -28,7 +29,7 @@ const Rating = ({ values, inputChange, data }) => {
     if (!values[questionId]) {
       setAlert("Veuillez faire un choix", "danger");
     } else {
-      push(`/${questionId + 1}`);
+      push(`/${nextQuestionId}`);
     }
   };
 

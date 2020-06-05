@@ -11,16 +11,12 @@ const PhoneNumber = ({ values, inputChange, data, totalQuestions }) => {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
     question_id: questionId,
+    default_next_id: nextQuestionId,
   } = data;
 
   const { setAlert } = useContext(AlertContext);
 
   const { push, goBack } = useHistory();
-
-  let nextQuestion = questionId + 1;
-  if (questionId === totalQuestions - 2) {
-    nextQuestion = "thankyou";
-  }
 
   const fwd = (e) => {
     e.preventDefault();
@@ -29,7 +25,7 @@ const PhoneNumber = ({ values, inputChange, data, totalQuestions }) => {
     } else if (values[questionId].length > 256) {
       setAlert("Votre réponse doit faire moins de 256 caractères", "danger");
     } else {
-      push(`/${nextQuestion}`);
+      push(`/${nextQuestionId}`);
     }
   };
 

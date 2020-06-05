@@ -36,7 +36,7 @@ const QuestionsState = (props) => {
         question_type_name: "email",
         box_values: null,
         parameters: null,
-        default_next_id: null,
+        default_next_id: 2,
       },
       {
         assessment_id: 13,
@@ -49,7 +49,7 @@ const QuestionsState = (props) => {
         question_type_name: "short_text",
         box_values: null,
         parameters: null,
-        default_next_id: null,
+        default_next_id: 3,
       },
       {
         assessment_id: 13,
@@ -93,7 +93,7 @@ const QuestionsState = (props) => {
           },
         ],
         parameters: null,
-        default_next_id: null,
+        default_next_id: 4,
       },
       {
         assessment_id: 13,
@@ -117,7 +117,7 @@ const QuestionsState = (props) => {
           },
         ],
         parameters: null,
-        default_next_id: null,
+        default_next_id: 5,
       },
       {
         assessment_id: 13,
@@ -192,7 +192,7 @@ const QuestionsState = (props) => {
             value: "+",
           },
         ],
-        default_next_id: null,
+        default_next_id: 6,
       },
       {
         assessment_id: 13,
@@ -216,7 +216,7 @@ const QuestionsState = (props) => {
           },
         ],
         parameters: null,
-        default_next_id: null,
+        default_next_id: 7,
       },
       {
         assessment_id: 13,
@@ -240,7 +240,7 @@ const QuestionsState = (props) => {
             value: "10",
           },
         ],
-        default_next_id: null,
+        default_next_id: 8,
       },
       {
         assessment_id: 13,
@@ -294,7 +294,7 @@ const QuestionsState = (props) => {
           },
         ],
         parameters: null,
-        default_next_id: null,
+        default_next_id: 9,
       },
       {
         assessment_id: 13,
@@ -313,7 +313,7 @@ const QuestionsState = (props) => {
             value: "10",
           },
         ],
-        default_next_id: null,
+        default_next_id: 10,
       },
       {
         assessment_id: 13,
@@ -326,7 +326,7 @@ const QuestionsState = (props) => {
         question_type_name: "phone_number",
         box_values: null,
         parameters: null,
-        default_next_id: null,
+        default_next_id: 12,
       },
       {
         assessment_id: 13,
@@ -341,7 +341,7 @@ const QuestionsState = (props) => {
         question_type_name: "welcome",
         box_values: null,
         parameters: null,
-        default_next_id: null,
+        default_next_id: 1,
       },
       {
         assessment_id: 13,
@@ -351,6 +351,7 @@ const QuestionsState = (props) => {
         question_name: "Thank you for your submission",
         question_subtitle:
           "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum optio incidunt sint cumque illo nobis exercitationem aliquam  repellendus.",
+        question_picture: "https://via.placeholder.com/800x300/2e84dd",
         question_type_id: 16,
         question_type_name: "thank_you",
         box_values: null,
