@@ -29,9 +29,9 @@ const QuestionsState = (props) => {
         assessment_id: 13,
         assessment_name: "Suivi entretiens",
         assessment_creation_date: "2020-05-07 08:40:20",
-        question_id: 1, // MODIFIED
+        question_id: 1,
         question_name: "Adresse email du client",
-        question_subtitle: "Step 1: email", // ADDED MY ME
+        question_subtitle: "Step 1: email",
         question_type_id: 8,
         question_type_name: "email",
         box_values: null,
