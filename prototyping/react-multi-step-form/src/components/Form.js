@@ -14,8 +14,8 @@ import Number from "./questionType/Number";
 import MultipleChoice from "./questionType/MultipleChoice";
 import Rating from "./questionType/Rating";
 import PhoneNumber from "./questionType/PhoneNumber";
+import Welcome from "./questionType/Welcome";
 import ThankYou from "./ThankYou";
-import Welcome from "./Welcome";
 import Spinner from "./layout/Spinner";
 
 const Form = () => {
@@ -275,6 +275,22 @@ const Form = () => {
         );
         break;
 
+      case 15:
+        questionsSwitch.push(
+          <Route
+            key={`${q["question_id"]}`}
+            exact
+            path="/"
+            render={(routeProps) => (
+              <Welcome
+                {...routeProps}
+                data={q}
+              />
+            )}
+          />
+        );
+        break;
+      
       default:
         break;
     }
@@ -282,11 +298,6 @@ const Form = () => {
 
   return (
     <Switch>
-      <Route
-        exact
-        path="/"
-        render={(routeProps) => <Welcome {...routeProps} />}
-      />
 
       {questionsSwitch}
 

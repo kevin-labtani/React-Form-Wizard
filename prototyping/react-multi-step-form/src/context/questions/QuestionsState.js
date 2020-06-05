@@ -328,6 +328,21 @@ const QuestionsState = (props) => {
         parameters: null,
         default_next_id: null,
       },
+      {
+        assessment_id: 13,
+        assessment_name: "Suivi entretiens",
+        assessment_creation_date: "2020-05-07 08:40:20",
+        question_id: 11,
+        question_name: "Welcome to the HikeUp Wizard Form",
+        question_subtitle:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum optio incidunt sint cumque illo nobis exercitationem aliquam  repellendus.",
+        question_picture: "https://via.placeholder.com/800x300/2e84dd",
+        question_type_id: 15,
+        question_type_name: "welcome",
+        box_values: null,
+        parameters: null,
+        default_next_id: null,
+      },
     ],
     loading: false,
   };
