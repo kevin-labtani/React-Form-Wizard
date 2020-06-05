@@ -255,42 +255,34 @@ const QuestionsState = (props) => {
           {
             id: "6",
             label: "Nettoyage du filtre à mazout",
-            next_id_if_selected: "",
           },
           {
             id: "9",
             label: "Ramonage du conduit de fumée",
-            next_id_if_selected: "",
           },
           {
             id: "10",
             label: "Test de combustion + réglages",
-            next_id_if_selected: "",
           },
           {
             id: "11",
             label: "Test de la dureté de l eau",
-            next_id_if_selected: "",
           },
           {
             id: "12",
             label: "Other",
-            next_id_if_selected: "",
           },
           {
             id: "5",
             label: "Nettoyage du corps de chauffe",
-            next_id_if_selected: "",
           },
           {
             id: "7",
             label: "Nettoyage du bruleur",
-            next_id_if_selected: "",
           },
           {
             id: "8",
             label: "Changement du gicleur",
-            next_id_if_selected: "",
           },
         ],
         parameters: null,
