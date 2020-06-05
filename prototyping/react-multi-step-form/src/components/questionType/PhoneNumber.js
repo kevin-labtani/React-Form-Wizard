@@ -18,7 +18,7 @@ const PhoneNumber = ({ values, inputChange, data, totalQuestions }) => {
   const { push, goBack } = useHistory();
 
   let nextQuestion = questionId + 1;
-  if (questionId === totalQuestions) {
+  if (questionId === totalQuestions - 2) {
     nextQuestion = "thankyou";
   }
 

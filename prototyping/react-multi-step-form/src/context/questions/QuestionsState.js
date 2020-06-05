@@ -343,6 +343,20 @@ const QuestionsState = (props) => {
         parameters: null,
         default_next_id: null,
       },
+      {
+        assessment_id: 13,
+        assessment_name: "Suivi entretiens",
+        assessment_creation_date: "2020-05-07 08:40:20",
+        question_id: 12,
+        question_name: "Thank you for your submission",
+        question_subtitle:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum optio incidunt sint cumque illo nobis exercitationem aliquam  repellendus.",
+        question_type_id: 16,
+        question_type_name: "thank_you",
+        box_values: null,
+        parameters: null,
+        default_next_id: null,
+      },
     ],
     loading: false,
   };
