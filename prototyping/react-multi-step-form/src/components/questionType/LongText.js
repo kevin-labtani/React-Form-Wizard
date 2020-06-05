@@ -5,6 +5,7 @@ import Alerts from "../layout/Alerts";
 import AvatarAnswer from "../AvatarAnswer";
 import Question from "../Question";
 import Navigation from "../Navigation";
+import TextareaAutosize from "react-textarea-autosize";
 
 const LongText = ({ values, inputChange, data }) => {
   const {
@@ -45,7 +46,7 @@ const LongText = ({ values, inputChange, data }) => {
             <label htmlFor="textarea">
               <p className="subtitles text-muted">{questionSubtitle}</p>
             </label>
-            <textarea
+            <TextareaAutosize
               className="form-control form-control-lg"
               name="textarea"
               id="textarea"
@@ -55,7 +56,7 @@ const LongText = ({ values, inputChange, data }) => {
               autoComplete="off"
               autoFocus
               placeholder="Enter your comment here (ENTER to make a line break)"
-              rows="5"
+              minRows="2"
             />
           </div>
         </div>
