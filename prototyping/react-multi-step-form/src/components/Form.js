@@ -14,6 +14,7 @@ import Number from "./questionType/Number";
 import MultipleChoice from "./questionType/MultipleChoice";
 import Rating from "./questionType/Rating";
 import PhoneNumber from "./questionType/PhoneNumber";
+import LongText from "./questionType/LongText";
 import Welcome from "./questionType/Welcome";
 import ThankYou from "./questionType/ThankYou";
 import Spinner from "./layout/Spinner";
@@ -33,7 +34,8 @@ const Form = () => {
   questions.forEach((q) => {
     if (q["question_type_id"] === 1) {
       initAnswers[q["question_id"]] = [];
-    } else {
+    } else if (q["question_type_id"] !== 15 && q["question_type_id"] !== 16) {
+      //no values for welcome & thanyou question type
       initAnswers[q["question_id"]] = "";
     }
   });
@@ -276,6 +278,24 @@ const Form = () => {
         );
         break;
 
+      case 12:
+        questionsSwitch.push(
+          <Route
+            key={`${q["question_id"]}`}
+            exact
+            path={`/${q["question_id"]}`}
+            render={(routeProps) => (
+              <LongText
+                {...routeProps}
+                inputChange={inputChange}
+                values={answers}
+                data={q}
+              />
+            )}
+          />
+        );
+        break;
+
       case 15:
         questionsSwitch.push(
           <Route
@@ -308,7 +328,7 @@ const Form = () => {
       <div className="container my-auto">
         <Switch>{questionsSwitch}</Switch>
       </div>
-      <Footer questions={questions} loading={loading}/>
+      <Footer questions={questions} loading={loading} />
     </>
   );
 };

@@ -117,6 +117,12 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
+// remove resize corner on textarea
+textarea {
+  resize: none;
+}
+
+
 // speech bubble for questions
 .speech-bubble-question {
   position: relative;

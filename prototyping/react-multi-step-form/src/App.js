@@ -3,7 +3,6 @@ import { BrowserRouter as Router } from "react-router-dom";
 import AlertState from "./context/alert/AlertState";
 import QuestionsState from "./context/questions/QuestionsState";
 import Form from "./components/Form";
-import Footer from "./components/layout/Footer";
 
 const App = () => {
   return (
