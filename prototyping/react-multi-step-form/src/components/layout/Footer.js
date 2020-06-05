@@ -1,12 +1,9 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { useQuestions } from "../../context/questions/QuestionsState";
 
-const Footer = () => {
+const Footer = ({ questions, loading }) => {
   const location = useLocation();
   const currentLoc = location.pathname.slice(1);
-  const [questionsState] = useQuestions();
-  const { questions, loading } = questionsState;
 
   const progress = (currentLoc / questions.length) * 100;
 

@@ -11,10 +11,7 @@ const App = () => {
       <AlertState>
         <Router>
           <div className="min-vh-100 d-flex flex-column bg-hu-grey">
-            <div className="container my-auto">
-              <Form />
-            </div>
-            <Footer />
+            <Form />
           </div>
         </Router>
       </AlertState>

@@ -17,6 +17,7 @@ import PhoneNumber from "./questionType/PhoneNumber";
 import Welcome from "./questionType/Welcome";
 import ThankYou from "./questionType/ThankYou";
 import Spinner from "./layout/Spinner";
+import Footer from "./layout/Footer";
 
 const Form = () => {
   const [questionsState, questionsDispatch] = useQuestions();
@@ -302,7 +303,14 @@ const Form = () => {
     }
   });
 
-  return <Switch>{questionsSwitch}</Switch>;
+  return (
+    <>
+      <div className="container my-auto">
+        <Switch>{questionsSwitch}</Switch>
+      </div>
+      <Footer questions={questions} loading={loading}/>
+    </>
+  );
 };
 
 export default Form;
