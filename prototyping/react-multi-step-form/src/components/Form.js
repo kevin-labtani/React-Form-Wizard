@@ -29,19 +29,8 @@ const Form = () => {
     getQuestions(questionsDispatch);
   }, [questionsDispatch]);
 
-  // initialize answer obj NEED TO CHANGE THIS
-  let initAnswers = {};
-  questions.forEach((q) => {
-    if (q["question_type_id"] === 1) {
-      initAnswers[q["question_id"]] = [];
-    } else if (q["question_type_id"] !== 15 && q["question_type_id"] !== 16) {
-      //no values for welcome & thanyou question type
-      initAnswers[q["question_id"]] = "";
-    }
-  });
-
   const { push } = useHistory(); //for autopush option
-  const [answers, setAnswers] = useState(initAnswers);
+  const [answers, setAnswers] = useState({});
 
   // load data from localSotrage
   useEffect(() => {
@@ -55,6 +44,21 @@ const Form = () => {
   useEffect(() => {
     localStorage.setItem("answers", JSON.stringify(answers));
   }, [answers]);
+
+  // initialize answer obj
+  let initAnswers = {};
+  questions.forEach((q) => {
+    if (q["question_type_id"] === 1) {
+      initAnswers[q["question_id"]] = [];
+    } else if (q["question_type_id"] !== 15 && q["question_type_id"] !== 16) {
+      //no values for welcome & thankyou question type
+      initAnswers[q["question_id"]] = "";
+    }
+  });
+  // init on welcome page
+  const initAnswerState = () => {
+    setAnswers(initAnswers);
+  };
 
   const inputChange = (input) => (e) => {
     setAnswers({ ...answers, [input]: e.target.value });
@@ -302,7 +306,13 @@ const Form = () => {
             key={`${q["question_id"]}`}
             exact
             path="/"
-            render={(routeProps) => <Welcome {...routeProps} data={q} />}
+            render={(routeProps) => (
+              <Welcome
+                {...routeProps}
+                data={q}
+                initAnswerState={initAnswerState}
+              />
+            )}
           />
         );
         break;

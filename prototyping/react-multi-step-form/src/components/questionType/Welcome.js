@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-const Welcome = ({ data }) => {
+const Welcome = ({ data, initAnswerState }) => {
   const {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
@@ -14,6 +14,7 @@ const Welcome = ({ data }) => {
   const fwd = (e) => {
     e.preventDefault();
     push(`/${nextQuestionId}`);
+    initAnswerState();
   };
 
   return (
