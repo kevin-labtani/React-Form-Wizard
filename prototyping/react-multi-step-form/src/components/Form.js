@@ -17,6 +17,7 @@ import PhoneNumber from "./questionType/PhoneNumber";
 import LongText from "./questionType/LongText";
 import Welcome from "./questionType/Welcome";
 import ThankYou from "./questionType/ThankYou";
+import FileUpload from "./questionType/FileUpload";
 import Spinner from "./layout/Spinner";
 import Footer from "./layout/Footer";
 
@@ -290,6 +291,24 @@ const Form = () => {
             path={`/${q["question_id"]}`}
             render={(routeProps) => (
               <LongText
+                {...routeProps}
+                inputChange={inputChange}
+                values={answers}
+                data={q}
+              />
+            )}
+          />
+        );
+        break;
+
+      case 13:
+        questionsSwitch.push(
+          <Route
+            key={`${q["question_id"]}`}
+            exact
+            path={`/${q["question_id"]}`}
+            render={(routeProps) => (
+              <FileUpload
                 {...routeProps}
                 inputChange={inputChange}
                 values={answers}
