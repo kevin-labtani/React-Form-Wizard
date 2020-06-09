@@ -328,7 +328,7 @@ const Form = () => {
       <div className="container my-auto">
         <Switch>{questionsSwitch}</Switch>
       </div>
-      <Footer questions={questions} loading={loading} />
+      <Footer questions={questions} loading={loading} answers={answers} />
     </>
   );
 };

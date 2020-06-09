@@ -1,13 +1,15 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 
-const Footer = ({ questions, loading }) => {
+const Footer = ({ questions, loading, answers }) => {
   const location = useLocation();
   const currentLoc = location.pathname.slice(1);
+  // eslint-disable-next-line
+  const answered = Object.values(answers).filter((el) => el != false);
 
-  const progress = (currentLoc / questions.length) * 100;
+  const progress = (answered.length / (questions.length - 2)) * 100;
 
-  if (loading || !Number.isInteger(parseInt(currentLoc)) || progress === 100) {
+  if (loading || !Object.keys(answers).includes(currentLoc)) {
     return null;
   }
 
@@ -17,11 +19,18 @@ const Footer = ({ questions, loading }) => {
         <div className="row">
           <div className="col-5 offset-7 col-lg-4 offset-lg-8 mt-3 mb-3">
             <div className="text-white">{progress.toFixed(2)}%</div>
-            <div className="progress" style={{ height: "16px" }}>
+            <div
+              className="progress"
+              style={{
+                height: "16px",
+              }}
+            >
               <div
                 className="progress-bar"
                 role="progressbar"
-                style={{ width: `${progress}%` }}
+                style={{
+                  width: `${progress}%`,
+                }}
               ></div>
             </div>
           </div>
