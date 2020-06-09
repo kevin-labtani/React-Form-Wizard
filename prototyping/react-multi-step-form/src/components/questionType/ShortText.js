@@ -42,14 +42,14 @@ const ShortText = ({ values, inputChange, data }) => {
         <div className="col-8 offset-1 col-lg-7 offset-lg-2 rounded-lg px-lg-5 py-4 my-2 shadow bg-hu-grey-1 speech-bubble-answer">
           <Alerts />
           <div className="form-group">
-            <label htmlFor="name">
+            <label htmlFor="shorttext">
               <p className="subtitles text-muted">{questionSubtitle}</p>
             </label>
             <input
               type="text"
               className="form-control form-control-lg"
-              name="name"
-              id="name"
+              name="shorttext"
+              id="shorttext"
               maxLength="256"
               onChange={inputChange(questionId)}
               value={values[questionId]}
