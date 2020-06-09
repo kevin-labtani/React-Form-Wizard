@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import AlertContext from "../../context/alert/alertContext";
 import Alerts from "../layout/Alerts";
