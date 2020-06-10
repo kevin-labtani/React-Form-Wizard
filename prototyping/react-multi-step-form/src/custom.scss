@@ -177,3 +177,13 @@ textarea {
     font-size: 2rem;
   }
 }
+
+.progress-bar-img {
+  background-image: url("../src/progress.svg");
+  background-color: transparent;
+
+}
+
+.progress-img {
+  background-color: $hu-grey;
+}

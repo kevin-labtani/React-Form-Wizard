@@ -18,15 +18,15 @@ const Footer = ({ questions, loading, answers }) => {
       <div className="container">
         <div className="row">
           <div className="col-5 offset-7 col-lg-4 offset-lg-8 mt-3 mb-3">
-            <div className="text-white">{progress.toFixed(2)}%</div>
+            <div className="text-white">{progress.toFixed(0)}%</div>
             <div
-              className="progress"
+              className="progress progress-img"
               style={{
                 height: "16px",
               }}
             >
               <div
-                className="progress-bar"
+                className="progress-bar progress-bar-img"
                 role="progressbar"
                 style={{
                   width: `${progress}%`,
