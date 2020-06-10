@@ -185,5 +185,6 @@ textarea {
 }
 
 .progress-img {
-  background-color: $hu-grey;
+  background-image: url("../src/progress-bg.svg");
+  background-color: transparent;
 }
