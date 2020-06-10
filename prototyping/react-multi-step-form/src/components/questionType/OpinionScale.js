@@ -18,19 +18,19 @@ const OpinionScale = ({ values, SingleCheckboxChange, data }) => {
 
   let labelLeft, labelRight;
   parameters.forEach((param) => {
-    if (param["name"] === "label_left") {
-      labelLeft = param["value"];
+    if (param.name === "label_left") {
+      labelLeft = param.value;
     }
-    if (param["name"] === "label_right") {
-      labelRight = param["value"];
+    if (param.name === "label_right") {
+      labelRight = param.value;
     }
   });
 
   let nextQuestion = nextQuestionId;
   if (Number.isInteger(parseInt(values[questionId]))) {
-    let selected = boxValues.find((q) => q["id"] === values[questionId]);
-    if (selected && selected["next_id_if_selected"]) {
-      nextQuestion = selected["next_id_if_selected"];
+    let selected = boxValues.find((q) => q.id === values[questionId]);
+    if (selected && selected.next_id_if_selected) {
+      nextQuestion = selected.next_id_if_selected;
     }
   }
 
@@ -97,21 +97,21 @@ const OpinionScale = ({ values, SingleCheckboxChange, data }) => {
               {boxValues.map((choice, index) => (
                 <li
                   className={`page-item ${
-                    values[questionId] === `${choice["id"]}` ? "active" : ""
+                    values[questionId] === `${choice.id}` ? "active" : ""
                   }`}
                   key={index}
                 >
                   <input
                     type="checkbox"
                     name="rating"
-                    value={`${choice["id"]}`}
+                    value={`${choice.id}`}
                     id={`rating-${index}`}
-                    checked={values[questionId] === `${choice["id"]}`}
+                    checked={values[questionId] === `${choice.id}`}
                     onChange={SingleCheckboxChange(questionId)}
                     hidden
                   />
                   <label className="page-link" htmlFor={`rating-${index}`}>
-                    {choice["label"]}
+                    {choice.label}
                   </label>
                 </li>
               ))}

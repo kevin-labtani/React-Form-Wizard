@@ -15,13 +15,13 @@ const SingleChoice = ({ values, SingleCheckboxChange, data }) => {
     default_next_id: nextQuestionId,
   } = data;
 
-  boxValues.sort((a, b) => a["id"] - b["id"]);
+  boxValues.sort((a, b) => a.id - b.id);
 
   let nextQuestion = nextQuestionId;
   if (Number.isInteger(parseInt(values[questionId]))) {
-    let selected = boxValues.find((q) => q["id"] === values[questionId]);
-    if (selected && selected["next_id_if_selected"]) {
-      nextQuestion = selected["next_id_if_selected"];
+    let selected = boxValues.find((q) => q.id === values[questionId]);
+    if (selected && selected.next_id_if_selected) {
+      nextQuestion = selected.next_id_if_selected;
     }
   }
 
@@ -56,19 +56,19 @@ const SingleChoice = ({ values, SingleCheckboxChange, data }) => {
               <input
                 className="form-check-input"
                 type="checkbox"
-                value={`${choice["id"]}`}
+                value={`${choice.id}`}
                 id={`checkbox-${index}`}
-                checked={values[questionId] === `${choice["id"]}`}
+                checked={values[questionId] === `${choice.id}`}
                 onChange={SingleCheckboxChange(questionId)}
                 hidden
               />
               <label
                 className={`btn btn-outline-primary btn-block text-left pl-4 ${
-                  values[questionId] === `${choice["id"]}` ? "active" : ""
+                  values[questionId] === `${choice.id}` ? "active" : ""
                 }`}
                 htmlFor={`checkbox-${index}`}
               >
-                {choice["label"]}
+                {choice.label}
               </label>
             </div>
           ))}

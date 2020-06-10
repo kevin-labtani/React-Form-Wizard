@@ -49,11 +49,11 @@ const Form = () => {
   // initialize answer obj
   let initAnswers = {};
   questions.forEach((q) => {
-    if (q["question_type_id"] === 1) {
-      initAnswers[q["question_id"]] = [];
-    } else if (q["question_type_id"] !== 15 && q["question_type_id"] !== 16) {
+    if (q.question_type_id === 1) {
+      initAnswers[q.question_id] = [];
+    } else if (q.question_type_id !== 15 && q.question_type_id !== 16) {
       //no values for welcome & thankyou question type
-      initAnswers[q["question_id"]] = "";
+      initAnswers[q.question_id] = "";
     }
   });
   // init on welcome page
@@ -101,13 +101,13 @@ const Form = () => {
 
   let questionsSwitch = [];
   questions.forEach((q) => {
-    switch (q["question_type_id"]) {
+    switch (q.question_type_id) {
       case 1:
         questionsSwitch.push(
           <Route
-            key={`${q["question_id"]}`}
+            key={`${q.question_id}`}
             exact
-            path={`/${q["question_id"]}`}
+            path={`/${q.question_id}`}
             render={(routeProps) => (
               <MultipleChoice
                 {...routeProps}
@@ -123,9 +123,9 @@ const Form = () => {
       case 2:
         questionsSwitch.push(
           <Route
-            key={`${q["question_id"]}`}
+            key={`${q.question_id}`}
             exact
-            path={`/${q["question_id"]}`}
+            path={`/${q.question_id}`}
             render={(routeProps) => (
               <SingleChoice
                 {...routeProps}
@@ -141,9 +141,9 @@ const Form = () => {
       case 3:
         questionsSwitch.push(
           <Route
-            key={`${q["question_id"]}`}
+            key={`${q.question_id}`}
             exact
-            path={`/${q["question_id"]}`}
+            path={`/${q.question_id}`}
             render={(routeProps) => (
               <YesNo
                 {...routeProps}
@@ -159,9 +159,9 @@ const Form = () => {
       case 4:
         questionsSwitch.push(
           <Route
-            key={`${q["question_id"]}`}
+            key={`${q.question_id}`}
             exact
-            path={`/${q["question_id"]}`}
+            path={`/${q.question_id}`}
             render={(routeProps) => (
               <Legal
                 {...routeProps}
@@ -177,9 +177,9 @@ const Form = () => {
       case 5:
         questionsSwitch.push(
           <Route
-            key={`${q["question_id"]}`}
+            key={`${q.question_id}`}
             exact
-            path={`/${q["question_id"]}`}
+            path={`/${q.question_id}`}
             render={(routeProps) => (
               <Rating
                 {...routeProps}
@@ -195,9 +195,9 @@ const Form = () => {
       case 6:
         questionsSwitch.push(
           <Route
-            key={`${q["question_id"]}`}
+            key={`${q.question_id}`}
             exact
-            path={`/${q["question_id"]}`}
+            path={`/${q.question_id}`}
             render={(routeProps) => (
               <ShortText
                 {...routeProps}
@@ -213,9 +213,9 @@ const Form = () => {
       case 7:
         questionsSwitch.push(
           <Route
-            key={`${q["question_id"]}`}
+            key={`${q.question_id}`}
             exact
-            path={`/${q["question_id"]}`}
+            path={`/${q.question_id}`}
             render={(routeProps) => (
               <OpinionScale
                 {...routeProps}
@@ -231,9 +231,9 @@ const Form = () => {
       case 8:
         questionsSwitch.push(
           <Route
-            key={`${q["question_id"]}`}
+            key={`${q.question_id}`}
             exact
-            path={`/${q["question_id"]}`}
+            path={`/${q.question_id}`}
             render={(routeProps) => (
               <Email
                 {...routeProps}
@@ -249,9 +249,9 @@ const Form = () => {
       case 9:
         questionsSwitch.push(
           <Route
-            key={`${q["question_id"]}`}
+            key={`${q.question_id}`}
             exact
-            path={`/${q["question_id"]}`}
+            path={`/${q.question_id}`}
             render={(routeProps) => (
               <Number
                 {...routeProps}
@@ -267,9 +267,9 @@ const Form = () => {
       case 10:
         questionsSwitch.push(
           <Route
-            key={`${q["question_id"]}`}
+            key={`${q.question_id}`}
             exact
-            path={`/${q["question_id"]}`}
+            path={`/${q.question_id}`}
             render={(routeProps) => (
               <PhoneNumber
                 {...routeProps}
@@ -285,9 +285,9 @@ const Form = () => {
       case 12:
         questionsSwitch.push(
           <Route
-            key={`${q["question_id"]}`}
+            key={`${q.question_id}`}
             exact
-            path={`/${q["question_id"]}`}
+            path={`/${q.question_id}`}
             render={(routeProps) => (
               <LongText
                 {...routeProps}
@@ -303,9 +303,9 @@ const Form = () => {
       case 13:
         questionsSwitch.push(
           <Route
-            key={`${q["question_id"]}`}
+            key={`${q.question_id}`}
             exact
-            path={`/${q["question_id"]}`}
+            path={`/${q.question_id}`}
             render={(routeProps) => (
               <FileUpload
                 {...routeProps}
@@ -321,7 +321,7 @@ const Form = () => {
       case 15:
         questionsSwitch.push(
           <Route
-            key={`${q["question_id"]}`}
+            key={`${q.question_id}`}
             exact
             path="/"
             render={(routeProps) => (
@@ -338,9 +338,9 @@ const Form = () => {
       case 16:
         questionsSwitch.push(
           <Route
-            key={`${q["question_id"]}`}
+            key={`${q.question_id}`}
             exact
-            path={`/${q["question_id"]}`}
+            path={`/${q.question_id}`}
             render={(routeProps) => <ThankYou {...routeProps} data={q} />}
           />
         );
