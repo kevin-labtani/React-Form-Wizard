@@ -20,6 +20,7 @@ const FileUpload = ({ values, inputChange, data }) => {
   const { push, goBack } = useHistory();
 
   const [file, setFile] = useState("");
+  const [uploadPercentage, setUploadPercentage] = useState(0);
 
   const fwd = (e) => {
     e.preventDefault();
@@ -35,26 +36,36 @@ const FileUpload = ({ values, inputChange, data }) => {
     goBack();
   };
 
-  const selectHandler = (e) => {
+  const changeHandler = (e) => {
     setFile(e.target.files[0]);
     inputChange(questionId)(e);
   };
 
-  const uploadHandler = (e) => {
+  const uploadHandler = async (e) => {
     const fd = new FormData();
-    fd.append("image", file, file.name);
-    console.log(fd.get("image"));
-    axios
-      .post("my-domain.com/file-upload", fd, {
+    fd.append("file", file, file.name);
+
+    try {
+      await axios.post("my-domain.com/file-upload", fd, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
         onUploadProgress: (progressEvent) => {
-          console.log(
-            "Upload Progress: " +
-              Math.round((progressEvent.loaded / progressEvent.total) * 100) + "%"
+          setUploadPercentage(
+            parseInt(
+              Math.round((progressEvent.loaded * 100) / progressEvent.total)
+            )
           );
         },
-      })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+      });
+    } catch (err) {
+      if (err.response.status >= 400) {
+        setAlert("There was a problem while uploading the file", "danger");
+        setUploadPercentage(0);
+      } else {
+        setAlert("The file was uploaded", "success");
+      }
+    }
   };
 
   return (
@@ -74,16 +85,31 @@ const FileUpload = ({ values, inputChange, data }) => {
               className="custom-file-input form-control-lg"
               name="file"
               id="file"
-              onChange={selectHandler}
+              onChange={changeHandler}
               accept=""
             />
-            <button
-              className="btn btn-primary my-2"
-              onClick={uploadHandler}
-              disabled={!file}
-            >
-              Upload
-            </button>
+            <div className="row">
+              <div className="col-2">
+                <button
+                  className="btn btn-primary my-2"
+                  onClick={uploadHandler}
+                  disabled={!file}
+                >
+                  Upload
+                </button>
+              </div>
+              <div className="col-10 my-auto">
+                <div className="progress">
+                  <div
+                    className="progress-bar progress-bar-striped bg-green-hu"
+                    role="progressbar"
+                    style={{ width: `${uploadPercentage}%` }}
+                  >
+                    {uploadPercentage}%
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <AvatarAnswer />
