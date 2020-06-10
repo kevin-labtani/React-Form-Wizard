@@ -75,8 +75,13 @@ const FileUpload = ({ values, inputChange, data }) => {
               name="file"
               id="file"
               onChange={selectHandler}
+              accept=""
             />
-            <button className="btn btn-primary my-2" onClick={uploadHandler} disabled={!file}>
+            <button
+              className="btn btn-primary my-2"
+              onClick={uploadHandler}
+              disabled={!file}
+            >
               Upload
             </button>
           </div>
