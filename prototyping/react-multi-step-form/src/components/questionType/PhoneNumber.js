@@ -6,6 +6,8 @@ import AvatarAnswer from "../AvatarAnswer";
 import Question from "../Question";
 import Navigation from "../Navigation";
 
+import isMobilePhone from "validator/lib/isMobilePhone";
+
 const PhoneNumber = ({ values, inputChange, data }) => {
   const {
     question_name: questionTitle,
@@ -22,8 +24,8 @@ const PhoneNumber = ({ values, inputChange, data }) => {
     e.preventDefault();
     if (values[questionId] === "") {
       setAlert("Veuillez remplir ce champ", "danger");
-    } else if (values[questionId].length > 256) {
-      setAlert("Votre réponse doit faire moins de 256 caractères", "danger");
+    } else if (!isMobilePhone(values[questionId])) {
+      setAlert("Veuillez entrer un numéro de téléphone valide", "danger");
     } else {
       push(`/${nextQuestionId}`);
     }
@@ -50,7 +52,7 @@ const PhoneNumber = ({ values, inputChange, data }) => {
               className="form-control form-control-lg"
               name="phone"
               id="phone"
-              maxLength="256"
+              maxLength="25"
               onChange={inputChange(questionId)}
               value={values[questionId]}
               autoComplete="off"
