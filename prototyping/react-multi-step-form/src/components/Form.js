@@ -276,7 +276,6 @@ const Form = () => {
                 inputChange={inputChange}
                 values={answers}
                 data={q}
-                totalQuestions={questions.length}
               />
             )}
           />

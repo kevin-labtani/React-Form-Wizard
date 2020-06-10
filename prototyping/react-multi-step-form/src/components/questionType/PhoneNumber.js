@@ -6,7 +6,7 @@ import AvatarAnswer from "../AvatarAnswer";
 import Question from "../Question";
 import Navigation from "../Navigation";
 
-const PhoneNumber = ({ values, inputChange, data, totalQuestions }) => {
+const PhoneNumber = ({ values, inputChange, data }) => {
   const {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
