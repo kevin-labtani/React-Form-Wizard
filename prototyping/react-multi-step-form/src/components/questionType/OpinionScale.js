@@ -52,32 +52,6 @@ const OpinionScale = ({ values, SingleCheckboxChange, data }) => {
     goBack();
   };
 
-  // generate opinion scale
-  const scale = [];
-  for (let index = 1; index <= 10; index++) {
-    scale.push(
-      <li
-        className={`page-item ${
-          values[questionId] === `${index}` ? "active" : ""
-        }`}
-        key={index}
-      >
-        <input
-          type="checkbox"
-          name="rating"
-          id={`rating-${index}`}
-          value={`${index}`}
-          checked={values[questionId] === `${index}`}
-          onChange={SingleCheckboxChange(questionId)}
-          hidden
-        />
-        <label className="page-link" htmlFor={`rating-${index}`}>
-          {index}
-        </label>
-      </li>
-    );
-  }
-
   return (
     <>
       <Question questionTitle={questionTitle} />
