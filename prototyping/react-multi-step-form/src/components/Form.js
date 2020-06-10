@@ -18,6 +18,7 @@ import LongText from "./questionType/LongText";
 import Welcome from "./questionType/Welcome";
 import ThankYou from "./questionType/ThankYou";
 import FileUpload from "./questionType/FileUpload";
+import Recap from "./questionType/Recap";
 import Spinner from "./layout/Spinner";
 import Footer from "./layout/Footer";
 
@@ -51,8 +52,8 @@ const Form = () => {
   questions.forEach((q) => {
     if (q.question_type_id === 1) {
       initAnswers[q.question_id] = [];
-    } else if (q.question_type_id !== 15 && q.question_type_id !== 16) {
-      //no values for welcome & thankyou question type
+    } else if (q.question_type_id !== 15 && q.question_type_id !== 16 && q.question_type_id !== 17) {
+      //no values for welcome & thankyou & recap question type
       initAnswers[q.question_id] = "";
     }
   });
@@ -342,6 +343,24 @@ const Form = () => {
             exact
             path={`/${q.question_id}`}
             render={(routeProps) => <ThankYou {...routeProps} data={q} />}
+          />
+        );
+        break;
+
+      case 17:
+        questionsSwitch.push(
+          <Route
+            key={`${q.question_id}`}
+            exact
+            path={`/${q.question_id}`}
+            render={(routeProps) => (
+              <Recap
+                {...routeProps}
+                data={q}
+                values={answers}
+                questions={questions}
+              />
+            )}
           />
         );
         break;
