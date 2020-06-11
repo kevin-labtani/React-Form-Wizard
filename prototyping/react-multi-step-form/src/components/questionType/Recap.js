@@ -17,9 +17,15 @@ const Recap = ({ data, values, questions }) => {
 
   const list = [];
   for (let [key, value] of Object.entries(values)) {
+    let answer = value;
+    let question = questions.filter((q) => q.question_id === parseInt(key));
+    if (question[0].question_type_id !== 1 && question[0].box_values) {
+      let choice = question[0].box_values.filter((val) => val.id === value);
+      answer = choice[0].label;
+    }
     list.push(
       <li key={key} className="list-group-item">
-        {value}
+        {question[0].question_name} : {answer}
       </li>
     );
   }
@@ -28,9 +34,7 @@ const Recap = ({ data, values, questions }) => {
     <div className="jumbotron bg-hu-grey-1 text-center">
       <h1 className="mb-3">{questionTitle}</h1>
       <p className="lead">{questionSubtitle}</p>
-      <ul className="list-group">
-        {list}
-      </ul>
+      <ul className="list-group">{list}</ul>
       <button className="btn btn-primary btn-lg px-5 mt-3" onClick={fwd}>
         Submit
       </button>
