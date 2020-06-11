@@ -56,15 +56,21 @@ const Recap = ({ data, values, questions }) => {
     <div className="jumbotron bg-hu-grey-1 text-center p-4 mt-3">
       <h1 className="mb-3">{questionTitle}</h1>
       <p className="lead">{questionSubtitle}</p>
-      <ul className="list-group col-lg-10 mx-auto">{list}</ul>
+      <ul className="list-group col-lg-10 mx-auto p-0">{list}</ul>
       <div className="row mt-3">
-        <div className="col-6">
-          <button className="btn btn-lg btn-danger px-lg-5" onClick={back}>
+        <div className="col-lg-2 offset-lg-2 col-sm-4 offset-sm-1 col-6">
+          <button
+            className="btn btn-lg btn-danger btn-block"
+            onClick={back}
+          >
             Back
           </button>
         </div>
-        <div className="col-6">
-          <button className="btn btn-lg btn-primary px-lg-5" onClick={fwd}>
+        <div className="col-lg-2 offset-lg-4 col-sm-4 offset-sm-2 col-6">
+          <button
+            className="btn btn-lg btn-primary btn-block"
+            onClick={fwd}
+          >
             Submit
           </button>
         </div>
