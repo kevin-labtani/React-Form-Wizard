@@ -8,11 +8,16 @@ const Recap = ({ data, values, questions }) => {
     default_next_id: nextQuestionId,
   } = data;
 
-  const { push } = useHistory();
+  const { push, goBack } = useHistory();
 
   const fwd = (e) => {
     e.preventDefault();
     push(`/${nextQuestionId}`);
+  };
+
+  const back = (e) => {
+    e.preventDefault();
+    goBack();
   };
 
   const list = [];
@@ -48,13 +53,22 @@ const Recap = ({ data, values, questions }) => {
   }
 
   return (
-    <div className="jumbotron bg-hu-grey-1 text-center">
+    <div className="jumbotron bg-hu-grey-1 text-center p-4 mt-3">
       <h1 className="mb-3">{questionTitle}</h1>
       <p className="lead">{questionSubtitle}</p>
       <ul className="list-group col-lg-10 mx-auto">{list}</ul>
-      <button className="btn btn-primary btn-lg px-5 mt-3" onClick={fwd}>
-        Submit
-      </button>
+      <div className="row mt-3">
+        <div className="col-6">
+          <button className="btn btn-lg btn-danger px-lg-5" onClick={back}>
+            Back
+          </button>
+        </div>
+        <div className="col-6">
+          <button className="btn btn-lg btn-primary px-lg-5" onClick={fwd}>
+            Submit
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
