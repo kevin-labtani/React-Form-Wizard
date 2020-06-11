@@ -50,13 +50,19 @@ const MultipleChoice = ({ values, multiCheckboxChange, data }) => {
                 type="checkbox"
                 value={`${choice.id}`}
                 id={`checkbox-${index}`}
-                checked={values[questionId].includes(`${choice.id}`)}
+                checked={
+                  values[questionId] &&
+                  values[questionId].includes(`${choice.id}`)
+                }
                 onChange={multiCheckboxChange(questionId)}
                 hidden
               />
               <label
                 className={`btn btn-outline-primary btn-block text-left pl-4 ${
-                  values[questionId].includes(`${choice.id}`) ? "active" : ""
+                  values[questionId] &&
+                  values[questionId].includes(`${choice.id}`)
+                    ? "active"
+                    : ""
                 }`}
                 htmlFor={`checkbox-${index}`}
               >
