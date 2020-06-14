@@ -60,7 +60,7 @@ const FileUpload = ({ values, inputChange, data }) => {
         },
       });
     } catch (err) {
-      if (err.response.status >= 400) {
+      if (err.response.status >= 800) {
         setAlert("There was a problem while uploading the file", "danger");
         setUploadPercentage(0);
       } else {
@@ -108,25 +108,25 @@ const FileUpload = ({ values, inputChange, data }) => {
               onChange={changeHandler}
               accept=""
             />
-            <div className="row">
-              <div className="col-2">
-                <button
-                  className="btn btn-primary my-2"
-                  onClick={uploadHandler}
-                  disabled={!file}
+          </div>
+          <div className="row pt-2">
+            <div className="col-5 col-lg-2 col-md-3">
+              <button
+                className="btn btn-primary"
+                onClick={uploadHandler}
+                disabled={!file}
+              >
+                Upload
+              </button>
+            </div>
+            <div className="col-7 col-lg-10 col-md-9 my-auto">
+              <div className="progress">
+                <div
+                  className="progress-bar progress-bar-striped bg-green-hu"
+                  role="progressbar"
+                  style={{ width: `${uploadPercentage}%` }}
                 >
-                  Upload
-                </button>
-              </div>
-              <div className="col-10 my-auto">
-                <div className="progress">
-                  <div
-                    className="progress-bar progress-bar-striped bg-green-hu"
-                    role="progressbar"
-                    style={{ width: `${uploadPercentage}%` }}
-                  >
-                    {uploadPercentage}%
-                  </div>
+                  {uploadPercentage}%
                 </div>
               </div>
             </div>
