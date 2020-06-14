@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
+import { motion } from "framer-motion";
 import AlertContext from "../../context/alert/alertContext";
 import Alerts from "../layout/Alerts";
 import AvatarAnswer from "../AvatarAnswer";
 import Question from "../Question";
 import Navigation from "../Navigation";
-import { motion } from "framer-motion";
 
 import isEmail from "validator/lib/isEmail";
 

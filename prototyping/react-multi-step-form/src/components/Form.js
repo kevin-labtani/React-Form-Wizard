@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Route, Switch, useHistory, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 import {
   useQuestions,
   getQuestions,
@@ -21,7 +22,6 @@ import FileUpload from "./questionType/FileUpload";
 import Recap from "./questionType/Recap";
 import Spinner from "./layout/Spinner";
 import Footer from "./layout/Footer";
-import { AnimatePresence } from "framer-motion";
 
 const Form = () => {
   const location = useLocation();

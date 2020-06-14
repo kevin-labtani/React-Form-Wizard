@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
+import { motion } from "framer-motion";
 import AlertContext from "../../context/alert/alertContext";
 import Alerts from "../layout/Alerts";
 import AvatarAnswer from "../AvatarAnswer";
@@ -56,8 +57,27 @@ const Rating = ({ values, inputChange, data }) => {
     );
   }
 
+  const containerVariants = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+      transition: { delay: 0.25, duration: 1 },
+    },
+    exit: {
+      y: "-100vh",
+      transition: { ease: "easeIn" },
+    },
+  };
+
   return (
-    <>
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+    >
       <Question questionTitle={questionTitle} />
 
       <div className="row">
@@ -70,7 +90,7 @@ const Rating = ({ values, inputChange, data }) => {
       </div>
 
       <Navigation fwd={fwd} back={back} />
-    </>
+    </motion.div>
   );
 };
 
