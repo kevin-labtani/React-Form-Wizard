@@ -24,17 +24,17 @@ const Welcome = ({ data, initAnswerState }) => {
     },
     visible: {
       opacity: 1,
-      transition: { delay: 0.25, duration: 1.5 },
+      transition: { delay: 0.25, duration: 1 },
     },
     exit: {
       y: "-100vh",
-      transition: { ease: "easeInOut" },
+      transition: { ease: "easeIn" },
     },
   };
 
   return (
     <motion.div
-      className="jumbotron bg-hu-grey-1 text-center"
+      className="jumbotron bg-hu-grey-1 text-center mb-0"
       variants={containerVariants}
       initial="hidden"
       animate="visible"

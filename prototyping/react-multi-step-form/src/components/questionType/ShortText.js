@@ -41,11 +41,11 @@ const ShortText = ({ values, inputChange, data }) => {
     },
     visible: {
       opacity: 1,
-      transition: { delay: 0.25, duration: 1.5 },
+      transition: { delay: 0.25, duration: 1 },
     },
     exit: {
       y: "-100vh",
-      transition: { ease: "easeInOut" },
+      transition: { ease: "easeIn" },
     },
   };
 
