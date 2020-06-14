@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { containerVariants } from "../../AnimationConstant";
 
 const ThankYou = ({ data }) => {
   const {
@@ -7,20 +8,6 @@ const ThankYou = ({ data }) => {
     question_subtitle: questionSubtitle,
     question_picture: questionPicture,
   } = data;
-
-  const containerVariants = {
-    hidden: {
-      opacity: 0,
-    },
-    visible: {
-      opacity: 1,
-      transition: { delay: 0.25, duration: 1 },
-    },
-    exit: {
-      y: "-100vh",
-      transition: { ease: "easeIn" },
-    },
-  };
 
   return (
     <motion.div

@@ -6,6 +6,7 @@ import Alerts from "../layout/Alerts";
 import AvatarAnswer from "../AvatarAnswer";
 import Question from "../Question";
 import Navigation from "../Navigation";
+import { containerVariants } from "../../AnimationConstant";
 
 import isMobilePhone from "validator/lib/isMobilePhone";
 
@@ -35,20 +36,6 @@ const PhoneNumber = ({ values, inputChange, data }) => {
   const back = (e) => {
     e.preventDefault();
     goBack();
-  };
-
-  const containerVariants = {
-    hidden: {
-      opacity: 0,
-    },
-    visible: {
-      opacity: 1,
-      transition: { delay: 0.25, duration: 1 },
-    },
-    exit: {
-      y: "-100vh",
-      transition: { ease: "easeIn" },
-    },
   };
 
   return (

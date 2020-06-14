@@ -6,6 +6,7 @@ import Alerts from "../layout/Alerts";
 import AvatarAnswer from "../AvatarAnswer";
 import Question from "../Question";
 import Navigation from "../Navigation";
+import { containerVariants } from "../../AnimationConstant";
 
 const Legal = ({ values, SingleCheckboxChange, data }) => {
   const {
@@ -47,20 +48,6 @@ const Legal = ({ values, SingleCheckboxChange, data }) => {
   //   checkboxChange("contactCheck")(e);
   //   cont(e);
   // };
-
-  const containerVariants = {
-    hidden: {
-      opacity: 0,
-    },
-    visible: {
-      opacity: 1,
-      transition: { delay: 0.25, duration: 1 },
-    },
-    exit: {
-      y: "-100vh",
-      transition: { ease: "easeIn" },
-    },
-  };
 
   return (
     <motion.div

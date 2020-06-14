@@ -1,6 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
+import { containerVariants } from "../../AnimationConstant";
 
 const Recap = ({ data, values, questions }) => {
   const {
@@ -52,20 +53,6 @@ const Recap = ({ data, values, questions }) => {
       </li>
     );
   }
-
-  const containerVariants = {
-    hidden: {
-      opacity: 0,
-    },
-    visible: {
-      opacity: 1,
-      transition: { delay: 0.25, duration: 1 },
-    },
-    exit: {
-      y: "-100vh",
-      transition: { ease: "easeIn" },
-    },
-  };
 
   return (
     <motion.div

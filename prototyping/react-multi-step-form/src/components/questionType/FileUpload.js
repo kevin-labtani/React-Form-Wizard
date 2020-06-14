@@ -1,12 +1,13 @@
 import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
+import axios from "axios";
 import AlertContext from "../../context/alert/alertContext";
 import Alerts from "../layout/Alerts";
 import AvatarAnswer from "../AvatarAnswer";
 import Question from "../Question";
 import Navigation from "../Navigation";
-import axios from "axios";
+import { containerVariants } from "../../AnimationConstant";
 
 const FileUpload = ({ values, inputChange, data }) => {
   const {
@@ -67,20 +68,6 @@ const FileUpload = ({ values, inputChange, data }) => {
         setAlert("The file was uploaded", "success");
       }
     }
-  };
-
-  const containerVariants = {
-    hidden: {
-      opacity: 0,
-    },
-    visible: {
-      opacity: 1,
-      transition: { delay: 0.25, duration: 1 },
-    },
-    exit: {
-      y: "-100vh",
-      transition: { ease: "easeIn" },
-    },
   };
 
   return (
