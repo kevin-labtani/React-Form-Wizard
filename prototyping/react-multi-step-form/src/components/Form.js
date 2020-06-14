@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Route, Switch, useHistory } from "react-router-dom";
+import { Route, Switch, useHistory, useLocation } from "react-router-dom";
 import {
   useQuestions,
   getQuestions,
@@ -21,8 +21,11 @@ import FileUpload from "./questionType/FileUpload";
 import Recap from "./questionType/Recap";
 import Spinner from "./layout/Spinner";
 import Footer from "./layout/Footer";
+import { AnimatePresence } from "framer-motion";
 
 const Form = () => {
+  const location = useLocation();
+
   const [questionsState, questionsDispatch] = useQuestions();
 
   const { questions, loading } = questionsState;
@@ -52,7 +55,11 @@ const Form = () => {
   questions.forEach((q) => {
     if (q.question_type_id === 1) {
       initAnswers[q.question_id] = [];
-    } else if (q.question_type_id !== 15 && q.question_type_id !== 16 && q.question_type_id !== 17) {
+    } else if (
+      q.question_type_id !== 15 &&
+      q.question_type_id !== 16 &&
+      q.question_type_id !== 17
+    ) {
       //no values for welcome & thankyou & recap question type
       initAnswers[q.question_id] = "";
     }
@@ -373,7 +380,9 @@ const Form = () => {
   return (
     <>
       <div className="container my-auto">
-        <Switch>{questionsSwitch}</Switch>
+        <AnimatePresence exitBeforeEnter>
+          <Switch location={location} key={location.key}>{questionsSwitch}</Switch>
+        </AnimatePresence>
       </div>
       <Footer questions={questions} loading={loading} answers={answers} />
     </>

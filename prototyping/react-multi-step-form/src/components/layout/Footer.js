@@ -1,5 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Footer = ({ questions, loading, answers }) => {
   const location = useLocation();
@@ -13,8 +14,27 @@ const Footer = ({ questions, loading, answers }) => {
     return null;
   }
 
+  const footerVariants = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+      transition: { delay: 1, duration: 1 },
+    },
+    exit: {
+      opacity: 0,
+    },
+  };
+
   return (
-    <footer className="footer bg-hu-grey">
+    <motion.footer
+      className="footer bg-hu-grey"
+      variants={footerVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+    >
       <div className="container">
         <div className="row">
           <div className="col-5 offset-7 col-lg-4 offset-lg-8 mt-3 mb-3">
@@ -36,7 +56,7 @@ const Footer = ({ questions, loading, answers }) => {
           </div>
         </div>
       </div>
-    </footer>
+    </motion.footer>
   );
 };
 

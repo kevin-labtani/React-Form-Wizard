@@ -5,6 +5,7 @@ import Alerts from "../layout/Alerts";
 import AvatarAnswer from "../AvatarAnswer";
 import Question from "../Question";
 import Navigation from "../Navigation";
+import { motion } from "framer-motion";
 
 import isEmail from "validator/lib/isEmail";
 
@@ -34,8 +35,27 @@ const Email = ({ values, inputChange, data }) => {
     goBack();
   };
 
+  const containerVariants = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+      transition: { delay: 0.25, duration: 1.5 },
+    },
+    exit: {
+      y: "-100vh",
+      transition: { ease: "easeInOut" },
+    },
+  };
+
   return (
-    <>
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+    >
       <Question questionTitle={questionTitle} />
 
       <div className="row">
@@ -62,7 +82,7 @@ const Email = ({ values, inputChange, data }) => {
       </div>
 
       <Navigation fwd={fwd} back={back} />
-    </>
+    </motion.div>
   );
 };
 

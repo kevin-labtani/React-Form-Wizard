@@ -25,7 +25,7 @@ const FileUpload = ({ values, inputChange, data }) => {
   const fwd = (e) => {
     e.preventDefault();
     if (values[questionId] === "") {
-      setAlert("Veuillez choisir un fichier a uploader", "danger");
+      setAlert("Veuillez choisir un fichier à uploader", "danger");
     } else {
       push(`/${nextQuestionId}`);
     }
@@ -44,7 +44,7 @@ const FileUpload = ({ values, inputChange, data }) => {
   const uploadHandler = async (e) => {
     const fd = new FormData();
     fd.append("file", file, file.name);
-
+    // console.log(fd.get("file"));
     try {
       await axios.post("my-domain.com/file-upload", fd, {
         headers: {
