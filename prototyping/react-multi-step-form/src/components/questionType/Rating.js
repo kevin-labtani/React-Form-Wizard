@@ -6,7 +6,7 @@ import Alerts from "../layout/Alerts";
 import AvatarAnswer from "../AvatarAnswer";
 import Question from "../Question";
 import Navigation from "../Navigation";
-import { containerVariants } from "../../AnimationConstant";
+import { containerVariants, answerVariants } from "../../AnimationConstant";
 
 const Rating = ({ values, inputChange, data }) => {
   const {
@@ -67,14 +67,19 @@ const Rating = ({ values, inputChange, data }) => {
     >
       <Question questionTitle={questionTitle} />
 
-      <div className="row">
+      <motion.div
+        className="row"
+        variants={answerVariants}
+        initial="hidden"
+        animate="visible"
+      >
         <div className="col-8 offset-1 col-lg-7 offset-lg-2 rounded-lg px-lg-5 py-4 my-2 shadow bg-hu-grey-1 speech-bubble-answer">
           <Alerts />
           <p className="subtitles text-muted">{questionSubtitle}</p>
           <div className="rating">{range}</div>
         </div>
         <AvatarAnswer />
-      </div>
+      </motion.div>
 
       <Navigation fwd={fwd} back={back} />
     </motion.div>

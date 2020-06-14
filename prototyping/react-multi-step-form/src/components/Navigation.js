@@ -1,8 +1,15 @@
 import React from 'react'
+import { motion } from "framer-motion";
+import { navigationVariants } from "../AnimationConstant";
 
 function Navigation({back, fwd}) {
   return (
-    <div className="row">
+    <motion.div
+      className="row"
+      variants={navigationVariants}
+      initial="hidden"
+      animate="visible"
+    >
       <div className="col-10 offset-1 col-lg-8 offset-lg-2 my-3">
         <div className="row">
           <div className="col-6">
@@ -17,7 +24,7 @@ function Navigation({back, fwd}) {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
