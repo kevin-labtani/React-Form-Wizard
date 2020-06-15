@@ -15,9 +15,11 @@ export const containerVariants = {
 export const answerVariants = {
   hidden: {
     opacity: 0,
+    x: "-10vw",
   },
   visible: {
     opacity: 1,
+    x: 0,
     transition: { delay: 1.25, duration: 1 },
   },
 };
@@ -25,13 +27,14 @@ export const answerVariants = {
 export const questionVariants = {
   hidden: {
     opacity: 0,
+    x: "10vw",
   },
   visible: {
     opacity: 1,
-    transition: { delay: .75, duration: 1 },
+    x: 0,
+    transition: { delay: 0.75, duration: 1 },
   },
 };
-
 
 export const navigationVariants = {
   hidden: {
