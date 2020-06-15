@@ -45,3 +45,15 @@ export const navigationVariants = {
     transition: { delay: 1.75, duration: 1 },
   },
 };
+
+export const KeyboardNavVariants = {
+  hidden: {
+    opacity: 0,
+    y: "3vh",
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { delay: 0.25, duration: 0.5 },
+  },
+};

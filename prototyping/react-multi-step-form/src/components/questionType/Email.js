@@ -6,7 +6,11 @@ import Alerts from "../layout/Alerts";
 import AvatarAnswer from "../AvatarAnswer";
 import Question from "../Question";
 import Navigation from "../Navigation";
-import { containerVariants, answerVariants } from "../../AnimationConstant";
+import {
+  containerVariants,
+  answerVariants,
+  KeyboardNavVariants,
+} from "../../AnimationConstant";
 
 import isEmail from "validator/lib/isEmail";
 
@@ -36,6 +40,12 @@ const Email = ({ values, inputChange, data }) => {
     goBack();
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      fwd(event);
+    }
+  };
+
   return (
     <motion.div
       variants={containerVariants}
@@ -62,6 +72,7 @@ const Email = ({ values, inputChange, data }) => {
               className="form-control form-control-lg"
               name="email"
               id="email"
+              onKeyDown={handleKeyDown}
               onChange={inputChange(questionId)}
               value={values[questionId]}
               autoComplete="off"
@@ -69,6 +80,16 @@ const Email = ({ values, inputChange, data }) => {
               placeholder="Enter your email here"
             />
           </div>
+          {values[questionId] && (
+            <motion.p
+              className="mb-0"
+              variants={KeyboardNavVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              press Enter ↵
+            </motion.p>
+          )}
         </div>
         <AvatarAnswer />
       </motion.div>
