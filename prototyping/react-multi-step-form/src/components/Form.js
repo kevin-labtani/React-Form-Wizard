@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Route, Switch, useHistory, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
+import axios from "axios";
 import {
   useQuestions,
   getQuestions,
@@ -25,6 +26,7 @@ import Footer from "./layout/Footer";
 
 const Form = () => {
   const location = useLocation();
+  const { push } = useHistory(); //for autopush option
 
   const [questionsState, questionsDispatch] = useQuestions();
 
@@ -33,8 +35,7 @@ const Form = () => {
   useEffect(() => {
     getQuestions(questionsDispatch);
   }, [questionsDispatch]);
-
-  const { push } = useHistory(); //for autopush option
+  
   const [answers, setAnswers] = useState({});
 
   // load data from localSotrage
@@ -103,9 +104,21 @@ const Form = () => {
     setAnswers({ ...answers, [input]: e.target.value });
   };
 
-  if (loading) {
-    return <Spinner />;
-  }
+  const sendAnswers = async (nextQuestionId) => {
+    console.log(answers);
+    console.log(JSON.stringify(answers));
+    try {
+      await axios.post("my-domain.com/file-upload", JSON.stringify(answers), {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      push(`/${nextQuestionId}`);
+    } catch (err) {
+      console.log(err);
+      push(`/${nextQuestionId}`); //REMOVE
+    }
+  };
 
   let questionsSwitch = [];
   questions.forEach((q) => {
@@ -366,6 +379,7 @@ const Form = () => {
                 data={q}
                 values={answers}
                 questions={questions}
+                sendAnswers={sendAnswers}
               />
             )}
           />
@@ -377,11 +391,17 @@ const Form = () => {
     }
   });
 
+  if (loading) {
+    return <Spinner />;
+  }
+
   return (
     <>
       <div className="container my-auto">
         <AnimatePresence exitBeforeEnter>
-          <Switch location={location} key={location.key}>{questionsSwitch}</Switch>
+          <Switch location={location} key={location.key}>
+            {questionsSwitch}
+          </Switch>
         </AnimatePresence>
       </div>
       <Footer questions={questions} loading={loading} answers={answers} />

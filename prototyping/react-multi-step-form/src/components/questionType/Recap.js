@@ -3,18 +3,18 @@ import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
 import { containerVariants } from "../../AnimationConstant";
 
-const Recap = ({ data, values, questions }) => {
+const Recap = ({ data, values, questions, sendAnswers }) => {
   const {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
     default_next_id: nextQuestionId,
   } = data;
 
-  const { push, goBack } = useHistory();
+  const { goBack } = useHistory();
 
   const fwd = (e) => {
     e.preventDefault();
-    push(`/${nextQuestionId}`);
+    sendAnswers(nextQuestionId);
   };
 
   const back = (e) => {
