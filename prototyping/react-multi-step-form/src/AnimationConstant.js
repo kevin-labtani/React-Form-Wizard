@@ -15,7 +15,7 @@ export const containerVariants = {
 export const answerVariants = {
   hidden: {
     opacity: 0,
-    x: "-10vw",
+    x: "-5vw",
   },
   visible: {
     opacity: 1,
@@ -27,7 +27,7 @@ export const answerVariants = {
 export const questionVariants = {
   hidden: {
     opacity: 0,
-    x: "10vw",
+    x: "5vw",
   },
   visible: {
     opacity: 1,
