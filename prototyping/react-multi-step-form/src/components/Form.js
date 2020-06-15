@@ -35,7 +35,7 @@ const Form = () => {
   useEffect(() => {
     getQuestions(questionsDispatch);
   }, [questionsDispatch]);
-  
+
   const [answers, setAnswers] = useState({});
 
   // load data from localSotrage
@@ -105,10 +105,27 @@ const Form = () => {
   };
 
   const sendAnswers = async (nextQuestionId) => {
+    let data = [];
+    // ?!?!?
+    for (let [key, value] of Object.entries(answers)) {
+      let question = questions.filter((q) => q.question_id === parseInt(key));
+      if (question[0].question_type_id === 1) {
+        value.forEach((element) => {
+          data.push({
+            question_id: question[0].question_id,
+            box_values: { id: element },
+          });
+        });
+      } else {
+        data.push({ question_id: question[0].question_id, answer: value });
+      }
+    }
+
+    console.log(data);
     console.log(answers);
     console.log(JSON.stringify(answers));
     try {
-      await axios.post("my-domain.com/file-upload", JSON.stringify(answers), {
+      await axios.post("my-domain.com/file-upload", JSON.stringify(data), {
         headers: {
           "Content-Type": "application/json",
         },
