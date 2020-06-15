@@ -163,6 +163,10 @@ textarea {
   margin-bottom: -1rem;
 }
 
+.page-link {
+  cursor: pointer;
+}
+
 // resize "buttons" on mobile for opinion scale
 @media screen and (max-width: 1024px) {
   .page-link {
@@ -181,7 +185,6 @@ textarea {
 .progress-bar-img {
   background-image: url("../src/progress.svg");
   background-color: transparent;
-
 }
 
 .progress-img {
