@@ -91,9 +91,16 @@ const OpinionScale = ({ values, SingleCheckboxChange, data }) => {
                     onChange={SingleCheckboxChange(questionId)}
                     hidden
                   />
-                  <label className="page-link" htmlFor={`rating-${index}`}>
+                  <motion.label
+                    className={`page-link ${
+                      values[questionId] === `${choice.id}`
+                        ? "animate-label"
+                        : ""
+                    }`}
+                    htmlFor={`rating-${index}`}
+                  >
                     {choice.label}
-                  </label>
+                  </motion.label>
                 </li>
               ))}
               <li className="page-item disabled">

@@ -20,7 +20,7 @@ export const answerVariants = {
   visible: {
     opacity: 1,
     x: 0,
-    transition: { delay: 1.25, duration: 1 },
+    transition: { delay: 1, duration: 1 },
   },
 };
 
@@ -32,7 +32,7 @@ export const questionVariants = {
   visible: {
     opacity: 1,
     x: 0,
-    transition: { delay: 0.75, duration: 1 },
+    transition: { delay: 0.5, duration: 1 },
   },
 };
 
@@ -42,7 +42,7 @@ export const navigationVariants = {
   },
   visible: {
     opacity: 1,
-    transition: { delay: 1.75, duration: 1 },
+    transition: { delay: 1.5, duration: 1 },
   },
 };
 
@@ -64,7 +64,7 @@ export const footerVariants = {
   },
   visible: {
     opacity: 1,
-    transition: { delay: 1, duration: 1 },
+    transition: { delay: 2, duration: 1 },
   },
   exit: {
     opacity: 0,

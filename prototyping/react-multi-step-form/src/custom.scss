@@ -204,3 +204,22 @@ textarea {
 body {
   overflow-x: hidden;
 }
+
+.animate-label {
+  animation-name: flash;
+  animation-duration: 0.5s;
+  animation-delay: 0.1s;
+}
+
+@keyframes flash {
+  from,
+  50%,
+  to {
+    opacity: 1;
+  }
+
+  25%,
+  75% {
+    opacity: 0;
+  }
+}
