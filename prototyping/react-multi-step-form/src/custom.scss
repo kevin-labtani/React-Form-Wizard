@@ -191,3 +191,13 @@ textarea {
   background-image: url("../src/progress-bg.svg");
   background-color: transparent;
 }
+
+// hack to fix scollbar appearing due to sliding framer-motion animation
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE and Edge */
+body {
+  -ms-overflow-style: none;
+}
