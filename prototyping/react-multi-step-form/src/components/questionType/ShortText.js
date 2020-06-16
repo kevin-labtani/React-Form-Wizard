@@ -6,7 +6,11 @@ import Alerts from "../layout/Alerts";
 import AvatarAnswer from "../AvatarAnswer";
 import Question from "../Question";
 import Navigation from "../Navigation";
-import { containerVariants, answerVariants } from "../../AnimationConstant";
+import {
+  containerVariants,
+  answerVariants,
+  KeyboardNavVariants,
+} from "../../AnimationConstant";
 
 const ShortText = ({ values, inputChange, data }) => {
   const {
@@ -36,6 +40,12 @@ const ShortText = ({ values, inputChange, data }) => {
     goBack();
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      fwd(event);
+    }
+  };
+
   return (
     <motion.div
       variants={containerVariants}
@@ -45,12 +55,7 @@ const ShortText = ({ values, inputChange, data }) => {
     >
       <Question questionTitle={questionTitle} />
 
-      <motion.div
-        className="row"
-        variants={answerVariants}
-        initial="hidden"
-        animate="visible"
-      >
+      <motion.div className="row" variants={answerVariants}>
         <div className="col-8 offset-1 col-lg-7 offset-lg-2 rounded-lg px-lg-5 py-4 my-2 shadow bg-hu-grey-1 speech-bubble-answer">
           <Alerts />
           <div className="form-group">
@@ -63,6 +68,7 @@ const ShortText = ({ values, inputChange, data }) => {
               name="shorttext"
               id="shorttext"
               maxLength="256"
+              onKeyDown={handleKeyDown}
               onChange={inputChange(questionId)}
               value={values[questionId]}
               autoComplete="off"
@@ -70,6 +76,11 @@ const ShortText = ({ values, inputChange, data }) => {
               placeholder="Enter your name here"
             />
           </div>
+          {values[questionId] && (
+            <motion.p className="mb-0" variants={KeyboardNavVariants}>
+              press Enter ↵
+            </motion.p>
+          )}
         </div>
         <AvatarAnswer />
       </motion.div>

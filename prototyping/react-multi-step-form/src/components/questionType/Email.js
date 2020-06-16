@@ -55,12 +55,7 @@ const Email = ({ values, inputChange, data }) => {
     >
       <Question questionTitle={questionTitle} />
 
-      <motion.div
-        className="row"
-        variants={answerVariants}
-        initial="hidden"
-        animate="visible"
-      >
+      <motion.div className="row" variants={answerVariants}>
         <div className="col-8 offset-1 col-lg-7 offset-lg-2 rounded-lg px-lg-5 py-4 my-2 shadow bg-hu-grey-1 speech-bubble-answer">
           <Alerts />
           <div className="form-group">
@@ -81,12 +76,7 @@ const Email = ({ values, inputChange, data }) => {
             />
           </div>
           {values[questionId] && (
-            <motion.p
-              className="mb-0"
-              variants={KeyboardNavVariants}
-              initial="hidden"
-              animate="visible"
-            >
+            <motion.p className="mb-0" variants={KeyboardNavVariants}>
               press Enter ↵
             </motion.p>
           )}
