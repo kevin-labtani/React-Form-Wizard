@@ -6,6 +6,7 @@ import {
   useQuestions,
   getQuestions,
 } from "../context/questions/QuestionsState";
+import { v4 as uuidv4 } from "uuid";
 import Email from "./questionType/Email";
 import ShortText from "./questionType/ShortText";
 import SingleChoice from "./questionType/SingleChoice";
@@ -37,19 +38,26 @@ const Form = () => {
   }, [questionsDispatch]);
 
   const [answers, setAnswers] = useState({});
+  const [responseUuid, setResponseUuid] = useState("");
 
   // load data from localSotrage
   useEffect(() => {
-    const data = localStorage.getItem("answers");
+    const data = JSON.parse(localStorage.getItem("answers"));
     if (data) {
-      setAnswers(JSON.parse(data));
+      setAnswers(data);
+    }
+
+    const id = JSON.parse(localStorage.getItem("responseUuid"));
+    if (id) {
+      setResponseUuid(id);
     }
   }, []);
 
   // save data to localStorage
   useEffect(() => {
     localStorage.setItem("answers", JSON.stringify(answers));
-  }, [answers]);
+    localStorage.setItem("responseUuid", JSON.stringify(responseUuid));
+  }, [answers, responseUuid]);
 
   // initialize answer obj
   let initAnswers = {};
@@ -67,6 +75,8 @@ const Form = () => {
   });
   // init on welcome page
   const initAnswerState = () => {
+    const id = uuidv4();
+    setResponseUuid(id);
     setAnswers(initAnswers);
   };
 
@@ -109,21 +119,35 @@ const Form = () => {
     // ?!?!?
     for (let [key, value] of Object.entries(answers)) {
       let question = questions.filter((q) => q.question_id === parseInt(key));
-      if (question[0].question_type_id === 1) {
+      let type = question[0].question_type_id;
+      if (type === 1) {
         value.forEach((element) => {
           data.push({
+            assessment_id: question[0].assessment_id,
             question_id: question[0].question_id,
-            box_values: { id: element },
+            box_value_id: element,
+            response_uuid: responseUuid,
           });
         });
+      } else if (type === 2 || type === 4 || type === 7 || type === 3) {
+        data.push({
+          assessment_id: question[0].assessment_id,
+          question_id: question[0].question_id,
+          box_value_id: value,
+          response_uuid: responseUuid,
+        });
       } else {
-        data.push({ question_id: question[0].question_id, answer: value });
+        data.push({
+          assessment_id: question[0].assessment_id,
+          question_id: question[0].question_id,
+          free_text: value,
+          response_uuid: responseUuid,
+        });
       }
     }
 
     console.log(data);
-    console.log(answers);
-    console.log(JSON.stringify(answers));
+    console.log(JSON.stringify(data));
     try {
       await axios.post("my-domain.com/file-upload", JSON.stringify(data), {
         headers: {
