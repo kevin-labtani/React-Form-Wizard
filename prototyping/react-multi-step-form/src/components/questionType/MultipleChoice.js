@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useCallback } from "react";
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
 import AlertContext from "../../context/alert/alertContext";
@@ -6,7 +6,11 @@ import Alerts from "../layout/Alerts";
 import AvatarAnswer from "../AvatarAnswer";
 import Question from "../Question";
 import Navigation from "../Navigation";
-import { containerVariants, answerVariants } from "../../AnimationConstant";
+import {
+  containerVariants,
+  answerVariants,
+  KeyboardNavVariants,
+} from "../../AnimationConstant";
 
 const MultipleChoice = ({ values, multiCheckboxChange, data }) => {
   const {
@@ -36,6 +40,24 @@ const MultipleChoice = ({ values, multiCheckboxChange, data }) => {
     e.preventDefault();
     goBack();
   };
+
+  const handleKeyDown = useCallback(
+    (event) => {
+      if (event.key === "Enter") {
+        fwd(event);
+      }
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [values[questionId]]
+  );
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [handleKeyDown, values[questionId]]);
 
   return (
     <motion.div
@@ -77,6 +99,12 @@ const MultipleChoice = ({ values, multiCheckboxChange, data }) => {
               </label>
             </div>
           ))}
+          {/*eslint-disable-next-line eqeqeq*/}
+          {values[questionId] != false && (
+            <motion.p className="mb-0" variants={KeyboardNavVariants}>
+              press Enter ↵
+            </motion.p>
+          )}
         </div>
         <AvatarAnswer />
       </motion.div>
