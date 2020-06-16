@@ -413,7 +413,7 @@ const Form = () => {
   }
 
   return (
-    <>
+    <div className="min-vh-100 d-flex flex-column bg-hu-grey">
       <div className="container my-auto">
         <AnimatePresence exitBeforeEnter>
           <Switch location={location} key={location.key}>
@@ -422,7 +422,7 @@ const Form = () => {
         </AnimatePresence>
       </div>
       <Footer questions={questions} loading={loading} answers={answers} />
-    </>
+    </div>
   );
 };
 

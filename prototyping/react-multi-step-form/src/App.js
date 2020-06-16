@@ -9,9 +9,7 @@ const App = () => {
     <QuestionsState>
       <AlertState>
         <Router>
-          <div className="min-vh-100 d-flex flex-column bg-hu-grey">
-            <Form />
-          </div>
+          <Form />
         </Router>
       </AlertState>
     </QuestionsState>
