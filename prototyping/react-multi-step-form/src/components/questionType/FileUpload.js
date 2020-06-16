@@ -79,12 +79,7 @@ const FileUpload = ({ values, inputChange, data }) => {
     >
       <Question questionTitle={questionTitle} />
 
-      <motion.div
-        className="row"
-        variants={answerVariants}
-        initial="hidden"
-        animate="visible"
-      >
+      <motion.div className="row" variants={answerVariants}>
         <div className="col-8 offset-1 col-lg-7 offset-lg-2 rounded-lg px-lg-5 py-4 my-2 shadow bg-hu-grey-1 speech-bubble-answer">
           <Alerts />
           <p className="subtitles text-muted">{questionSubtitle}</p>
