@@ -57,3 +57,29 @@ export const KeyboardNavVariants = {
     transition: { delay: 0.25, duration: 0.5 },
   },
 };
+
+export const footerVariants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: { delay: 1, duration: 1 },
+  },
+  exit: {
+    opacity: 0,
+  },
+};
+
+export const alertVariants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: { delay: 0.25, duration: 0.5 },
+  },
+  exit: {
+    opacity: 0,
+  },
+};

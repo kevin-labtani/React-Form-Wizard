@@ -1,6 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
+import {footerVariants} from "../../AnimationConstant"
 
 const Footer = ({ questions, loading, answers }) => {
   const location = useLocation();
@@ -13,19 +14,6 @@ const Footer = ({ questions, loading, answers }) => {
   if (loading || !Object.keys(answers).includes(currentLoc)) {
     return null;
   }
-
-  const footerVariants = {
-    hidden: {
-      opacity: 0,
-    },
-    visible: {
-      opacity: 1,
-      transition: { delay: 1, duration: 1 },
-    },
-    exit: {
-      opacity: 0,
-    },
-  };
 
   return (
     <motion.footer
