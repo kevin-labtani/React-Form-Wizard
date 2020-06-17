@@ -67,7 +67,7 @@ const YesNo = ({ values, SingleCheckboxChange, data }) => {
                 onChange={SingleCheckboxChange(questionId)}
                 hidden
               />
-              <motion.label
+              <label
                 className={`btn btn-outline-primary btn-block text-left pl-4 ${
                   values[questionId] === `${choice.id}`
                     ? "active animate-label"
@@ -76,7 +76,7 @@ const YesNo = ({ values, SingleCheckboxChange, data }) => {
                 htmlFor={`checkbox-${index}`}
               >
                 {choice.label}
-              </motion.label>
+              </label>
             </div>
           ))}
         </div>

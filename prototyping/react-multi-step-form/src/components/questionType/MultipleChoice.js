@@ -86,7 +86,7 @@ const MultipleChoice = ({ values, multiCheckboxChange, data }) => {
                 onChange={multiCheckboxChange(questionId)}
                 hidden
               />
-              <motion.label
+              <label
                 className={`btn btn-outline-primary btn-block text-left pl-4 ${
                   values[questionId] &&
                   values[questionId].includes(`${choice.id}`)
@@ -96,7 +96,7 @@ const MultipleChoice = ({ values, multiCheckboxChange, data }) => {
                 htmlFor={`checkbox-${index}`}
               >
                 {choice.label}
-              </motion.label>
+              </label>
             </div>
           ))}
           {/*eslint-disable-next-line eqeqeq*/}

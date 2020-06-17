@@ -6,6 +6,7 @@ import Alerts from "../layout/Alerts";
 import AvatarAnswer from "../AvatarAnswer";
 import Question from "../Question";
 import Navigation from "../Navigation";
+import Checkmark from "../../Checkmark";
 import { containerVariants, answerVariants } from "../../AnimationConstant";
 
 const Legal = ({ values, SingleCheckboxChange, data }) => {
@@ -72,7 +73,7 @@ const Legal = ({ values, SingleCheckboxChange, data }) => {
                 onChange={SingleCheckboxChange(questionId)}
                 hidden
               />
-              <motion.label
+              <label
                 className={`btn btn-outline-primary btn-block text-left pl-4 ${
                   values[questionId] === `${choice.id}`
                     ? "active animate-label"
@@ -81,7 +82,8 @@ const Legal = ({ values, SingleCheckboxChange, data }) => {
                 htmlFor={`checkbox-${index}`}
               >
                 {choice.label}
-              </motion.label>
+                {values[questionId] === choice.id ? <Checkmark/> : ""}
+              </label>
             </div>
           ))}
         </div>
