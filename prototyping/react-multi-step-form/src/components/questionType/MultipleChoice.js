@@ -6,6 +6,7 @@ import Alerts from "../layout/Alerts";
 import AvatarAnswer from "../AvatarAnswer";
 import Question from "../Question";
 import Navigation from "../Navigation";
+import Checkmark from "../../Checkmark";
 import {
   containerVariants,
   answerVariants,
@@ -96,6 +97,12 @@ const MultipleChoice = ({ values, multiCheckboxChange, data }) => {
                 htmlFor={`checkbox-${index}`}
               >
                 {choice.label}
+                {values[questionId] &&
+                values[questionId].includes(choice.id) ? (
+                  <Checkmark />
+                ) : (
+                  ""
+                )}
               </label>
             </div>
           ))}

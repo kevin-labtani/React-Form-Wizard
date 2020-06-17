@@ -6,6 +6,7 @@ import Alerts from "../layout/Alerts";
 import AvatarAnswer from "../AvatarAnswer";
 import Question from "../Question";
 import Navigation from "../Navigation";
+import Checkmark from "../../Checkmark";
 import { containerVariants, answerVariants } from "../../AnimationConstant";
 
 const YesNo = ({ values, SingleCheckboxChange, data }) => {
@@ -76,6 +77,7 @@ const YesNo = ({ values, SingleCheckboxChange, data }) => {
                 htmlFor={`checkbox-${index}`}
               >
                 {choice.label}
+                {values[questionId] === choice.id ? <Checkmark /> : ""}
               </label>
             </div>
           ))}
