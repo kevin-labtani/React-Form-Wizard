@@ -72,14 +72,16 @@ const Legal = ({ values, SingleCheckboxChange, data }) => {
                 onChange={SingleCheckboxChange(questionId)}
                 hidden
               />
-              <label
+              <motion.label
                 className={`btn btn-outline-primary btn-block text-left pl-4 ${
-                  values[questionId] === `${choice.id}` ? "active" : ""
+                  values[questionId] === `${choice.id}`
+                    ? "active animate-label"
+                    : ""
                 }`}
                 htmlFor={`checkbox-${index}`}
               >
                 {choice.label}
-              </label>
+              </motion.label>
             </div>
           ))}
         </div>
