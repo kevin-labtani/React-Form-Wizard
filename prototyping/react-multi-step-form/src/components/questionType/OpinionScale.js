@@ -88,7 +88,7 @@ const OpinionScale = ({ values, SingleCheckboxChange, data }) => {
                     value={`${choice.id}`}
                     id={`rating-${index}`}
                     checked={values[questionId] === `${choice.id}`}
-                    onChange={SingleCheckboxChange(questionId)}
+                    onChange={SingleCheckboxChange(questionId, nextQuestion)}
                     hidden
                   />
                   <label

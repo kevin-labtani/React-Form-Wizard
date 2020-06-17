@@ -8,7 +8,7 @@ import Question from "../Question";
 import Navigation from "../Navigation";
 import { containerVariants, answerVariants } from "../../AnimationConstant";
 
-const Rating = ({ values, inputChange, data }) => {
+const Rating = ({ values, inputChangePush, data }) => {
   const {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
@@ -51,7 +51,7 @@ const Rating = ({ values, inputChange, data }) => {
           id={`rating-${index}`}
           value={`${index}`}
           checked={values[questionId] === `${index}`}
-          onChange={inputChange(questionId)}
+          onChange={inputChangePush(questionId, nextQuestionId)}
         />
         <label
           htmlFor={`rating-${index}`}

@@ -84,10 +84,12 @@ const Form = () => {
     setAnswers({ ...answers, [input]: e.target.value });
   };
 
-  // const SingleCheckboxChangePush = (input, next) => (e) => {
-  //   setAnswers({ ...answers, [input]: e.target.value });
-  //   push(next);
-  // };
+  const inputChangePush = (input, nextQuestion) => (e) => {
+    setAnswers({ ...answers, [input]: e.target.value });
+    setTimeout(() => {
+      push(`/${nextQuestion}`);
+    }, 1000);
+  };
 
   const multiCheckboxChange = (input) => (e) => {
     const oldArr = answers[input];
@@ -100,8 +102,18 @@ const Form = () => {
     }
   };
 
-  const SingleCheckboxChange = (input) => (e) => {
+  // const SingleCheckboxChangePush = (input, nextQuestion) => (e) => {
+  //   setAnswers({ ...answers, [input]: e.target.value });
+  //   setTimeout(() => {
+  //     push(`/${nextQuestion}`);
+  //   }, 1000);
+  // };
+
+  const SingleCheckboxChange = (input, nextQuestion) => (e) => {
     setAnswers({ ...answers, [input]: e.target.value });
+    setTimeout(() => {
+      push(`/${nextQuestion}`);
+    }, 1000);
   };
 
   const sendAnswers = async (nextQuestionId) => {
@@ -235,7 +247,7 @@ const Form = () => {
             render={(routeProps) => (
               <Rating
                 {...routeProps}
-                inputChange={inputChange}
+                inputChangePush={inputChangePush}
                 values={answers}
                 data={q}
               />
