@@ -53,7 +53,10 @@ const Rating = ({ values, inputChange, data }) => {
           checked={values[questionId] === `${index}`}
           onChange={inputChange(questionId)}
         />
-        <label htmlFor={`rating-${index}`}></label>
+        <label
+          htmlFor={`rating-${index}`}
+          className={values[questionId] ? "animate-label" : ""}
+        ></label>
       </React.Fragment>
     );
   }
