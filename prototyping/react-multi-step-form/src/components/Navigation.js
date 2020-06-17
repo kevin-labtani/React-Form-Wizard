@@ -1,6 +1,8 @@
 import React from 'react'
 import { motion } from "framer-motion";
 import { navigationVariants } from "../AnimationConstant";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons";
 
 function Navigation({back, fwd}) {
   return (
@@ -14,12 +16,12 @@ function Navigation({back, fwd}) {
         <div className="row">
           <div className="col-6">
             <button className="btn btn-danger rounded-circle" onClick={back}>
-              <i className="fas fa-arrow-up" />
+              <FontAwesomeIcon icon={faArrowUp} />
             </button>
           </div>
           <div className="col-6 text-right">
             <button className="btn btn-primary rounded-circle" onClick={fwd}>
-              <i className="fas fa-arrow-down" />
+              <FontAwesomeIcon icon={faArrowDown} />
             </button>
           </div>
         </div>

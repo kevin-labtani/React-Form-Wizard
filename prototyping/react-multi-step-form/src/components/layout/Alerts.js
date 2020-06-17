@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import AlertContext from "../../context/alert/alertContext";
 import { motion } from "framer-motion";
 import { alertVariants } from "../../AnimationConstant";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 
 const Alerts = () => {
   const alertContext = useContext(AlertContext);
@@ -17,7 +19,7 @@ const Alerts = () => {
         animate="visible"
         exit="exit"
       >
-        <i className="fas fa-info-circle" /> {alert.msg}
+        <FontAwesomeIcon icon={faInfoCircle} /> {alert.msg}
       </motion.div>
     ))
   );

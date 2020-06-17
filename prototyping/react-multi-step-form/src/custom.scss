@@ -160,7 +160,6 @@ textarea {
 .avatar {
   font-size: 3rem;
   color: $hu-grey-1;
-  margin-bottom: -1rem;
 }
 
 .page-link {
@@ -192,15 +191,6 @@ textarea {
   background-color: transparent;
 }
 
-// hack to fix scollbar appearing due to sliding framer-motion animation
-/* Hide scrollbar for Chrome, Safari and Opera */
-// body::-webkit-scrollbar {
-//   display: none;
-// }
-// /* Hide scrollbar for IE and Edge */
-// body {
-//   -ms-overflow-style: none;
-// }
 body {
   overflow-x: hidden;
 }

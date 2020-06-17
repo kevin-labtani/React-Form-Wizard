@@ -1,4 +1,6 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 
 function AvatarQuestion() {
   return (
@@ -8,7 +10,7 @@ function AvatarQuestion() {
             alt=""
             className="rounded-circle img-fluid"
           /> */}
-      <i className="fas fa-user-circle avatar" />
+      <FontAwesomeIcon icon={faUserCircle} className="avatar" />
     </div>
   );
 }
