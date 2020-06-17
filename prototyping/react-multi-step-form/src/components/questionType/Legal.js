@@ -44,12 +44,6 @@ const Legal = ({ values, SingleCheckboxChange, data }) => {
     goBack();
   };
 
-  // alternative way to auto push to next step
-  // const checkboxChangePush = (e) => {
-  //   checkboxChange("contactCheck")(e);
-  //   cont(e);
-  // };
-
   return (
     <motion.div
       variants={containerVariants}
@@ -82,7 +76,7 @@ const Legal = ({ values, SingleCheckboxChange, data }) => {
                 htmlFor={`checkbox-${index}`}
               >
                 {choice.label}
-                {values[questionId] === choice.id ? <Checkmark/> : ""}
+                {values[questionId] === choice.id ? <Checkmark /> : ""}
               </label>
             </div>
           ))}

@@ -84,16 +84,6 @@ const Form = () => {
     setAnswers({ ...answers, [input]: e.target.value });
   };
 
-  // const checkboxChange = (input) => (e) => {
-  //   setContact({ ...contact, [input]: e.target.checked });
-  // };
-
-  // auto push to next question
-  // was implemented on step4 as an example
-  // const checkboxChangePush = (input, next) => (e) => {
-  //   setContact({ ...contact, [input]: e.target.checked });
-  //   push(next);
-  // };
   // const SingleCheckboxChangePush = (input, next) => (e) => {
   //   setAnswers({ ...answers, [input]: e.target.value });
   //   push(next);
