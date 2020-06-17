@@ -102,14 +102,11 @@ const Form = () => {
     }
   };
 
-  // const SingleCheckboxChangePush = (input, nextQuestion) => (e) => {
+  // const SingleCheckboxChange = (input, nextQuestion) => (e) => {
   //   setAnswers({ ...answers, [input]: e.target.value });
-  //   setTimeout(() => {
-  //     push(`/${nextQuestion}`);
-  //   }, 1000);
   // };
 
-  const SingleCheckboxChange = (input, nextQuestion) => (e) => {
+  const SingleCheckboxChangePush = (input, nextQuestion) => (e) => {
     setAnswers({ ...answers, [input]: e.target.value });
     setTimeout(() => {
       push(`/${nextQuestion}`);
@@ -193,7 +190,7 @@ const Form = () => {
             render={(routeProps) => (
               <SingleChoice
                 {...routeProps}
-                SingleCheckboxChange={SingleCheckboxChange}
+                SingleCheckboxChangePush={SingleCheckboxChangePush}
                 values={answers}
                 data={q}
               />
@@ -211,7 +208,7 @@ const Form = () => {
             render={(routeProps) => (
               <YesNo
                 {...routeProps}
-                SingleCheckboxChange={SingleCheckboxChange}
+                SingleCheckboxChangePush={SingleCheckboxChangePush}
                 values={answers}
                 data={q}
               />
@@ -229,7 +226,7 @@ const Form = () => {
             render={(routeProps) => (
               <Legal
                 {...routeProps}
-                SingleCheckboxChange={SingleCheckboxChange}
+                SingleCheckboxChangePush={SingleCheckboxChangePush}
                 values={answers}
                 data={q}
               />
@@ -283,7 +280,7 @@ const Form = () => {
             render={(routeProps) => (
               <OpinionScale
                 {...routeProps}
-                SingleCheckboxChange={SingleCheckboxChange}
+                SingleCheckboxChangePush={SingleCheckboxChangePush}
                 values={answers}
                 data={q}
               />

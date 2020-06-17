@@ -9,7 +9,7 @@ import Navigation from "../Navigation";
 import Checkmark from "../../Checkmark";
 import { containerVariants, answerVariants } from "../../AnimationConstant";
 
-const YesNo = ({ values, SingleCheckboxChange, data }) => {
+const YesNo = ({ values, SingleCheckboxChangePush, data }) => {
   const {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
@@ -65,7 +65,7 @@ const YesNo = ({ values, SingleCheckboxChange, data }) => {
                 value={`${choice.id}`}
                 id={`checkbox-${index}`}
                 checked={values[questionId] === `${choice.id}`}
-                onChange={SingleCheckboxChange(questionId, nextQuestion)}
+                onChange={SingleCheckboxChangePush(questionId, nextQuestion)}
                 hidden
               />
               <label

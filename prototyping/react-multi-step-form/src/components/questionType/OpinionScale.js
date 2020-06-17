@@ -8,7 +8,7 @@ import Question from "../Question";
 import Navigation from "../Navigation";
 import { containerVariants, answerVariants } from "../../AnimationConstant";
 
-const OpinionScale = ({ values, SingleCheckboxChange, data }) => {
+const OpinionScale = ({ values, SingleCheckboxChangePush, data }) => {
   const {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
@@ -88,7 +88,10 @@ const OpinionScale = ({ values, SingleCheckboxChange, data }) => {
                     value={`${choice.id}`}
                     id={`rating-${index}`}
                     checked={values[questionId] === `${choice.id}`}
-                    onChange={SingleCheckboxChange(questionId, nextQuestion)}
+                    onChange={SingleCheckboxChangePush(
+                      questionId,
+                      nextQuestion
+                    )}
                     hidden
                   />
                   <label
