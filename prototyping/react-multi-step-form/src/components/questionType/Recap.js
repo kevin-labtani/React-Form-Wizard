@@ -19,8 +19,9 @@ const Recap = ({ data, values, questions, sendAnswers }) => {
     sendAnswers(nextQuestionId);
   };
 
-  const changeAnswer = (key) => {
-    push(`/${key}`);
+  const changeAnswer = (questionId, e) => {
+    e.preventDefault();
+    push(`/${questionId}`);
   };
 
   const list = [];
@@ -57,7 +58,7 @@ const Recap = ({ data, values, questions, sendAnswers }) => {
           <div className="col-1 d-flex align-items-center justify-content-center">
             <button
               className="btn btn-danger btn-sm rounded-circle"
-              onClick={() => changeAnswer(key)}
+              onClick={(e) => changeAnswer(key, e)}
             >
               <FontAwesomeIcon icon={faUndo} />
             </button>
