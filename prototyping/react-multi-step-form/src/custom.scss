@@ -220,7 +220,11 @@ label.custom-file-label {
   text-overflow: ellipsis;
 
   &::after {
-    content: "📎";
+    // content: "📎";
+    content: "";
+    background: url("./iconmonstr-paperclip-2.svg") no-repeat center center
+      $hu-green; // #e9ecef
+    padding: 0 1.5rem;
   }
 }
 
