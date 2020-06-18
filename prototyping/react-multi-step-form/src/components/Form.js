@@ -133,14 +133,12 @@ const Form = () => {
           assessment_id: question[0].assessment_id,
           question_id: question[0].question_id,
           box_value_id: value,
-          response_uuid: responseUuid,
         });
       } else {
         data.push({
           assessment_id: question[0].assessment_id,
           question_id: question[0].question_id,
           free_text: value,
-          response_uuid: responseUuid,
         });
       }
     }
