@@ -110,7 +110,7 @@ const Form = () => {
     setAnswers({ ...answers, [input]: e.target.value });
     setTimeout(() => {
       push(`/${nextQuestion}`);
-    }, 1000);
+    }, 1200);
   };
 
   const sendAnswers = async (nextQuestionId) => {
@@ -145,15 +145,18 @@ const Form = () => {
       }
     }
 
-    console.log(data);
-    console.log(JSON.stringify(data));
     try {
-      await axios.post("my-domain.com/file-upload", JSON.stringify(data), {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      let res = await axios.post(
+        `https://cors-anywhere.herokuapp.com/https://preprod.hike-up.be/api/fillARH/0251455c-65b7-4003-836c-2928a9b81b3d/${responseUuid}`,
+        JSON.stringify(data),
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       push(`/${nextQuestionId}`);
+      console.log(`Status code: ${res.status}`);
     } catch (err) {
       console.log(err);
       push(`/${nextQuestionId}`); //REMOVE
