@@ -89,7 +89,7 @@ const FileUpload = ({ values, inputChange, data }) => {
             </label>
             <input
               type="file"
-              className="custom-file-input form-control-lg"
+              className="custom-file-input"
               name="file"
               id="file"
               onChange={changeHandler}

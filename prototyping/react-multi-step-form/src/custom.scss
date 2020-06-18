@@ -214,6 +214,16 @@ body::-webkit-scrollbar-thumb {
   scrollbar-color: $hu-green $hu-grey-1;
 }
 
+label.custom-file-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  &::after {
+    content: "📎";
+  }
+}
+
 // resize "buttons" on mobile for opinion scale
 @media screen and (max-width: 1024px) {
   .page-link {
