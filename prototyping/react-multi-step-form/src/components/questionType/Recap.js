@@ -12,16 +12,15 @@ const Recap = ({ data, values, questions, sendAnswers }) => {
     default_next_id: nextQuestionId,
   } = data;
 
-  const { push, goBack } = useHistory();
+  const { push } = useHistory();
 
   const fwd = (e) => {
     e.preventDefault();
     sendAnswers(nextQuestionId);
   };
 
-  const correct = (e) => {
-    e.preventDefault();
-    goBack()
+  const changeAnswer = (key) => {
+    push(`/${key}`);
   };
 
   const list = [];
@@ -58,7 +57,7 @@ const Recap = ({ data, values, questions, sendAnswers }) => {
           <div className="col-1 d-flex align-items-center justify-content-center">
             <button
               className="btn btn-danger btn-sm rounded-circle"
-              onClick={correct}
+              onClick={() => changeAnswer(key)}
             >
               <FontAwesomeIcon icon={faUndo} />
             </button>
