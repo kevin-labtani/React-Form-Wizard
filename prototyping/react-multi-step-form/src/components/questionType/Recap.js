@@ -2,6 +2,8 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
 import { containerVariants } from "../../AnimationConstant";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUndo } from "@fortawesome/free-solid-svg-icons";
 
 const Recap = ({ data, values, questions, sendAnswers }) => {
   const {
@@ -10,16 +12,16 @@ const Recap = ({ data, values, questions, sendAnswers }) => {
     default_next_id: nextQuestionId,
   } = data;
 
-  const { goBack } = useHistory();
+  const { push, goBack } = useHistory();
 
   const fwd = (e) => {
     e.preventDefault();
     sendAnswers(nextQuestionId);
   };
 
-  const back = (e) => {
+  const correct = (e) => {
     e.preventDefault();
-    goBack();
+    goBack()
   };
 
   const list = [];
@@ -48,8 +50,20 @@ const Recap = ({ data, values, questions, sendAnswers }) => {
     }
     list.push(
       <li key={key} className="list-group-item">
-        <p className="font-weight-bold my-1">{question[0].question_name}</p>
-        <p className="my-1">{answer}</p>
+        <div className="row">
+          <div className="col-10 offset-sm-1">
+            <p className="font-weight-bold my-1">{question[0].question_name}</p>
+            <p className="my-1">{answer}</p>
+          </div>
+          <div className="col-1 d-flex align-items-center justify-content-center">
+            <button
+              className="btn btn-danger btn-sm rounded-circle"
+              onClick={correct}
+            >
+              <FontAwesomeIcon icon={faUndo} />
+            </button>
+          </div>
+        </div>
       </li>
     );
   }
@@ -65,18 +79,9 @@ const Recap = ({ data, values, questions, sendAnswers }) => {
       <h1 className="mb-3">{questionTitle}</h1>
       <p className="lead">{questionSubtitle}</p>
       <ul className="list-group col-lg-10 mx-auto p-0">{list}</ul>
-      <div className="row mt-3">
-        <div className="col-lg-2 offset-lg-2 col-sm-4 offset-sm-1 col-6">
-          <button className="btn btn-lg btn-danger btn-block" onClick={back}>
-            Back
-          </button>
-        </div>
-        <div className="col-lg-2 offset-lg-4 col-sm-4 offset-sm-2 col-6">
-          <button className="btn btn-lg btn-primary btn-block" onClick={fwd}>
-            Submit
-          </button>
-        </div>
-      </div>
+      <button className="btn btn-primary btn-lg px-5 mt-3" onClick={fwd}>
+        Submit
+      </button>
     </motion.div>
   );
 };
