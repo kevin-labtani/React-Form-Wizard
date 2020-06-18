@@ -166,21 +166,6 @@ textarea {
   cursor: pointer;
 }
 
-// resize "buttons" on mobile for opinion scale
-@media screen and (max-width: 1024px) {
-  .page-link {
-    padding: 4px 8px;
-  }
-}
-@media screen and (max-width: 540px) {
-  .page-link {
-    padding: 3px;
-  }
-  .avatar {
-    font-size: 2rem;
-  }
-}
-
 .progress-bar-img {
   background-image: url("../src/progress.svg");
   background-color: transparent;
@@ -211,5 +196,35 @@ body {
   25%,
   75% {
     opacity: 0;
+  }
+}
+
+body::-webkit-scrollbar {
+  width: 0.75rem;
+  background-color: $hu-grey-1;
+}
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: $hu-grey-1;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: $hu-green;
+}
+:root {
+  scrollbar-color: $hu-green $hu-grey-1;
+}
+
+// resize "buttons" on mobile for opinion scale
+@media screen and (max-width: 1024px) {
+  .page-link {
+    padding: 4px 8px;
+  }
+}
+@media screen and (max-width: 540px) {
+  .page-link {
+    padding: 3px;
+  }
+  .avatar {
+    font-size: 2rem;
   }
 }
