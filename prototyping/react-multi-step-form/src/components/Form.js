@@ -145,8 +145,7 @@ const Form = () => {
 
     try {
       let res = await axios.post(
-        // 0251455c-65b7-4003-836c-2928a9b81b3d
-        `https://cors-anywhere.herokuapp.com/https://preprod.hike-up.be/api/fillARH//${responseUuid}`,
+        `https://cors-anywhere.herokuapp.com/https:/___/preprod.hike-up.be/api/fillARH/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434/${responseUuid}`,
         JSON.stringify(data),
         {
           headers: {
