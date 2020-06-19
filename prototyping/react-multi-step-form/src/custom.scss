@@ -223,7 +223,7 @@ label.custom-file-label {
     // content: "📎";
     content: "";
     background: url("./iconmonstr-paperclip-2.svg") no-repeat center center
-      $hu-green; // #e9ecef
+      #e9ecef; // #e9ecef is default
     padding: 0 1.5rem;
   }
 }
