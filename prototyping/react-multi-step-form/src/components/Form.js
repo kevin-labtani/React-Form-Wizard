@@ -418,7 +418,7 @@ const Form = () => {
               <Recap
                 {...routeProps}
                 data={q}
-                values={answers}
+                answers={answers}
                 questions={questions}
                 sendAnswers={sendAnswers}
               />

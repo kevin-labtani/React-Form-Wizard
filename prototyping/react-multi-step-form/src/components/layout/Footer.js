@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import {footerVariants} from "../../AnimationConstant"
+import { footerVariants } from "../../AnimationConstant";
 
 const Footer = ({ questions, loading, answers }) => {
   const location = useLocation();

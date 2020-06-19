@@ -5,7 +5,7 @@ import { containerVariants } from "../../AnimationConstant";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUndo } from "@fortawesome/free-solid-svg-icons";
 
-const Recap = ({ data, values, questions, sendAnswers }) => {
+const Recap = ({ data, answers, questions, sendAnswers }) => {
   const {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
@@ -25,7 +25,7 @@ const Recap = ({ data, values, questions, sendAnswers }) => {
   };
 
   const list = [];
-  for (let [key, value] of Object.entries(values)) {
+  for (let [key, value] of Object.entries(answers)) {
     let answer = value;
     let question = questions.filter((q) => q.question_id === parseInt(key));
     if (question[0].box_values) {
