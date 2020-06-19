@@ -86,7 +86,8 @@ const Recap = ({ data, answers, questions, sendAnswers }) => {
           type="checkbox"
           className="custom-control-input"
           id="customCheck1"
-          onClick={() => setAcceptTerms(!acceptTerms)}
+          onChange={() => setAcceptTerms(!acceptTerms)}
+          checked={acceptTerms}
         />
         <label className="custom-control-label" htmlFor="customCheck1">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque,

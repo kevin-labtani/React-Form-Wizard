@@ -40,6 +40,10 @@ $enable-responsive-font-sizes: true;
 // Import Bootstrap and its default variables
 @import "~bootstrap/scss/bootstrap.scss";
 
+:disabled {
+  cursor: not-allowed;
+}
+
 // input style
 .form-control {
   caret-color: $hu-green;
