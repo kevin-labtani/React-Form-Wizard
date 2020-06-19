@@ -144,16 +144,13 @@ const Form = () => {
     }
 
     try {
-      // let res = await axios.post(
-      //   `https://cors-anywhere.herokuapp.com/https://preprod.hike-up.be/api/fillARH/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434/${responseUuid}`,
-      //   JSON.stringify(data),
-      //   {
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //   }
-      // );
-      // console.log(`Status code: ${res.status}`);
+      // https://cors-anywhere.herokuapp.com/https://preprod.hike-up.be/api/fillARH/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434/${responseUuid}
+      let res = await axios.post(`https://myapp/url`, JSON.stringify(data), {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      console.log(`Status code: ${res.status}`);
       push(`/${nextQuestionId}`);
     } catch (err) {
       console.log(err);

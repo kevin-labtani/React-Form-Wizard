@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
 import { containerVariants } from "../../AnimationConstant";
@@ -11,6 +11,8 @@ const Recap = ({ data, answers, questions, sendAnswers }) => {
     question_subtitle: questionSubtitle,
     default_next_id: nextQuestionId,
   } = data;
+
+  const [acceptTerms, setAcceptTerms] = useState(false)
 
   const { push } = useHistory();
 
@@ -79,7 +81,22 @@ const Recap = ({ data, answers, questions, sendAnswers }) => {
       <h1 className="mb-3">{questionTitle}</h1>
       <p className="lead">{questionSubtitle}</p>
       <ul className="list-group col-lg-10 mx-auto p-0">{list}</ul>
-      <button className="btn btn-primary btn-lg px-5 mt-3" onClick={fwd}>
+      <div className="custom-control custom-checkbox mt-3">
+        <input
+          type="checkbox"
+          className="custom-control-input"
+          id="customCheck1"
+          onClick={() => setAcceptTerms(!acceptTerms)}
+        />
+        <label className="custom-control-label" htmlFor="customCheck1">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque,
+          laborum:{" "}
+          <a href="/" target="_blank" className="">
+            Terms & Conditions
+          </a>
+        </label>
+      </div>
+      <button className="btn btn-primary btn-lg px-5 mt-3" onClick={fwd} disabled={!acceptTerms}>
         Submit
       </button>
     </motion.div>
