@@ -90,7 +90,8 @@ const OpinionScale = ({ values, SingleCheckboxChangePush, data }) => {
                     checked={values[questionId] === `${choice.id}`}
                     onChange={SingleCheckboxChangePush(
                       questionId,
-                      nextQuestion
+                      nextQuestion,
+                      choice.next_id_if_selected
                     )}
                     hidden
                   />

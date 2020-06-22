@@ -65,7 +65,11 @@ const YesNo = ({ values, SingleCheckboxChangePush, data }) => {
                 value={`${choice.id}`}
                 id={`checkbox-${index}`}
                 checked={values[questionId] === `${choice.id}`}
-                onChange={SingleCheckboxChangePush(questionId, nextQuestion)}
+                onChange={SingleCheckboxChangePush(
+                  questionId,
+                  nextQuestion,
+                  choice.next_id_if_selected
+                )}
                 hidden
               />
               <label
