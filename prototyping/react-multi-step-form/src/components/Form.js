@@ -106,10 +106,12 @@ const Form = () => {
   //   setAnswers({ ...answers, [input]: e.target.value });
   // };
 
-  const SingleCheckboxChangePush = (input, nextQuestion) => (e) => {
+  const SingleCheckboxChangePush = (input, nextQuestion, routingId = null) => (
+    e
+  ) => {
     setAnswers({ ...answers, [input]: e.target.value });
     setTimeout(() => {
-      push(`/${nextQuestion}`);
+      routingId ? push(`/${routingId}`) : push(`/${nextQuestion}`);
     }, 1200);
   };
 
