@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
 import { containerVariants } from "../../AnimationConstant";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUndo } from "@fortawesome/free-solid-svg-icons";
+import { faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 
 const Recap = ({ data, answers, questions, sendAnswers }) => {
   const {
@@ -62,7 +62,7 @@ const Recap = ({ data, answers, questions, sendAnswers }) => {
               className="btn btn-danger btn-sm rounded-circle"
               onClick={(e) => changeAnswer(key, e)}
             >
-              <FontAwesomeIcon icon={faUndo} />
+              <FontAwesomeIcon icon={faPencilAlt} />
             </button>
           </div>
         </div>
