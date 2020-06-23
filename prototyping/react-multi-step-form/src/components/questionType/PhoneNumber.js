@@ -19,6 +19,7 @@ const PhoneNumber = ({ values, inputChange, data }) => {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
     question_picture: questionPicture,
+    question_optional: questionOptional,
     question_id: questionId,
     default_next_id: nextQuestionId,
   } = data;
@@ -29,9 +30,12 @@ const PhoneNumber = ({ values, inputChange, data }) => {
 
   const fwd = (e) => {
     e.preventDefault();
-    if (values[questionId] === "") {
-      setAlert("Veuillez remplir ce champ", "danger");
-    } else if (!isMobilePhone(values[questionId])) {
+    if (
+      (!questionOptional && !isMobilePhone(values[questionId])) ||
+      (questionOptional &&
+        values[questionId] &&
+        !isMobilePhone(values[questionId]))
+    ) {
       setAlert("Veuillez entrer un numéro de téléphone valide", "danger");
     } else {
       push(`/${nextQuestionId}`);

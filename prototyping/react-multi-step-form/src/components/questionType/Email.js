@@ -19,6 +19,7 @@ const Email = ({ values, inputChange, data }) => {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
     question_picture: questionPicture,
+    question_optional: questionOptional,
     question_id: questionId,
     default_next_id: nextQuestionId,
   } = data;
@@ -29,7 +30,11 @@ const Email = ({ values, inputChange, data }) => {
 
   const fwd = (e) => {
     e.preventDefault();
-    if (!isEmail(values[questionId])) {
+
+    if (
+      (!questionOptional && !isEmail(values[questionId])) ||
+      (questionOptional && values[questionId] && !isEmail(values[questionId]))
+    ) {
       setAlert("Veuillez entrer une adresse email valide", "danger");
     } else {
       push(`/${nextQuestionId}`);

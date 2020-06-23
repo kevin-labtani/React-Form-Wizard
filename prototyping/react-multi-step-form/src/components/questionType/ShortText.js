@@ -17,6 +17,7 @@ const ShortText = ({ values, inputChange, data }) => {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
     question_picture: questionPicture,
+    question_optional: questionOptional,
     question_id: questionId,
     default_next_id: nextQuestionId,
   } = data;
@@ -27,7 +28,7 @@ const ShortText = ({ values, inputChange, data }) => {
 
   const fwd = (e) => {
     e.preventDefault();
-    if (values[questionId] === "") {
+    if (!questionOptional && values[questionId] === "") {
       setAlert("Veuillez remplir ce champ", "danger");
     } else if (values[questionId].length > 256) {
       setAlert("Votre réponse doit faire moins de 256 caractères", "danger");

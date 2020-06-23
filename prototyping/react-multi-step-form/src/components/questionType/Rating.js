@@ -13,6 +13,7 @@ const Rating = ({ values, inputChangePush, data }) => {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
     question_picture: questionPicture,
+    question_optional: questionOptional,
     question_id: questionId,
     default_next_id: nextQuestionId,
     parameters,
@@ -29,7 +30,7 @@ const Rating = ({ values, inputChangePush, data }) => {
 
   const fwd = (e) => {
     e.preventDefault();
-    if (!values[questionId]) {
+    if (!questionOptional && !values[questionId]) {
       setAlert("Veuillez faire un choix", "danger");
     } else {
       push(`/${nextQuestionId}`);

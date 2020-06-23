@@ -17,6 +17,7 @@ const Number = ({ values, inputChange, data }) => {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
     question_picture: questionPicture,
+    question_optional: questionOptional,
     question_id: questionId,
     default_next_id: nextQuestionId,
     parameters,
@@ -36,9 +37,13 @@ const Number = ({ values, inputChange, data }) => {
   const fwd = (e) => {
     e.preventDefault();
     if (
-      !values[questionId] ||
-      values[questionId] < min ||
-      values[questionId] > max
+      (!questionOptional &&
+        (!values[questionId] ||
+          values[questionId] < min ||
+          values[questionId] > max)) ||
+      (questionOptional &&
+        values[questionId] &&
+        (values[questionId] < min || values[questionId] > max))
     ) {
       setAlert(`Please enter a number between ${min} and ${max}`, "danger");
     } else {

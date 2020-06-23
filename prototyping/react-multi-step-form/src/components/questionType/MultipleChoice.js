@@ -18,6 +18,7 @@ const MultipleChoice = ({ values, multiCheckboxChange, data }) => {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
     question_picture: questionPicture,
+    question_optional: questionOptional,
     question_id: questionId,
     box_values: boxValues,
     default_next_id: nextQuestionId,
@@ -31,7 +32,7 @@ const MultipleChoice = ({ values, multiCheckboxChange, data }) => {
 
   const fwd = (e) => {
     e.preventDefault();
-    if (values[questionId].length === 0) {
+    if (!questionOptional && values[questionId].length === 0) {
       setAlert("Veuillez faire un choix", "danger");
     } else {
       push(`/${nextQuestionId}`);
