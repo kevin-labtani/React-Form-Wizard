@@ -58,6 +58,7 @@ const SingleChoice = ({ values, SingleCheckboxChangePush, data }) => {
       <Question
         questionTitle={questionTitle}
         questionPicture={questionPicture}
+        questionOptional={questionOptional}
       />
 
       <motion.div className="row" variants={answerVariants}>

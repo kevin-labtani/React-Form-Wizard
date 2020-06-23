@@ -56,6 +56,7 @@ const Legal = ({ values, SingleCheckboxChangePush, data }) => {
       <Question
         questionTitle={questionTitle}
         questionPicture={questionPicture}
+        questionOptional={questionOptional}
       />
       <motion.div className="row" variants={answerVariants}>
         <div className="col-8 offset-1 col-lg-7 offset-lg-2 rounded-lg px-lg-5 py-4 my-2 shadow bg-hu-grey-1 speech-bubble-answer">
