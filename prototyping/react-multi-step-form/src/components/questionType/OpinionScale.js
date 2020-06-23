@@ -21,7 +21,7 @@ const OpinionScale = ({ values, SingleCheckboxChangePush, data }) => {
   } = data;
 
   let labelLeft, labelRight;
-  parameters.forEach((param) => {
+  parameters && parameters.forEach((param) => {
     if (param.name === "label_left") {
       labelLeft = param.value;
     }
