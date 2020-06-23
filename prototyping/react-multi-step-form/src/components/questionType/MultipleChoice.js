@@ -17,6 +17,7 @@ const MultipleChoice = ({ values, multiCheckboxChange, data }) => {
   const {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
+    question_picture: questionPicture,
     question_id: questionId,
     box_values: boxValues,
     default_next_id: nextQuestionId,
@@ -57,7 +58,7 @@ const MultipleChoice = ({ values, multiCheckboxChange, data }) => {
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [handleKeyDown, values[questionId]]);
 
   return (
@@ -67,7 +68,10 @@ const MultipleChoice = ({ values, multiCheckboxChange, data }) => {
       animate="visible"
       exit="exit"
     >
-      <Question questionTitle={questionTitle} />
+      <Question
+        questionTitle={questionTitle}
+        questionPicture={questionPicture}
+      />
 
       <motion.div className="row" variants={answerVariants}>
         <div className="col-8 offset-1 col-lg-7 offset-lg-2 rounded-lg px-lg-5 py-4 my-2 shadow bg-hu-grey-1 speech-bubble-answer">
