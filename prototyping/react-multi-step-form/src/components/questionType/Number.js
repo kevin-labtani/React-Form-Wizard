@@ -24,7 +24,7 @@ const Number = ({ values, inputChange, data }) => {
   } = data;
 
   let min, max;
-  parameters.forEach((param) => {
+  parameters && parameters.forEach((param) => {
     if (param.name === "max_value") max = parseInt(param.value);
     if (param.name === "min_value") min = parseInt(param.value);
   });
