@@ -19,7 +19,7 @@ const Email = ({ values, inputChange, data }) => {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
     question_picture: questionPicture,
-    question_optional: questionOptional,
+    question_required: questionRequired,
     question_id: questionId,
     default_next_id: nextQuestionId,
   } = data;
@@ -32,8 +32,8 @@ const Email = ({ values, inputChange, data }) => {
     e.preventDefault();
 
     if (
-      (!questionOptional && !isEmail(values[questionId])) ||
-      (questionOptional && values[questionId] && !isEmail(values[questionId]))
+      (questionRequired && !isEmail(values[questionId])) ||
+      (!questionRequired && values[questionId] && !isEmail(values[questionId]))
     ) {
       setAlert("Veuillez entrer une adresse email valide", "danger");
     } else {
@@ -62,7 +62,7 @@ const Email = ({ values, inputChange, data }) => {
       <Question
         questionTitle={questionTitle}
         questionPicture={questionPicture}
-        questionOptional={questionOptional}
+        questionRequired={questionRequired}
       />
 
       <motion.div className="row" variants={answerVariants}>

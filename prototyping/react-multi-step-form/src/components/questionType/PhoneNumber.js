@@ -19,7 +19,7 @@ const PhoneNumber = ({ values, inputChange, data }) => {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
     question_picture: questionPicture,
-    question_optional: questionOptional,
+    question_required: questionRequired,
     question_id: questionId,
     default_next_id: nextQuestionId,
   } = data;
@@ -31,8 +31,8 @@ const PhoneNumber = ({ values, inputChange, data }) => {
   const fwd = (e) => {
     e.preventDefault();
     if (
-      (!questionOptional && !isMobilePhone(values[questionId])) ||
-      (questionOptional &&
+      (questionRequired && !isMobilePhone(values[questionId])) ||
+      (!questionRequired &&
         values[questionId] &&
         !isMobilePhone(values[questionId]))
     ) {
@@ -63,7 +63,7 @@ const PhoneNumber = ({ values, inputChange, data }) => {
       <Question
         questionTitle={questionTitle}
         questionPicture={questionPicture}
-        questionOptional={questionOptional}
+        questionRequired={questionRequired}
       />
 
       <motion.div className="row" variants={answerVariants}>

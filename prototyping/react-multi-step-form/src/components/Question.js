@@ -3,8 +3,7 @@ import AvatarQuestion from "./AvatarQuestion";
 import { motion } from "framer-motion";
 import { questionVariants } from "../AnimationConstant";
 
-function Question({ questionTitle, questionPicture, questionOptional }) {
-
+function Question({ questionTitle, questionPicture, questionRequired }) {
   return (
     <motion.div
       className="row"
@@ -14,7 +13,7 @@ function Question({ questionTitle, questionPicture, questionOptional }) {
     >
       <AvatarQuestion />
       <div className="col-8 col-lg-7 rounded-lg px-lg-4 py-4 my-2 shadow bg-hu-grey-1 speech-bubble-question">
-        <h3>{!questionOptional ? questionTitle + " *" : questionTitle}</h3>
+        <h3>{questionRequired ? questionTitle + " *" : questionTitle}</h3>
         {questionPicture && (
           <img
             src={questionPicture}

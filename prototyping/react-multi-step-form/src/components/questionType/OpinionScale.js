@@ -13,7 +13,7 @@ const OpinionScale = ({ values, SingleCheckboxChangePush, data }) => {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
     question_picture: questionPicture,
-    question_optional: questionOptional,
+    question_required: questionRequired,
     question_id: questionId,
     box_values: boxValues,
     default_next_id: nextQuestionId,
@@ -44,7 +44,7 @@ const OpinionScale = ({ values, SingleCheckboxChangePush, data }) => {
 
   const fwd = (e) => {
     e.preventDefault();
-    if (!questionOptional && !values[questionId]) {
+    if (questionRequired && !values[questionId]) {
       setAlert("Veuillez faire un choix", "danger");
     } else {
       push(`/${nextQuestion}`);
@@ -66,7 +66,7 @@ const OpinionScale = ({ values, SingleCheckboxChangePush, data }) => {
       <Question
         questionTitle={questionTitle}
         questionPicture={questionPicture}
-        questionOptional={questionOptional}
+        questionRequired={questionRequired}
       />
 
       <motion.div className="row" variants={answerVariants}>

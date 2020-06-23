@@ -13,7 +13,7 @@ const Rating = ({ values, inputChangePush, data }) => {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
     question_picture: questionPicture,
-    question_optional: questionOptional,
+    question_required: questionRequired,
     question_id: questionId,
     default_next_id: nextQuestionId,
     parameters,
@@ -30,7 +30,7 @@ const Rating = ({ values, inputChangePush, data }) => {
 
   const fwd = (e) => {
     e.preventDefault();
-    if (!questionOptional && !values[questionId]) {
+    if (questionRequired && !values[questionId]) {
       setAlert("Veuillez faire un choix", "danger");
     } else {
       push(`/${nextQuestionId}`);
@@ -73,7 +73,7 @@ const Rating = ({ values, inputChangePush, data }) => {
       <Question
         questionTitle={questionTitle}
         questionPicture={questionPicture}
-        questionOptional={questionOptional}
+        questionRequired={questionRequired}
       />
 
       <motion.div className="row" variants={answerVariants}>
