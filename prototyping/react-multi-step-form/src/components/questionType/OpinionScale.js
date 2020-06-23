@@ -21,14 +21,15 @@ const OpinionScale = ({ values, SingleCheckboxChangePush, data }) => {
   } = data;
 
   let labelLeft, labelRight;
-  parameters && parameters.forEach((param) => {
-    if (param.name === "label_left") {
-      labelLeft = param.value;
-    }
-    if (param.name === "label_right") {
-      labelRight = param.value;
-    }
-  });
+  parameters &&
+    parameters.forEach((param) => {
+      if (param.name === "label_left") {
+        labelLeft = param.value;
+      }
+      if (param.name === "label_right") {
+        labelRight = param.value;
+      }
+    });
 
   let nextQuestion = nextQuestionId;
   if (Number.isInteger(parseInt(values[questionId]))) {

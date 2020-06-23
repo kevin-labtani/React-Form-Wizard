@@ -24,10 +24,11 @@ const Number = ({ values, inputChange, data }) => {
   } = data;
 
   let min, max;
-  parameters && parameters.forEach((param) => {
-    if (param.name === "max_value") max = parseInt(param.value);
-    if (param.name === "min_value") min = parseInt(param.value);
-  });
+  parameters &&
+    parameters.forEach((param) => {
+      if (param.name === "max_value") max = parseInt(param.value);
+      if (param.name === "min_value") min = parseInt(param.value);
+    });
 
   const alertContext = useContext(AlertContext);
   const { setAlert } = alertContext;

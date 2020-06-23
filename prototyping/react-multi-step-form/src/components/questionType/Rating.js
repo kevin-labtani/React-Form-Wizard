@@ -20,9 +20,10 @@ const Rating = ({ values, inputChangePush, data }) => {
   } = data;
 
   let ratingRange;
-  parameters && parameters.forEach((param) => {
-    if (param.name === "steps") ratingRange = parseInt(param.value);
-  });
+  parameters &&
+    parameters.forEach((param) => {
+      if (param.name === "steps") ratingRange = parseInt(param.value);
+    });
 
   const { setAlert } = useContext(AlertContext);
 
