@@ -92,13 +92,19 @@ const Form = () => {
   };
 
   const multiCheckboxChange = (input) => (e) => {
-    const oldArr = answers[input];
-    if (e.target.checked) {
-      oldArr.push(e.target.value);
+    let oldArr = answers[input];
+    if (isNaN(e.target.value) || e.target.value === "") {
+      oldArr = oldArr.filter((el) => !isNaN(el));
+      isNaN(e.target.value) && oldArr.push(e.target.value);
       setAnswers({ ...answers, [input]: oldArr });
     } else {
-      const filteredArr = oldArr.filter((pet) => pet !== e.target.value);
-      setAnswers({ ...answers, [input]: filteredArr });
+      if (e.target.checked) {
+        oldArr.push(e.target.value);
+        setAnswers({ ...answers, [input]: oldArr });
+      } else {
+        const filteredArr = oldArr.filter((el) => el !== e.target.value);
+        setAnswers({ ...answers, [input]: filteredArr });
+      }
     }
   };
 
@@ -123,12 +129,19 @@ const Form = () => {
       let type = question[0].question_type_id;
       if (type === 1) {
         value.forEach((element) => {
-          data.push({
-            assessment_id: question[0].assessment_id,
-            question_id: question[0].question_id,
-            box_value_id: element,
-            response_uuid: responseUuid,
-          });
+          if (isNaN(element)) {
+            data.push({
+              assessment_id: question[0].assessment_id,
+              question_id: question[0].question_id,
+              free_text: element,
+            });
+          } else {
+            data.push({
+              assessment_id: question[0].assessment_id,
+              question_id: question[0].question_id,
+              box_value_id: element,
+            });
+          }
         });
       } else if (type === 2) {
         if (isNaN(value)) {
@@ -161,7 +174,6 @@ const Form = () => {
 
     try {
       console.log(data);
-
       // https://cors-anywhere.herokuapp.com/https://preprod.hike-up.be/api/fillARH/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434/${responseUuid}
       let res = await axios.post(`https://myapp/url`, JSON.stringify(data), {
         headers: {

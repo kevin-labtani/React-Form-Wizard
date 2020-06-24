@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
 import { containerVariants } from "../../AnimationConstant";
@@ -12,7 +12,7 @@ const Recap = ({ data, answers, questions, sendAnswers }) => {
     default_next_id: nextQuestionId,
   } = data;
 
-  const [acceptTerms, setAcceptTerms] = useState(false)
+  const [acceptTerms, setAcceptTerms] = useState(false);
 
   const { push } = useHistory();
 
@@ -45,6 +45,9 @@ const Recap = ({ data, answers, questions, sendAnswers }) => {
           );
           if (choice[0]) {
             answer += choice[0].label + ", ";
+          }
+          if (isNaN(element)) {
+            answer += element + ", ";
           }
         });
         answer = answer.substring(0, answer.lastIndexOf(","));
@@ -97,7 +100,11 @@ const Recap = ({ data, answers, questions, sendAnswers }) => {
           </a>
         </label>
       </div>
-      <button className="btn btn-primary btn-lg px-5 mt-3" onClick={fwd} disabled={!acceptTerms}>
+      <button
+        className="btn btn-primary btn-lg px-5 mt-3"
+        onClick={fwd}
+        disabled={!acceptTerms}
+      >
         Submit
       </button>
     </motion.div>

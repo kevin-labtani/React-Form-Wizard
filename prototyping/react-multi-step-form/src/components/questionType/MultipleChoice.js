@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useCallback } from "react";
+import React, { useContext, useEffect, useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
 import AlertContext from "../../context/alert/alertContext";
@@ -22,9 +22,23 @@ const MultipleChoice = ({ values, multiCheckboxChange, data }) => {
     question_id: questionId,
     box_values: boxValues,
     default_next_id: nextQuestionId,
+    parameters,
   } = data;
 
   boxValues.sort((a, b) => a.id - b.id);
+
+  const [freeTextInput, setfreeTextInput] = useState(false);
+  const [freeTextInputAnimate, setfreeTextInputAnimate] = useState(false);
+  const [freeText, setFreeText] = useState(
+    (values[questionId] && values[questionId].filter((el) => isNaN(el))[0]) ||
+      ""
+  );
+
+  let freeTextOption = false;
+  parameters &&
+    parameters.forEach((param) => {
+      if (param.name === "Other") freeTextOption = true;
+    });
 
   const { setAlert } = useContext(AlertContext);
 
@@ -46,12 +60,12 @@ const MultipleChoice = ({ values, multiCheckboxChange, data }) => {
 
   const handleKeyDown = useCallback(
     (event) => {
-      if (event.key === "Enter") {
+      if (event.key === "Enter" && !freeTextInput) {
         fwd(event);
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [values[questionId]]
+    [values[questionId], freeTextInput]
   );
 
   useEffect(() => {
@@ -61,6 +75,30 @@ const MultipleChoice = ({ values, multiCheckboxChange, data }) => {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [handleKeyDown, values[questionId]]);
+
+  const submitFreeText = (event) => {
+    setfreeTextInput(false);
+    multiCheckboxChange(questionId)(event);
+    if (isNaN(freeText)) {
+      setfreeTextInputAnimate(true);
+    } else {
+      setfreeTextInputAnimate(false);
+    }
+  };
+
+  const handleKeyDownInput = (event) => {
+    if (event.key === "Enter") {
+      if (!freeText || isNaN(freeText)) {
+        submitFreeText(event);
+      } else {
+        event.preventDefault();
+        setAlert("Veuillez introduire votre choix (pas de nombres)", "danger");
+      }
+    }
+  };
+
+  const freeTextLabel =
+    values[questionId] && values[questionId].filter((el) => isNaN(el))[0];
 
   return (
     <motion.div
@@ -112,8 +150,46 @@ const MultipleChoice = ({ values, multiCheckboxChange, data }) => {
               </label>
             </div>
           ))}
+          {freeTextOption && (
+            <label
+              className={`btn btn-outline-primary btn-block text-left pl-4 
+              ${freeTextInput || freeTextLabel ? "active" : ""} 
+              ${freeTextInputAnimate ? "animate-label" : ""}`}
+              htmlFor={`checkbox-other`}
+              onClick={() => {
+                setfreeTextInput(true);
+              }}
+            >
+              {(freeTextInput && (
+                <input
+                  type="text"
+                  className="form-control"
+                  name="shorttext"
+                  id="shorttext"
+                  maxLength="256"
+                  autoComplete="off"
+                  autoFocus
+                  placeholder="Enter you choice here"
+                  onChange={(e) => setFreeText(e.target.value)}
+                  onKeyDown={handleKeyDownInput}
+                  value={freeText}
+                  onBlur={(e) => {
+                    submitFreeText(e);
+                  }}
+                />
+              )) ||
+                freeTextLabel ||
+                "Other"}
+              {freeTextLabel && values[questionId] ? <Checkmark /> : ""}
+            </label>
+          )}
+          {freeTextInput && (
+            <motion.p className="mb-0" variants={keyboardNavVariants}>
+              press Enter ↵ to validate
+            </motion.p>
+          )}
           {/*eslint-disable-next-line eqeqeq*/}
-          {values[questionId] != false && (
+          {values[questionId] != false && !freeTextInput && (
             <motion.p className="mb-0" variants={keyboardNavVariants}>
               press Enter ↵
             </motion.p>
