@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
 import AlertContext from "../../context/alert/alertContext";
@@ -7,9 +7,18 @@ import AvatarAnswer from "../AvatarAnswer";
 import Question from "../Question";
 import Navigation from "../Navigation";
 import Checkmark from "../../Checkmark";
-import { containerVariants, answerVariants } from "../../AnimationConstant";
+import {
+  containerVariants,
+  answerVariants,
+  KeyboardNavVariants,
+} from "../../AnimationConstant";
 
-const SingleChoice = ({ values, SingleCheckboxChangePush, data }) => {
+const SingleChoice = ({
+  values,
+  SingleCheckboxChangePush,
+  inputChange,
+  data,
+}) => {
   const {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
@@ -18,9 +27,22 @@ const SingleChoice = ({ values, SingleCheckboxChangePush, data }) => {
     question_id: questionId,
     box_values: boxValues,
     default_next_id: nextQuestionId,
+    parameters,
   } = data;
 
   boxValues.sort((a, b) => a.id - b.id);
+
+  const [freeTextInput, setfreeTextInput] = useState(false);
+  const [freeTextInputAnimate, setfreeTextInputAnimate] = useState(false);
+  const [freeText, setFreeText] = useState(
+    isNaN(values[questionId]) ? values[questionId] : ""
+  );
+
+  let freeTextOption = false;
+  parameters &&
+    parameters.forEach((param) => {
+      if (param.name === "Other") freeTextOption = true;
+    });
 
   let nextQuestion = nextQuestionId;
   if (Number.isInteger(parseInt(values[questionId]))) {
@@ -46,6 +68,24 @@ const SingleChoice = ({ values, SingleCheckboxChangePush, data }) => {
   const back = (e) => {
     e.preventDefault();
     goBack();
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      if (!freeText || isNaN(freeText)) {
+        setfreeTextInput(false);
+        inputChange(questionId)(event);
+        if (isNaN(freeText)) {
+          setfreeTextInputAnimate(true);
+          setTimeout(() => {
+            push(`/${nextQuestion}`);
+          }, 1200);
+        }
+      } else {
+        event.preventDefault();
+        setAlert("Veuillez introduire votre choix (pas de nombres)", "danger");
+      }
+    }
   };
 
   return (
@@ -93,6 +133,48 @@ const SingleChoice = ({ values, SingleCheckboxChangePush, data }) => {
               </label>
             </div>
           ))}
+          {freeTextOption && (
+            <label
+              className={`btn btn-outline-primary btn-block text-left pl-4 
+              ${freeTextInput || isNaN(values[questionId]) ? "active" : ""} 
+              ${freeTextInputAnimate ? "animate-label" : ""}`}
+              htmlFor={`checkbox-other`}
+              onClick={() => {
+                setfreeTextInput(true);
+              }}
+            >
+              {(freeTextInput && (
+                <input
+                  type="text"
+                  className="form-control"
+                  name="shorttext"
+                  id="shorttext"
+                  maxLength="256"
+                  autoComplete="off"
+                  autoFocus
+                  placeholder="Enter you choice here"
+                  onChange={(e) => setFreeText(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                  value={freeText}
+                  onBlur={() => {
+                    setfreeTextInput(false);
+                  }}
+                />
+              )) ||
+                (isNaN(values[questionId]) && values[questionId]) ||
+                "Other"}
+              {isNaN(values[questionId]) && values[questionId] ? (
+                <Checkmark />
+              ) : (
+                ""
+              )}
+            </label>
+          )}
+          {freeTextInput && (
+            <motion.p className="mb-0" variants={KeyboardNavVariants}>
+              press Enter ↵ to validate
+            </motion.p>
+          )}
         </div>
         <AvatarAnswer />
       </motion.div>

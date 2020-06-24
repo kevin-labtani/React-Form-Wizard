@@ -92,13 +92,13 @@ const QuestionsState = (props) => {
             label: "Buderus",
             next_id_if_selected: "",
           },
+        ],
+        parameters: [
           {
             id: "20",
-            label: "Other",
-            next_id_if_selected: "",
+            name: "Other",
           },
         ],
-        parameters: null,
         default_next_id: 4,
       },
       {

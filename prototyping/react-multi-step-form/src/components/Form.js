@@ -191,6 +191,7 @@ const Form = () => {
               <SingleChoice
                 {...routeProps}
                 SingleCheckboxChangePush={SingleCheckboxChangePush}
+                inputChange={inputChange}
                 values={answers}
                 data={q}
               />
