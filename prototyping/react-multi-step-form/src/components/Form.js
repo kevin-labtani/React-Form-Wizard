@@ -130,7 +130,21 @@ const Form = () => {
             response_uuid: responseUuid,
           });
         });
-      } else if (type === 2 || type === 4 || type === 7 || type === 3) {
+      } else if (type === 2) {
+        if (isNaN(value)) {
+          data.push({
+            assessment_id: question[0].assessment_id,
+            question_id: question[0].question_id,
+            free_text: value,
+          });
+        } else {
+          data.push({
+            assessment_id: question[0].assessment_id,
+            question_id: question[0].question_id,
+            box_value_id: value,
+          });
+        }
+      } else if (type === 4 || type === 7 || type === 3) {
         data.push({
           assessment_id: question[0].assessment_id,
           question_id: question[0].question_id,
@@ -146,6 +160,8 @@ const Form = () => {
     }
 
     try {
+      console.log(data);
+
       // https://cors-anywhere.herokuapp.com/https://preprod.hike-up.be/api/fillARH/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434/${responseUuid}
       let res = await axios.post(`https://myapp/url`, JSON.stringify(data), {
         headers: {
