@@ -285,10 +285,6 @@ const QuestionsState = (props) => {
             label: "Test de la dureté de l eau",
           },
           {
-            id: "12",
-            label: "Other",
-          },
-          {
             id: "5",
             label: "Nettoyage du corps de chauffe",
           },
@@ -301,7 +297,12 @@ const QuestionsState = (props) => {
             label: "Changement du gicleur",
           },
         ],
-        parameters: null,
+        parameters: [
+          {
+            id: "12",
+            name: "Other",
+          },
+        ],
         default_next_id: 9,
       },
       {

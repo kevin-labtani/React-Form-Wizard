@@ -46,7 +46,7 @@ export const navigationVariants = {
   },
 };
 
-export const KeyboardNavVariants = {
+export const keyboardNavVariants = {
   hidden: {
     opacity: 0,
     y: "3vh",

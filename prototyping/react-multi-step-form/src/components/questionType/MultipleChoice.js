@@ -10,7 +10,7 @@ import Checkmark from "../../Checkmark";
 import {
   containerVariants,
   answerVariants,
-  KeyboardNavVariants,
+  keyboardNavVariants,
 } from "../../AnimationConstant";
 
 const MultipleChoice = ({ values, multiCheckboxChange, data }) => {
@@ -114,7 +114,7 @@ const MultipleChoice = ({ values, multiCheckboxChange, data }) => {
           ))}
           {/*eslint-disable-next-line eqeqeq*/}
           {values[questionId] != false && (
-            <motion.p className="mb-0" variants={KeyboardNavVariants}>
+            <motion.p className="mb-0" variants={keyboardNavVariants}>
               press Enter ↵
             </motion.p>
           )}

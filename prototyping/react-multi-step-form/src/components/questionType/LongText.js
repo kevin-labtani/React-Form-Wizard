@@ -10,7 +10,7 @@ import TextareaAutosize from "react-textarea-autosize";
 import {
   containerVariants,
   answerVariants,
-  KeyboardNavVariants,
+  keyboardNavVariants,
 } from "../../AnimationConstant";
 
 const LongText = ({ values, inputChange, data }) => {
@@ -84,7 +84,7 @@ const LongText = ({ values, inputChange, data }) => {
             />
           </div>
           {values[questionId] && (
-            <motion.p className="mb-0" variants={KeyboardNavVariants}>
+            <motion.p className="mb-0" variants={keyboardNavVariants}>
               press Enter ↵
             </motion.p>
           )}

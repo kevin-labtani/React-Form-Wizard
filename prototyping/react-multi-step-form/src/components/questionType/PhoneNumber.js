@@ -9,7 +9,7 @@ import Navigation from "../Navigation";
 import {
   containerVariants,
   answerVariants,
-  KeyboardNavVariants,
+  keyboardNavVariants,
 } from "../../AnimationConstant";
 
 import isMobilePhone from "validator/lib/isMobilePhone";
@@ -88,7 +88,7 @@ const PhoneNumber = ({ values, inputChange, data }) => {
             />
           </div>
           {values[questionId] && (
-            <motion.p className="mb-0" variants={KeyboardNavVariants}>
+            <motion.p className="mb-0" variants={keyboardNavVariants}>
               press Enter ↵
             </motion.p>
           )}

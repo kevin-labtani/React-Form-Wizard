@@ -9,7 +9,7 @@ import Navigation from "../Navigation";
 import {
   containerVariants,
   answerVariants,
-  KeyboardNavVariants,
+  keyboardNavVariants,
 } from "../../AnimationConstant";
 
 const ShortText = ({ values, inputChange, data }) => {
@@ -83,7 +83,7 @@ const ShortText = ({ values, inputChange, data }) => {
             />
           </div>
           {values[questionId] && (
-            <motion.p className="mb-0" variants={KeyboardNavVariants}>
+            <motion.p className="mb-0" variants={keyboardNavVariants}>
               press Enter ↵
             </motion.p>
           )}

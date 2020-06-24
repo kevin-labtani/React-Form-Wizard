@@ -10,7 +10,7 @@ import Checkmark from "../../Checkmark";
 import {
   containerVariants,
   answerVariants,
-  KeyboardNavVariants,
+  keyboardNavVariants,
 } from "../../AnimationConstant";
 
 const SingleChoice = ({
@@ -171,7 +171,7 @@ const SingleChoice = ({
             </label>
           )}
           {freeTextInput && (
-            <motion.p className="mb-0" variants={KeyboardNavVariants}>
+            <motion.p className="mb-0" variants={keyboardNavVariants}>
               press Enter ↵ to validate
             </motion.p>
           )}
