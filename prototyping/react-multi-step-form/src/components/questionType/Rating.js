@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
 import AlertContext from "../../context/alert/alertContext";
@@ -18,6 +18,8 @@ const Rating = ({ values, inputChangePush, data }) => {
     default_next_id: nextQuestionId,
     parameters,
   } = data;
+
+  const [animation, setAnimation] = useState(false);
 
   let ratingRange;
   parameters &&
@@ -43,6 +45,14 @@ const Rating = ({ values, inputChangePush, data }) => {
     goBack();
   };
 
+  const handleChange = (e) => {
+    inputChangePush(questionId, nextQuestionId)(e);
+    setAnimation(true);
+    setTimeout(() => {
+      setAnimation(false);
+    }, 500);
+  };
+
   // generate rating range
   const range = [];
   for (let index = ratingRange; index > 0; index--) {
@@ -54,11 +64,11 @@ const Rating = ({ values, inputChangePush, data }) => {
           id={`rating-${index}`}
           value={`${index}`}
           checked={values[questionId] === `${index}`}
-          onChange={inputChangePush(questionId, nextQuestionId)}
+          onChange={handleChange}
         />
         <label
           htmlFor={`rating-${index}`}
-          className={values[questionId] ? "animate-label" : ""}
+          className={animation ? "animate-label" : ""}
         ></label>
       </React.Fragment>
     );
