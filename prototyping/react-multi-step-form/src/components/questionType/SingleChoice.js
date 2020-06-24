@@ -70,17 +70,21 @@ const SingleChoice = ({
     goBack();
   };
 
+  const submitFreeText = (event) => {
+    setfreeTextInput(false);
+    inputChange(questionId)(event);
+    if (isNaN(freeText)) {
+      setfreeTextInputAnimate(true);
+      setTimeout(() => {
+        push(`/${nextQuestion}`);
+      }, 1200);
+    }
+  };
+
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
       if (!freeText || isNaN(freeText)) {
-        setfreeTextInput(false);
-        inputChange(questionId)(event);
-        if (isNaN(freeText)) {
-          setfreeTextInputAnimate(true);
-          setTimeout(() => {
-            push(`/${nextQuestion}`);
-          }, 1200);
-        }
+        submitFreeText(event);
       } else {
         event.preventDefault();
         setAlert("Veuillez introduire votre choix (pas de nombres)", "danger");
