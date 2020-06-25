@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from "framer-motion";
-import { navigationVariants } from "../AnimationConstant";
+import { navigationVariants } from "../../AnimationConstant";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons";
 

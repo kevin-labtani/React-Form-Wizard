@@ -3,10 +3,10 @@ import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
 import AlertContext from "../../context/alert/alertContext";
 import Alerts from "../layout/Alerts";
-import AvatarAnswer from "../AvatarAnswer";
-import Question from "../Question";
-import Navigation from "../Navigation";
-import Checkmark from "../../Checkmark";
+import AvatarAnswer from "../layout/AvatarAnswer";
+import Question from "../layout/Question";
+import Navigation from "../layout/Navigation";
+import Checkmark from "../layout/Checkmark";
 import { containerVariants, answerVariants } from "../../AnimationConstant";
 
 const YesNo = ({ values, SingleCheckboxChangePush, data }) => {

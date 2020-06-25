@@ -1,7 +1,7 @@
 import React from "react";
 import AvatarQuestion from "./AvatarQuestion";
 import { motion } from "framer-motion";
-import { questionVariants } from "../AnimationConstant";
+import { questionVariants } from "../../AnimationConstant";
 
 function Question({ questionTitle, questionPicture, questionRequired }) {
   return (
