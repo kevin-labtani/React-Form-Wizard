@@ -24,8 +24,24 @@ import FileUpload from "./questionType/FileUpload";
 import Recap from "./questionType/Recap";
 import Spinner from "./layout/Spinner";
 import Footer from "./layout/Footer";
+import {
+  browserName,
+  userAgent,
+  browserPreferedLanguage,
+  browserLanguages,
+  userPlatform,
+  browserOnline,
+} from "../browserData";
 
 const Form = () => {
+  console.log(
+    browserName + "\n",
+    userAgent + "\n",
+    browserPreferedLanguage + "\n",
+    browserLanguages + "\n",
+    userPlatform + "\n",
+    "online? " + browserOnline + "\n"
+  );
   const location = useLocation();
   const { push } = useHistory(); //for autopush option
 
