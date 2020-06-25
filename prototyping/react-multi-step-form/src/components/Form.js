@@ -160,26 +160,35 @@ const Form = () => {
           }
         });
       } else if (type === 2) {
-        if (!value.startsWith("*")) {
+        if (value && !value.startsWith("*")) {
           data.push({
             assessment_id: question[0].assessment_id,
             question_id: question[0].question_id,
             free_text: value,
           });
-        } else {
+        } else if (value.startsWith("*")) {
           data.push({
             assessment_id: question[0].assessment_id,
             question_id: question[0].question_id,
             box_value_id: value.substr(1),
           });
         }
-      } else if (type === 4 || type === 7 || type === 3) {
+      } else if ((type === 3 || type === 4 || type === 7) && value) {
         data.push({
           assessment_id: question[0].assessment_id,
           question_id: question[0].question_id,
           box_value_id: value.substr(1),
         });
-      } else {
+      } else if (
+        (type === 5 ||
+          type === 6 ||
+          type === 8 ||
+          type === 9 ||
+          type === 10 ||
+          type === 12 ||
+          type === 13) &&
+        value
+      ) {
         data.push({
           assessment_id: question[0].assessment_id,
           question_id: question[0].question_id,
