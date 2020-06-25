@@ -32,7 +32,7 @@ const Recap = ({ data, answers, questions, sendAnswers }) => {
     let question = questions.filter((q) => q.question_id === parseInt(key));
     if (question[0].box_values) {
       if (question[0].question_type_id !== 1) {
-        let choice = question[0].box_values.filter((val) => val.id === value);
+        let choice = question[0].box_values.filter((val) => val.id === value.substr(1));
         if (choice[0]) {
           answer = choice[0].label;
         }
@@ -41,13 +41,13 @@ const Recap = ({ data, answers, questions, sendAnswers }) => {
         answer = "";
         value.forEach((element) => {
           let choice = question[0].box_values.filter(
-            (val) => val.id === element
+            (val) => val.id === element.substr(1)
           );
           if (choice[0]) {
             answer += choice[0].label + ", ";
           }
-          if (isNaN(element)) {
-            answer += element + ", ";
+          if (element.startsWith("$")) {
+            answer += element.substr(1) + ", ";
           }
         });
         answer = answer.substring(0, answer.lastIndexOf(","));

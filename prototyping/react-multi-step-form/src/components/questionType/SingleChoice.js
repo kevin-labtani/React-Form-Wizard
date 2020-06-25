@@ -35,7 +35,9 @@ const SingleChoice = ({
   const [freeTextInput, setfreeTextInput] = useState(false);
   const [freeTextInputAnimate, setfreeTextInputAnimate] = useState(false);
   const [freeText, setFreeText] = useState(
-    isNaN(values[questionId]) ? values[questionId] : ""
+    values[questionId] && !values[questionId].startsWith("*")
+      ? values[questionId]
+      : ""
   );
 
   let freeTextOption = false;
@@ -73,7 +75,7 @@ const SingleChoice = ({
   const submitFreeText = (event) => {
     setfreeTextInput(false);
     inputChange(questionId)(event);
-    if (isNaN(freeText)) {
+    if (freeText) {
       setfreeTextInputAnimate(true);
       setTimeout(() => {
         push(`/${nextQuestion}`);
@@ -83,12 +85,7 @@ const SingleChoice = ({
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
-      if (!freeText || isNaN(freeText)) {
-        submitFreeText(event);
-      } else {
-        event.preventDefault();
-        setAlert("Veuillez introduire votre choix (pas de nombres)", "danger");
-      }
+      submitFreeText(event);
     }
   };
 
@@ -116,7 +113,7 @@ const SingleChoice = ({
                 type="checkbox"
                 value={`${choice.id}`}
                 id={`checkbox-${index}`}
-                checked={values[questionId] === `${choice.id}`}
+                checked={values[questionId] === `*${choice.id}`}
                 onChange={SingleCheckboxChangePush(
                   questionId,
                   nextQuestionId,
@@ -126,21 +123,26 @@ const SingleChoice = ({
               />
               <label
                 className={`btn btn-outline-primary btn-block text-left pl-4 ${
-                  values[questionId] === `${choice.id}`
+                  values[questionId] === `*${choice.id}`
                     ? "active animate-label"
                     : ""
                 }`}
                 htmlFor={`checkbox-${index}`}
               >
                 {choice.label}
-                {values[questionId] === choice.id ? <Checkmark /> : ""}
+                {values[questionId] === `*${choice.id}` ? <Checkmark /> : ""}
               </label>
             </div>
           ))}
           {freeTextOption && (
             <label
               className={`btn btn-outline-primary btn-block text-left pl-4 
-              ${freeTextInput || isNaN(values[questionId]) ? "active" : ""} 
+              ${
+                freeTextInput ||
+                (values[questionId] && !values[questionId].startsWith("*"))
+                  ? "active"
+                  : ""
+              } 
               ${freeTextInputAnimate ? "animate-label" : ""}`}
               htmlFor={`checkbox-other`}
               onClick={() => {
@@ -165,9 +167,11 @@ const SingleChoice = ({
                   }}
                 />
               )) ||
-                (isNaN(values[questionId]) && values[questionId]) ||
+                (values[questionId] &&
+                  !values[questionId].startsWith("*") &&
+                  values[questionId]) ||
                 "Other"}
-              {isNaN(values[questionId]) && values[questionId] ? (
+              {values[questionId] && !values[questionId].startsWith("*") ? (
                 <Checkmark />
               ) : (
                 ""

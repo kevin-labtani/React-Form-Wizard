@@ -92,17 +92,17 @@ const Form = () => {
   };
 
   const multiCheckboxChange = (input) => (e) => {
-    let oldArr = answers[input];
-    if (isNaN(e.target.value) || e.target.value === "") {
-      oldArr = oldArr.filter((el) => !isNaN(el));
-      isNaN(e.target.value) && oldArr.push(e.target.value);
+    let oldArr = answers[input] || [];
+    if (e.target.value.startsWith("$") || e.target.value === "") {
+      oldArr = oldArr.filter((el) => el.startsWith("*"));
+      e.target.value && oldArr.push(e.target.value);
       setAnswers({ ...answers, [input]: oldArr });
     } else {
       if (e.target.checked) {
-        oldArr.push(e.target.value);
+        oldArr.push("*" + e.target.value);
         setAnswers({ ...answers, [input]: oldArr });
       } else {
-        const filteredArr = oldArr.filter((el) => el !== e.target.value);
+        const filteredArr = oldArr.filter((el) => el !== "*" + e.target.value);
         setAnswers({ ...answers, [input]: filteredArr });
       }
     }
@@ -115,7 +115,7 @@ const Form = () => {
   const SingleCheckboxChangePush = (input, nextQuestion, routingId = null) => (
     e
   ) => {
-    setAnswers({ ...answers, [input]: e.target.value });
+    setAnswers({ ...answers, [input]: "*" + e.target.value });
     setTimeout(() => {
       routingId ? push(`/${routingId}`) : push(`/${nextQuestion}`);
     }, 1200);
@@ -129,22 +129,22 @@ const Form = () => {
       let type = question[0].question_type_id;
       if (type === 1) {
         value.forEach((element) => {
-          if (isNaN(element)) {
+          if (element.startsWith("$")) {
             data.push({
               assessment_id: question[0].assessment_id,
               question_id: question[0].question_id,
-              free_text: element,
+              free_text: element.substr(1),
             });
-          } else {
+          } else if (element.startsWith("*")) {
             data.push({
               assessment_id: question[0].assessment_id,
               question_id: question[0].question_id,
-              box_value_id: element,
+              box_value_id: element.substr(1),
             });
           }
         });
       } else if (type === 2) {
-        if (isNaN(value)) {
+        if (!value.startsWith("*")) {
           data.push({
             assessment_id: question[0].assessment_id,
             question_id: question[0].question_id,
@@ -154,14 +154,14 @@ const Form = () => {
           data.push({
             assessment_id: question[0].assessment_id,
             question_id: question[0].question_id,
-            box_value_id: value,
+            box_value_id: value.substr(1),
           });
         }
       } else if (type === 4 || type === 7 || type === 3) {
         data.push({
           assessment_id: question[0].assessment_id,
           question_id: question[0].question_id,
-          box_value_id: value,
+          box_value_id: value.substr(1),
         });
       } else {
         data.push({

@@ -85,7 +85,7 @@ const OpinionScale = ({ values, SingleCheckboxChangePush, data }) => {
               {boxValues.map((choice, index) => (
                 <li
                   className={`page-item ${
-                    values[questionId] === `${choice.id}` ? "active" : ""
+                    values[questionId] === `*${choice.id}` ? "active" : ""
                   }`}
                   key={index}
                 >
@@ -94,7 +94,7 @@ const OpinionScale = ({ values, SingleCheckboxChangePush, data }) => {
                     name="rating"
                     value={`${choice.id}`}
                     id={`rating-${index}`}
-                    checked={values[questionId] === `${choice.id}`}
+                    checked={values[questionId] === `*${choice.id}`}
                     onChange={SingleCheckboxChangePush(
                       questionId,
                       nextQuestion,
@@ -104,7 +104,7 @@ const OpinionScale = ({ values, SingleCheckboxChangePush, data }) => {
                   />
                   <label
                     className={`page-link ${
-                      values[questionId] === `${choice.id}`
+                      values[questionId] === `*${choice.id}`
                         ? "animate-label"
                         : ""
                     }`}

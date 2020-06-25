@@ -69,7 +69,7 @@ const Legal = ({ values, SingleCheckboxChangePush, data }) => {
                 type="checkbox"
                 value={`${choice.id}`}
                 id={`checkbox-${index}`}
-                checked={values[questionId] === `${choice.id}`}
+                checked={values[questionId] === `*${choice.id}`}
                 onChange={SingleCheckboxChangePush(
                   questionId,
                   nextQuestion,
@@ -79,14 +79,14 @@ const Legal = ({ values, SingleCheckboxChangePush, data }) => {
               />
               <label
                 className={`btn btn-outline-primary btn-block text-left pl-4 ${
-                  values[questionId] === `${choice.id}`
+                  values[questionId] === `*${choice.id}`
                     ? "active animate-label"
                     : ""
                 }`}
                 htmlFor={`checkbox-${index}`}
               >
                 {choice.label}
-                {values[questionId] === choice.id ? <Checkmark /> : ""}
+                {values[questionId] === `*${choice.id}` ? <Checkmark /> : ""}
               </label>
             </div>
           ))}

@@ -30,8 +30,9 @@ const MultipleChoice = ({ values, multiCheckboxChange, data }) => {
   const [freeTextInput, setfreeTextInput] = useState(false);
   const [freeTextInputAnimate, setfreeTextInputAnimate] = useState(false);
   const [freeText, setFreeText] = useState(
-    (values[questionId] && values[questionId].filter((el) => isNaN(el))[0]) ||
-      ""
+    values[questionId] && values[questionId].filter((el) => isNaN(el))[0]
+      ? values[questionId].filter((el) => isNaN(el))[0].substr(1)
+      : ""
   );
 
   let freeTextOption = false;
@@ -78,9 +79,15 @@ const MultipleChoice = ({ values, multiCheckboxChange, data }) => {
 
   const submitFreeText = (event) => {
     setfreeTextInput(false);
+    if (event.target.value !== "") {
+      event.target.value = "$" + event.target.value;
+    }
     multiCheckboxChange(questionId)(event);
-    if (isNaN(freeText)) {
+    if (freeText) {
       setfreeTextInputAnimate(true);
+      setTimeout(() => {
+        setfreeTextInputAnimate(false);
+      }, 500);
     } else {
       setfreeTextInputAnimate(false);
     }
@@ -88,17 +95,14 @@ const MultipleChoice = ({ values, multiCheckboxChange, data }) => {
 
   const handleKeyDownInput = (event) => {
     if (event.key === "Enter") {
-      if (!freeText || isNaN(freeText)) {
-        submitFreeText(event);
-      } else {
-        event.preventDefault();
-        setAlert("Veuillez introduire votre choix (pas de nombres)", "danger");
-      }
+      submitFreeText(event);
     }
   };
 
-  const freeTextLabel =
-    values[questionId] && values[questionId].filter((el) => isNaN(el))[0];
+  const freeTextValue =
+    values[questionId] &&
+    values[questionId].filter((el) => el.startsWith("$"))[0];
+  const freeTextLabel = freeTextValue && freeTextValue.substr(1);
 
   return (
     <motion.div
@@ -126,7 +130,7 @@ const MultipleChoice = ({ values, multiCheckboxChange, data }) => {
                 id={`checkbox-${index}`}
                 checked={
                   values[questionId] &&
-                  values[questionId].includes(`${choice.id}`)
+                  values[questionId].includes(`*${choice.id}`)
                 }
                 onChange={multiCheckboxChange(questionId)}
                 hidden
@@ -134,7 +138,7 @@ const MultipleChoice = ({ values, multiCheckboxChange, data }) => {
               <label
                 className={`btn btn-outline-primary btn-block text-left pl-4 ${
                   values[questionId] &&
-                  values[questionId].includes(`${choice.id}`)
+                  values[questionId].includes(`*${choice.id}`)
                     ? "active animate-label"
                     : ""
                 }`}
@@ -142,7 +146,7 @@ const MultipleChoice = ({ values, multiCheckboxChange, data }) => {
               >
                 {choice.label}
                 {values[questionId] &&
-                values[questionId].includes(choice.id) ? (
+                values[questionId].includes(`*${choice.id}`) ? (
                   <Checkmark />
                 ) : (
                   ""
