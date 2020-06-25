@@ -29,9 +29,9 @@ const LongText = ({ values, inputChange, data }) => {
 
   const fwd = (e) => {
     e.preventDefault();
-    if (questionRequired && values[questionId] === "") {
+    if (questionRequired && !values[questionId]) {
       setAlert("Veuillez remplir ce champ", "danger");
-    } else if (values[questionId].length > 256) {
+    } else if (values[questionId] && values[questionId].length > 256) {
       setAlert("Votre réponse doit faire moins de 256 caractères", "danger");
     } else {
       push(`/${nextQuestionId}`);

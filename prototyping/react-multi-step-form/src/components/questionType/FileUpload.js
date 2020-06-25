@@ -28,7 +28,7 @@ const FileUpload = ({ values, inputChange, data }) => {
 
   const fwd = (e) => {
     e.preventDefault();
-    if (questionRequired && values[questionId] === "") {
+    if (questionRequired && !values[questionId]) {
       setAlert("Veuillez choisir un fichier à uploader", "danger");
     } else {
       push(`/${nextQuestionId}`);

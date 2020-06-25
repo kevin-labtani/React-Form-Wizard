@@ -32,7 +32,9 @@ const Email = ({ values, inputChange, data }) => {
     e.preventDefault();
 
     if (
-      (questionRequired && !isEmail(values[questionId])) ||
+      (questionRequired &&
+        (!values[questionId] ||
+          (values[questionId] && !isEmail(values[questionId])))) ||
       (!questionRequired && values[questionId] && !isEmail(values[questionId]))
     ) {
       setAlert("Veuillez entrer une adresse email valide", "danger");
