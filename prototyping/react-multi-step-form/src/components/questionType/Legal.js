@@ -85,8 +85,8 @@ const Legal = ({ values, SingleCheckboxChangePush, data }) => {
                 }`}
                 htmlFor={`checkbox-${index}`}
               >
-                {choice.label}
                 {values[questionId] === `*${choice.id}` ? <Checkmark /> : ""}
+                {choice.label}
               </label>
             </div>
           ))}

@@ -144,13 +144,13 @@ const MultipleChoice = ({ values, multiCheckboxChange, data }) => {
                 }`}
                 htmlFor={`checkbox-${index}`}
               >
-                {choice.label}
                 {values[questionId] &&
                 values[questionId].includes(`*${choice.id}`) ? (
                   <Checkmark />
                 ) : (
                   ""
                 )}
+                {choice.label}
               </label>
             </div>
           ))}
@@ -164,6 +164,11 @@ const MultipleChoice = ({ values, multiCheckboxChange, data }) => {
                 setfreeTextInput(true);
               }}
             >
+              {freeTextLabel && !freeTextInput && values[questionId] ? (
+                <Checkmark />
+              ) : (
+                ""
+              )}
               {(freeTextInput && (
                 <input
                   type="text"
@@ -184,7 +189,6 @@ const MultipleChoice = ({ values, multiCheckboxChange, data }) => {
               )) ||
                 freeTextLabel ||
                 "Other"}
-              {freeTextLabel && values[questionId] ? <Checkmark /> : ""}
             </label>
           )}
           {freeTextInput && (

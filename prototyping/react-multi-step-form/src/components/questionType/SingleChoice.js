@@ -129,8 +129,8 @@ const SingleChoice = ({
                 }`}
                 htmlFor={`checkbox-${index}`}
               >
-                {choice.label}
                 {values[questionId] === `*${choice.id}` ? <Checkmark /> : ""}
+                {choice.label}
               </label>
             </div>
           ))}
@@ -149,6 +149,13 @@ const SingleChoice = ({
                 setfreeTextInput(true);
               }}
             >
+              {values[questionId] &&
+              !freeTextInput &&
+              !values[questionId].startsWith("*") ? (
+                <Checkmark />
+              ) : (
+                ""
+              )}
               {(freeTextInput && (
                 <input
                   type="text"
@@ -171,11 +178,6 @@ const SingleChoice = ({
                   !values[questionId].startsWith("*") &&
                   values[questionId]) ||
                 "Other"}
-              {values[questionId] && !values[questionId].startsWith("*") ? (
-                <Checkmark />
-              ) : (
-                ""
-              )}
             </label>
           )}
           {freeTextInput && (
