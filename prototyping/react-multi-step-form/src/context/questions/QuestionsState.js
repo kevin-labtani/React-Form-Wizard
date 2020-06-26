@@ -12,14 +12,19 @@ export const useQuestions = () => {
 
 // get questions from DB
 export const getQuestions = async (dispatch) => {
-  // // req user from api (nb: set loading to default to true)
-  // const res = await axios.get(
-  //   "https://cors-anywhere.herokuapp.com/https://preprod.hike-up.be/api/getATH/0251455c-65b7-4003-836c-2928a9b81b3d/13"
-  // );
-  // dispatch({
-  //   type: GET_QUESTIONS,
-  //   payload: res.data,
-  // });
+  // req user from api (nb: set loading to default to true)
+  try {
+    const res = await axios.get(
+      "https://cors-anywhere.herokuapp.com/https://preprod.hike-up.be/api/getATH/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434/13"
+    );
+    console.log(res.data)
+    dispatch({
+      type: GET_QUESTIONS,
+      payload: res.data,
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const QuestionsState = (props) => {
