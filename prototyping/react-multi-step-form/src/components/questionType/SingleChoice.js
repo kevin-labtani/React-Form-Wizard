@@ -43,7 +43,7 @@ const SingleChoice = ({
   let freeTextOption = false;
   parameters &&
     parameters.forEach((param) => {
-      if (param.name === "Other") freeTextOption = true;
+      if (param.name === "other") freeTextOption = true;
     });
 
   let nextQuestion = nextQuestionId;

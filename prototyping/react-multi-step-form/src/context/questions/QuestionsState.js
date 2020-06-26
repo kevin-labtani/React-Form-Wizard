@@ -96,7 +96,8 @@ const QuestionsState = (props) => {
         parameters: [
           {
             id: "20",
-            name: "Other",
+            name: "other",
+            value: true, //added
           },
         ],
         default_next_id: 4,
@@ -300,7 +301,8 @@ const QuestionsState = (props) => {
         parameters: [
           {
             id: "12",
-            name: "Other",
+            name: "other",
+            value: true, //added
           },
         ],
         default_next_id: 9,

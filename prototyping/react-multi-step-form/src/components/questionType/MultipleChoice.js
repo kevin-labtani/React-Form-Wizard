@@ -38,7 +38,7 @@ const MultipleChoice = ({ values, multiCheckboxChange, data }) => {
   let freeTextOption = false;
   parameters &&
     parameters.forEach((param) => {
-      if (param.name === "Other") freeTextOption = true;
+      if (param.name === "other") freeTextOption = true;
     });
 
   const { setAlert } = useContext(AlertContext);
