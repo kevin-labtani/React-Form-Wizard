@@ -1,6 +1,12 @@
 /* eslint-disable no-undef */
-
-console.log(window.navigator);
+import {
+  isMobile,
+  isMobileOnly,
+  isTablet,
+  isAndroid,
+  isIOS,
+  isWinPhone,
+} from "react-device-detect";
 
 // https://stackoverflow.com/questions/9847580/how-to-detect-safari-chrome-ie-firefox-and-opera-browser
 // Opera 8.0+
@@ -41,8 +47,27 @@ browserName += isChrome ? "Chrome" : "";
 browserName += isSafari ? "Safari" : "";
 browserName += isOpera ? "Opera" : "";
 browserName += isIE ? "IE" : "";
-browserName += isEdge ? "Edge" : "";
+browserName += isEdge ? "Legacy Edge" : "";
 browserName += isEdgeChromium ? "Edge Chromium" : "";
+
+let mobile = "";
+if (isMobile) {
+  if (isAndroid) {
+    mobile += "Android";
+  }
+  if (isWinPhone) {
+    mobile += "Windows Phone";
+  }
+  if (isIOS) {
+    mobile += "IOS";
+  }
+  if (isMobileOnly) {
+    mobile += " Phone";
+  }
+  if (isTablet) {
+    mobile += " Tablet";
+  }
+}
 
 const userAgent = window.navigator.userAgent;
 const browserPreferedLanguage = window.navigator.language;
@@ -50,7 +75,6 @@ const browserLanguages = window.navigator.languages;
 const userPlatform = window.navigator.platform;
 const browserOnline = window.navigator.onLine;
 const referrer = document.referrer;
-
 
 export {
   browserName,
@@ -60,4 +84,28 @@ export {
   userPlatform,
   browserOnline,
   referrer,
+  mobile,
 };
+
+  
+  // import {
+  //   browserName,
+  //   userAgent,
+  //   browserPreferedLanguage,
+  //   browserLanguages,
+  //   userPlatform,
+  //   browserOnline,
+  //   mobile,
+  //   referrer,
+  // } from "../browserData";
+
+  // console.log(
+  //   browserName + "\n",
+  //   userAgent + "\n",
+  //   browserPreferedLanguage + "\n",
+  //   browserLanguages + "\n",
+  //   userPlatform + "\n",
+  //   "online? " + browserOnline + "\n",
+  //   mobile ? mobile + "\n" : "not on a mobile device \n",
+  //   referrer + "\n"
+  // );
