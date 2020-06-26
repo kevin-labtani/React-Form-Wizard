@@ -31,6 +31,7 @@ import {
   browserLanguages,
   userPlatform,
   browserOnline,
+  referrer,
 } from "../browserData";
 
 const Form = () => {
@@ -40,8 +41,10 @@ const Form = () => {
     browserPreferedLanguage + "\n",
     browserLanguages + "\n",
     userPlatform + "\n",
-    "online? " + browserOnline + "\n"
+    "online? " + browserOnline + "\n",
+    referrer + "\n"
   );
+
   const location = useLocation();
   const { push } = useHistory(); //for autopush option
 

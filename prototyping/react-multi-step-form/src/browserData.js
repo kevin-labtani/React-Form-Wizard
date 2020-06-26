@@ -49,6 +49,8 @@ const browserPreferedLanguage = window.navigator.language;
 const browserLanguages = window.navigator.languages;
 const userPlatform = window.navigator.platform;
 const browserOnline = window.navigator.onLine;
+const referrer = document.referrer;
+
 
 export {
   browserName,
@@ -57,4 +59,5 @@ export {
   browserLanguages,
   userPlatform,
   browserOnline,
+  referrer,
 };
