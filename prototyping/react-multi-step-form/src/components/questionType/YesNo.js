@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
 import AlertContext from "../../context/alert/alertContext";
@@ -9,7 +9,7 @@ import Navigation from "../layout/Navigation";
 import Checkmark from "../layout/Checkmark";
 import { containerVariants, answerVariants } from "../../AnimationConstant";
 
-const YesNo = ({ values, SingleCheckboxChangePush, data }) => {
+const YesNo = ({ values, singleCheckboxChangePush, updateTimer, data }) => {
   const {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
@@ -19,6 +19,8 @@ const YesNo = ({ values, SingleCheckboxChangePush, data }) => {
     box_values: boxValues,
     default_next_id: nextQuestionId,
   } = data;
+
+  const [startTimer] = useState(new Date().getTime());
 
   let nextQuestion = nextQuestionId;
   if (Number.isInteger(parseInt(values[questionId]))) {
@@ -37,6 +39,7 @@ const YesNo = ({ values, SingleCheckboxChangePush, data }) => {
     if (questionRequired && !values[questionId]) {
       setAlert("Veuillez faire un choix", "danger");
     } else {
+      updateTimer(questionId, (new Date().getTime() - startTimer) / 1000);
       push(`/${nextQuestion}`);
     }
   };
@@ -44,6 +47,11 @@ const YesNo = ({ values, SingleCheckboxChangePush, data }) => {
   const back = (e) => {
     e.preventDefault();
     goBack();
+  };
+
+  const changeHandler = (routingId, e) => {
+    updateTimer(questionId, (new Date().getTime() - startTimer) / 1000);
+    singleCheckboxChangePush(questionId, nextQuestion, routingId)(e);
   };
 
   return (
@@ -71,11 +79,7 @@ const YesNo = ({ values, SingleCheckboxChangePush, data }) => {
                 value={`${choice.id}`}
                 id={`checkbox-${index}`}
                 checked={values[questionId] === `*${choice.id}`}
-                onChange={SingleCheckboxChangePush(
-                  questionId,
-                  nextQuestion,
-                  choice.next_id_if_selected
-                )}
+                onChange={(e) => changeHandler(choice.next_id_if_selected, e)}
                 hidden
               />
               <label

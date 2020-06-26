@@ -13,7 +13,7 @@ import {
   keyboardNavVariants,
 } from "../../AnimationConstant";
 
-const MultipleChoice = ({ values, multiCheckboxChange, data }) => {
+const MultipleChoice = ({ values, multiCheckboxChange, updateTimer, data }) => {
   const {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
@@ -27,6 +27,7 @@ const MultipleChoice = ({ values, multiCheckboxChange, data }) => {
 
   boxValues.sort((a, b) => a.id - b.id);
 
+  const [startTimer] = useState(new Date().getTime());
   const [freeTextInput, setfreeTextInput] = useState(false);
   const [freeTextInputAnimate, setfreeTextInputAnimate] = useState(false);
   const [freeText, setFreeText] = useState(
@@ -50,6 +51,7 @@ const MultipleChoice = ({ values, multiCheckboxChange, data }) => {
     if (questionRequired && values[questionId].length === 0) {
       setAlert("Veuillez faire un choix", "danger");
     } else {
+      updateTimer(questionId, (new Date().getTime() - startTimer) / 1000);
       push(`/${nextQuestionId}`);
     }
   };

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
 import AlertContext from "../../context/alert/alertContext";
@@ -14,7 +14,7 @@ import {
 
 import isMobilePhone from "validator/lib/isMobilePhone";
 
-const PhoneNumber = ({ values, inputChange, data }) => {
+const PhoneNumber = ({ values, inputChange, updateTimer, data }) => {
   const {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
@@ -23,6 +23,8 @@ const PhoneNumber = ({ values, inputChange, data }) => {
     question_id: questionId,
     default_next_id: nextQuestionId,
   } = data;
+
+  const [startTimer] = useState(new Date().getTime());
 
   const { setAlert } = useContext(AlertContext);
 
@@ -38,6 +40,7 @@ const PhoneNumber = ({ values, inputChange, data }) => {
     ) {
       setAlert("Veuillez entrer un numéro de téléphone valide", "danger");
     } else {
+      updateTimer(questionId, (new Date().getTime() - startTimer) / 1000);
       push(`/${nextQuestionId}`);
     }
   };

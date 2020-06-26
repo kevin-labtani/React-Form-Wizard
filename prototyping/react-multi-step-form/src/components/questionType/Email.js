@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
 import AlertContext from "../../context/alert/alertContext";
@@ -14,7 +14,7 @@ import {
 
 import isEmail from "validator/lib/isEmail";
 
-const Email = ({ values, inputChange, data }) => {
+const Email = ({ values, inputChange, updateTimer, data }) => {
   const {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
@@ -24,13 +24,14 @@ const Email = ({ values, inputChange, data }) => {
     default_next_id: nextQuestionId,
   } = data;
 
+  const [startTimer] = useState(new Date().getTime());
+
   const { setAlert } = useContext(AlertContext);
 
   const { push, goBack } = useHistory();
 
   const fwd = (e) => {
     e.preventDefault();
-
     if (
       (questionRequired &&
         (!values[questionId] ||
@@ -39,6 +40,7 @@ const Email = ({ values, inputChange, data }) => {
     ) {
       setAlert("Veuillez entrer une adresse email valide", "danger");
     } else {
+      updateTimer(questionId, (new Date().getTime() - startTimer) / 1000);
       push(`/${nextQuestionId}`);
     }
   };

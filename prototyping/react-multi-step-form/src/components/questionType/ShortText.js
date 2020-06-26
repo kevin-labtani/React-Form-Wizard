@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
 import AlertContext from "../../context/alert/alertContext";
@@ -12,7 +12,7 @@ import {
   keyboardNavVariants,
 } from "../../AnimationConstant";
 
-const ShortText = ({ values, inputChange, data }) => {
+const ShortText = ({ values, inputChange, updateTimer, data }) => {
   const {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
@@ -21,6 +21,8 @@ const ShortText = ({ values, inputChange, data }) => {
     question_id: questionId,
     default_next_id: nextQuestionId,
   } = data;
+
+  const [startTimer] = useState(new Date().getTime());
 
   const { setAlert } = useContext(AlertContext);
 
@@ -33,6 +35,7 @@ const ShortText = ({ values, inputChange, data }) => {
     } else if (values[questionId] && values[questionId].length > 256) {
       setAlert("Votre réponse doit faire moins de 256 caractères", "danger");
     } else {
+      updateTimer(questionId, (new Date().getTime() - startTimer) / 1000);
       push(`/${nextQuestionId}`);
     }
   };

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
 import AlertContext from "../../context/alert/alertContext";
@@ -8,7 +8,12 @@ import Question from "../layout/Question";
 import Navigation from "../layout/Navigation";
 import { containerVariants, answerVariants } from "../../AnimationConstant";
 
-const OpinionScale = ({ values, SingleCheckboxChangePush, data }) => {
+const OpinionScale = ({
+  values,
+  singleCheckboxChangePush,
+  updateTimer,
+  data,
+}) => {
   const {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
@@ -19,6 +24,8 @@ const OpinionScale = ({ values, SingleCheckboxChangePush, data }) => {
     default_next_id: nextQuestionId,
     parameters,
   } = data;
+
+  const [startTimer] = useState(new Date().getTime());
 
   let labelLeft, labelRight;
   parameters &&
@@ -48,6 +55,7 @@ const OpinionScale = ({ values, SingleCheckboxChangePush, data }) => {
     if (questionRequired && !values[questionId]) {
       setAlert("Veuillez faire un choix", "danger");
     } else {
+      updateTimer(questionId, (new Date().getTime() - startTimer) / 1000);
       push(`/${nextQuestion}`);
     }
   };
@@ -55,6 +63,11 @@ const OpinionScale = ({ values, SingleCheckboxChangePush, data }) => {
   const back = (e) => {
     e.preventDefault();
     goBack();
+  };
+
+  const changeHandler = (routingId, e) => {
+    updateTimer(questionId, (new Date().getTime() - startTimer) / 1000);
+    singleCheckboxChangePush(questionId, nextQuestion, routingId)(e);
   };
 
   return (
@@ -95,11 +108,9 @@ const OpinionScale = ({ values, SingleCheckboxChangePush, data }) => {
                     value={`${choice.id}`}
                     id={`rating-${index}`}
                     checked={values[questionId] === `*${choice.id}`}
-                    onChange={SingleCheckboxChangePush(
-                      questionId,
-                      nextQuestion,
-                      choice.next_id_if_selected
-                    )}
+                    onChange={(e) =>
+                      changeHandler(choice.next_id_if_selected, e)
+                    }
                     hidden
                   />
                   <label

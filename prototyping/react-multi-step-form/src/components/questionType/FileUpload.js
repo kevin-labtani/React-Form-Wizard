@@ -9,7 +9,7 @@ import Question from "../layout/Question";
 import Navigation from "../layout/Navigation";
 import { containerVariants, answerVariants } from "../../AnimationConstant";
 
-const FileUpload = ({ values, inputChange, data }) => {
+const FileUpload = ({ values, inputChange, updateTimer, data }) => {
   const {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
@@ -18,6 +18,8 @@ const FileUpload = ({ values, inputChange, data }) => {
     question_id: questionId,
     default_next_id: nextQuestionId,
   } = data;
+
+  const [startTimer] = useState(new Date().getTime());
 
   const { setAlert } = useContext(AlertContext);
 
@@ -31,6 +33,7 @@ const FileUpload = ({ values, inputChange, data }) => {
     if (questionRequired && !values[questionId]) {
       setAlert("Veuillez choisir un fichier à uploader", "danger");
     } else {
+      updateTimer(questionId, (new Date().getTime() - startTimer) / 1000);
       push(`/${nextQuestionId}`);
     }
   };

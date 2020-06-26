@@ -27,7 +27,7 @@ import Footer from "./layout/Footer";
 
 const Form = () => {
   const location = useLocation();
-  const { push } = useHistory(); //for autopush option
+  const { push } = useHistory();
 
   const [questionsState, questionsDispatch] = useQuestions();
 
@@ -38,6 +38,7 @@ const Form = () => {
   }, [questionsDispatch]);
 
   const [answers, setAnswers] = useState({});
+  const [timings, setTimings] = useState({});
   const [responseUuid, setResponseUuid] = useState("");
 
   // load data from localSotrage
@@ -45,6 +46,10 @@ const Form = () => {
     const data = JSON.parse(localStorage.getItem("answers"));
     if (data) {
       setAnswers(data);
+    }
+    const timings = JSON.parse(localStorage.getItem("timings"));
+    if (timings) {
+      setTimings(timings);
     }
 
     const id = JSON.parse(localStorage.getItem("responseUuid"));
@@ -56,8 +61,9 @@ const Form = () => {
   // save data to localStorage
   useEffect(() => {
     localStorage.setItem("answers", JSON.stringify(answers));
+    localStorage.setItem("timings", JSON.stringify(timings));
     localStorage.setItem("responseUuid", JSON.stringify(responseUuid));
-  }, [answers, responseUuid]);
+  }, [answers, timings, responseUuid]);
 
   // initialize answer obj
   let initAnswers = {};
@@ -73,11 +79,29 @@ const Form = () => {
       initAnswers[q.question_id] = "";
     }
   });
+
+  let initTimings = {};
+  questions.forEach((q) => {
+    if (
+      q.question_type_id !== 15 &&
+      q.question_type_id !== 16 &&
+      q.question_type_id !== 17
+    ) {
+      initTimings[q.question_id] = "";
+    }
+  });
+
   // init on welcome page
   const initAnswerState = () => {
     const id = uuidv4();
     setResponseUuid(id);
     setAnswers(initAnswers);
+    setTimings(initTimings);
+  };
+
+  const updateTimer = (questionId, timer) => {
+    let totalTime = +timings[questionId] + timer;
+    setTimings({ ...timings, [questionId]: totalTime.toFixed(2) });
   };
 
   const inputChange = (input) => (e) => {
@@ -112,7 +136,7 @@ const Form = () => {
   //   setAnswers({ ...answers, [input]: e.target.value });
   // };
 
-  const SingleCheckboxChangePush = (input, nextQuestion, routingId = null) => (
+  const singleCheckboxChangePush = (input, nextQuestion, routingId = null) => (
     e
   ) => {
     setAnswers({ ...answers, [input]: "*" + e.target.value });
@@ -123,7 +147,6 @@ const Form = () => {
 
   const sendAnswers = async (nextQuestionId) => {
     let data = [];
-    // ?!?!?
     for (let [key, value] of Object.entries(answers)) {
       let question = questions.filter((q) => q.question_id === parseInt(key));
       let type = question[0].question_type_id;
@@ -210,6 +233,7 @@ const Form = () => {
               <MultipleChoice
                 {...routeProps}
                 multiCheckboxChange={multiCheckboxChange}
+                updateTimer={updateTimer}
                 values={answers}
                 data={q}
               />
@@ -227,8 +251,9 @@ const Form = () => {
             render={(routeProps) => (
               <SingleChoice
                 {...routeProps}
-                SingleCheckboxChangePush={SingleCheckboxChangePush}
+                singleCheckboxChangePush={singleCheckboxChangePush}
                 inputChange={inputChange}
+                updateTimer={updateTimer}
                 values={answers}
                 data={q}
               />
@@ -246,7 +271,8 @@ const Form = () => {
             render={(routeProps) => (
               <YesNo
                 {...routeProps}
-                SingleCheckboxChangePush={SingleCheckboxChangePush}
+                singleCheckboxChangePush={singleCheckboxChangePush}
+                updateTimer={updateTimer}
                 values={answers}
                 data={q}
               />
@@ -264,7 +290,8 @@ const Form = () => {
             render={(routeProps) => (
               <Legal
                 {...routeProps}
-                SingleCheckboxChangePush={SingleCheckboxChangePush}
+                singleCheckboxChangePush={singleCheckboxChangePush}
+                updateTimer={updateTimer}
                 values={answers}
                 data={q}
               />
@@ -283,6 +310,7 @@ const Form = () => {
               <Rating
                 {...routeProps}
                 inputChangePush={inputChangePush}
+                updateTimer={updateTimer}
                 values={answers}
                 data={q}
               />
@@ -301,6 +329,7 @@ const Form = () => {
               <ShortText
                 {...routeProps}
                 inputChange={inputChange}
+                updateTimer={updateTimer}
                 values={answers}
                 data={q}
               />
@@ -318,7 +347,8 @@ const Form = () => {
             render={(routeProps) => (
               <OpinionScale
                 {...routeProps}
-                SingleCheckboxChangePush={SingleCheckboxChangePush}
+                singleCheckboxChangePush={singleCheckboxChangePush}
+                updateTimer={updateTimer}
                 values={answers}
                 data={q}
               />
@@ -337,6 +367,7 @@ const Form = () => {
               <Email
                 {...routeProps}
                 inputChange={inputChange}
+                updateTimer={updateTimer}
                 values={answers}
                 data={q}
               />
@@ -355,6 +386,7 @@ const Form = () => {
               <Number
                 {...routeProps}
                 inputChange={inputChange}
+                updateTimer={updateTimer}
                 values={answers}
                 data={q}
               />
@@ -373,6 +405,7 @@ const Form = () => {
               <PhoneNumber
                 {...routeProps}
                 inputChange={inputChange}
+                updateTimer={updateTimer}
                 values={answers}
                 data={q}
               />
@@ -391,6 +424,7 @@ const Form = () => {
               <LongText
                 {...routeProps}
                 inputChange={inputChange}
+                updateTimer={updateTimer}
                 values={answers}
                 data={q}
               />
@@ -409,6 +443,7 @@ const Form = () => {
               <FileUpload
                 {...routeProps}
                 inputChange={inputChange}
+                updateTimer={updateTimer}
                 values={answers}
                 data={q}
               />

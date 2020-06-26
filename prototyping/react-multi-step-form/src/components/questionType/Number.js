@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
 import AlertContext from "../../context/alert/alertContext";
@@ -12,7 +12,7 @@ import {
   keyboardNavVariants,
 } from "../../AnimationConstant";
 
-const Number = ({ values, inputChange, data }) => {
+const Number = ({ values, inputChange, updateTimer, data }) => {
   const {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
@@ -22,6 +22,8 @@ const Number = ({ values, inputChange, data }) => {
     default_next_id: nextQuestionId,
     parameters,
   } = data;
+
+  const [startTimer] = useState(new Date().getTime());
 
   let min, max;
   parameters &&
@@ -48,6 +50,7 @@ const Number = ({ values, inputChange, data }) => {
     ) {
       setAlert(`Please enter a number between ${min} and ${max}`, "danger");
     } else {
+      updateTimer(questionId, (new Date().getTime() - startTimer) / 1000);
       push(`/${nextQuestionId}`);
     }
   };

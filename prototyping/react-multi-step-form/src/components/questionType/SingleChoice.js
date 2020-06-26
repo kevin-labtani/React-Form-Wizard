@@ -15,8 +15,9 @@ import {
 
 const SingleChoice = ({
   values,
-  SingleCheckboxChangePush,
+  singleCheckboxChangePush,
   inputChange,
+  updateTimer,
   data,
 }) => {
   const {
@@ -32,6 +33,7 @@ const SingleChoice = ({
 
   boxValues.sort((a, b) => a.id - b.id);
 
+  const [startTimer] = useState(new Date().getTime());
   const [freeTextInput, setfreeTextInput] = useState(false);
   const [freeTextInputAnimate, setfreeTextInputAnimate] = useState(false);
   const [freeText, setFreeText] = useState(
@@ -63,6 +65,7 @@ const SingleChoice = ({
     if (questionRequired && !values[questionId]) {
       setAlert("Veuillez faire un choix", "danger");
     } else {
+      updateTimer(questionId, (new Date().getTime() - startTimer) / 1000);
       push(`/${nextQuestion}`);
     }
   };
@@ -72,12 +75,18 @@ const SingleChoice = ({
     goBack();
   };
 
+  const changeHandler = (routingId, e) => {
+    updateTimer(questionId, (new Date().getTime() - startTimer) / 1000);
+    singleCheckboxChangePush(questionId, nextQuestion, routingId)(e);
+  };
+
   const submitFreeText = (event) => {
     setfreeTextInput(false);
     inputChange(questionId)(event);
     if (freeText) {
       setfreeTextInputAnimate(true);
       setTimeout(() => {
+        updateTimer(questionId, (new Date().getTime() - startTimer) / 1000);
         push(`/${nextQuestion}`);
       }, 1200);
     }
@@ -114,11 +123,7 @@ const SingleChoice = ({
                 value={`${choice.id}`}
                 id={`checkbox-${index}`}
                 checked={values[questionId] === `*${choice.id}`}
-                onChange={SingleCheckboxChangePush(
-                  questionId,
-                  nextQuestionId,
-                  choice.next_id_if_selected
-                )}
+                onChange={(e) => changeHandler(choice.next_id_if_selected, e)}
                 hidden
               />
               <label

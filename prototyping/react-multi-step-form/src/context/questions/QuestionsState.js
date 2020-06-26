@@ -13,18 +13,18 @@ export const useQuestions = () => {
 // get questions from DB
 export const getQuestions = async (dispatch) => {
   // req user from api (nb: set loading to default to true)
-  try {
-    const res = await axios.get(
-      "https://cors-anywhere.herokuapp.com/https://preprod.hike-up.be/api/getATH/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434/13"
-    );
-    console.log(res.data)
-    dispatch({
-      type: GET_QUESTIONS,
-      payload: res.data,
-    });
-  } catch (error) {
-    console.log(error);
-  }
+  // try {
+  //   const res = await axios.get(
+  //     "https://cors-anywhere.herokuapp.com/https://preprod.hike-up.be/api/getATH/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434/13"
+  //   );
+  //   console.log(res.data)
+  //   dispatch({
+  //     type: GET_QUESTIONS,
+  //     payload: res.data,
+  //   });
+  // } catch (error) {
+  //   console.log(error);
+  // }
 };
 
 const QuestionsState = (props) => {
