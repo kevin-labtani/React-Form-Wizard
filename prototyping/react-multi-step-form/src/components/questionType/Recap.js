@@ -5,7 +5,7 @@ import { containerVariants } from "../../AnimationConstant";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 
-const Recap = ({ data, answers, questions, sendAnswers }) => {
+const Recap = ({ data, answers, questions, sendAnswer }) => {
   const {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
@@ -18,7 +18,7 @@ const Recap = ({ data, answers, questions, sendAnswers }) => {
 
   const fwd = (e) => {
     e.preventDefault();
-    sendAnswers(nextQuestionId);
+    sendAnswer(nextQuestionId);
   };
 
   const changeAnswer = (questionId, e) => {
@@ -32,7 +32,9 @@ const Recap = ({ data, answers, questions, sendAnswers }) => {
     let question = questions.filter((q) => q.question_id === parseInt(key));
     if (question[0].box_values) {
       if (question[0].question_type_id !== 1) {
-        let choice = question[0].box_values.filter((val) => val.id === value.substr(1));
+        let choice = question[0].box_values.filter(
+          (val) => val.id === value.substr(1)
+        );
         if (choice[0]) {
           answer = choice[0].label;
         }

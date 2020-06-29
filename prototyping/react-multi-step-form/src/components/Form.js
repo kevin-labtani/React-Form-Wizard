@@ -145,7 +145,7 @@ const Form = () => {
     }, 1200);
   };
 
-  const sendAnswers = async (nextQuestionId) => {
+  const constructAnswer = () => {
     let data = [];
     for (let [key, value] of Object.entries(answers)) {
       let question = questions.filter((q) => q.question_id === parseInt(key));
@@ -209,7 +209,11 @@ const Form = () => {
         });
       }
     }
+    return data;
+  };
 
+  const sendAnswer = async (nextQuestionId = null) => {
+    let data = constructAnswer();
     try {
       console.log(data);
       // https://cors-anywhere.herokuapp.com/https://preprod.hike-up.be/api/fillARH/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434/${responseUuid}
@@ -219,12 +223,21 @@ const Form = () => {
         },
       });
       console.log(`Status code: ${res.status}`);
-      push(`/${nextQuestionId}`);
+      nextQuestionId && push(`/${nextQuestionId}`);
     } catch (err) {
       console.log(err);
-      push(`/${nextQuestionId}`); //REMOVE
+      nextQuestionId && push(`/${nextQuestionId}`); //REMOVE
     }
   };
+
+  // window.onbeforeunload = () => {
+  //   let data = constructAnswer();
+  //   console.log(data);
+  //   // localStorage.setItem("answers", JSON.stringify(answers));
+  //   // sendAnswer();
+  //   navigator.sendBeacon("https://myapp/url", JSON.stringify(data));
+  //   return "Are you sure you want to leave?";
+  // };
 
   let questionsSwitch = [];
   questions.forEach((q) => {
@@ -498,7 +511,7 @@ const Form = () => {
                 data={q}
                 answers={answers}
                 questions={questions}
-                sendAnswers={sendAnswers}
+                sendAnswer={sendAnswer}
               />
             )}
           />
