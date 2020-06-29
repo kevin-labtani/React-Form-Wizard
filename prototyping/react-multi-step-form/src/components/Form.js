@@ -156,12 +156,14 @@ const Form = () => {
             data.push({
               assessment_id: question[0].assessment_id,
               question_id: question[0].question_id,
+              question_timing: timings[key],
               free_text: element.substr(1),
             });
           } else if (element.startsWith("*")) {
             data.push({
               assessment_id: question[0].assessment_id,
               question_id: question[0].question_id,
+              question_timing: timings[key],
               box_value_id: element.substr(1),
             });
           }
@@ -171,12 +173,14 @@ const Form = () => {
           data.push({
             assessment_id: question[0].assessment_id,
             question_id: question[0].question_id,
+            question_timing: timings[key],
             free_text: value,
           });
         } else if (value.startsWith("*")) {
           data.push({
             assessment_id: question[0].assessment_id,
             question_id: question[0].question_id,
+            question_timing: timings[key],
             box_value_id: value.substr(1),
           });
         }
@@ -184,6 +188,7 @@ const Form = () => {
         data.push({
           assessment_id: question[0].assessment_id,
           question_id: question[0].question_id,
+          question_timing: timings[key],
           box_value_id: value.substr(1),
         });
       } else if (
@@ -199,6 +204,7 @@ const Form = () => {
         data.push({
           assessment_id: question[0].assessment_id,
           question_id: question[0].question_id,
+          question_timing: timings[key],
           free_text: value,
         });
       }
