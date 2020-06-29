@@ -14,7 +14,7 @@ import {
 
 import isMobilePhone from "validator/lib/isMobilePhone";
 
-const PhoneNumber = ({ values, inputChange, updateTimer, data }) => {
+const PhoneNumber = ({ values, inputChange, updateTimerLocation, data }) => {
   const {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
@@ -40,7 +40,10 @@ const PhoneNumber = ({ values, inputChange, updateTimer, data }) => {
     ) {
       setAlert("Veuillez entrer un numéro de téléphone valide", "danger");
     } else {
-      updateTimer(questionId, (new Date().getTime() - startTimer) / 1000);
+      updateTimerLocation(
+        questionId,
+        (new Date().getTime() - startTimer) / 1000
+      );
       push(`/${nextQuestionId}`);
     }
   };

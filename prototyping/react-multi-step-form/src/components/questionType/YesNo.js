@@ -9,7 +9,12 @@ import Navigation from "../layout/Navigation";
 import Checkmark from "../layout/Checkmark";
 import { containerVariants, answerVariants } from "../../AnimationConstant";
 
-const YesNo = ({ values, singleCheckboxChangePush, updateTimer, data }) => {
+const YesNo = ({
+  values,
+  singleCheckboxChangePush,
+  updateTimerLocation,
+  data,
+}) => {
   const {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
@@ -39,7 +44,11 @@ const YesNo = ({ values, singleCheckboxChangePush, updateTimer, data }) => {
     if (questionRequired && !values[questionId]) {
       setAlert("Veuillez faire un choix", "danger");
     } else {
-      updateTimer(questionId, (new Date().getTime() - startTimer) / 1000);
+      updateTimerLocation(
+        questionId,
+        nextQuestionId,
+        (new Date().getTime() - startTimer) / 1000
+      );
       push(`/${nextQuestion}`);
     }
   };
@@ -50,7 +59,11 @@ const YesNo = ({ values, singleCheckboxChangePush, updateTimer, data }) => {
   };
 
   const changeHandler = (routingId, e) => {
-    updateTimer(questionId, (new Date().getTime() - startTimer) / 1000);
+    updateTimerLocation(
+      questionId,
+      nextQuestionId,
+      (new Date().getTime() - startTimer) / 1000
+    );
     singleCheckboxChangePush(questionId, nextQuestion, routingId)(e);
   };
 

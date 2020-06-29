@@ -8,7 +8,7 @@ import Question from "../layout/Question";
 import Navigation from "../layout/Navigation";
 import { containerVariants, answerVariants } from "../../AnimationConstant";
 
-const Rating = ({ values, inputChangePush, updateTimer, data }) => {
+const Rating = ({ values, inputChangePush, updateTimerLocation, data }) => {
   const {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
@@ -38,7 +38,11 @@ const Rating = ({ values, inputChangePush, updateTimer, data }) => {
     if (questionRequired && !values[questionId]) {
       setAlert("Veuillez faire un choix", "danger");
     } else {
-      updateTimer(questionId, (new Date().getTime() - startTimer) / 1000);
+      updateTimerLocation(
+        questionId,
+        nextQuestionId,
+        (new Date().getTime() - startTimer) / 1000
+      );
       push(`/${nextQuestionId}`);
     }
   };
@@ -49,7 +53,11 @@ const Rating = ({ values, inputChangePush, updateTimer, data }) => {
   };
 
   const handleChange = (e) => {
-    updateTimer(questionId, (new Date().getTime() - startTimer) / 1000);
+    updateTimerLocation(
+      questionId,
+      nextQuestionId,
+      (new Date().getTime() - startTimer) / 1000
+    );
     inputChangePush(questionId, nextQuestionId)(e);
     setAnimation(true);
     setTimeout(() => {

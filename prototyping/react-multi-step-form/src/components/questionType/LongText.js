@@ -13,7 +13,7 @@ import {
   keyboardNavVariants,
 } from "../../AnimationConstant";
 
-const LongText = ({ values, inputChange, updateTimer, data }) => {
+const LongText = ({ values, inputChange, updateTimerLocation, data }) => {
   const {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
@@ -36,7 +36,11 @@ const LongText = ({ values, inputChange, updateTimer, data }) => {
     } else if (values[questionId] && values[questionId].length > 256) {
       setAlert("Votre réponse doit faire moins de 256 caractères", "danger");
     } else {
-      updateTimer(questionId, (new Date().getTime() - startTimer) / 1000);
+      updateTimerLocation(
+        questionId,
+        nextQuestionId,
+        (new Date().getTime() - startTimer) / 1000
+      );
       push(`/${nextQuestionId}`);
     }
   };

@@ -11,7 +11,7 @@ import { containerVariants, answerVariants } from "../../AnimationConstant";
 const OpinionScale = ({
   values,
   singleCheckboxChangePush,
-  updateTimer,
+  updateTimerLocation,
   data,
 }) => {
   const {
@@ -55,7 +55,11 @@ const OpinionScale = ({
     if (questionRequired && !values[questionId]) {
       setAlert("Veuillez faire un choix", "danger");
     } else {
-      updateTimer(questionId, (new Date().getTime() - startTimer) / 1000);
+      updateTimerLocation(
+        questionId,
+        nextQuestionId,
+        (new Date().getTime() - startTimer) / 1000
+      );
       push(`/${nextQuestion}`);
     }
   };
@@ -66,7 +70,11 @@ const OpinionScale = ({
   };
 
   const changeHandler = (routingId, e) => {
-    updateTimer(questionId, (new Date().getTime() - startTimer) / 1000);
+    updateTimerLocation(
+      questionId,
+      nextQuestionId,
+      (new Date().getTime() - startTimer) / 1000
+    );
     singleCheckboxChangePush(questionId, nextQuestion, routingId)(e);
   };
 

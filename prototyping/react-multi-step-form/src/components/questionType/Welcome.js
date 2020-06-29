@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
 import { containerVariants } from "../../AnimationConstant";
 
-const Welcome = ({ data, initAnswerState }) => {
+const Welcome = ({ data, lastLocation, initAnswerState }) => {
   const {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
@@ -19,6 +19,11 @@ const Welcome = ({ data, initAnswerState }) => {
     initAnswerState();
   };
 
+  const continueFromLast = (e) => {
+    e.preventDefault();
+    push(`/${lastLocation}`);
+  };
+
   return (
     <motion.div
       className="jumbotron bg-hu-grey-1 text-center mb-0"
@@ -30,9 +35,31 @@ const Welcome = ({ data, initAnswerState }) => {
       <h1 className="mb-3">{questionTitle}</h1>
       <p className="lead">{questionSubtitle}</p>
       <img src={questionPicture} alt="" className="img-fluid d-block mx-auto" />
-      <button className="btn btn-primary btn-lg px-5 mt-3" onClick={fwd}>
-        Start
-      </button>
+      {!lastLocation && (
+        <button className="btn btn-primary btn-lg px-5 mt-3" onClick={fwd}>
+          Start
+        </button>
+      )}
+      {lastLocation && (
+        <div className="row">
+          <div className="col-md-3 offset-md-2 col-10 offset-1">
+            <button
+              className="btn btn-primary btn-lg btn-block mt-3"
+              onClick={continueFromLast}
+            >
+              Continue
+            </button>
+          </div>
+          <div className="col-md-3 offset-md-2 col-10 offset-1">
+            <button
+              className="btn btn-danger btn-lg btn-block mt-3"
+              onClick={fwd}
+            >
+              Restart
+            </button>
+          </div>
+        </div>
+      )}
     </motion.div>
   );
 };

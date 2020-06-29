@@ -37,16 +37,18 @@ const Form = () => {
     getQuestions(questionsDispatch);
   }, [questionsDispatch]);
 
+  const [lastLocation, setLastLocation] = useState("");
   const [answers, setAnswers] = useState({});
   const [timings, setTimings] = useState({});
   const [responseUuid, setResponseUuid] = useState("");
 
-  // load data from localSotrage
+  // load data from localStorage
   useEffect(() => {
-    const data = JSON.parse(localStorage.getItem("answers"));
-    if (data) {
-      setAnswers(data);
+    const answers = JSON.parse(localStorage.getItem("answers"));
+    if (answers) {
+      setAnswers(answers);
     }
+
     const timings = JSON.parse(localStorage.getItem("timings"));
     if (timings) {
       setTimings(timings);
@@ -56,6 +58,11 @@ const Form = () => {
     if (id) {
       setResponseUuid(id);
     }
+
+    const location = JSON.parse(localStorage.getItem("lastLocation"));
+    if (location) {
+      setLastLocation(location);
+    }
   }, []);
 
   // save data to localStorage
@@ -63,7 +70,8 @@ const Form = () => {
     localStorage.setItem("answers", JSON.stringify(answers));
     localStorage.setItem("timings", JSON.stringify(timings));
     localStorage.setItem("responseUuid", JSON.stringify(responseUuid));
-  }, [answers, timings, responseUuid]);
+    localStorage.setItem("lastLocation", JSON.stringify(lastLocation));
+  }, [answers, timings, responseUuid, lastLocation]);
 
   // initialize answer obj
   let initAnswers = {};
@@ -97,11 +105,13 @@ const Form = () => {
     setResponseUuid(id);
     setAnswers(initAnswers);
     setTimings(initTimings);
+    setLastLocation("");
   };
 
-  const updateTimer = (questionId, timer) => {
+  const updateTimerLocation = (questionId, nextQuestionId, timer) => {
     let totalTime = +timings[questionId] + timer;
     setTimings({ ...timings, [questionId]: totalTime.toFixed(2) });
+    setLastLocation(nextQuestionId);
   };
 
   const inputChange = (input) => (e) => {
@@ -217,16 +227,19 @@ const Form = () => {
     try {
       console.log(data);
       // https://cors-anywhere.herokuapp.com/https://preprod.hike-up.be/api/fillARH/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434/${responseUuid}
-      let res = await axios.post(`https://myapp/url`, JSON.stringify(data), {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      let res = await axios.post(
+        `https://jsonplaceholder.typicode.com/posts`,
+        JSON.stringify(data),
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       console.log(`Status code: ${res.status}`);
       nextQuestionId && push(`/${nextQuestionId}`);
     } catch (err) {
       console.log(err);
-      nextQuestionId && push(`/${nextQuestionId}`); //REMOVE
     }
   };
 
@@ -234,8 +247,8 @@ const Form = () => {
   //   let data = constructAnswer();
   //   console.log(data);
   //   // localStorage.setItem("answers", JSON.stringify(answers));
-  //   // sendAnswer();
-  //   navigator.sendBeacon("https://myapp/url", JSON.stringify(data));
+  //   sendAnswer();
+  //   // navigator.sendBeacon("https://jsonplaceholder.typicode.com/posts", JSON.stringify(data));
   //   return "Are you sure you want to leave?";
   // };
 
@@ -252,7 +265,7 @@ const Form = () => {
               <MultipleChoice
                 {...routeProps}
                 multiCheckboxChange={multiCheckboxChange}
-                updateTimer={updateTimer}
+                updateTimerLocation={updateTimerLocation}
                 values={answers}
                 data={q}
               />
@@ -272,7 +285,7 @@ const Form = () => {
                 {...routeProps}
                 singleCheckboxChangePush={singleCheckboxChangePush}
                 inputChange={inputChange}
-                updateTimer={updateTimer}
+                updateTimerLocation={updateTimerLocation}
                 values={answers}
                 data={q}
               />
@@ -291,7 +304,7 @@ const Form = () => {
               <YesNo
                 {...routeProps}
                 singleCheckboxChangePush={singleCheckboxChangePush}
-                updateTimer={updateTimer}
+                updateTimerLocation={updateTimerLocation}
                 values={answers}
                 data={q}
               />
@@ -310,7 +323,7 @@ const Form = () => {
               <Legal
                 {...routeProps}
                 singleCheckboxChangePush={singleCheckboxChangePush}
-                updateTimer={updateTimer}
+                updateTimerLocation={updateTimerLocation}
                 values={answers}
                 data={q}
               />
@@ -329,7 +342,7 @@ const Form = () => {
               <Rating
                 {...routeProps}
                 inputChangePush={inputChangePush}
-                updateTimer={updateTimer}
+                updateTimerLocation={updateTimerLocation}
                 values={answers}
                 data={q}
               />
@@ -348,7 +361,7 @@ const Form = () => {
               <ShortText
                 {...routeProps}
                 inputChange={inputChange}
-                updateTimer={updateTimer}
+                updateTimerLocation={updateTimerLocation}
                 values={answers}
                 data={q}
               />
@@ -367,7 +380,7 @@ const Form = () => {
               <OpinionScale
                 {...routeProps}
                 singleCheckboxChangePush={singleCheckboxChangePush}
-                updateTimer={updateTimer}
+                updateTimerLocation={updateTimerLocation}
                 values={answers}
                 data={q}
               />
@@ -386,7 +399,7 @@ const Form = () => {
               <Email
                 {...routeProps}
                 inputChange={inputChange}
-                updateTimer={updateTimer}
+                updateTimerLocation={updateTimerLocation}
                 values={answers}
                 data={q}
               />
@@ -405,7 +418,7 @@ const Form = () => {
               <Number
                 {...routeProps}
                 inputChange={inputChange}
-                updateTimer={updateTimer}
+                updateTimerLocation={updateTimerLocation}
                 values={answers}
                 data={q}
               />
@@ -424,7 +437,7 @@ const Form = () => {
               <PhoneNumber
                 {...routeProps}
                 inputChange={inputChange}
-                updateTimer={updateTimer}
+                updateTimerLocation={updateTimerLocation}
                 values={answers}
                 data={q}
               />
@@ -443,7 +456,7 @@ const Form = () => {
               <LongText
                 {...routeProps}
                 inputChange={inputChange}
-                updateTimer={updateTimer}
+                updateTimerLocation={updateTimerLocation}
                 values={answers}
                 data={q}
               />
@@ -462,7 +475,7 @@ const Form = () => {
               <FileUpload
                 {...routeProps}
                 inputChange={inputChange}
-                updateTimer={updateTimer}
+                updateTimerLocation={updateTimerLocation}
                 values={answers}
                 data={q}
               />
@@ -481,6 +494,7 @@ const Form = () => {
               <Welcome
                 {...routeProps}
                 data={q}
+                lastLocation={lastLocation}
                 initAnswerState={initAnswerState}
               />
             )}

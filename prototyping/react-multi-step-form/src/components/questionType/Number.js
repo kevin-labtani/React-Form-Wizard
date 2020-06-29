@@ -12,7 +12,7 @@ import {
   keyboardNavVariants,
 } from "../../AnimationConstant";
 
-const Number = ({ values, inputChange, updateTimer, data }) => {
+const Number = ({ values, inputChange, updateTimerLocation, data }) => {
   const {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
@@ -50,7 +50,12 @@ const Number = ({ values, inputChange, updateTimer, data }) => {
     ) {
       setAlert(`Please enter a number between ${min} and ${max}`, "danger");
     } else {
-      updateTimer(questionId, (new Date().getTime() - startTimer) / 1000);
+      updateTimerLocation(
+        questionId,
+        nextQuestionId,
+        nextQuestionId,
+        (new Date().getTime() - startTimer) / 1000
+      );
       push(`/${nextQuestionId}`);
     }
   };

@@ -14,7 +14,7 @@ import {
 
 import isEmail from "validator/lib/isEmail";
 
-const Email = ({ values, inputChange, updateTimer, data }) => {
+const Email = ({ values, inputChange, updateTimerLocation, data }) => {
   const {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
@@ -40,7 +40,11 @@ const Email = ({ values, inputChange, updateTimer, data }) => {
     ) {
       setAlert("Veuillez entrer une adresse email valide", "danger");
     } else {
-      updateTimer(questionId, (new Date().getTime() - startTimer) / 1000);
+      updateTimerLocation(
+        questionId,
+        nextQuestionId,
+        (new Date().getTime() - startTimer) / 1000
+      );
       push(`/${nextQuestionId}`);
     }
   };

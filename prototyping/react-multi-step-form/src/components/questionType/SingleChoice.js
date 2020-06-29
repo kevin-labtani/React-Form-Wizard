@@ -17,7 +17,7 @@ const SingleChoice = ({
   values,
   singleCheckboxChangePush,
   inputChange,
-  updateTimer,
+  updateTimerLocation,
   data,
 }) => {
   const {
@@ -65,7 +65,11 @@ const SingleChoice = ({
     if (questionRequired && !values[questionId]) {
       setAlert("Veuillez faire un choix", "danger");
     } else {
-      updateTimer(questionId, (new Date().getTime() - startTimer) / 1000);
+      updateTimerLocation(
+        questionId,
+        nextQuestionId,
+        (new Date().getTime() - startTimer) / 1000
+      );
       push(`/${nextQuestion}`);
     }
   };
@@ -76,7 +80,11 @@ const SingleChoice = ({
   };
 
   const changeHandler = (routingId, e) => {
-    updateTimer(questionId, (new Date().getTime() - startTimer) / 1000);
+    updateTimerLocation(
+      questionId,
+      nextQuestionId,
+      (new Date().getTime() - startTimer) / 1000
+    );
     singleCheckboxChangePush(questionId, nextQuestion, routingId)(e);
   };
 
@@ -86,7 +94,11 @@ const SingleChoice = ({
     if (freeText) {
       setfreeTextInputAnimate(true);
       setTimeout(() => {
-        updateTimer(questionId, (new Date().getTime() - startTimer) / 1000);
+        updateTimerLocation(
+          questionId,
+          nextQuestionId,
+          (new Date().getTime() - startTimer) / 1000
+        );
         push(`/${nextQuestion}`);
       }, 1200);
     }
