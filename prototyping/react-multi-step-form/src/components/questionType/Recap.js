@@ -5,7 +5,7 @@ import { containerVariants } from "../../AnimationConstant";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 
-const Recap = ({ data, answers, questions, sendAnswer }) => {
+const Recap = ({ data, answers, questions, sendAnswer, uploading }) => {
   const {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
@@ -105,9 +105,14 @@ const Recap = ({ data, answers, questions, sendAnswer }) => {
       <button
         className="btn btn-primary btn-lg px-5 mt-3"
         onClick={fwd}
-        disabled={!acceptTerms}
+        disabled={!acceptTerms || uploading}
       >
-        Submit
+        {!uploading && "Submit"}
+        {uploading && (
+          <div className="spinner-border text-hu-grey-1 m-auto" role="status">
+            <span className="sr-only">Loading...</span>
+          </div>
+        )}
       </button>
     </motion.div>
   );

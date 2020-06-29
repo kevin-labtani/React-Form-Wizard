@@ -40,6 +40,7 @@ const Form = () => {
   const [lastLocation, setLastLocation] = useState("");
   const [answers, setAnswers] = useState({});
   const [timings, setTimings] = useState({});
+  const [uploading, setUploading] = useState(false);
   const [responseUuid, setResponseUuid] = useState("");
 
   // load data from localStorage
@@ -223,6 +224,7 @@ const Form = () => {
   };
 
   const sendAnswer = async (nextQuestionId = null) => {
+    setUploading(true);
     let data = constructAnswer();
     try {
       console.log(data);
@@ -238,6 +240,7 @@ const Form = () => {
       );
       console.log(`Status code: ${res.status}`);
       nextQuestionId && push(`/${nextQuestionId}`);
+      setUploading(false);
     } catch (err) {
       console.log(err);
     }
@@ -526,6 +529,7 @@ const Form = () => {
                 answers={answers}
                 questions={questions}
                 sendAnswer={sendAnswer}
+                uploading={uploading}
               />
             )}
           />
