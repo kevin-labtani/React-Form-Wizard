@@ -43,9 +43,11 @@ const SingleChoice = ({
   );
 
   let freeTextOption = false;
+  let pictureOption = false;
   parameters &&
     parameters.forEach((param) => {
       if (param.name === "other") freeTextOption = true;
+      if (param.name === "picture") pictureOption = true;
     });
 
   let nextQuestion = nextQuestionId;
@@ -139,13 +141,22 @@ const SingleChoice = ({
                 hidden
               />
               <label
-                className={`btn btn-outline-primary btn-block text-left pl-4 ${
+                className={`btn btn-outline-primary  text-left btn-block ${
+                  pictureOption ? "px-4 pt-3" : "pl-4"
+                } ${
                   values[questionId] === `*${choice.id}`
                     ? "active animate-label"
                     : ""
                 }`}
                 htmlFor={`checkbox-${index}`}
               >
+                {pictureOption && (
+                  <img
+                    src={choice.picture}
+                    alt=""
+                    className="img-fluid rounded d-block mx-auto"
+                  />
+                )}
                 {values[questionId] === `*${choice.id}` ? <Checkmark /> : ""}
                 {choice.label}
               </label>

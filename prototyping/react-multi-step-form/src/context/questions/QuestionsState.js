@@ -37,7 +37,8 @@ const QuestionsState = (props) => {
         question_id: 1,
         question_name: "Adresse email du client",
         question_subtitle: "Step 1: email",
-        question_picture: "https://via.placeholder.com/300x150/2e84dd",
+        question_picture:
+          "https://via.placeholder.com/300x150/2e84dd/e3e6e9?text=Hike Up Placeholder",
         question_required: false,
         question_type_id: 8,
         question_type_name: "email",
@@ -75,26 +76,36 @@ const QuestionsState = (props) => {
           {
             id: "15",
             label: "Vaillant",
+            picture:
+              "https://via.placeholder.com/600x300/FFA07A/e3e6e9?text=Hike Up Placeholder",
             next_id_if_selected: "5",
           },
           {
             id: "19",
             label: "Viessmann",
+            picture:
+              "https://via.placeholder.com/600x300/F08080/e3e6e9?text=Hike Up Placeholder",
             next_id_if_selected: "",
           },
           {
             id: "16",
             label: "Saint Roch",
+            picture:
+              "https://via.placeholder.com/600x300/DC143C/e3e6e9?text=Hike Up Placeholder",
             next_id_if_selected: "",
           },
           {
             id: "18",
             label: "Elco",
+            picture:
+              "https://via.placeholder.com/600x300/B22222/e3e6e9?text=Hike Up Placeholder",
             next_id_if_selected: "",
           },
           {
             id: "17",
             label: "Buderus",
+            picture:
+              "https://via.placeholder.com/600x300/8B0000/e3e6e9?text=Hike Up Placeholder",
             next_id_if_selected: "",
           },
         ],
@@ -102,7 +113,12 @@ const QuestionsState = (props) => {
           {
             id: "20",
             name: "other",
-            value: true, //added
+            value: true, // not used
+          },
+          {
+            id: "98",
+            name: "picture",
+            value: true, // not used
           },
         ],
         default_next_id: 4,
@@ -277,30 +293,44 @@ const QuestionsState = (props) => {
           {
             id: "6",
             label: "Nettoyage du filtre à mazout",
+            picture:
+              "https://via.placeholder.com/600x300/CD853F/e3e6e9?text=Hike Up Placeholder",
           },
           {
             id: "9",
             label: "Ramonage du conduit de fumée",
+            picture:
+              "https://via.placeholder.com/600x300/BC8F8F/e3e6e9?text=Hike Up Placeholder",
           },
           {
             id: "10",
             label: "Test de combustion + réglages",
+            picture:
+              "https://via.placeholder.com/600x300/F4A460/e3e6e9?text=Hike Up Placeholder",
           },
           {
             id: "11",
             label: "Test de la dureté de l eau",
+            picture:
+              "https://via.placeholder.com/600x300/DAA520/e3e6e9?text=Hike Up Placeholder",
           },
           {
             id: "5",
             label: "Nettoyage du corps de chauffe",
+            picture:
+              "https://via.placeholder.com/600x300/D2691E/e3e6e9?text=Hike Up Placeholder",
           },
           {
             id: "7",
             label: "Nettoyage du bruleur",
+            picture:
+              "https://via.placeholder.com/600x300/A0522D/e3e6e9?text=Hike Up Placeholder",
           },
           {
             id: "8",
             label: "Changement du gicleur",
+            picture:
+              "https://via.placeholder.com/600x300/A52A2A/e3e6e9?text=Hike Up Placeholder",
           },
         ],
         parameters: [
@@ -308,6 +338,11 @@ const QuestionsState = (props) => {
             id: "12",
             name: "other",
             value: true, //added
+          },
+          {
+            id: "99",
+            name: "picture",
+            value: true, // not used
           },
         ],
         default_next_id: 9,
@@ -353,10 +388,11 @@ const QuestionsState = (props) => {
         assessment_name: "Suivi entretiens",
         assessment_creation_date: "2020-05-07 08:40:20",
         question_id: 11,
-        question_name: "Welcome to the HikeUp Wizard Form",
+        question_name: "Welcome to the Hike Up Wizard Form",
         question_subtitle:
           "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum optio incidunt sint cumque illo nobis exercitationem aliquam  repellendus.",
-        question_picture: "https://via.placeholder.com/800x300/2e84dd",
+        question_picture:
+          "https://via.placeholder.com/800x300/2e84dd/e3e6e9?text=Hike Up Placeholder",
         question_type_id: 15,
         question_type_name: "welcome",
         box_values: null,
@@ -386,7 +422,8 @@ const QuestionsState = (props) => {
         question_name: "Thank you for your submission",
         question_subtitle:
           "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum optio incidunt sint cumque illo nobis exercitationem aliquam  repellendus.",
-        question_picture: "https://via.placeholder.com/800x300/2e84dd",
+        question_picture:
+          "https://via.placeholder.com/800x300/2e84dd/e3e6e9?text=Hike Up Placeholder",
         question_type_id: 16,
         question_type_name: "thank_you",
         box_values: null,

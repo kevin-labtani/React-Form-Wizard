@@ -42,9 +42,11 @@ const MultipleChoice = ({
   );
 
   let freeTextOption = false;
+  let pictureOption = false;
   parameters &&
     parameters.forEach((param) => {
       if (param.name === "other") freeTextOption = true;
+      if (param.name === "picture") pictureOption = true;
     });
 
   const { setAlert } = useContext(AlertContext);
@@ -147,7 +149,9 @@ const MultipleChoice = ({
                 hidden
               />
               <label
-                className={`btn btn-outline-primary btn-block text-left pl-4 ${
+                className={`btn btn-outline-primary btn-block text-left ${
+                  pictureOption ? "px-4 pt-3" : "pl-4"
+                } ${
                   values[questionId] &&
                   values[questionId].includes(`*${choice.id}`)
                     ? "active animate-label"
@@ -155,6 +159,13 @@ const MultipleChoice = ({
                 }`}
                 htmlFor={`checkbox-${index}`}
               >
+                {pictureOption && (
+                  <img
+                    src={choice.picture}
+                    alt=""
+                    className="img-fluid rounded d-block mx-auto"
+                  />
+                )}
                 {values[questionId] &&
                 values[questionId].includes(`*${choice.id}`) ? (
                   <Checkmark />
