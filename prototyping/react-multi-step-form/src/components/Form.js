@@ -250,8 +250,14 @@ const Form = () => {
   //   let data = constructAnswer();
   //   console.log(data);
   //   // localStorage.setItem("answers", JSON.stringify(answers));
-  //   sendAnswer();
-  //   // navigator.sendBeacon("https://jsonplaceholder.typicode.com/posts", JSON.stringify(data));
+
+  //   // sendAnswer();
+
+  //   let headers = {
+  //     type: "application/json",
+  //   };
+  //   let blob = new Blob([JSON.stringify(data)], headers);
+  //   navigator.sendBeacon("https://jsonplaceholder.typicode.com/posts", blob);
   //   return "Are you sure you want to leave?";
   // };
 
