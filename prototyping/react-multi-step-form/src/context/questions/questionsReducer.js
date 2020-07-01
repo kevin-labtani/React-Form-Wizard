@@ -1,4 +1,4 @@
-import { GET_QUESTIONS } from "../types";
+import { GET_QUESTIONS, QUESTION_ERROR } from "../types";
 
 export default (state, action) => {
   switch (action.type) {
@@ -6,9 +6,15 @@ export default (state, action) => {
       return {
         ...state,
         questions: action.payload,
+        error: false,
         loading: false,
       };
-
+    case QUESTION_ERROR:
+      return {
+        ...state,
+        error: true,
+        loading: false,
+      };
     default:
       return state;
   }

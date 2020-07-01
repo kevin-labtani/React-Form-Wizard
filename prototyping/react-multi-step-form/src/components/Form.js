@@ -24,6 +24,7 @@ import FileUpload from "./questionType/FileUpload";
 import Recap from "./questionType/Recap";
 import Spinner from "./layout/Spinner";
 import Footer from "./layout/Footer";
+import ErrorPage from "./ErrorPage";
 
 const Form = () => {
   const location = useLocation();
@@ -31,10 +32,11 @@ const Form = () => {
 
   const [questionsState, questionsDispatch] = useQuestions();
 
-  const { questions, loading } = questionsState;
+  const { questions, loading, error } = questionsState;
 
   useEffect(() => {
     getQuestions(questionsDispatch);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [questionsDispatch]);
 
   const [lastLocation, setLastLocation] = useState("");
@@ -231,15 +233,12 @@ const Form = () => {
     try {
       console.log(data);
       // https://cors-anywhere.herokuapp.com/https://preprod.hike-up.be/api/fillARH/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434/${responseUuid}
-      let res = await axios.post(
-        `https://jsonplaceholder.typicode.com/posts`,
-        JSON.stringify(data),
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      // `https://jsonplaceholder.typicode.com/posts`
+      let res = await axios.post(`path/to/api`, JSON.stringify(data), {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       console.log(`Status code: ${res.status}`);
       nextQuestionId && push(`/${nextQuestionId}`);
       setUploading(false);
@@ -554,6 +553,10 @@ const Form = () => {
 
   if (loading) {
     return <Spinner />;
+  }
+
+  if (error) {
+    return <ErrorPage />;
   }
 
   return (
