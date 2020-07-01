@@ -466,7 +466,7 @@ const QuestionsState = (props) => {
       },
     ],
     loading: false,
-    error: false,
+    errorLoading: false,
   };
 
   const [state, dispatch] = useReducer(QuestionsReducer, initialState);

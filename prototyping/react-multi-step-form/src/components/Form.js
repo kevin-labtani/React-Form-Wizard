@@ -32,11 +32,10 @@ const Form = () => {
 
   const [questionsState, questionsDispatch] = useQuestions();
 
-  const { questions, loading, error } = questionsState;
+  const { questions, loading, errorLoading } = questionsState;
 
   useEffect(() => {
     getQuestions(questionsDispatch);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [questionsDispatch]);
 
   const [lastLocation, setLastLocation] = useState("");
@@ -555,7 +554,7 @@ const Form = () => {
     return <Spinner />;
   }
 
-  if (error) {
+  if (errorLoading) {
     return <ErrorPage />;
   }
 

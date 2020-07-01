@@ -6,13 +6,13 @@ export default (state, action) => {
       return {
         ...state,
         questions: action.payload,
-        error: false,
+        errorLoading: false,
         loading: false,
       };
     case QUESTION_ERROR:
       return {
         ...state,
-        error: true,
+        errorLoading: true,
         loading: false,
       };
     default:
