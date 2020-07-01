@@ -48,7 +48,7 @@ const Number = ({ values, inputChange, updateTimerLocation, data }) => {
         values[questionId] &&
         (values[questionId] < min || values[questionId] > max))
     ) {
-      setAlert(`Please enter a number between ${min} and ${max}`, "danger");
+      setAlert(`Veuillez entrer un nombre entre ${min} & ${max}`, "danger");
     } else {
       updateTimerLocation(
         questionId,

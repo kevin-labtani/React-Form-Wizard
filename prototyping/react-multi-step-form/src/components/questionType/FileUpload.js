@@ -71,10 +71,10 @@ const FileUpload = ({ values, inputChange, updateTimerLocation, data }) => {
       });
     } catch (err) {
       if (err.response.status >= 400) {
-        setAlert("There was a problem while uploading the file", "danger");
+        setAlert("Il y a eu un problème durant l'upload du fichier", "danger");
         setUploadPercentage(0);
       } else {
-        setAlert("The file was uploaded", "success");
+        setAlert("Le fichier a été uploadé", "success");
       }
     }
   };
