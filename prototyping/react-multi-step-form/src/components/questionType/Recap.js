@@ -3,9 +3,17 @@ import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
 import { containerVariants } from "../../AnimationConstant";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPencilAlt } from "@fortawesome/free-solid-svg-icons";
+import { faPencilAlt, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import { alertVariants } from "../../AnimationConstant";
 
-const Recap = ({ data, answers, questions, sendAnswer, uploading }) => {
+const Recap = ({
+  data,
+  answers,
+  questions,
+  sendAnswer,
+  uploading,
+  errorUploading,
+}) => {
   const {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
@@ -94,7 +102,7 @@ const Recap = ({ data, answers, questions, sendAnswer, uploading }) => {
           onChange={() => setAcceptTerms(!acceptTerms)}
           checked={acceptTerms}
         />
-        <label className="custom-control-label" htmlFor="customCheck1">
+        <label className="custom-control-label text-left" htmlFor="customCheck1">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque,
           laborum:{" "}
           <a href="/" target="_blank" className="">
@@ -102,6 +110,17 @@ const Recap = ({ data, answers, questions, sendAnswer, uploading }) => {
           </a>
         </label>
       </div>
+      {errorUploading && (
+        <motion.div
+          className="alert alert-danger col-lg-10 mx-auto my-3"
+          variants={alertVariants}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+        >
+          <FontAwesomeIcon icon={faInfoCircle} /> There was a problem connecting to our server, please try again
+        </motion.div>
+      )}
       <button
         className="btn btn-primary btn-lg px-5 mt-3"
         onClick={fwd}

@@ -41,6 +41,7 @@ const Form = () => {
   const [answers, setAnswers] = useState({});
   const [timings, setTimings] = useState({});
   const [uploading, setUploading] = useState(false);
+  const [errorUploading, setErrorUploading] = useState(false);
   const [responseUuid, setResponseUuid] = useState("");
 
   // load data from localStorage
@@ -224,6 +225,7 @@ const Form = () => {
   };
 
   const sendAnswer = async (nextQuestionId = null) => {
+    setErrorUploading(false);
     setUploading(true);
     let data = constructAnswer();
     try {
@@ -242,6 +244,8 @@ const Form = () => {
       nextQuestionId && push(`/${nextQuestionId}`);
       setUploading(false);
     } catch (err) {
+      setErrorUploading(true);
+      setUploading(false);
       console.log(err);
     }
   };
@@ -536,6 +540,7 @@ const Form = () => {
                 questions={questions}
                 sendAnswer={sendAnswer}
                 uploading={uploading}
+                errorUploading={errorUploading}
               />
             )}
           />
