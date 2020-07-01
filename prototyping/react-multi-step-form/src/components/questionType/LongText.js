@@ -51,7 +51,7 @@ const LongText = ({ values, inputChange, updateTimerLocation, data }) => {
   };
 
   const handleKeyDown = (event) => {
-    if (event.key === "Enter") {
+    if (!event.shiftKey && event.key === "Enter") {
       fwd(event);
     }
   };
@@ -92,7 +92,8 @@ const LongText = ({ values, inputChange, updateTimerLocation, data }) => {
           </div>
           {values[questionId] && (
             <motion.p className="mb-0" variants={keyboardNavVariants}>
-              press Enter ↵
+              <p className="mb-0">press Enter ↵ and Shift ⇧ for a new line</p>
+              <p className="mb-0">press Enter ↵ to submit</p>
             </motion.p>
           )}
         </div>
