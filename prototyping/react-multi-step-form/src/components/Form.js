@@ -121,6 +121,10 @@ const Form = () => {
     setAnswers({ ...answers, [input]: e.target.value });
   };
 
+  const fileUploadChange = (input) => (e) => {
+    setAnswers({ ...answers, [input]: e.target.files[0].name });
+  };
+
   const inputChangePush = (input, nextQuestion) => (e) => {
     setAnswers({ ...answers, [input]: e.target.value });
     setTimeout(() => {
@@ -485,7 +489,7 @@ const Form = () => {
             render={(routeProps) => (
               <FileUpload
                 {...routeProps}
-                inputChange={inputChange}
+                fileUploadChange={fileUploadChange}
                 updateTimerLocation={updateTimerLocation}
                 values={answers}
                 data={q}

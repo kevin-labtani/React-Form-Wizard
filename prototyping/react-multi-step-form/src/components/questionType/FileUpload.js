@@ -9,7 +9,7 @@ import Question from "../layout/Question";
 import Navigation from "../layout/Navigation";
 import { containerVariants, answerVariants } from "../../AnimationConstant";
 
-const FileUpload = ({ values, inputChange, updateTimerLocation, data }) => {
+const FileUpload = ({ values, fileUploadChange, updateTimerLocation, data }) => {
   const {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
@@ -49,7 +49,7 @@ const FileUpload = ({ values, inputChange, updateTimerLocation, data }) => {
 
   const changeHandler = (e) => {
     setFile(e.target.files[0]);
-    inputChange(questionId)(e);
+    fileUploadChange(questionId)(e);
   };
 
   const uploadHandler = async (e) => {
