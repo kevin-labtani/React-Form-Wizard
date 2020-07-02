@@ -39,6 +39,7 @@ const isChrome =
   !!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime);
 
 // Edge (based on chromium) detection
+// eslint-disable-next-line eqeqeq
 const isEdgeChromium = isChrome && navigator.userAgent.indexOf("Edg") != -1;
 
 let browserName = "";

@@ -40,6 +40,11 @@ $enable-responsive-font-sizes: true;
 // Import Bootstrap and its default variables
 @import "~bootstrap/scss/bootstrap.scss";
 
+// in case bosy shows during animation transitions
+body {
+  background-color: $hu-grey;
+}
+
 :disabled {
   cursor: not-allowed;
 }
@@ -242,6 +247,21 @@ label.custom-file-label {
 @media screen and (max-width: 1024px) {
   .page-link {
     padding: 4px 8px;
+  }
+
+  // to fix bg color remaining on mobile on MultipleChoice question type when choice is selected and then deselected
+  .btn-outline-primary:hover {
+    background-color: transparent;
+    color: $hu-green;
+  }
+  .progress-bar-img {
+    background-image: none;
+    background-color: $hu-green;
+  }
+
+  .progress-img {
+    background-image: none;
+    background-color: $hu-grey-1;
   }
 }
 @media screen and (max-width: 540px) {
