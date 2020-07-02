@@ -91,10 +91,10 @@ const LongText = ({ values, inputChange, updateTimerLocation, data }) => {
             />
           </div>
           {values[questionId] && (
-            <motion.p className="mb-0" variants={keyboardNavVariants}>
+            <motion.div className="mb-0" variants={keyboardNavVariants}>
               <p className="mb-0">press Enter ↵ and Shift ⇧ for a new line</p>
               <p className="mb-0">press Enter ↵ to submit</p>
-            </motion.p>
+            </motion.div>
           )}
         </div>
         <AvatarAnswer />
