@@ -70,7 +70,7 @@ if (isMobile) {
 }
 
 const userAgent = window.navigator.userAgent;
-const browserPreferedLanguage = window.navigator.language;
+const browserPreferredLanguage = window.navigator.language;
 const browserLanguages = window.navigator.languages;
 const userPlatform = window.navigator.platform;
 const browserOnline = window.navigator.onLine;
@@ -79,7 +79,7 @@ const referrer = document.referrer;
 export {
   browserName,
   userAgent,
-  browserPreferedLanguage,
+  browserPreferredLanguage,
   browserLanguages,
   userPlatform,
   browserOnline,

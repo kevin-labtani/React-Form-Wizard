@@ -25,6 +25,16 @@ import Recap from "./questionType/Recap";
 import Spinner from "./layout/Spinner";
 import Footer from "./layout/Footer";
 import ErrorPage from "./ErrorPage";
+import {
+  browserName,
+  userAgent,
+  browserPreferredLanguage,
+  browserLanguages,
+  userPlatform,
+  browserOnline,
+  referrer,
+  mobile,
+} from "../browserData";
 
 const Form = () => {
   const location = useLocation();
@@ -226,6 +236,17 @@ const Form = () => {
         });
       }
     }
+    // add stats
+    data.push({
+      browser_name: browserName,
+      browser_useragent: userAgent,
+      browser_preferred_language: browserPreferredLanguage,
+      browser_supported_language: browserLanguages,
+      user_platform: userPlatform,
+      referrer: referrer,
+      mobile: mobile,
+    });
+
     return data;
   };
 
