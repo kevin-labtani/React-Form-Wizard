@@ -86,7 +86,7 @@ const ShortText = ({ values, inputChange, updateTimerLocation, data }) => {
               value={values[questionId]}
               autoComplete="off"
               autoFocus
-              placeholder="Enter your name here"
+              placeholder="Enter your answer here"
             />
           </div>
           {values[questionId] && (

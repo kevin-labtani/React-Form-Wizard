@@ -200,7 +200,7 @@ const MultipleChoice = ({
                   maxLength="256"
                   autoComplete="off"
                   autoFocus
-                  placeholder="Enter you choice here"
+                  placeholder="Enter you answer here"
                   onChange={(e) => setFreeText(e.target.value)}
                   onKeyDown={handleKeyDownInput}
                   value={freeText}
