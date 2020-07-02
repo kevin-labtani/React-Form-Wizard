@@ -31,7 +31,6 @@ import {
   browserPreferredLanguage,
   browserLanguages,
   userPlatform,
-  browserOnline,
   referrer,
   mobile,
 } from "../browserData";
