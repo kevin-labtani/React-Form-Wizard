@@ -243,17 +243,12 @@ label.custom-file-label {
   }
 }
 
-// resize "buttons" on mobile for opinion scale
 @media screen and (max-width: 1024px) {
+  // resize "buttons" on mobile for opinion scale
   .page-link {
     padding: 4px 8px;
   }
-
-  // to fix bg color remaining on mobile on MultipleChoice question type when choice is selected and then deselected
-  .btn-outline-primary:hover {
-    background-color: transparent;
-    color: $hu-green;
-  }
+  // simpler progressbar on mobile
   .progress-bar-img {
     background-image: none;
     background-color: $hu-green;
@@ -264,11 +259,20 @@ label.custom-file-label {
     background-color: $hu-grey-1;
   }
 }
+
 @media screen and (max-width: 540px) {
   .page-link {
     padding: 3px;
   }
   .avatar {
     font-size: 2rem;
+  }
+}
+
+@media (hover: none) {
+  // to fix bg color remaining on mobile on MultipleChoice question type when choice is selected and then deselected
+  .btn-outline-primary:hover {
+    background-color: transparent;
+    color: $hu-green;
   }
 }
