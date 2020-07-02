@@ -18,6 +18,8 @@ const Recap = ({
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
     default_next_id: nextQuestionId,
+    question_tos_text:questionTOSText,
+    question_tos_link:questionTOSLink,
   } = data;
 
   const [acceptTerms, setAcceptTerms] = useState(false);
@@ -102,10 +104,12 @@ const Recap = ({
           onChange={() => setAcceptTerms(!acceptTerms)}
           checked={acceptTerms}
         />
-        <label className="custom-control-label text-left" htmlFor="customCheck1">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque,
-          laborum:{" "}
-          <a href="/" target="_blank" className="">
+        <label
+          className="custom-control-label text-left"
+          htmlFor="customCheck1"
+        >
+          {questionTOSText}
+          <a href={questionTOSLink} target="_blank" rel="noopener noreferrer" className="">
             Terms & Conditions
           </a>
         </label>
@@ -118,7 +122,8 @@ const Recap = ({
           animate="visible"
           exit="exit"
         >
-          <FontAwesomeIcon icon={faInfoCircle} /> There was a problem connecting to our server, please try again
+          <FontAwesomeIcon icon={faInfoCircle} /> There was a problem connecting
+          to our server, please try again
         </motion.div>
       )}
       <button

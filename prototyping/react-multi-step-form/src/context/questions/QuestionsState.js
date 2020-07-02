@@ -458,6 +458,9 @@ const QuestionsState = (props) => {
         question_name: "Do you want to proceed?",
         question_subtitle:
           "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum optio incidunt sint cumque illo nobis exercitationem aliquam  repellendus.",
+        question_tos_text:
+          "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta, voluptas: ",
+        question_tos_link: "/link_to_tos",
         question_type_id: 17,
         question_type_name: "recap",
         box_values: null,
