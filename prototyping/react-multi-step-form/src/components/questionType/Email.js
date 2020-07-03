@@ -11,6 +11,7 @@ import {
   answerVariants,
   keyboardNavVariants,
 } from "../../AnimationConstant";
+import {mobile} from "../../browserData"
 
 import isEmail from "validator/lib/isEmail";
 
@@ -59,7 +60,7 @@ const Email = ({ values, inputChange, updateTimerLocation, data }) => {
       fwd(event);
     }
   };
-
+  console.log("test mobile" + mobile)
   return (
     <motion.div
       variants={containerVariants}
@@ -89,7 +90,7 @@ const Email = ({ values, inputChange, updateTimerLocation, data }) => {
               onChange={inputChange(questionId)}
               value={values[questionId]}
               autoComplete="off"
-              autoFocus
+              autoFocus={true}
               placeholder="Enter your email here"
             />
           </div>

@@ -257,11 +257,15 @@ const Form = () => {
       console.log(data);
       // https://cors-anywhere.herokuapp.com/https://preprod.hike-up.be/api/fillARH/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434/${responseUuid}
       // `https://jsonplaceholder.typicode.com/posts`
-      let res = await axios.post(`path/to/api`, JSON.stringify(data), {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      let res = await axios.post(
+        `https://preprod.hike-up.be/api/fillARH/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434/${responseUuid}`,
+        JSON.stringify(data),
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       console.log(`Status code: ${res.status}`);
       nextQuestionId && push(`/${nextQuestionId}`);
       setUploading(false);

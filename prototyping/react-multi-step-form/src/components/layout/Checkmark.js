@@ -4,7 +4,7 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
 function Checkmark() {
   return (
-    <span className="pr-3">
+    <span className="pr-lg-3 pr-2">
       <FontAwesomeIcon icon={faCheck} />
     </span>
   );
