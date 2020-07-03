@@ -183,11 +183,15 @@ textarea {
 
 .progress-bar-img {
   background-image: url("../src/progress.svg");
+  background-repeat: repeat-x;
+  background-position: left;
   background-color: transparent;
 }
 
 .progress-img {
   background-image: url("../src/progress-bg.svg");
+  background-repeat: repeat-x;
+  background-position: left;
   background-color: transparent;
 }
 
