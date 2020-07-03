@@ -12,6 +12,7 @@ import {
   answerVariants,
   keyboardNavVariants,
 } from "../../AnimationConstant";
+import { mobile } from "../../browserData";
 
 const MultipleChoice = ({
   values,
@@ -219,7 +220,7 @@ const MultipleChoice = ({
             </motion.p>
           )}
           {/*eslint-disable-next-line eqeqeq*/}
-          {values[questionId] != false && !freeTextInput && (
+          {values[questionId] != false && !freeTextInput && !mobile && (
             <motion.p className="mb-0" variants={keyboardNavVariants}>
               press Enter ↵
             </motion.p>

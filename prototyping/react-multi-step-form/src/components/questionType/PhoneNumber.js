@@ -11,6 +11,7 @@ import {
   answerVariants,
   keyboardNavVariants,
 } from "../../AnimationConstant";
+import { mobile } from "../../browserData";
 
 import isMobilePhone from "validator/lib/isMobilePhone";
 
@@ -89,8 +90,8 @@ const PhoneNumber = ({ values, inputChange, updateTimerLocation, data }) => {
               onChange={inputChange(questionId)}
               value={values[questionId]}
               autoComplete="off"
-              autoFocus
-              placeholder="Enter your phone number here"
+              autoFocus={!mobile}
+              placeholder="Enter your phone here"
             />
           </div>
           {values[questionId] && (

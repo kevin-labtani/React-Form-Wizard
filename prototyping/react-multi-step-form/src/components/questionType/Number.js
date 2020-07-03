@@ -11,6 +11,7 @@ import {
   answerVariants,
   keyboardNavVariants,
 } from "../../AnimationConstant";
+import { mobile } from "../../browserData";
 
 const Number = ({ values, inputChange, updateTimerLocation, data }) => {
   const {
@@ -101,7 +102,7 @@ const Number = ({ values, inputChange, updateTimerLocation, data }) => {
               value={values[questionId]}
               min={min}
               max={max}
-              autoFocus
+              autoFocus={!mobile}
               placeholder="Enter a value here"
             />
           </div>

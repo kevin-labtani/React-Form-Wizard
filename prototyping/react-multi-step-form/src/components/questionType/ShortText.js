@@ -11,6 +11,7 @@ import {
   answerVariants,
   keyboardNavVariants,
 } from "../../AnimationConstant";
+import { mobile } from "../../browserData";
 
 const ShortText = ({ values, inputChange, updateTimerLocation, data }) => {
   const {
@@ -85,7 +86,7 @@ const ShortText = ({ values, inputChange, updateTimerLocation, data }) => {
               onChange={inputChange(questionId)}
               value={values[questionId]}
               autoComplete="off"
-              autoFocus
+              autoFocus={!mobile}
               placeholder="Enter your answer here"
             />
           </div>

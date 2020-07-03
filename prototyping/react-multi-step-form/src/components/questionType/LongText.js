@@ -12,6 +12,7 @@ import {
   answerVariants,
   keyboardNavVariants,
 } from "../../AnimationConstant";
+import { mobile } from "../../browserData";
 
 const LongText = ({ values, inputChange, updateTimerLocation, data }) => {
   const {
@@ -85,14 +86,14 @@ const LongText = ({ values, inputChange, updateTimerLocation, data }) => {
               onChange={inputChange(questionId)}
               value={values[questionId]}
               autoComplete="off"
-              autoFocus
+              autoFocus={!mobile}
               placeholder="Enter your comment here"
               minRows="1"
             />
           </div>
           {values[questionId] && (
             <motion.div className="mb-0" variants={keyboardNavVariants}>
-              <p className="mb-0">press Enter ↵ and Shift ⇧ for a new line</p>
+              {!mobile && <p className="mb-0">press Enter ↵ and Shift ⇧ for a new line</p>}
               <p className="mb-0">press Enter ↵ to submit</p>
             </motion.div>
           )}
