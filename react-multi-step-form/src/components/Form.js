@@ -39,22 +39,24 @@ const Form = () => {
   const location = useLocation();
   const { push } = useHistory();
 
+  const [lastLocation, setLastLocation] = useState(""); // last question user was on
+  const [answers, setAnswers] = useState({});
+  const [timings, setTimings] = useState({});
+  const [responseUuid, setResponseUuid] = useState("");
+  const [uploading, setUploading] = useState(false);
+  const [errorUploading, setErrorUploading] = useState(false);
+
+  // use custom hook to consume our state and dispatch
   const [questionsState, questionsDispatch] = useQuestions();
 
   const { questions, loading, errorLoading } = questionsState;
 
+  // load data from api
   useEffect(() => {
     getQuestions(questionsDispatch);
   }, [questionsDispatch]);
 
-  const [lastLocation, setLastLocation] = useState("");
-  const [answers, setAnswers] = useState({});
-  const [timings, setTimings] = useState({});
-  const [uploading, setUploading] = useState(false);
-  const [errorUploading, setErrorUploading] = useState(false);
-  const [responseUuid, setResponseUuid] = useState("");
-
-  // load data from localStorage
+  // load data from localStorage if there's any on app load
   useEffect(() => {
     const answers = JSON.parse(localStorage.getItem("answers"));
     if (answers) {
@@ -85,7 +87,7 @@ const Form = () => {
     localStorage.setItem("lastLocation", JSON.stringify(lastLocation));
   }, [answers, timings, responseUuid, lastLocation]);
 
-  // initialize answer obj
+  // initialize answer object
   let initAnswers = {};
   questions.forEach((q) => {
     if (q.question_type_id === 1) {
@@ -100,6 +102,7 @@ const Form = () => {
     }
   });
 
+  // initialize timings object
   let initTimings = {};
   questions.forEach((q) => {
     if (
@@ -111,7 +114,7 @@ const Form = () => {
     }
   });
 
-  // init on welcome page
+  // init app on welcome page
   const initAnswerState = () => {
     const id = uuidv4();
     setResponseUuid(id);
@@ -120,20 +123,30 @@ const Form = () => {
     setLastLocation("");
   };
 
+  // update time and location on each question being answered
   const updateTimerLocation = (questionId, nextQuestionId, timer) => {
     let totalTime = +timings[questionId] + timer;
-    setTimings({ ...timings, [questionId]: totalTime.toFixed(2) });
+    setTimings({
+      ...timings,
+      [questionId]: totalTime.toFixed(2),
+    });
     setLastLocation(nextQuestionId);
   };
 
+  // for questions with an input field
   const inputChange = (input) => (e) => {
     setAnswers({ ...answers, [input]: e.target.value });
   };
 
+  // for FileUpload question
   const fileUploadChange = (input) => (e) => {
-    setAnswers({ ...answers, [input]: e.target.files[0].name });
+    setAnswers({
+      ...answers,
+      [input]: e.target.files[0].name,
+    });
   };
 
+  // for singlechoice question with free "other" field,  will auto send user to next question
   const inputChangePush = (input, nextQuestion) => (e) => {
     setAnswers({ ...answers, [input]: e.target.value });
     setTimeout(() => {
@@ -141,6 +154,7 @@ const Form = () => {
     }, 1000);
   };
 
+  // for multiplechoice question
   const multiCheckboxChange = (input) => (e) => {
     let oldArr = answers[input] || [];
     if (e.target.value.startsWith("$") || e.target.value === "") {
@@ -158,19 +172,25 @@ const Form = () => {
     }
   };
 
+  // not used
   // const SingleCheckboxChange = (input, nextQuestion) => (e) => {
   //   setAnswers({ ...answers, [input]: e.target.value });
   // };
 
+  // for questions with a single choice, will auto send user to next question
   const singleCheckboxChangePush = (input, nextQuestion, routingId = null) => (
     e
   ) => {
-    setAnswers({ ...answers, [input]: "*" + e.target.value });
+    setAnswers({
+      ...answers,
+      [input]: "*" + e.target.value,
+    });
     setTimeout(() => {
       routingId ? push(`/${routingId}`) : push(`/${nextQuestion}`);
     }, 1200);
   };
 
+  // construct the answer array sent to api
   const constructAnswer = () => {
     let data = [];
     for (let [key, value] of Object.entries(answers)) {
@@ -249,6 +269,7 @@ const Form = () => {
     return data;
   };
 
+  // sned answer to api
   const sendAnswer = async (nextQuestionId = null) => {
     setErrorUploading(false);
     setUploading(true);
@@ -276,6 +297,7 @@ const Form = () => {
     }
   };
 
+  // for partial submission
   // window.onbeforeunload = () => {
   //   let data = constructAnswer();
   //   console.log(data);
@@ -291,6 +313,7 @@ const Form = () => {
   //   return "Are you sure you want to leave?";
   // };
 
+  // create the switch with all the questions we got from the api, one case per question type
   let questionsSwitch = [];
   questions.forEach((q) => {
     switch (q.question_type_id) {
@@ -578,10 +601,12 @@ const Form = () => {
     }
   });
 
+  // return a loading spinner while we load data from api
   if (loading) {
     return <Spinner />;
   }
 
+  // error page if no connection to api
   if (errorLoading) {
     return <ErrorPage />;
   }
