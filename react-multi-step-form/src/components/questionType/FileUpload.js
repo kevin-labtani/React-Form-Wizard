@@ -63,9 +63,7 @@ const FileUpload = ({
     // console.log(fd.get("file"));
     try {
       let res = await axios.post(
-        "https://cors-anywhere.herokuapp.com/https://preprod.hike-up.be/api/storeFileForm/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434",
-        // "https://preprod.hike-up.be/api/storeFile/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434",
-        // "https://preprod.hike-up.be/api/fillARH/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434/c8c1b66f-22a0-454c-8c35-4f9b9ed0c3e2",
+        "https://preprod.hike-up.be/api/storeFileForm/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434",
         fd,
         {
           headers: {
@@ -84,7 +82,7 @@ const FileUpload = ({
       console.log(res);
     } catch (err) {
       if (!err.response || err.response.status >= 400) {
-        console.log(err)
+        console.log(err);
         setAlert("Il y a eu un problème durant l'upload du fichier", "danger");
         setUploadPercentage(0);
       }
