@@ -40,15 +40,19 @@ $enable-responsive-font-sizes: true;
 // Import Bootstrap and its default variables
 @import "~bootstrap/scss/bootstrap.scss";
 
-// in case bosy shows during animation transitions
+// need hidden x overflow because of animations
+// color in case body shows on y overflow during animations
 body {
+  overflow-x: hidden;
   background-color: $hu-grey;
 }
 
+// nnot-allowed curson on disabled button
 :disabled {
   cursor: not-allowed;
 }
 
+// border-radius back to standard for large buttons
 .btn-lg {
   border-radius: 0.3rem;
 }
@@ -172,22 +176,25 @@ textarea {
   margin-top: -0.6rem;
   margin-right: -0.6rem;
 }
+
+// avatars
 .avatar {
   font-size: 3rem;
   color: $hu-grey-1;
 }
 
+// pointer cursor for opinion scale
 .page-link {
   cursor: pointer;
 }
 
+// custom progress bar
 .progress-bar-img {
   background-image: url("../src/progress.svg");
   background-repeat: repeat-x;
   background-position: left;
   background-color: transparent;
 }
-
 .progress-img {
   background-image: url("../src/progress-bg.svg");
   background-repeat: repeat-x;
@@ -195,16 +202,12 @@ textarea {
   background-color: transparent;
 }
 
-body {
-  overflow-x: hidden;
-}
-
+// animation for blinking buttons on selection
 .animate-label {
   animation-name: flash;
   animation-duration: 0.5s;
   animation-delay: 0.1s;
 }
-
 @keyframes flash {
   from,
   50%,
@@ -218,28 +221,32 @@ body {
   }
 }
 
-body::-webkit-scrollbar {
-  width: 0.75rem;
-  background-color: $hu-grey-1;
+// custom scrollbar
+body {
+  &::-webkit-scrollbar {
+    width: 0.75rem;
+    background-color: $hu-grey-1;
+  }
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: $hu-grey-1;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $hu-green;
+  }
 }
-body::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  background-color: $hu-grey-1;
-}
-body::-webkit-scrollbar-thumb {
-  background-color: $hu-green;
-}
+// custom scroll bar on firefox
 :root {
   scrollbar-color: $hu-green $hu-grey-1;
 }
 
+// paperclip icon for uploadfile question
 label.custom-file-label {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 
   &::after {
-    // content: "📎";
     content: "";
     background: url("./iconmonstr-paperclip-2.svg") no-repeat center center
       #e9ecef; // #e9ecef is default
@@ -248,16 +255,15 @@ label.custom-file-label {
 }
 
 @media screen and (max-width: 1024px) {
-  // resize "buttons" on mobile for opinion scale
+  // resize "buttons" on smaller screens for opinion scale
   .page-link {
     padding: 4px 8px;
   }
-  // simpler progressbar on mobile
+  // simpler progressbar on smaller screens
   .progress-bar-img {
     background-image: none;
     background-color: $hu-green;
   }
-
   .progress-img {
     background-image: none;
     background-color: $hu-grey-1;
@@ -265,16 +271,19 @@ label.custom-file-label {
 }
 
 @media screen and (max-width: 540px) {
+  // resize "buttons" on mobile for opinion scale
   .page-link {
     padding: 3px;
   }
+
+  // resize avatars on mobile
   .avatar {
     font-size: 2rem;
   }
 }
 
 @media (hover: none) {
-  // to fix bg color remaining on mobile on MultipleChoice question type when choice is selected and then deselected
+  // fix bg color remaining on mobile on MultipleChoice question type when choice is selected and then deselected
   .btn-outline-primary:hover {
     background-color: transparent;
     color: $hu-green;

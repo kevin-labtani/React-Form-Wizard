@@ -11,7 +11,7 @@ export const useQuestions = () => {
   return [state, dispatch];
 };
 
-// get questions from DB
+// get questions from api
 export const getQuestions = async (dispatch) => {
   // // req user from api (nb: set loading to default to true)
   // try {

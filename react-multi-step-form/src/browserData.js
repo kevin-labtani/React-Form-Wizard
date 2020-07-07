@@ -87,26 +87,3 @@ export {
   referrer,
   mobile,
 };
-
-  
-  // import {
-  //   browserName,
-  //   userAgent,
-  //   browserPreferedLanguage,
-  //   browserLanguages,
-  //   userPlatform,
-  //   browserOnline,
-  //   mobile,
-  //   referrer,
-  // } from "../browserData";
-
-  // console.log(
-  //   browserName + "\n",
-  //   userAgent + "\n",
-  //   browserPreferedLanguage + "\n",
-  //   browserLanguages + "\n",
-  //   userPlatform + "\n",
-  //   "online? " + browserOnline + "\n",
-  //   mobile ? mobile + "\n" : "not on a mobile device \n",
-  //   referrer + "\n"
-  // );
