@@ -9,7 +9,12 @@ import Question from "../layout/Question";
 import Navigation from "../layout/Navigation";
 import { containerVariants, answerVariants } from "../../AnimationConstant";
 
-const FileUpload = ({ answers, fileUploadChange, updateTimerLocation, data }) => {
+const FileUpload = ({
+  answers,
+  fileUploadChange,
+  updateTimerLocation,
+  data,
+}) => {
   const {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
@@ -57,24 +62,31 @@ const FileUpload = ({ answers, fileUploadChange, updateTimerLocation, data }) =>
     fd.append("file", file, file.name);
     // console.log(fd.get("file"));
     try {
-      await axios.post("my-domain.com/file-upload", fd, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-        onUploadProgress: (progressEvent) => {
-          setUploadPercentage(
-            parseInt(
-              Math.round((progressEvent.loaded * 100) / progressEvent.total)
-            )
-          );
-        },
-      });
+      let res = await axios.post(
+        "https://cors-anywhere.herokuapp.com/https://preprod.hike-up.be/api/storeFileForm/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434",
+        // "https://preprod.hike-up.be/api/storeFile/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434",
+        // "https://preprod.hike-up.be/api/fillARH/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434/c8c1b66f-22a0-454c-8c35-4f9b9ed0c3e2",
+        fd,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          onUploadProgress: (progressEvent) => {
+            setUploadPercentage(
+              parseInt(
+                Math.round((progressEvent.loaded * 100) / progressEvent.total)
+              )
+            );
+          },
+        }
+      );
+      setAlert("Le fichier a été uploadé", "success");
+      console.log(res);
     } catch (err) {
-      if (err.response.status >= 400) {
+      if (!err.response || err.response.status >= 400) {
+        console.log(err)
         setAlert("Il y a eu un problème durant l'upload du fichier", "danger");
         setUploadPercentage(0);
-      } else {
-        setAlert("Le fichier a été uploadé", "success");
       }
     }
   };
