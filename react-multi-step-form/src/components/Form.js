@@ -250,7 +250,7 @@ const Form = () => {
         data.push({
           assessment_id: question[0].assessment_id,
           question_id: question[0].question_id,
-          question_timing: timings[key],
+          question_timing: Math.round(timings[key]),
           free_text: value,
         });
       }
