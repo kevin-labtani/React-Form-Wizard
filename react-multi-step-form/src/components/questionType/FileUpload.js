@@ -9,7 +9,7 @@ import Question from "../layout/Question";
 import Navigation from "../layout/Navigation";
 import { containerVariants, answerVariants } from "../../AnimationConstant";
 
-const FileUpload = ({ values, fileUploadChange, updateTimerLocation, data }) => {
+const FileUpload = ({ answers, fileUploadChange, updateTimerLocation, data }) => {
   const {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
@@ -30,7 +30,7 @@ const FileUpload = ({ values, fileUploadChange, updateTimerLocation, data }) => 
 
   const fwd = (e) => {
     e.preventDefault();
-    if (questionRequired && !values[questionId]) {
+    if (questionRequired && !answers[questionId]) {
       setAlert("Veuillez choisir un fichier à uploader", "danger");
     } else {
       updateTimerLocation(

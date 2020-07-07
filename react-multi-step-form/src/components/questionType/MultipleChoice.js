@@ -15,7 +15,7 @@ import {
 import { mobile } from "../../browserData";
 
 const MultipleChoice = ({
-  values,
+  answers,
   multiCheckboxChange,
   updateTimerLocation,
   data,
@@ -37,8 +37,8 @@ const MultipleChoice = ({
   const [freeTextInput, setfreeTextInput] = useState(false);
   const [freeTextInputAnimate, setfreeTextInputAnimate] = useState(false);
   const [freeText, setFreeText] = useState(
-    values[questionId] && values[questionId].filter((el) => isNaN(el))[0]
-      ? values[questionId].filter((el) => isNaN(el))[0].substr(1)
+    answers[questionId] && answers[questionId].filter((el) => isNaN(el))[0]
+      ? answers[questionId].filter((el) => isNaN(el))[0].substr(1)
       : ""
   );
 
@@ -56,7 +56,7 @@ const MultipleChoice = ({
 
   const fwd = (e) => {
     e.preventDefault();
-    if (questionRequired && values[questionId].length === 0) {
+    if (questionRequired && answers[questionId].length === 0) {
       setAlert("Veuillez faire un choix", "danger");
     } else {
       updateTimerLocation(
@@ -80,7 +80,7 @@ const MultipleChoice = ({
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [values[questionId], freeTextInput]
+    [answers[questionId], freeTextInput]
   );
 
   useEffect(() => {
@@ -89,7 +89,7 @@ const MultipleChoice = ({
       document.removeEventListener("keydown", handleKeyDown);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [handleKeyDown, values[questionId]]);
+  }, [handleKeyDown, answers[questionId]]);
 
   const submitFreeText = (event) => {
     setfreeTextInput(false);
@@ -114,8 +114,8 @@ const MultipleChoice = ({
   };
 
   const freeTextValue =
-    values[questionId] &&
-    values[questionId].filter((el) => el.startsWith("$"))[0];
+    answers[questionId] &&
+    answers[questionId].filter((el) => el.startsWith("$"))[0];
   const freeTextLabel = freeTextValue && freeTextValue.substr(1);
 
   return (
@@ -143,8 +143,8 @@ const MultipleChoice = ({
                 value={`${choice.id}`}
                 id={`checkbox-${index}`}
                 checked={
-                  values[questionId] &&
-                  values[questionId].includes(`*${choice.id}`)
+                  answers[questionId] &&
+                  answers[questionId].includes(`*${choice.id}`)
                 }
                 onChange={multiCheckboxChange(questionId)}
                 hidden
@@ -153,8 +153,8 @@ const MultipleChoice = ({
                 className={`btn btn-outline-primary btn-block text-left ${
                   pictureOption ? "px-4 pt-3" : "pl-4"
                 } ${
-                  values[questionId] &&
-                  values[questionId].includes(`*${choice.id}`)
+                  answers[questionId] &&
+                  answers[questionId].includes(`*${choice.id}`)
                     ? "active animate-label"
                     : ""
                 }`}
@@ -167,8 +167,8 @@ const MultipleChoice = ({
                     className="img-fluid rounded d-block mx-auto"
                   />
                 )}
-                {values[questionId] &&
-                values[questionId].includes(`*${choice.id}`) ? (
+                {answers[questionId] &&
+                answers[questionId].includes(`*${choice.id}`) ? (
                   <Checkmark />
                 ) : (
                   ""
@@ -187,7 +187,7 @@ const MultipleChoice = ({
                 setfreeTextInput(true);
               }}
             >
-              {freeTextLabel && !freeTextInput && values[questionId] ? (
+              {freeTextLabel && !freeTextInput && answers[questionId] ? (
                 <Checkmark />
               ) : (
                 ""
@@ -220,7 +220,7 @@ const MultipleChoice = ({
             </motion.p>
           )}
           {/*eslint-disable-next-line eqeqeq*/}
-          {values[questionId] != false && !freeTextInput && !mobile && (
+          {answers[questionId] != false && !freeTextInput && !mobile && (
             <motion.p className="mb-0" variants={keyboardNavVariants}>
               press Enter ↵
             </motion.p>

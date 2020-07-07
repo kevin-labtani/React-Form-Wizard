@@ -15,7 +15,7 @@ import { mobile } from "../../browserData";
 
 import isMobilePhone from "validator/lib/isMobilePhone";
 
-const PhoneNumber = ({ values, inputChange, updateTimerLocation, data }) => {
+const PhoneNumber = ({ answers, inputChange, updateTimerLocation, data }) => {
   const {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
@@ -34,10 +34,10 @@ const PhoneNumber = ({ values, inputChange, updateTimerLocation, data }) => {
   const fwd = (e) => {
     e.preventDefault();
     if (
-      (questionRequired && !isMobilePhone(values[questionId])) ||
+      (questionRequired && !isMobilePhone(answers[questionId])) ||
       (!questionRequired &&
-        values[questionId] &&
-        !isMobilePhone(values[questionId]))
+        answers[questionId] &&
+        !isMobilePhone(answers[questionId]))
     ) {
       setAlert("Veuillez entrer un numéro de téléphone valide", "danger");
     } else {
@@ -88,13 +88,13 @@ const PhoneNumber = ({ values, inputChange, updateTimerLocation, data }) => {
               maxLength="25"
               onKeyDown={handleKeyDown}
               onChange={inputChange(questionId)}
-              value={values[questionId]}
+              value={answers[questionId]}
               autoComplete="off"
               autoFocus={!mobile}
               placeholder="Enter your phone here"
             />
           </div>
-          {values[questionId] && (
+          {answers[questionId] && (
             <motion.p className="mb-0" variants={keyboardNavVariants}>
               press Enter ↵
             </motion.p>

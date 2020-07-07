@@ -14,7 +14,7 @@ import {
 } from "../../AnimationConstant";
 
 const SingleChoice = ({
-  values,
+  answers,
   singleCheckboxChangePush,
   inputChange,
   updateTimerLocation,
@@ -37,8 +37,8 @@ const SingleChoice = ({
   const [freeTextInput, setfreeTextInput] = useState(false);
   const [freeTextInputAnimate, setfreeTextInputAnimate] = useState(false);
   const [freeText, setFreeText] = useState(
-    values[questionId] && !values[questionId].startsWith("*")
-      ? values[questionId]
+    answers[questionId] && !answers[questionId].startsWith("*")
+      ? answers[questionId]
       : ""
   );
 
@@ -51,8 +51,8 @@ const SingleChoice = ({
     });
 
   let nextQuestion = nextQuestionId;
-  if (Number.isInteger(parseInt(values[questionId]))) {
-    let selected = boxValues.find((q) => q.id === values[questionId]);
+  if (Number.isInteger(parseInt(answers[questionId]))) {
+    let selected = boxValues.find((q) => q.id === answers[questionId]);
     if (selected && selected.next_id_if_selected) {
       nextQuestion = selected.next_id_if_selected;
     }
@@ -64,7 +64,7 @@ const SingleChoice = ({
 
   const fwd = (e) => {
     e.preventDefault();
-    if (questionRequired && !values[questionId]) {
+    if (questionRequired && !answers[questionId]) {
       setAlert("Veuillez faire un choix", "danger");
     } else {
       updateTimerLocation(
@@ -136,7 +136,7 @@ const SingleChoice = ({
                 type="checkbox"
                 value={`${choice.id}`}
                 id={`checkbox-${index}`}
-                checked={values[questionId] === `*${choice.id}`}
+                checked={answers[questionId] === `*${choice.id}`}
                 onChange={(e) => changeHandler(choice.next_id_if_selected, e)}
                 hidden
               />
@@ -144,7 +144,7 @@ const SingleChoice = ({
                 className={`btn btn-outline-primary  text-left btn-block ${
                   pictureOption ? "px-4 pt-3" : "pl-4"
                 } ${
-                  values[questionId] === `*${choice.id}`
+                  answers[questionId] === `*${choice.id}`
                     ? "active animate-label"
                     : ""
                 }`}
@@ -157,7 +157,7 @@ const SingleChoice = ({
                     className="img-fluid rounded d-block mx-auto"
                   />
                 )}
-                {values[questionId] === `*${choice.id}` ? <Checkmark /> : ""}
+                {answers[questionId] === `*${choice.id}` ? <Checkmark /> : ""}
                 {choice.label}
               </label>
             </div>
@@ -167,7 +167,7 @@ const SingleChoice = ({
               className={`btn btn-outline-primary btn-block text-left pl-4 
               ${
                 freeTextInput ||
-                (values[questionId] && !values[questionId].startsWith("*"))
+                (answers[questionId] && !answers[questionId].startsWith("*"))
                   ? "active"
                   : ""
               } 
@@ -177,9 +177,9 @@ const SingleChoice = ({
                 setfreeTextInput(true);
               }}
             >
-              {values[questionId] &&
+              {answers[questionId] &&
               !freeTextInput &&
-              !values[questionId].startsWith("*") ? (
+              !answers[questionId].startsWith("*") ? (
                 <Checkmark />
               ) : (
                 ""
@@ -202,9 +202,9 @@ const SingleChoice = ({
                   }}
                 />
               )) ||
-                (values[questionId] &&
-                  !values[questionId].startsWith("*") &&
-                  values[questionId]) ||
+                (answers[questionId] &&
+                  !answers[questionId].startsWith("*") &&
+                  answers[questionId]) ||
                 "Other"}
             </label>
           )}

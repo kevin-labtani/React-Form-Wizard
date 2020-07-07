@@ -13,7 +13,7 @@ import {
 } from "../../AnimationConstant";
 import { mobile } from "../../browserData";
 
-const Number = ({ values, inputChange, updateTimerLocation, data }) => {
+const Number = ({ answers, inputChange, updateTimerLocation, data }) => {
   const {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
@@ -42,12 +42,12 @@ const Number = ({ values, inputChange, updateTimerLocation, data }) => {
     e.preventDefault();
     if (
       (questionRequired &&
-        (!values[questionId] ||
-          values[questionId] < min ||
-          values[questionId] > max)) ||
+        (!answers[questionId] ||
+          answers[questionId] < min ||
+          answers[questionId] > max)) ||
       (!questionRequired &&
-        values[questionId] &&
-        (values[questionId] < min || values[questionId] > max))
+        answers[questionId] &&
+        (answers[questionId] < min || answers[questionId] > max))
     ) {
       setAlert(`Veuillez entrer un nombre entre ${min} & ${max}`, "danger");
     } else {
@@ -99,14 +99,14 @@ const Number = ({ values, inputChange, updateTimerLocation, data }) => {
               id="number"
               onKeyDown={handleKeyDown}
               onChange={inputChange(questionId)}
-              value={values[questionId]}
+              value={answers[questionId]}
               min={min}
               max={max}
               autoFocus={!mobile}
               placeholder="Enter a value here"
             />
           </div>
-          {values[questionId] && (
+          {answers[questionId] && (
             <motion.p className="mb-0" variants={keyboardNavVariants}>
               press Enter ↵
             </motion.p>

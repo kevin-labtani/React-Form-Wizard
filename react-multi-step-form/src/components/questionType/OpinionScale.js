@@ -9,7 +9,7 @@ import Navigation from "../layout/Navigation";
 import { containerVariants, answerVariants } from "../../AnimationConstant";
 
 const OpinionScale = ({
-  values,
+  answers,
   singleCheckboxChangePush,
   updateTimerLocation,
   data,
@@ -39,8 +39,8 @@ const OpinionScale = ({
     });
 
   let nextQuestion = nextQuestionId;
-  if (Number.isInteger(parseInt(values[questionId]))) {
-    let selected = boxValues.find((q) => q.id === values[questionId]);
+  if (Number.isInteger(parseInt(answers[questionId]))) {
+    let selected = boxValues.find((q) => q.id === answers[questionId]);
     if (selected && selected.next_id_if_selected) {
       nextQuestion = selected.next_id_if_selected;
     }
@@ -52,7 +52,7 @@ const OpinionScale = ({
 
   const fwd = (e) => {
     e.preventDefault();
-    if (questionRequired && !values[questionId]) {
+    if (questionRequired && !answers[questionId]) {
       setAlert("Veuillez faire un choix", "danger");
     } else {
       updateTimerLocation(
@@ -106,7 +106,7 @@ const OpinionScale = ({
               {boxValues.map((choice, index) => (
                 <li
                   className={`page-item ${
-                    values[questionId] === `*${choice.id}` ? "active" : ""
+                    answers[questionId] === `*${choice.id}` ? "active" : ""
                   }`}
                   key={index}
                 >
@@ -115,7 +115,7 @@ const OpinionScale = ({
                     name="rating"
                     value={`${choice.id}`}
                     id={`rating-${index}`}
-                    checked={values[questionId] === `*${choice.id}`}
+                    checked={answers[questionId] === `*${choice.id}`}
                     onChange={(e) =>
                       changeHandler(choice.next_id_if_selected, e)
                     }
@@ -123,7 +123,7 @@ const OpinionScale = ({
                   />
                   <label
                     className={`page-link ${
-                      values[questionId] === `*${choice.id}`
+                      answers[questionId] === `*${choice.id}`
                         ? "animate-label"
                         : ""
                     }`}

@@ -14,7 +14,7 @@ import {
 } from "../../AnimationConstant";
 import { mobile } from "../../browserData";
 
-const LongText = ({ values, inputChange, updateTimerLocation, data }) => {
+const LongText = ({ answers, inputChange, updateTimerLocation, data }) => {
   const {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
@@ -32,9 +32,9 @@ const LongText = ({ values, inputChange, updateTimerLocation, data }) => {
 
   const fwd = (e) => {
     e.preventDefault();
-    if (questionRequired && !values[questionId]) {
+    if (questionRequired && !answers[questionId]) {
       setAlert("Veuillez remplir ce champ", "danger");
-    } else if (values[questionId] && values[questionId].length > 256) {
+    } else if (answers[questionId] && answers[questionId].length > 256) {
       setAlert("Votre réponse doit faire moins de 256 caractères", "danger");
     } else {
       updateTimerLocation(
@@ -84,14 +84,14 @@ const LongText = ({ values, inputChange, updateTimerLocation, data }) => {
               maxLength="256"
               onKeyDown={handleKeyDown}
               onChange={inputChange(questionId)}
-              value={values[questionId]}
+              value={answers[questionId]}
               autoComplete="off"
               autoFocus={!mobile}
               placeholder="Enter your comment here"
               minRows="1"
             />
           </div>
-          {values[questionId] && (
+          {answers[questionId] && (
             <motion.div className="mb-0" variants={keyboardNavVariants}>
               {!mobile && <p className="mb-0">press Enter ↵ and Shift ⇧ for a new line</p>}
               <p className="mb-0">press Enter ↵ to submit</p>

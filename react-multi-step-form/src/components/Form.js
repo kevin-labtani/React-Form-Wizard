@@ -95,7 +95,7 @@ const Form = () => {
       q.question_type_id !== 16 &&
       q.question_type_id !== 17
     ) {
-      //no values for welcome & thankyou & recap question type
+      //no answers for welcome & thankyou & recap question type
       initAnswers[q.question_id] = "";
     }
   });
@@ -305,7 +305,7 @@ const Form = () => {
                 {...routeProps}
                 multiCheckboxChange={multiCheckboxChange}
                 updateTimerLocation={updateTimerLocation}
-                values={answers}
+                answers={answers}
                 data={q}
               />
             )}
@@ -325,7 +325,7 @@ const Form = () => {
                 singleCheckboxChangePush={singleCheckboxChangePush}
                 inputChange={inputChange}
                 updateTimerLocation={updateTimerLocation}
-                values={answers}
+                answers={answers}
                 data={q}
               />
             )}
@@ -344,7 +344,7 @@ const Form = () => {
                 {...routeProps}
                 singleCheckboxChangePush={singleCheckboxChangePush}
                 updateTimerLocation={updateTimerLocation}
-                values={answers}
+                answers={answers}
                 data={q}
               />
             )}
@@ -363,7 +363,7 @@ const Form = () => {
                 {...routeProps}
                 singleCheckboxChangePush={singleCheckboxChangePush}
                 updateTimerLocation={updateTimerLocation}
-                values={answers}
+                answers={answers}
                 data={q}
               />
             )}
@@ -382,7 +382,7 @@ const Form = () => {
                 {...routeProps}
                 inputChangePush={inputChangePush}
                 updateTimerLocation={updateTimerLocation}
-                values={answers}
+                answers={answers}
                 data={q}
               />
             )}
@@ -401,7 +401,7 @@ const Form = () => {
                 {...routeProps}
                 inputChange={inputChange}
                 updateTimerLocation={updateTimerLocation}
-                values={answers}
+                answers={answers}
                 data={q}
               />
             )}
@@ -420,7 +420,7 @@ const Form = () => {
                 {...routeProps}
                 singleCheckboxChangePush={singleCheckboxChangePush}
                 updateTimerLocation={updateTimerLocation}
-                values={answers}
+                answers={answers}
                 data={q}
               />
             )}
@@ -439,7 +439,7 @@ const Form = () => {
                 {...routeProps}
                 inputChange={inputChange}
                 updateTimerLocation={updateTimerLocation}
-                values={answers}
+                answers={answers}
                 data={q}
               />
             )}
@@ -458,7 +458,7 @@ const Form = () => {
                 {...routeProps}
                 inputChange={inputChange}
                 updateTimerLocation={updateTimerLocation}
-                values={answers}
+                answers={answers}
                 data={q}
               />
             )}
@@ -477,7 +477,7 @@ const Form = () => {
                 {...routeProps}
                 inputChange={inputChange}
                 updateTimerLocation={updateTimerLocation}
-                values={answers}
+                answers={answers}
                 data={q}
               />
             )}
@@ -496,7 +496,7 @@ const Form = () => {
                 {...routeProps}
                 inputChange={inputChange}
                 updateTimerLocation={updateTimerLocation}
-                values={answers}
+                answers={answers}
                 data={q}
               />
             )}
@@ -515,7 +515,7 @@ const Form = () => {
                 {...routeProps}
                 fileUploadChange={fileUploadChange}
                 updateTimerLocation={updateTimerLocation}
-                values={answers}
+                answers={answers}
                 data={q}
               />
             )}

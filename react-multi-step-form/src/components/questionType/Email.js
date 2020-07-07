@@ -15,7 +15,7 @@ import { mobile } from "../../browserData";
 
 import isEmail from "validator/lib/isEmail";
 
-const Email = ({ values, inputChange, updateTimerLocation, data }) => {
+const Email = ({ answers, inputChange, updateTimerLocation, data }) => {
   const {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
@@ -35,9 +35,9 @@ const Email = ({ values, inputChange, updateTimerLocation, data }) => {
     e.preventDefault();
     if (
       (questionRequired &&
-        (!values[questionId] ||
-          (values[questionId] && !isEmail(values[questionId])))) ||
-      (!questionRequired && values[questionId] && !isEmail(values[questionId]))
+        (!answers[questionId] ||
+          (answers[questionId] && !isEmail(answers[questionId])))) ||
+      (!questionRequired && answers[questionId] && !isEmail(answers[questionId]))
     ) {
       setAlert("Veuillez entrer une adresse email valide", "danger");
     } else {
@@ -88,13 +88,13 @@ const Email = ({ values, inputChange, updateTimerLocation, data }) => {
               id="email"
               onKeyDown={handleKeyDown}
               onChange={inputChange(questionId)}
-              value={values[questionId]}
+              value={answers[questionId]}
               autoComplete="off"
               autoFocus={!mobile}
               placeholder="Enter your email here"
             />
           </div>
-          {values[questionId] && (
+          {answers[questionId] && (
             <motion.p className="mb-0" variants={keyboardNavVariants}>
               press Enter ↵
             </motion.p>

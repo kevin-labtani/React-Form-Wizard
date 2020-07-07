@@ -10,7 +10,7 @@ import Checkmark from "../layout/Checkmark";
 import { containerVariants, answerVariants } from "../../AnimationConstant";
 
 const Legal = ({
-  values,
+  answers,
   singleCheckboxChangePush,
   updateTimerLocation,
   data,
@@ -28,8 +28,8 @@ const Legal = ({
   const [startTimer] = useState(new Date().getTime());
 
   let nextQuestion = nextQuestionId;
-  if (Number.isInteger(parseInt(values[questionId]))) {
-    let selected = boxValues.find((q) => q.id === values[questionId]);
+  if (Number.isInteger(parseInt(answers[questionId]))) {
+    let selected = boxValues.find((q) => q.id === answers[questionId]);
     if (selected && selected.next_id_if_selected) {
       nextQuestion = selected.next_id_if_selected;
     }
@@ -41,7 +41,7 @@ const Legal = ({
 
   const fwd = (e) => {
     e.preventDefault();
-    if (questionRequired && !values[questionId]) {
+    if (questionRequired && !answers[questionId]) {
       setAlert("Veuillez faire un choix", "danger");
     } else {
       updateTimerLocation(
@@ -90,19 +90,19 @@ const Legal = ({
                 type="checkbox"
                 value={`${choice.id}`}
                 id={`checkbox-${index}`}
-                checked={values[questionId] === `*${choice.id}`}
+                checked={answers[questionId] === `*${choice.id}`}
                 onChange={(e) => changeHandler(choice.next_id_if_selected, e)}
                 hidden
               />
               <label
                 className={`btn btn-outline-primary btn-block text-left pl-4 ${
-                  values[questionId] === `*${choice.id}`
+                  answers[questionId] === `*${choice.id}`
                     ? "active animate-label"
                     : ""
                 }`}
                 htmlFor={`checkbox-${index}`}
               >
-                {values[questionId] === `*${choice.id}` ? <Checkmark /> : ""}
+                {answers[questionId] === `*${choice.id}` ? <Checkmark /> : ""}
                 {choice.label}
               </label>
             </div>

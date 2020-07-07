@@ -8,7 +8,7 @@ import Question from "../layout/Question";
 import Navigation from "../layout/Navigation";
 import { containerVariants, answerVariants } from "../../AnimationConstant";
 
-const Rating = ({ values, inputChangePush, updateTimerLocation, data }) => {
+const Rating = ({ answers, inputChangePush, updateTimerLocation, data }) => {
   const {
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
@@ -35,7 +35,7 @@ const Rating = ({ values, inputChangePush, updateTimerLocation, data }) => {
 
   const fwd = (e) => {
     e.preventDefault();
-    if (questionRequired && !values[questionId]) {
+    if (questionRequired && !answers[questionId]) {
       setAlert("Veuillez faire un choix", "danger");
     } else {
       updateTimerLocation(
@@ -75,7 +75,7 @@ const Rating = ({ values, inputChangePush, updateTimerLocation, data }) => {
           name="rating"
           id={`rating-${index}`}
           value={`${index}`}
-          checked={values[questionId] === `${index}`}
+          checked={answers[questionId] === `${index}`}
           onChange={handleChange}
         />
         <label
