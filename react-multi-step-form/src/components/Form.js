@@ -279,7 +279,7 @@ const Form = () => {
       // https://cors-anywhere.herokuapp.com/https://preprod.hike-up.be/api/fillARH/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434/${responseUuid}
       // `https://jsonplaceholder.typicode.com/posts`
       let res = await axios.post(
-        `https://preprod.hike-up.be/api/fillARH/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434/${responseUuid}`,
+        `https://preprod.hike-up.be/api/fillARH/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434/${responseUuid}/true`,
         JSON.stringify(data),
         {
           headers: {
@@ -305,11 +305,14 @@ const Form = () => {
 
   //   // sendAnswer();
 
-  //   let headers = {
-  //     type: "application/json",
-  //   };
-  //   let blob = new Blob([JSON.stringify(data)], headers);
-  //   navigator.sendBeacon("https://jsonplaceholder.typicode.com/posts", blob);
+  //   // let headers = {
+  //   //   type: "application/json",
+  //   // };
+  //   // let blob = new Blob([JSON.stringify(data)], headers);
+  //   navigator.sendBeacon(
+  //     `https://cors-anywhere.herokuapp.com/https://preprod.hike-up.be/api/fillARH/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434/${responseUuid}/false`,
+  //     "test"
+  //   );
   //   return "Are you sure you want to leave?";
   // };
 
