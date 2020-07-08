@@ -6,6 +6,7 @@ import {
   useQuestions,
   getQuestions,
 } from "../context/questions/QuestionsState";
+import { useConfig, getConfig } from "../context/config/ConfigState";
 import { v4 as uuidv4 } from "uuid";
 import Email from "./questionType/Email";
 import ShortText from "./questionType/ShortText";
@@ -49,12 +50,18 @@ const Form = () => {
   // use custom hook to consume our state and dispatch
   const [questionsState, questionsDispatch] = useQuestions();
 
-  const { questions, loading, errorLoading } = questionsState;
+  const { questions, loadingQuestions, errorLoadingQuestions } = questionsState;
+
+  // use custom hook to consume our state and dispatch
+  const [configState, configDispatch] = useConfig();
+
+  const { loadingConfig, errorLoadingConfig } = configState;
 
   // load data from api
   useEffect(() => {
     getQuestions(questionsDispatch);
-  }, [questionsDispatch]);
+    getConfig(configDispatch);
+  }, [questionsDispatch, configDispatch]);
 
   // load data from localStorage if there's any on app load
   useEffect(() => {
@@ -605,12 +612,12 @@ const Form = () => {
   });
 
   // return a loading spinner while we load data from api
-  if (loading) {
+  if (loadingQuestions || loadingConfig) {
     return <Spinner />;
   }
 
   // error page if no connection to api
-  if (errorLoading) {
+  if (errorLoadingQuestions || errorLoadingConfig) {
     return <ErrorPage />;
   }
 
@@ -623,7 +630,11 @@ const Form = () => {
           </Switch>
         </AnimatePresence>
       </div>
-      <Footer questions={questions} loading={loading} answers={answers} />
+      <Footer
+        questions={questions}
+        loading={loadingQuestions}
+        answers={answers}
+      />
     </div>
   );
 };

@@ -477,8 +477,8 @@ const QuestionsState = (props) => {
         default_next_id: 13,
       },
     ],
-    loading: false,
-    errorLoading: false,
+    loadingQuestions: false,
+    errorLoadingQuestions: false,
   };
 
   const [state, dispatch] = useReducer(QuestionsReducer, initialState);
