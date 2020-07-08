@@ -3,7 +3,12 @@ import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
 import { containerVariants } from "../../AnimationConstant";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPencilAlt, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPencilAlt,
+  faInfoCircle,
+  faCheck,
+  faTimes,
+} from "@fortawesome/free-solid-svg-icons";
 import { alertVariants } from "../../AnimationConstant";
 
 const Recap = ({
@@ -27,7 +32,7 @@ const Recap = ({
       if (param.name === "question_tos_text") questionTOSText = param.value;
       if (param.name === "question_tos_link") questionTOSLink = param.value;
     });
-  console.log(parameters);
+
   const [acceptTerms, setAcceptTerms] = useState(false);
 
   const { push } = useHistory();
@@ -44,8 +49,21 @@ const Recap = ({
 
   const list = [];
   for (let [key, value] of Object.entries(answers)) {
-    let answer = value;
+    let answer = value || (
+      <span className="text-danger">
+        <FontAwesomeIcon icon={faTimes} />
+      </span>
+    );
     let question = questions.filter((q) => q.question_id === parseInt(key));
+    // handle FileUpload
+    if (question[0].question_type_id === 13 && value) {
+      answer = (
+        <span className="text-primary">
+          <FontAwesomeIcon icon={faCheck} />
+        </span>
+      );
+    }
+    // handle any "choice" type question with a box_values
     if (question[0].box_values) {
       if (question[0].question_type_id !== 1) {
         let choice = question[0].box_values.filter(
@@ -55,6 +73,7 @@ const Recap = ({
           answer = choice[0].label;
         }
       }
+      // handle multipleChoice
       if (question[0].question_type_id === 1) {
         answer = "";
         value.forEach((element) => {
@@ -69,6 +88,13 @@ const Recap = ({
           }
         });
         answer = answer.substring(0, answer.lastIndexOf(","));
+        if (answer.length === 0) {
+          answer = (
+            <span className="text-danger">
+              <FontAwesomeIcon icon={faTimes} />
+            </span>
+          );
+        }
       }
     }
     list.push(
