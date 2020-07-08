@@ -43,6 +43,7 @@ const PhoneNumber = ({ answers, inputChange, updateTimerLocation, data }) => {
     } else {
       updateTimerLocation(
         questionId,
+        nextQuestionId,
         (new Date().getTime() - startTimer) / 1000
       );
       push(`/${nextQuestionId}`);
