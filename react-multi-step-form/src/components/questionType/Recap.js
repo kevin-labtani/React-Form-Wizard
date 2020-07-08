@@ -18,10 +18,16 @@ const Recap = ({
     question_name: questionTitle,
     question_subtitle: questionSubtitle,
     default_next_id: nextQuestionId,
-    question_tos_text:questionTOSText,
-    question_tos_link:questionTOSLink,
+    parameters,
   } = data;
 
+  let questionTOSText, questionTOSLink;
+  parameters &&
+    parameters.forEach((param) => {
+      if (param.name === "question_tos_text") questionTOSText = param.value;
+      if (param.name === "question_tos_link") questionTOSLink = param.value;
+    });
+  console.log(parameters);
   const [acceptTerms, setAcceptTerms] = useState(false);
 
   const { push } = useHistory();
@@ -109,7 +115,12 @@ const Recap = ({
           htmlFor="customCheck1"
         >
           {questionTOSText}
-          <a href={questionTOSLink} target="_blank" rel="noopener noreferrer" className="">
+          <a
+            href={questionTOSLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className=""
+          >
             Terms & Conditions
           </a>
         </label>
