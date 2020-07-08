@@ -139,10 +139,10 @@ const Form = () => {
   };
 
   // for FileUpload question
-  const fileUploadChange = (input) => (e) => {
+  const fileUploadChange = (input) => (uniqueName) => {
     setAnswers({
       ...answers,
-      [input]: e.target.files[0].name,
+      [input]: uniqueName,
     });
   };
 

@@ -52,11 +52,6 @@ const FileUpload = ({
     goBack();
   };
 
-  const changeHandler = (e) => {
-    setFile(e.target.files[0]);
-    fileUploadChange(questionId)(e);
-  };
-
   const uploadHandler = async (e) => {
     const fd = new FormData();
     fd.append("file", file, file.name);
@@ -79,7 +74,7 @@ const FileUpload = ({
         }
       );
       setAlert("Le fichier a été uploadé", "success");
-      console.log(res);
+      fileUploadChange(questionId)(res.data.uniqueName);
     } catch (err) {
       if (!err.response || err.response.status >= 400) {
         console.log(err);
@@ -115,7 +110,7 @@ const FileUpload = ({
               className="custom-file-input"
               name="file"
               id="file"
-              onChange={changeHandler}
+              onChange={(e) => setFile(e.target.files[0])}
               accept=""
             />
           </div>
