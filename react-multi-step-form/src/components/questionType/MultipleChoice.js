@@ -46,8 +46,10 @@ const MultipleChoice = ({
   let pictureOption = false;
   parameters &&
     parameters.forEach((param) => {
-      if (param.name === "other") freeTextOption = true;
-      if (param.name === "picture") pictureOption = true;
+      if (param.name === "other" && param.value === "true")
+        freeTextOption = true;
+      if (param.name === "picture" && param.value === "true")
+        pictureOption = true;
     });
 
   const { setAlert } = useContext(AlertContext);

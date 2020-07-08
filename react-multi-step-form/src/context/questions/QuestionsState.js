@@ -14,22 +14,22 @@ export const useQuestions = () => {
 // get questions from api
 export const getQuestions = async (dispatch) => {
   // req user from api (nb: set loading to default to true)
-  try {
-    const res = await axios.get(
-      "https://preprod.hike-up.be/api/getATH/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434/13"
-      // "path/to/api"
-    );
-    console.log(res.data);
-    dispatch({
-      type: GET_QUESTIONS,
-      payload: res.data,
-    });
-  } catch (error) {
-    // console.log(error);
-    dispatch({
-      type: QUESTION_ERROR,
-    });
-  }
+  // try {
+  //   const res = await axios.get(
+  //     "https://preprod.hike-up.be/api/getATH/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434/13"
+  //     // "path/to/api"
+  //   );
+  //   console.log(res.data);
+  //   dispatch({
+  //     type: GET_QUESTIONS,
+  //     payload: res.data,
+  //   });
+  // } catch (error) {
+  //   // console.log(error);
+  //   dispatch({
+  //     type: QUESTION_ERROR,
+  //   });
+  // }
 };
 
 const QuestionsState = (props) => {
@@ -118,12 +118,12 @@ const QuestionsState = (props) => {
           {
             id: "20",
             name: "other",
-            value: true, // not used
+            value: "true",
           },
           {
             id: "98",
             name: "picture",
-            value: true, // not used
+            value: "true",
           },
         ],
         default_next_id: 4,
@@ -342,12 +342,12 @@ const QuestionsState = (props) => {
           {
             id: "12",
             name: "other",
-            value: true, //added
+            value: "true",
           },
           {
             id: "99",
             name: "picture",
-            value: true, // not used
+            value: "true",
           },
         ],
         default_next_id: 9,
@@ -458,17 +458,26 @@ const QuestionsState = (props) => {
         question_name: "Do you want to proceed?",
         question_subtitle:
           "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum optio incidunt sint cumque illo nobis exercitationem aliquam  repellendus.",
-        question_tos_text:
-          "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta, voluptas: ",
-        question_tos_link: "/link_to_tos",
         question_type_id: 17,
         question_type_name: "recap",
         box_values: null,
-        parameters: null,
+        parameters: [
+          {
+            id: "12",
+            name: "question_tos_text",
+            value:
+              "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, labore: ",
+          },
+          {
+            id: "13",
+            name: "question_tos_link",
+            value: "http://google.be",
+          },
+        ],
         default_next_id: 13,
       },
     ],
-    loading: true,
+    loading: false,
     errorLoading: false,
   };
 
