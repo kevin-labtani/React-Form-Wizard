@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useConfig } from "../../context/config/ConfigState";
 import AlertContext from "../../context/alert/alertContext";
 import Alerts from "../layout/Alerts";
 import AvatarAnswer from "../layout/AvatarAnswer";
@@ -25,8 +26,6 @@ const OpinionScale = ({
     parameters,
   } = data;
 
-  const [startTimer] = useState(new Date().getTime());
-
   let labelLeft, labelRight;
   parameters &&
     parameters.forEach((param) => {
@@ -46,6 +45,11 @@ const OpinionScale = ({
     }
   }
 
+  const [startTimer] = useState(new Date().getTime());
+
+  // use custom hook to consume our state and destructure
+  const [{ config }] = useConfig();
+
   const { setAlert } = useContext(AlertContext);
 
   const { push, goBack } = useHistory();
@@ -53,7 +57,7 @@ const OpinionScale = ({
   const fwd = (e) => {
     e.preventDefault();
     if (questionRequired && !answers[questionId]) {
-      setAlert("Veuillez faire un choix", "danger");
+      setAlert(config.alert_choice, "danger");
     } else {
       updateTimerLocation(
         questionId,

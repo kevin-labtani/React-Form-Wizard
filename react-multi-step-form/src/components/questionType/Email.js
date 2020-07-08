@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useConfig } from "../../context/config/ConfigState";
 import AlertContext from "../../context/alert/alertContext";
 import Alerts from "../layout/Alerts";
 import AvatarAnswer from "../layout/AvatarAnswer";
@@ -27,6 +28,9 @@ const Email = ({ answers, inputChange, updateTimerLocation, data }) => {
 
   const [startTimer] = useState(new Date().getTime());
 
+  // use custom hook to consume our state and destructure
+  const [{ config }] = useConfig();
+
   const { setAlert } = useContext(AlertContext);
 
   const { push, goBack } = useHistory();
@@ -37,9 +41,11 @@ const Email = ({ answers, inputChange, updateTimerLocation, data }) => {
       (questionRequired &&
         (!answers[questionId] ||
           (answers[questionId] && !isEmail(answers[questionId])))) ||
-      (!questionRequired && answers[questionId] && !isEmail(answers[questionId]))
+      (!questionRequired &&
+        answers[questionId] &&
+        !isEmail(answers[questionId]))
     ) {
-      setAlert("Veuillez entrer une adresse email valide", "danger");
+      setAlert(config.alert_email_validity, "danger");
     } else {
       updateTimerLocation(
         questionId,
@@ -91,12 +97,12 @@ const Email = ({ answers, inputChange, updateTimerLocation, data }) => {
               value={answers[questionId]}
               autoComplete="off"
               autoFocus={!mobile}
-              placeholder="Enter your email here"
+              placeholder={config.placeholder_email}
             />
           </div>
           {answers[questionId] && (
             <motion.p className="mb-0" variants={keyboardNavVariants}>
-              press Enter ↵
+              {config.keyboard_nav}
             </motion.p>
           )}
         </div>

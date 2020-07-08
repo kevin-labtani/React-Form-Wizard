@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useConfig } from "../../context/config/ConfigState";
 import AlertContext from "../../context/alert/alertContext";
 import Alerts from "../layout/Alerts";
 import AvatarAnswer from "../layout/AvatarAnswer";
@@ -25,6 +26,9 @@ const ShortText = ({ answers, inputChange, updateTimerLocation, data }) => {
 
   const [startTimer] = useState(new Date().getTime());
 
+  // use custom hook to consume our state and destructure
+  const [{ config }] = useConfig();
+
   const { setAlert } = useContext(AlertContext);
 
   const { push, goBack } = useHistory();
@@ -32,9 +36,9 @@ const ShortText = ({ answers, inputChange, updateTimerLocation, data }) => {
   const fwd = (e) => {
     e.preventDefault();
     if (questionRequired && !answers[questionId]) {
-      setAlert("Veuillez remplir ce champ", "danger");
+      setAlert(config.alert_empty_field, "danger");
     } else if (answers[questionId] && answers[questionId].length > 256) {
-      setAlert("Votre réponse doit faire moins de 256 caractères", "danger");
+      setAlert(config.alert_max_input_size, "danger");
     } else {
       updateTimerLocation(
         questionId,
@@ -87,12 +91,12 @@ const ShortText = ({ answers, inputChange, updateTimerLocation, data }) => {
               value={answers[questionId]}
               autoComplete="off"
               autoFocus={!mobile}
-              placeholder="Enter your answer here"
+              placeholder={config.placeholder_short_text}
             />
           </div>
           {answers[questionId] && (
             <motion.p className="mb-0" variants={keyboardNavVariants}>
-              press Enter ↵
+              {config.keyboard_nav}
             </motion.p>
           )}
         </div>

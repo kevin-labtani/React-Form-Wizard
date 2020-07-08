@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useConfig } from "../../context/config/ConfigState";
 import AlertContext from "../../context/alert/alertContext";
 import Alerts from "../layout/Alerts";
 import AvatarAnswer from "../layout/AvatarAnswer";
@@ -33,21 +34,14 @@ const SingleChoice = ({
 
   boxValues.sort((a, b) => a.id - b.id);
 
-  const [startTimer] = useState(new Date().getTime());
-  const [freeTextInput, setfreeTextInput] = useState(false);
-  const [freeTextInputAnimate, setfreeTextInputAnimate] = useState(false);
-  const [freeText, setFreeText] = useState(
-    answers[questionId] && !answers[questionId].startsWith("*")
-      ? answers[questionId]
-      : ""
-  );
-
   let freeTextOption = false;
   let pictureOption = false;
   parameters &&
     parameters.forEach((param) => {
-      if (param.name === "other" && param.value === "true") freeTextOption = true;
-      if (param.name === "picture" && param.value === "true") pictureOption = true;
+      if (param.name === "other" && param.value === "true")
+        freeTextOption = true;
+      if (param.name === "picture" && param.value === "true")
+        pictureOption = true;
     });
 
   let nextQuestion = nextQuestionId;
@@ -58,6 +52,19 @@ const SingleChoice = ({
     }
   }
 
+  const [startTimer] = useState(new Date().getTime());
+
+  const [freeTextInput, setfreeTextInput] = useState(false);
+  const [freeTextInputAnimate, setfreeTextInputAnimate] = useState(false);
+  const [freeText, setFreeText] = useState(
+    answers[questionId] && !answers[questionId].startsWith("*")
+      ? answers[questionId]
+      : ""
+  );
+
+  // use custom hook to consume our state and destructure
+  const [{ config }] = useConfig();
+
   const { setAlert } = useContext(AlertContext);
 
   const { push, goBack } = useHistory();
@@ -65,7 +72,7 @@ const SingleChoice = ({
   const fwd = (e) => {
     e.preventDefault();
     if (questionRequired && !answers[questionId]) {
-      setAlert("Veuillez faire un choix", "danger");
+      setAlert(config.alert_choice, "danger");
     } else {
       updateTimerLocation(
         questionId,
@@ -193,7 +200,7 @@ const SingleChoice = ({
                   maxLength="256"
                   autoComplete="off"
                   autoFocus
-                  placeholder="Enter you answer here"
+                  placeholder={config.placeholder_short_text}
                   onChange={(e) => setFreeText(e.target.value)}
                   onKeyDown={handleKeyDown}
                   value={freeText}
@@ -210,7 +217,7 @@ const SingleChoice = ({
           )}
           {freeTextInput && (
             <motion.p className="mb-0" variants={keyboardNavVariants}>
-              press Enter ↵ to validate
+              {config.keyboard_nav_validate}
             </motion.p>
           )}
         </div>

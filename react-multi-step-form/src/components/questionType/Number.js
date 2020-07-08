@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useConfig } from "../../context/config/ConfigState";
 import AlertContext from "../../context/alert/alertContext";
 import Alerts from "../layout/Alerts";
 import AvatarAnswer from "../layout/AvatarAnswer";
@@ -24,14 +25,17 @@ const Number = ({ answers, inputChange, updateTimerLocation, data }) => {
     parameters,
   } = data;
 
-  const [startTimer] = useState(new Date().getTime());
-
   let min, max;
   parameters &&
     parameters.forEach((param) => {
       if (param.name === "max_value") max = parseInt(param.value);
       if (param.name === "min_value") min = parseInt(param.value);
     });
+
+  const [startTimer] = useState(new Date().getTime());
+
+  // use custom hook to consume our state and destructure
+  const [{ config }] = useConfig();
 
   const alertContext = useContext(AlertContext);
   const { setAlert } = alertContext;
@@ -49,7 +53,7 @@ const Number = ({ answers, inputChange, updateTimerLocation, data }) => {
         answers[questionId] &&
         (answers[questionId] < min || answers[questionId] > max))
     ) {
-      setAlert(`Veuillez entrer un nombre entre ${min} & ${max}`, "danger");
+      setAlert(`${config.alert_number_validity} ${min} & ${max}`, "danger");
     } else {
       updateTimerLocation(
         questionId,
@@ -103,12 +107,12 @@ const Number = ({ answers, inputChange, updateTimerLocation, data }) => {
               min={min}
               max={max}
               autoFocus={!mobile}
-              placeholder="Enter a value here"
+              placeholder={config.placeholder_number}
             />
           </div>
           {answers[questionId] && (
             <motion.p className="mb-0" variants={keyboardNavVariants}>
-              press Enter ↵
+              {config.keyboard_nav}
             </motion.p>
           )}
         </div>

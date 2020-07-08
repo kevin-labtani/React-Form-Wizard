@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useConfig } from "../../context/config/ConfigState";
 import AlertContext from "../../context/alert/alertContext";
 import Alerts from "../layout/Alerts";
 import AvatarAnswer from "../layout/AvatarAnswer";
@@ -27,6 +28,9 @@ const PhoneNumber = ({ answers, inputChange, updateTimerLocation, data }) => {
 
   const [startTimer] = useState(new Date().getTime());
 
+  // use custom hook to consume our state and destructure
+  const [{ config }] = useConfig();
+
   const { setAlert } = useContext(AlertContext);
 
   const { push, goBack } = useHistory();
@@ -39,7 +43,7 @@ const PhoneNumber = ({ answers, inputChange, updateTimerLocation, data }) => {
         answers[questionId] &&
         !isMobilePhone(answers[questionId]))
     ) {
-      setAlert("Veuillez entrer un numéro de téléphone valide", "danger");
+      setAlert(config.alert_phone_number_validity, "danger");
     } else {
       updateTimerLocation(
         questionId,
@@ -92,12 +96,12 @@ const PhoneNumber = ({ answers, inputChange, updateTimerLocation, data }) => {
               value={answers[questionId]}
               autoComplete="off"
               autoFocus={!mobile}
-              placeholder="Enter your phone here"
+              placeholder={config.placeholder_phone_number}
             />
           </div>
           {answers[questionId] && (
             <motion.p className="mb-0" variants={keyboardNavVariants}>
-              press Enter ↵
+              {config.keyboard_nav}
             </motion.p>
           )}
         </div>

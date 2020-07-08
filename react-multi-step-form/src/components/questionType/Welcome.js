@@ -1,6 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useConfig } from "../../context/config/ConfigState";
 import { containerVariants } from "../../AnimationConstant";
 
 const Welcome = ({ data, lastLocation, initAnswerState }) => {
@@ -10,6 +11,9 @@ const Welcome = ({ data, lastLocation, initAnswerState }) => {
     question_picture: questionPicture,
     default_next_id: nextQuestionId,
   } = data;
+
+  // use custom hook to consume our state and destructure
+  const [{ config }] = useConfig();
 
   const { push } = useHistory();
 
@@ -37,7 +41,7 @@ const Welcome = ({ data, lastLocation, initAnswerState }) => {
       <img src={questionPicture} alt="" className="img-fluid d-block mx-auto" />
       {!lastLocation && (
         <button className="btn btn-primary btn-lg px-5 mt-3" onClick={fwd}>
-          Start
+          {config.button_start}
         </button>
       )}
       {lastLocation && (
@@ -47,7 +51,7 @@ const Welcome = ({ data, lastLocation, initAnswerState }) => {
               className="btn btn-primary btn-lg btn-block mt-3"
               onClick={continueFromLast}
             >
-              Continue
+              {config.button_continue}
             </button>
           </div>
           <div className="col-md-3 offset-md-2 col-10 offset-1">
@@ -55,7 +59,7 @@ const Welcome = ({ data, lastLocation, initAnswerState }) => {
               className="btn btn-danger btn-lg btn-block mt-3"
               onClick={fwd}
             >
-              Restart
+              {config.button_restart}
             </button>
           </div>
         </div>

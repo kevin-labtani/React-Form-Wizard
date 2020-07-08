@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useConfig } from "../../context/config/ConfigState";
 import { containerVariants } from "../../AnimationConstant";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -25,14 +26,17 @@ const Recap = ({
     default_next_id: nextQuestionId,
     parameters,
   } = data;
-
+  
   let questionTOSText, questionTOSLink;
   parameters &&
-    parameters.forEach((param) => {
-      if (param.name === "question_tos_text") questionTOSText = param.value;
-      if (param.name === "question_tos_link") questionTOSLink = param.value;
-    });
-
+  parameters.forEach((param) => {
+    if (param.name === "question_tos_text") questionTOSText = param.value;
+    if (param.name === "question_tos_link") questionTOSLink = param.value;
+  });
+  
+    // use custom hook to consume our state and destructure
+    const [{ config }] = useConfig();
+  
   const [acceptTerms, setAcceptTerms] = useState(false);
 
   const { push } = useHistory();
@@ -147,7 +151,7 @@ const Recap = ({
             rel="noopener noreferrer"
             className=""
           >
-            Terms & Conditions
+            {config.terms_conditions}
           </a>
         </label>
       </div>
@@ -159,8 +163,7 @@ const Recap = ({
           animate="visible"
           exit="exit"
         >
-          <FontAwesomeIcon icon={faInfoCircle} /> There was a problem connecting
-          to our server, please try again
+          <FontAwesomeIcon icon={faInfoCircle} /> {config.submit_error}
         </motion.div>
       )}
       <button
@@ -168,7 +171,7 @@ const Recap = ({
         onClick={fwd}
         disabled={!acceptTerms || uploading}
       >
-        {!uploading && "Submit"}
+        {!uploading && config.button_submit}
         {uploading && (
           <div className="spinner-border text-hu-grey-1 m-auto" role="status">
             <span className="sr-only">Loading...</span>

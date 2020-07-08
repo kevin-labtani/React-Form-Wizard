@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
 import axios from "axios";
+import { useConfig } from "../../context/config/ConfigState";
 import AlertContext from "../../context/alert/alertContext";
 import Alerts from "../layout/Alerts";
 import AvatarAnswer from "../layout/AvatarAnswer";
@@ -26,6 +27,9 @@ const FileUpload = ({
 
   const [startTimer] = useState(new Date().getTime());
 
+  // use custom hook to consume our state and destructure
+  const [{ config }] = useConfig();
+
   const { setAlert } = useContext(AlertContext);
 
   const { push, goBack } = useHistory();
@@ -36,7 +40,7 @@ const FileUpload = ({
   const fwd = (e) => {
     e.preventDefault();
     if (questionRequired && !answers[questionId]) {
-      setAlert("Veuillez choisir un fichier à uploader", "danger");
+      setAlert(config.alert_file_upload_choice, "danger");
     } else {
       updateTimerLocation(
         questionId,
@@ -73,12 +77,12 @@ const FileUpload = ({
           },
         }
       );
-      setAlert("Le fichier a été uploadé", "success");
+      setAlert(config.alert_file_upload_success, "success");
       fileUploadChange(questionId)(res.data.uniqueName);
     } catch (err) {
       if (!err.response || err.response.status >= 400) {
         console.log(err);
-        setAlert("Il y a eu un problème durant l'upload du fichier", "danger");
+        setAlert(config.alert_file_upload_error, "danger");
         setUploadPercentage(0);
       }
     }
@@ -115,16 +119,16 @@ const FileUpload = ({
             />
           </div>
           <div className="row pt-2">
-            <div className="col-5 col-lg-2 col-md-3">
+            <div className="col-5 col-md-3">
               <button
                 className="btn btn-primary"
                 onClick={uploadHandler}
                 disabled={!file}
               >
-                Upload
+                {config.button_upload}
               </button>
             </div>
-            <div className="col-7 col-lg-10 col-md-9 my-auto">
+            <div className="col-7 col-md-9 my-auto">
               <div className="progress">
                 <div
                   className="progress-bar progress-bar-striped bg-green-hu"

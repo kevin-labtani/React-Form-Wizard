@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useConfig } from "../../context/config/ConfigState";
 import AlertContext from "../../context/alert/alertContext";
 import Alerts from "../layout/Alerts";
 import AvatarAnswer from "../layout/AvatarAnswer";
@@ -33,15 +34,6 @@ const MultipleChoice = ({
 
   boxValues.sort((a, b) => a.id - b.id);
 
-  const [startTimer] = useState(new Date().getTime());
-  const [freeTextInput, setfreeTextInput] = useState(false);
-  const [freeTextInputAnimate, setfreeTextInputAnimate] = useState(false);
-  const [freeText, setFreeText] = useState(
-    answers[questionId] && answers[questionId].filter((el) => isNaN(el))[0]
-      ? answers[questionId].filter((el) => isNaN(el))[0].substr(1)
-      : ""
-  );
-
   let freeTextOption = false;
   let pictureOption = false;
   parameters &&
@@ -52,6 +44,19 @@ const MultipleChoice = ({
         pictureOption = true;
     });
 
+  const [startTimer] = useState(new Date().getTime());
+
+  const [freeTextInput, setfreeTextInput] = useState(false);
+  const [freeTextInputAnimate, setfreeTextInputAnimate] = useState(false);
+  const [freeText, setFreeText] = useState(
+    answers[questionId] && answers[questionId].filter((el) => isNaN(el))[0]
+      ? answers[questionId].filter((el) => isNaN(el))[0].substr(1)
+      : ""
+  );
+
+  // use custom hook to consume our state and destructure
+  const [{ config }] = useConfig();
+
   const { setAlert } = useContext(AlertContext);
 
   const { push, goBack } = useHistory();
@@ -59,7 +64,7 @@ const MultipleChoice = ({
   const fwd = (e) => {
     e.preventDefault();
     if (questionRequired && answers[questionId].length === 0) {
-      setAlert("Veuillez faire un choix", "danger");
+      setAlert(config.alert_choice, "danger");
     } else {
       updateTimerLocation(
         questionId,
@@ -203,7 +208,7 @@ const MultipleChoice = ({
                   maxLength="256"
                   autoComplete="off"
                   autoFocus
-                  placeholder="Enter you answer here"
+                  placeholder={config.placeholder_short_text}
                   onChange={(e) => setFreeText(e.target.value)}
                   onKeyDown={handleKeyDownInput}
                   value={freeText}
@@ -218,13 +223,13 @@ const MultipleChoice = ({
           )}
           {freeTextInput && (
             <motion.p className="mb-0" variants={keyboardNavVariants}>
-              press Enter ↵ to validate
+              {config.keyboard_nav_validate}
             </motion.p>
           )}
           {/*eslint-disable-next-line eqeqeq*/}
           {answers[questionId] != false && !freeTextInput && !mobile && (
             <motion.p className="mb-0" variants={keyboardNavVariants}>
-              press Enter ↵
+              {config.keyboard_nav}
             </motion.p>
           )}
         </div>
