@@ -95,6 +95,24 @@ const Form = () => {
   }, [answers, timings, responseUuid, lastLocation]);
 
   // initialize answer object
+  //  QUESTION ID KEY:
+  // 1: MultipleChoice
+  // 2: SingleChoice
+  // 3: YesNo
+  // 4: Legal
+  // 5: Rating
+  // 6: ShortText
+  // 7: OpinionScale
+  // 8: Email
+  // 9: Number
+  // 10: PhoneNumber
+  // 11: 
+  // 12: LongText
+  // 13: FileUpload
+  // 14: 
+  // 15: Welcome
+  // 16: ThankYou
+  // 17: Recap
   let initAnswers = {};
   questions.forEach((q) => {
     if (q.question_type_id === 1) {
