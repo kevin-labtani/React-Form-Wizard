@@ -105,10 +105,10 @@ const Form = () => {
   // 8: Email
   // 9: Number
   // 10: PhoneNumber
-  // 11: 
+  // 11:
   // 12: LongText
   // 13: FileUpload
-  // 14: 
+  // 14:
   // 15: Welcome
   // 16: ThankYou
   // 17: Recap
@@ -292,7 +292,7 @@ const Form = () => {
     return data;
   };
 
-  // sned answer to api
+  // send answer to api
   const sendAnswer = async (nextQuestionId = null) => {
     setErrorUploading(false);
     setUploading(true);
@@ -322,19 +322,14 @@ const Form = () => {
 
   // for partial submission
   // window.onbeforeunload = () => {
-  //   let data = constructAnswer();
-  //   console.log(data);
-  //   // localStorage.setItem("answers", JSON.stringify(answers));
+  //   localStorage.setItem("answers", JSON.stringify(answers));
+  //   localStorage.setItem("timings", JSON.stringify(timings));
+  //   localStorage.setItem("responseUuid", JSON.stringify(responseUuid));
+  //   localStorage.setItem("lastLocation", JSON.stringify(lastLocation));
 
-  //   // sendAnswer();
-
-  //   // let headers = {
-  //   //   type: "application/json",
-  //   // };
-  //   // let blob = new Blob([JSON.stringify(data)], headers);
   //   navigator.sendBeacon(
-  //     `https://cors-anywhere.herokuapp.com/https://preprod.hike-up.be/api/fillARH/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434/${responseUuid}/false`,
-  //     "test"
+  //     `https://cors-anywhere.herokuapp.com/https://preprod.hike-up.be/api/fillARH/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434/${responseUuid}/${lastLocation}/false`,
+  //     "partialSubmit"
   //   );
   //   return "Are you sure you want to leave?";
   // };
