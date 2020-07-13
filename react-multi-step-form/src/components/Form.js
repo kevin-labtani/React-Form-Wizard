@@ -30,7 +30,6 @@ import {
   browserName,
   userAgent,
   browserPreferredLanguage,
-  browserLanguages,
   userPlatform,
   referrer,
   mobile,
@@ -281,15 +280,14 @@ const Form = () => {
       }
     }
     // add stats
-    // data.push({
-    //   browser_name: browserName,
-    //   browser_useragent: userAgent,
-    //   browser_preferred_language: browserPreferredLanguage,
-    //   browser_supported_language: browserLanguages,
-    //   user_platform: userPlatform,
-    //   referrer: referrer,
-    //   mobile: mobile,
-    // });
+    data.push({
+      browser_name: browserName,
+      browser_useragent: userAgent,
+      browser_preferred_language: browserPreferredLanguage,
+      user_platform: userPlatform,
+      referrer: referrer,
+      mobile: mobile,
+    });
 
     return data;
   };
