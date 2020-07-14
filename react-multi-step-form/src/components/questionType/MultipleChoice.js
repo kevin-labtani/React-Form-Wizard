@@ -29,6 +29,8 @@ const MultipleChoice = ({
     question_id: questionId,
     box_values: boxValues,
     default_next_id: nextQuestionId,
+    avatar_answer: avatarAnswer,
+    avatar_question: avatarQuestion,
     parameters,
   } = data;
 
@@ -134,6 +136,7 @@ const MultipleChoice = ({
         questionTitle={questionTitle}
         questionPicture={questionPicture}
         questionRequired={questionRequired}
+        avatarQuestion={avatarQuestion}
       />
 
       <motion.div className="row" variants={answerVariants}>
@@ -231,7 +234,7 @@ const MultipleChoice = ({
             </motion.p>
           )}
         </div>
-        <AvatarAnswer />
+        <AvatarAnswer avatarAnswer={avatarAnswer} />
       </motion.div>
 
       <Navigation fwd={fwd} back={back} />

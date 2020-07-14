@@ -24,6 +24,8 @@ const YesNo = ({
     question_id: questionId,
     box_values: boxValues,
     default_next_id: nextQuestionId,
+    avatar_answer: avatarAnswer,
+    avatar_question: avatarQuestion,
   } = data;
 
   let nextQuestion = nextQuestionId;
@@ -80,6 +82,7 @@ const YesNo = ({
         questionTitle={questionTitle}
         questionPicture={questionPicture}
         questionRequired={questionRequired}
+        avatarQuestion={avatarQuestion}
       />
 
       <motion.div className="row" variants={answerVariants}>
@@ -111,7 +114,7 @@ const YesNo = ({
             </div>
           ))}
         </div>
-        <AvatarAnswer />
+        <AvatarAnswer avatarAnswer={avatarAnswer} />
       </motion.div>
 
       <Navigation fwd={fwd} back={back} />

@@ -24,6 +24,8 @@ const Legal = ({
     question_id: questionId,
     box_values: boxValues,
     default_next_id: nextQuestionId,
+    avatar_answer: avatarAnswer,
+    avatar_question: avatarQuestion,
   } = data;
 
   let nextQuestion = nextQuestionId;
@@ -80,6 +82,7 @@ const Legal = ({
         questionTitle={questionTitle}
         questionPicture={questionPicture}
         questionRequired={questionRequired}
+        avatarQuestion={avatarQuestion}
       />
       <motion.div className="row" variants={answerVariants}>
         <div className="col-8 offset-1 col-lg-7 offset-lg-2 rounded-lg px-lg-5 py-4 my-2 shadow bg-hu-grey-1 speech-bubble-answer">
@@ -110,7 +113,7 @@ const Legal = ({
             </div>
           ))}
         </div>
-        <AvatarAnswer />
+        <AvatarAnswer avatarAnswer={avatarAnswer} />
       </motion.div>
 
       <Navigation fwd={fwd} back={back} />

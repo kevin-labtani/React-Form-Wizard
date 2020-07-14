@@ -22,6 +22,8 @@ const Number = ({ answers, inputChange, updateTimerLocation, data }) => {
     question_required: questionRequired,
     question_id: questionId,
     default_next_id: nextQuestionId,
+    avatar_answer: avatarAnswer,
+    avatar_question: avatarQuestion,
     parameters,
   } = data;
 
@@ -85,6 +87,7 @@ const Number = ({ answers, inputChange, updateTimerLocation, data }) => {
         questionTitle={questionTitle}
         questionPicture={questionPicture}
         questionRequired={questionRequired}
+        avatarQuestion={avatarQuestion}
       />
 
       <motion.div className="row" variants={answerVariants}>
@@ -114,7 +117,7 @@ const Number = ({ answers, inputChange, updateTimerLocation, data }) => {
             </motion.p>
           )}
         </div>
-        <AvatarAnswer />
+        <AvatarAnswer avatarAnswer={avatarAnswer} />
       </motion.div>
 
       <Navigation fwd={fwd} back={back} />

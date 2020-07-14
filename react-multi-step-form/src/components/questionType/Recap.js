@@ -26,17 +26,17 @@ const Recap = ({
     default_next_id: nextQuestionId,
     parameters,
   } = data;
-  
+
   let questionTOSText, questionTOSLink;
   parameters &&
-  parameters.forEach((param) => {
-    if (param.name === "question_tos_text") questionTOSText = param.value;
-    if (param.name === "question_tos_link") questionTOSLink = param.value;
-  });
-  
-    // use custom hook to consume our state and destructure
-    const [{ config }] = useConfig();
-  
+    parameters.forEach((param) => {
+      if (param.name === "question_tos_text") questionTOSText = param.value;
+      if (param.name === "question_tos_link") questionTOSLink = param.value;
+    });
+
+  // use custom hook to consume our state and destructure
+  const [{ config }] = useConfig();
+
   const [acceptTerms, setAcceptTerms] = useState(false);
 
   const { push } = useHistory();

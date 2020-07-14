@@ -23,6 +23,8 @@ const LongText = ({ answers, inputChange, updateTimerLocation, data }) => {
     question_required: questionRequired,
     question_id: questionId,
     default_next_id: nextQuestionId,
+    avatar_answer: avatarAnswer,
+    avatar_question: avatarQuestion,
   } = data;
 
   const [startTimer] = useState(new Date().getTime());
@@ -35,7 +37,6 @@ const LongText = ({ answers, inputChange, updateTimerLocation, data }) => {
   const { push, goBack } = useHistory();
 
   const fwd = (e) => {
-
     if (questionRequired && !answers[questionId]) {
       setAlert(config.alert_empty_field, "danger");
     } else if (answers[questionId] && answers[questionId].length > 256) {
@@ -71,6 +72,7 @@ const LongText = ({ answers, inputChange, updateTimerLocation, data }) => {
         questionTitle={questionTitle}
         questionPicture={questionPicture}
         questionRequired={questionRequired}
+        avatarQuestion={avatarQuestion}
       />
 
       <motion.div className="row" variants={answerVariants}>
@@ -103,7 +105,7 @@ const LongText = ({ answers, inputChange, updateTimerLocation, data }) => {
             </motion.div>
           )}
         </div>
-        <AvatarAnswer />
+        <AvatarAnswer avatarAnswer={avatarAnswer} />
       </motion.div>
 
       <Navigation fwd={fwd} back={back} />
