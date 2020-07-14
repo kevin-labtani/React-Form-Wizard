@@ -105,7 +105,7 @@ const FileUpload = ({
           <p className="subtitles text-muted">{questionSubtitle}</p>
           <div className="custom-file">
             <label className="custom-file-label" htmlFor="file">
-              {file ? file.name : "Choose file"}
+              {file ? file.name : `${config.placeholder_file_upload}`}
             </label>
             <input
               type="file"
