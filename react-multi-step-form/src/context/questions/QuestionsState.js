@@ -14,22 +14,22 @@ export const useQuestions = () => {
 // get questions from api
 export const getQuestions = async (dispatch) => {
   // req user from api (nb: set loading to default to true)
-  // try {
-  //   const res = await axios.get(
-  //     "https://preprod.hike-up.be/api/getATH/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434/13"
-  //     // "path/to/api"
-  //   );
-  //   console.log(res.data);
-  //   dispatch({
-  //     type: GET_QUESTIONS,
-  //     payload: res.data,
-  //   });
-  // } catch (error) {
-  //   // console.log(error);
-  //   dispatch({
-  //     type: QUESTION_ERROR,
-  //   });
-  // }
+  try {
+    const res = await axios.get(
+      "https://preprod.hike-up.be/api/getATH/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434/13"
+      // "path/to/api"
+    );
+    console.log(res.data);
+    dispatch({
+      type: GET_QUESTIONS,
+      payload: res.data,
+    });
+  } catch (error) {
+    // console.log(error);
+    dispatch({
+      type: QUESTION_ERROR,
+    });
+  }
 };
 
 const QuestionsState = (props) => {
@@ -47,6 +47,10 @@ const QuestionsState = (props) => {
         question_required: false,
         question_type_id: 8,
         question_type_name: "email",
+        avatar_answer:
+          "https://ya-webdesign.com/transparent250_/avatar-icon-png-10.png",
+        avatar_question:
+          "https://ya-webdesign.com/transparent250_/avatar-icon-png-9.png",
         box_values: null,
         parameters: null,
         default_next_id: 2,
@@ -62,6 +66,10 @@ const QuestionsState = (props) => {
         question_required: true,
         question_type_id: 6,
         question_type_name: "short_text",
+        avatar_answer:
+          "https://ya-webdesign.com/transparent250_/avatar-icon-png-10.png",
+        avatar_question:
+          "https://ya-webdesign.com/transparent250_/avatar-icon-png-9.png",
         box_values: null,
         parameters: null,
         default_next_id: 3,
@@ -77,6 +85,10 @@ const QuestionsState = (props) => {
         question_required: true,
         question_type_id: 2,
         question_type_name: "single_choice",
+        avatar_answer:
+          "https://ya-webdesign.com/transparent250_/avatar-icon-png-10.png",
+        avatar_question:
+          "https://ya-webdesign.com/transparent250_/avatar-icon-png-9.png",
         box_values: [
           {
             id: "15",
@@ -84,6 +96,7 @@ const QuestionsState = (props) => {
             picture:
               "https://via.placeholder.com/600x300/FFA07A/e3e6e9?text=Hike Up Placeholder",
             next_id_if_selected: "5",
+            col_order: "1",
           },
           {
             id: "19",
@@ -91,6 +104,7 @@ const QuestionsState = (props) => {
             picture:
               "https://via.placeholder.com/600x300/F08080/e3e6e9?text=Hike Up Placeholder",
             next_id_if_selected: "",
+            col_order: "4",
           },
           {
             id: "16",
@@ -98,6 +112,7 @@ const QuestionsState = (props) => {
             picture:
               "https://via.placeholder.com/600x300/DC143C/e3e6e9?text=Hike Up Placeholder",
             next_id_if_selected: "",
+            col_order: "2",
           },
           {
             id: "18",
@@ -105,6 +120,7 @@ const QuestionsState = (props) => {
             picture:
               "https://via.placeholder.com/600x300/B22222/e3e6e9?text=Hike Up Placeholder",
             next_id_if_selected: "",
+            col_order: "5",
           },
           {
             id: "17",
@@ -112,6 +128,7 @@ const QuestionsState = (props) => {
             picture:
               "https://via.placeholder.com/600x300/8B0000/e3e6e9?text=Hike Up Placeholder",
             next_id_if_selected: "",
+            col_order: "3",
           },
         ],
         parameters: [
@@ -139,16 +156,22 @@ const QuestionsState = (props) => {
         question_required: true,
         question_type_id: 4,
         question_type_name: "legal",
+        avatar_answer:
+          "https://ya-webdesign.com/transparent250_/avatar-icon-png-10.png",
+        avatar_question:
+          "https://ya-webdesign.com/transparent250_/avatar-icon-png-9.png",
         box_values: [
           {
             id: "11",
             label: "True",
             next_id_if_selected: "",
+            col_order: "2",
           },
           {
             id: "12",
             label: "False",
             next_id_if_selected: "",
+            col_order: "1",
           },
         ],
         parameters: null,
@@ -165,56 +188,70 @@ const QuestionsState = (props) => {
         question_required: true,
         question_type_id: 7,
         question_type_name: "opinion_scale",
+        avatar_answer:
+          "https://ya-webdesign.com/transparent250_/avatar-icon-png-10.png",
+        avatar_question:
+          "https://ya-webdesign.com/transparent250_/avatar-icon-png-9.png",
         box_values: [
           {
             id: "31",
             label: "1",
             next_id_if_selected: "",
+            col_order: "1",
           },
           {
             id: "32",
             label: "2",
             next_id_if_selected: "",
+            col_order: "2",
           },
           {
             id: "33",
             label: "3",
             next_id_if_selected: "",
+            col_order: "3",
           },
           {
             id: "34",
             label: "4",
             next_id_if_selected: "",
+            col_order: "4",
           },
           {
             id: "35",
             label: "5",
             next_id_if_selected: "",
+            col_order: "5",
           },
           {
             id: "36",
             label: "6",
             next_id_if_selected: "",
+            col_order: "6",
           },
           {
             id: "37",
             label: "7",
             next_id_if_selected: "",
+            col_order: "7",
           },
           {
             id: "38",
             label: "8",
             next_id_if_selected: "",
+            col_order: "8",
           },
           {
             id: "39",
             label: "9",
             next_id_if_selected: "",
+            col_order: "9",
           },
           {
             id: "40",
             label: "10",
             next_id_if_selected: "",
+            col_order: "10",
           },
         ],
         parameters: [
@@ -242,16 +279,22 @@ const QuestionsState = (props) => {
         question_required: true,
         question_type_id: 3,
         question_type_name: "yes_no",
+        avatar_answer:
+          "https://ya-webdesign.com/transparent250_/avatar-icon-png-10.png",
+        avatar_question:
+          "https://ya-webdesign.com/transparent250_/avatar-icon-png-9.png",
         box_values: [
           {
             id: "13",
             label: "True",
             next_id_if_selected: "",
+            col_order: "1",
           },
           {
             id: "14",
             label: "False",
             next_id_if_selected: "",
+            col_order: "2",
           },
         ],
         parameters: null,
@@ -268,6 +311,10 @@ const QuestionsState = (props) => {
         question_required: true,
         question_type_id: 9,
         question_type_name: "number",
+        avatar_answer:
+          "https://ya-webdesign.com/transparent250_/avatar-icon-png-10.png",
+        avatar_question:
+          "https://ya-webdesign.com/transparent250_/avatar-icon-png-9.png",
         box_values: null,
         parameters: [
           {
@@ -294,48 +341,59 @@ const QuestionsState = (props) => {
         question_required: true,
         question_type_id: 1,
         question_type_name: "multiple_choice",
+        avatar_answer:
+          "https://ya-webdesign.com/transparent250_/avatar-icon-png-10.png",
+        avatar_question:
+          "https://ya-webdesign.com/transparent250_/avatar-icon-png-9.png",
         box_values: [
           {
             id: "6",
             label: "Nettoyage du filtre à mazout",
             picture:
               "https://via.placeholder.com/600x300/CD853F/e3e6e9?text=Hike Up Placeholder",
+            col_order: "2",
           },
           {
             id: "9",
             label: "Ramonage du conduit de fumée",
             picture:
               "https://via.placeholder.com/600x300/BC8F8F/e3e6e9?text=Hike Up Placeholder",
+            col_order: "5",
           },
           {
             id: "10",
             label: "Test de combustion + réglages",
             picture:
               "https://via.placeholder.com/600x300/F4A460/e3e6e9?text=Hike Up Placeholder",
+            col_order: "6",
           },
           {
             id: "11",
             label: "Test de la dureté de l eau",
             picture:
               "https://via.placeholder.com/600x300/DAA520/e3e6e9?text=Hike Up Placeholder",
+            col_order: "7",
           },
           {
             id: "5",
             label: "Nettoyage du corps de chauffe",
             picture:
               "https://via.placeholder.com/600x300/D2691E/e3e6e9?text=Hike Up Placeholder",
+            col_order: "1",
           },
           {
             id: "7",
             label: "Nettoyage du bruleur",
             picture:
               "https://via.placeholder.com/600x300/A0522D/e3e6e9?text=Hike Up Placeholder",
+            col_order: "3",
           },
           {
             id: "8",
             label: "Changement du gicleur",
             picture:
               "https://via.placeholder.com/600x300/A52A2A/e3e6e9?text=Hike Up Placeholder",
+            col_order: "4",
           },
         ],
         parameters: [
@@ -363,6 +421,10 @@ const QuestionsState = (props) => {
         question_required: true,
         question_type_id: 5,
         question_type_name: "rating",
+        avatar_answer:
+          "https://ya-webdesign.com/transparent250_/avatar-icon-png-10.png",
+        avatar_question:
+          "https://ya-webdesign.com/transparent250_/avatar-icon-png-9.png",
         box_values: null,
         parameters: [
           {
@@ -384,6 +446,10 @@ const QuestionsState = (props) => {
         question_required: true,
         question_type_id: 10,
         question_type_name: "phone_number",
+        avatar_answer:
+          "https://ya-webdesign.com/transparent250_/avatar-icon-png-10.png",
+        avatar_question:
+          "https://ya-webdesign.com/transparent250_/avatar-icon-png-9.png",
         box_values: null,
         parameters: null,
         default_next_id: 12,
@@ -415,6 +481,10 @@ const QuestionsState = (props) => {
         question_required: true,
         question_type_id: 12,
         question_type_name: "long_text",
+        avatar_answer:
+          "https://ya-webdesign.com/transparent250_/avatar-icon-png-10.png",
+        avatar_question:
+          "https://ya-webdesign.com/transparent250_/avatar-icon-png-9.png",
         box_values: null,
         parameters: null,
         default_next_id: 14,
@@ -446,6 +516,10 @@ const QuestionsState = (props) => {
         question_required: false,
         question_type_id: 13,
         question_type_name: "file_upload",
+        avatar_answer:
+          "https://ya-webdesign.com/transparent250_/avatar-icon-png-10.png",
+        avatar_question:
+          "https://ya-webdesign.com/transparent250_/avatar-icon-png-9.png",
         box_values: null,
         parameters: null,
         default_next_id: 15,
@@ -477,7 +551,7 @@ const QuestionsState = (props) => {
         default_next_id: 13,
       },
     ],
-    loadingQuestions: false,
+    loadingQuestions: true,
     errorLoadingQuestions: false,
   };
 

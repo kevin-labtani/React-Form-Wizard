@@ -62,6 +62,7 @@ const ConfigState = (props) => {
       // keyboard_nav_validate: "appuyez sur Entrée ↵ pour valider  ",
       // keyboard_nav_new_line:
       //   "appuyez sur Entrée ↵ et Shift ⇧ pour une nouvelle ligne",
+      // placeholder_file_upload: "choisissez un fichier",
     },
     loadingConfig: true,
     errorLoadingConfig: false,
