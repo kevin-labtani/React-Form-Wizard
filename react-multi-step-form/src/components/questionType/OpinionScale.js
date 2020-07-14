@@ -28,6 +28,8 @@ const OpinionScale = ({
     parameters,
   } = data;
 
+  boxValues.sort((a, b) => a.col_order - b.col_order);
+
   let labelLeft, labelRight;
   parameters &&
     parameters.forEach((param) => {

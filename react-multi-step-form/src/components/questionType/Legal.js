@@ -28,6 +28,8 @@ const Legal = ({
     avatar_question: avatarQuestion,
   } = data;
 
+  boxValues.sort((a, b) => a.col_order - b.col_order);
+
   let nextQuestion = nextQuestionId;
   if (Number.isInteger(parseInt(answers[questionId]))) {
     let selected = boxValues.find((q) => q.id === answers[questionId]);

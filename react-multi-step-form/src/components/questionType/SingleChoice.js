@@ -34,7 +34,7 @@ const SingleChoice = ({
     parameters,
   } = data;
 
-  boxValues.sort((a, b) => a.id - b.id);
+  boxValues.sort((a, b) => a.col_order - b.col_order);
 
   let freeTextOption = false;
   let pictureOption = false;

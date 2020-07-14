@@ -96,7 +96,7 @@ const QuestionsState = (props) => {
             picture:
               "https://via.placeholder.com/600x300/FFA07A/e3e6e9?text=Hike Up Placeholder",
             next_id_if_selected: "5",
-            col_order: "1",
+            col_order: "10",
           },
           {
             id: "19",
@@ -104,7 +104,7 @@ const QuestionsState = (props) => {
             picture:
               "https://via.placeholder.com/600x300/F08080/e3e6e9?text=Hike Up Placeholder",
             next_id_if_selected: "",
-            col_order: "4",
+            col_order: "5",
           },
           {
             id: "16",
@@ -120,7 +120,7 @@ const QuestionsState = (props) => {
             picture:
               "https://via.placeholder.com/600x300/B22222/e3e6e9?text=Hike Up Placeholder",
             next_id_if_selected: "",
-            col_order: "5",
+            col_order: "4",
           },
           {
             id: "17",
@@ -288,13 +288,13 @@ const QuestionsState = (props) => {
             id: "13",
             label: "True",
             next_id_if_selected: "",
-            col_order: "1",
+            col_order: "2",
           },
           {
             id: "14",
             label: "False",
             next_id_if_selected: "",
-            col_order: "2",
+            col_order: "1",
           },
         ],
         parameters: null,
