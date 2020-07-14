@@ -44,7 +44,7 @@ const Welcome = ({ data, lastLocation, initAnswerState }) => {
       )}
       {lastLocation && (
         <div className="row">
-          <div className="col-md-3 offset-md-2 col-10 offset-1">
+          <div className="col-lg-3 offset-lg-2 col-10 offset-1">
             <button
               className="btn btn-primary btn-lg btn-block mt-3"
               onClick={continueFromLast}
@@ -52,7 +52,7 @@ const Welcome = ({ data, lastLocation, initAnswerState }) => {
               {config.button_continue}
             </button>
           </div>
-          <div className="col-md-3 offset-md-2 col-10 offset-1">
+          <div className="col-lg-3 offset-lg-2 col-10 offset-1">
             <button
               className="btn btn-danger btn-lg btn-block mt-3"
               onClick={fwd}
