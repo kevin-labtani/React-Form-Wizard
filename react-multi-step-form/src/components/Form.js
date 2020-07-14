@@ -85,13 +85,13 @@ const Form = () => {
     }
   }, []);
 
-  // save data to localStorage
-  useEffect(() => {
-    localStorage.setItem("answers", JSON.stringify(answers));
-    localStorage.setItem("timings", JSON.stringify(timings));
-    localStorage.setItem("responseUuid", JSON.stringify(responseUuid));
-    localStorage.setItem("lastLocation", JSON.stringify(lastLocation));
-  }, [answers, timings, responseUuid, lastLocation]);
+  // save data to localStorage now in onbeforeupload
+  // useEffect(() => {
+  //   localStorage.setItem("answers", JSON.stringify(answers));
+  //   localStorage.setItem("timings", JSON.stringify(timings));
+  //   localStorage.setItem("responseUuid", JSON.stringify(responseUuid));
+  //   localStorage.setItem("lastLocation", JSON.stringify(lastLocation));
+  // }, [answers, timings, responseUuid, lastLocation]);
 
   // initialize answer object
   //  QUESTION ID KEY:
@@ -321,18 +321,18 @@ const Form = () => {
   };
 
   // for partial submission
-  // window.onbeforeunload = () => {
-  //   localStorage.setItem("answers", JSON.stringify(answers));
-  //   localStorage.setItem("timings", JSON.stringify(timings));
-  //   localStorage.setItem("responseUuid", JSON.stringify(responseUuid));
-  //   localStorage.setItem("lastLocation", JSON.stringify(lastLocation));
+  window.onbeforeunload = () => {
+    localStorage.setItem("answers", JSON.stringify(answers));
+    localStorage.setItem("timings", JSON.stringify(timings));
+    localStorage.setItem("responseUuid", JSON.stringify(responseUuid));
+    localStorage.setItem("lastLocation", JSON.stringify(lastLocation));
 
-  //   navigator.sendBeacon(
-  //     `https://cors-anywhere.herokuapp.com/https://preprod.hike-up.be/api/fillARH/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434/${responseUuid}/${lastLocation}/false`,
-  //     "partialSubmit"
-  //   );
-  //   return "Are you sure you want to leave?";
-  // };
+    navigator.sendBeacon(
+      `https://cors-anywhere.herokuapp.com/https://preprod.hike-up.be/api/fillARH/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434/${responseUuid}/${lastLocation}/false`,
+      "partialSubmit"
+    );
+    return "Are you sure you want to leave?";
+  };
 
   // create the switch with all the questions we got from the api, one case per question type
   let questionsSwitch = [];
