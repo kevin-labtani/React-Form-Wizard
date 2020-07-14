@@ -299,8 +299,6 @@ const Form = () => {
     let data = constructAnswer();
     try {
       console.log(data);
-      // https://cors-anywhere.herokuapp.com/https://preprod.hike-up.be/api/fillARH/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434/${responseUuid}
-      // `https://jsonplaceholder.typicode.com/posts`
       let res = await axios.post(
         `https://preprod.hike-up.be/api/fillARH/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434/${responseUuid}/true`,
         JSON.stringify(data),
@@ -327,9 +325,20 @@ const Form = () => {
     localStorage.setItem("responseUuid", JSON.stringify(responseUuid));
     localStorage.setItem("lastLocation", JSON.stringify(lastLocation));
 
+    // extract assessment_id from welcome question
+    let assessmentId;
+    questions.forEach((q) => {
+      if (q.question_type_id === 15) {
+        assessmentId = q.assessment_id;
+      }
+    });
+
     navigator.sendBeacon(
-      `https://cors-anywhere.herokuapp.com/https://preprod.hike-up.be/api/fillARH/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434/${responseUuid}/${lastLocation}/false`,
+      `https://preprod.hike-up.be/api/fillARH/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434/${responseUuid}/false/${lastLocation}/${assessmentId}`,
       "partialSubmit"
+    );
+    console.log(
+      `https://preprod.hike-up.be/api/fillARH/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434/${responseUuid}/false/${lastLocation}/${assessmentId}`
     );
     return "Are you sure you want to leave?";
   };
