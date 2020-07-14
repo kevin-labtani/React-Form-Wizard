@@ -43,7 +43,6 @@ const Number = ({ answers, inputChange, updateTimerLocation, data }) => {
   const { push, goBack } = useHistory();
 
   const fwd = (e) => {
-    e.preventDefault();
     if (
       (questionRequired &&
         (!answers[questionId] ||
@@ -66,7 +65,6 @@ const Number = ({ answers, inputChange, updateTimerLocation, data }) => {
   };
 
   const back = (e) => {
-    e.preventDefault();
     goBack();
   };
 

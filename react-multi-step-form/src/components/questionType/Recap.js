@@ -42,12 +42,10 @@ const Recap = ({
   const { push } = useHistory();
 
   const fwd = (e) => {
-    e.preventDefault();
     sendAnswer(nextQuestionId);
   };
 
   const changeAnswer = (questionId, e) => {
-    e.preventDefault();
     push(`/${questionId}`);
   };
 

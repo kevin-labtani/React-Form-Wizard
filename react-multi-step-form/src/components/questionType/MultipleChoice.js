@@ -62,7 +62,6 @@ const MultipleChoice = ({
   const { push, goBack } = useHistory();
 
   const fwd = (e) => {
-    e.preventDefault();
     if (questionRequired && answers[questionId].length === 0) {
       setAlert(config.alert_choice, "danger");
     } else {
@@ -76,7 +75,6 @@ const MultipleChoice = ({
   };
 
   const back = (e) => {
-    e.preventDefault();
     goBack();
   };
 

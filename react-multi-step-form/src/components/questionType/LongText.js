@@ -35,7 +35,7 @@ const LongText = ({ answers, inputChange, updateTimerLocation, data }) => {
   const { push, goBack } = useHistory();
 
   const fwd = (e) => {
-    e.preventDefault();
+
     if (questionRequired && !answers[questionId]) {
       setAlert(config.alert_empty_field, "danger");
     } else if (answers[questionId] && answers[questionId].length > 256) {
@@ -51,7 +51,6 @@ const LongText = ({ answers, inputChange, updateTimerLocation, data }) => {
   };
 
   const back = (e) => {
-    e.preventDefault();
     goBack();
   };
 

@@ -36,7 +36,6 @@ const PhoneNumber = ({ answers, inputChange, updateTimerLocation, data }) => {
   const { push, goBack } = useHistory();
 
   const fwd = (e) => {
-    e.preventDefault();
     if (
       (questionRequired && !isMobilePhone(answers[questionId])) ||
       (!questionRequired &&
@@ -55,7 +54,6 @@ const PhoneNumber = ({ answers, inputChange, updateTimerLocation, data }) => {
   };
 
   const back = (e) => {
-    e.preventDefault();
     goBack();
   };
 

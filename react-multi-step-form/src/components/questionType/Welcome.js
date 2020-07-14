@@ -18,13 +18,11 @@ const Welcome = ({ data, lastLocation, initAnswerState }) => {
   const { push } = useHistory();
 
   const fwd = (e) => {
-    e.preventDefault();
     push(`/${nextQuestionId}`);
     initAnswerState();
   };
 
   const continueFromLast = (e) => {
-    e.preventDefault();
     push(`/${lastLocation}`);
   };
 

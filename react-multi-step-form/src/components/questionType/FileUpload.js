@@ -38,7 +38,6 @@ const FileUpload = ({
   const [uploadPercentage, setUploadPercentage] = useState(0);
 
   const fwd = (e) => {
-    e.preventDefault();
     if (questionRequired && !answers[questionId]) {
       setAlert(config.alert_file_upload_choice, "danger");
     } else {
@@ -52,7 +51,6 @@ const FileUpload = ({
   };
 
   const back = (e) => {
-    e.preventDefault();
     goBack();
   };
 

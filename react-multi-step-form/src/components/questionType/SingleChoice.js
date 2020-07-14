@@ -70,7 +70,6 @@ const SingleChoice = ({
   const { push, goBack } = useHistory();
 
   const fwd = (e) => {
-    e.preventDefault();
     if (questionRequired && !answers[questionId]) {
       setAlert(config.alert_choice, "danger");
     } else {
@@ -84,7 +83,6 @@ const SingleChoice = ({
   };
 
   const back = (e) => {
-    e.preventDefault();
     goBack();
   };
 
