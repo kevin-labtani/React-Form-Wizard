@@ -349,280 +349,194 @@ const Form = () => {
     switch (q.question_type_id) {
       case 1:
         questionsSwitch.push(
-          <Route
-            key={`${q.question_id}`}
-            exact
-            path={`/${q.question_id}`}
-            render={(routeProps) => (
-              <MultipleChoice
-                {...routeProps}
-                multiCheckboxChange={multiCheckboxChange}
-                updateTimerLocation={updateTimerLocation}
-                answers={answers}
-                data={q}
-              />
-            )}
-          />
+          <Route key={`${q.question_id}`} exact path={`/${q.question_id}`}>
+            <MultipleChoice
+              multiCheckboxChange={multiCheckboxChange}
+              updateTimerLocation={updateTimerLocation}
+              answers={answers}
+              data={q}
+            />
+          </Route>
         );
         break;
 
       case 2:
         questionsSwitch.push(
-          <Route
-            key={`${q.question_id}`}
-            exact
-            path={`/${q.question_id}`}
-            render={(routeProps) => (
-              <SingleChoice
-                {...routeProps}
-                singleCheckboxChangePush={singleCheckboxChangePush}
-                inputChange={inputChange}
-                updateTimerLocation={updateTimerLocation}
-                answers={answers}
-                data={q}
-              />
-            )}
-          />
+          <Route key={`${q.question_id}`} exact path={`/${q.question_id}`}>
+            <SingleChoice
+              singleCheckboxChangePush={singleCheckboxChangePush}
+              inputChange={inputChange}
+              updateTimerLocation={updateTimerLocation}
+              answers={answers}
+              data={q}
+            />
+          </Route>
         );
         break;
 
       case 3:
         questionsSwitch.push(
-          <Route
-            key={`${q.question_id}`}
-            exact
-            path={`/${q.question_id}`}
-            render={(routeProps) => (
-              <YesNo
-                {...routeProps}
-                singleCheckboxChangePush={singleCheckboxChangePush}
-                updateTimerLocation={updateTimerLocation}
-                answers={answers}
-                data={q}
-              />
-            )}
-          />
+          <Route key={`${q.question_id}`} exact path={`/${q.question_id}`}>
+            <YesNo
+              singleCheckboxChangePush={singleCheckboxChangePush}
+              updateTimerLocation={updateTimerLocation}
+              answers={answers}
+              data={q}
+            />
+          </Route>
         );
         break;
 
       case 4:
         questionsSwitch.push(
-          <Route
-            key={`${q.question_id}`}
-            exact
-            path={`/${q.question_id}`}
-            render={(routeProps) => (
-              <Legal
-                {...routeProps}
-                singleCheckboxChangePush={singleCheckboxChangePush}
-                updateTimerLocation={updateTimerLocation}
-                answers={answers}
-                data={q}
-              />
-            )}
-          />
+          <Route key={`${q.question_id}`} exact path={`/${q.question_id}`}>
+            <Legal
+              singleCheckboxChangePush={singleCheckboxChangePush}
+              updateTimerLocation={updateTimerLocation}
+              answers={answers}
+              data={q}
+            />
+          </Route>
         );
         break;
 
       case 5:
         questionsSwitch.push(
-          <Route
-            key={`${q.question_id}`}
-            exact
-            path={`/${q.question_id}`}
-            render={(routeProps) => (
-              <Rating
-                {...routeProps}
-                inputChangePush={inputChangePush}
-                updateTimerLocation={updateTimerLocation}
-                answers={answers}
-                data={q}
-              />
-            )}
-          />
+          <Route key={`${q.question_id}`} exact path={`/${q.question_id}`}>
+            <Rating
+              inputChangePush={inputChangePush}
+              updateTimerLocation={updateTimerLocation}
+              answers={answers}
+              data={q}
+            />
+          </Route>
         );
         break;
 
       case 6:
         questionsSwitch.push(
-          <Route
-            key={`${q.question_id}`}
-            exact
-            path={`/${q.question_id}`}
-            render={(routeProps) => (
-              <ShortText
-                {...routeProps}
-                inputChange={inputChange}
-                updateTimerLocation={updateTimerLocation}
-                answers={answers}
-                data={q}
-              />
-            )}
-          />
+          <Route key={`${q.question_id}`} exact path={`/${q.question_id}`}>
+            <ShortText
+              inputChange={inputChange}
+              updateTimerLocation={updateTimerLocation}
+              answers={answers}
+              data={q}
+            />
+          </Route>
         );
         break;
 
       case 7:
         questionsSwitch.push(
-          <Route
-            key={`${q.question_id}`}
-            exact
-            path={`/${q.question_id}`}
-            render={(routeProps) => (
-              <OpinionScale
-                {...routeProps}
-                singleCheckboxChangePush={singleCheckboxChangePush}
-                updateTimerLocation={updateTimerLocation}
-                answers={answers}
-                data={q}
-              />
-            )}
-          />
+          <Route key={`${q.question_id}`} exact path={`/${q.question_id}`}>
+            <OpinionScale
+              singleCheckboxChangePush={singleCheckboxChangePush}
+              updateTimerLocation={updateTimerLocation}
+              answers={answers}
+              data={q}
+            />
+          </Route>
         );
         break;
 
       case 8:
         questionsSwitch.push(
-          <Route
-            key={`${q.question_id}`}
-            exact
-            path={`/${q.question_id}`}
-            render={(routeProps) => (
-              <Email
-                {...routeProps}
-                inputChange={inputChange}
-                updateTimerLocation={updateTimerLocation}
-                answers={answers}
-                data={q}
-              />
-            )}
-          />
+          <Route key={`${q.question_id}`} exact path={`/${q.question_id}`}>
+            <Email
+              inputChange={inputChange}
+              updateTimerLocation={updateTimerLocation}
+              answers={answers}
+              data={q}
+            />
+          </Route>
         );
         break;
 
       case 9:
         questionsSwitch.push(
-          <Route
-            key={`${q.question_id}`}
-            exact
-            path={`/${q.question_id}`}
-            render={(routeProps) => (
-              <Number
-                {...routeProps}
-                inputChange={inputChange}
-                updateTimerLocation={updateTimerLocation}
-                answers={answers}
-                data={q}
-              />
-            )}
-          />
+          <Route key={`${q.question_id}`} exact path={`/${q.question_id}`}>
+            <Number
+              inputChange={inputChange}
+              updateTimerLocation={updateTimerLocation}
+              answers={answers}
+              data={q}
+            />
+          </Route>
         );
         break;
 
       case 10:
         questionsSwitch.push(
-          <Route
-            key={`${q.question_id}`}
-            exact
-            path={`/${q.question_id}`}
-            render={(routeProps) => (
-              <PhoneNumber
-                {...routeProps}
-                inputChange={inputChange}
-                updateTimerLocation={updateTimerLocation}
-                answers={answers}
-                data={q}
-              />
-            )}
-          />
+          <Route key={`${q.question_id}`} exact path={`/${q.question_id}`}>
+            <PhoneNumber
+              inputChange={inputChange}
+              updateTimerLocation={updateTimerLocation}
+              answers={answers}
+              data={q}
+            />
+          </Route>
         );
         break;
 
       case 12:
         questionsSwitch.push(
-          <Route
-            key={`${q.question_id}`}
-            exact
-            path={`/${q.question_id}`}
-            render={(routeProps) => (
-              <LongText
-                {...routeProps}
-                inputChange={inputChange}
-                updateTimerLocation={updateTimerLocation}
-                answers={answers}
-                data={q}
-              />
-            )}
-          />
+          <Route key={`${q.question_id}`} exact path={`/${q.question_id}`}>
+            <LongText
+              inputChange={inputChange}
+              updateTimerLocation={updateTimerLocation}
+              answers={answers}
+              data={q}
+            />
+          </Route>
         );
         break;
 
       case 13:
         questionsSwitch.push(
-          <Route
-            key={`${q.question_id}`}
-            exact
-            path={`/${q.question_id}`}
-            render={(routeProps) => (
-              <FileUpload
-                {...routeProps}
-                fileUploadChange={fileUploadChange}
-                updateTimerLocation={updateTimerLocation}
-                answers={answers}
-                data={q}
-              />
-            )}
-          />
+          <Route key={`${q.question_id}`} exact path={`/${q.question_id}`}>
+            <FileUpload
+              fileUploadChange={fileUploadChange}
+              updateTimerLocation={updateTimerLocation}
+              answers={answers}
+              data={q}
+            />
+          </Route>
         );
         break;
 
       case 15:
         questionsSwitch.push(
-          <Route
-            key={`${q.question_id}`}
-            exact
-            path="/"
-            render={(routeProps) => (
-              <Welcome
-                {...routeProps}
-                data={q}
-                lastLocation={lastLocation}
-                initAnswerState={initAnswerState}
-              />
-            )}
-          />
+          <Route key={`${q.question_id}`} exact path="/">
+            <Welcome
+              data={q}
+              lastLocation={lastLocation}
+              initAnswerState={initAnswerState}
+            />
+          </Route>
         );
         break;
 
       case 16:
         questionsSwitch.push(
-          <Route
-            key={`${q.question_id}`}
-            exact
-            path={`/${q.question_id}`}
-            render={(routeProps) => <ThankYou {...routeProps} data={q} />}
-          />
+          <Route key={`${q.question_id}`} exact path={`/${q.question_id}`}>
+            <ThankYou data={q} />
+          </Route>
         );
         break;
 
       case 17:
         questionsSwitch.push(
-          <Route
-            key={`${q.question_id}`}
-            exact
-            path={`/${q.question_id}`}
-            render={(routeProps) => (
-              <Recap
-                {...routeProps}
-                data={q}
-                answers={answers}
-                questions={questions}
-                sendAnswer={sendAnswer}
-                uploading={uploading}
-                errorUploading={errorUploading}
-              />
-            )}
-          />
+          <Route key={`${q.question_id}`} exact path={`/${q.question_id}`}>
+            {" "}
+            <Recap
+              data={q}
+              answers={answers}
+              questions={questions}
+              sendAnswer={sendAnswer}
+              uploading={uploading}
+              errorUploading={errorUploading}
+            />
+          </Route>
         );
         break;
 
