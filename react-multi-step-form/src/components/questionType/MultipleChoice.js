@@ -51,8 +51,8 @@ const MultipleChoice = ({
   const [freeTextInput, setfreeTextInput] = useState(false);
   const [freeTextInputAnimate, setfreeTextInputAnimate] = useState(false);
   const [freeText, setFreeText] = useState(
-    answers[questionId] && answers[questionId].filter((el) => isNaN(el))[0]
-      ? answers[questionId].filter((el) => isNaN(el))[0].substr(1)
+    answers[questionId] && answers[questionId].filter((el) => el[0] === "$")[0]
+      ? answers[questionId].filter((el) => el[0] === "$")[0].substr(1)
       : ""
   );
 
