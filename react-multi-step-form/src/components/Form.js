@@ -298,7 +298,7 @@ const Form = () => {
     setUploading(true);
     let data = constructAnswer();
     try {
-      console.log(data);
+      // console.log(data);
       let res = await axios.post(
         `https://preprod.hike-up.be/api/fillARH/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434/${responseUuid}/true`,
         JSON.stringify(data),
@@ -308,13 +308,13 @@ const Form = () => {
           },
         }
       );
-      console.log(`Status code: ${res.status}`);
+      // console.log(`Status code: ${res.status}`);
       nextQuestionId && push(`/${nextQuestionId}`);
       setUploading(false);
     } catch (err) {
       setErrorUploading(true);
       setUploading(false);
-      console.log(err);
+      // console.log(err);
     }
   };
 
@@ -336,9 +336,6 @@ const Form = () => {
     navigator.sendBeacon(
       `https://preprod.hike-up.be/api/fillARH/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434/${responseUuid}/false/${lastLocation}/${assessmentId}`,
       "partialSubmit"
-    );
-    console.log(
-      `https://preprod.hike-up.be/api/fillARH/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434/${responseUuid}/false/${lastLocation}/${assessmentId}`
     );
     return "Are you sure you want to leave?";
   };

@@ -19,7 +19,7 @@ export const getQuestions = async (dispatch) => {
       "https://preprod.hike-up.be/api/getATH/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434/13"
       // "path/to/api"
     );
-    console.log(res.data);
+    // console.log(res.data);
     dispatch({
       type: GET_QUESTIONS,
       payload: res.data,

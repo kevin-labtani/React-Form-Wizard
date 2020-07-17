@@ -81,7 +81,7 @@ const FileUpload = ({
       fileUploadChange(questionId)(res.data.uniqueName);
     } catch (err) {
       if (!err.response || err.response.status >= 400) {
-        console.log(err);
+        // console.log(err);
         setAlert(config.alert_file_upload_error, "danger");
         setUploadPercentage(0);
       }
