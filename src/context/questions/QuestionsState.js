@@ -452,9 +452,9 @@ const QuestionsState = (props) => {
         assessment_name: "App Demo",
         assessment_creation_date: "2020-05-07 08:40:20",
         question_id: 11,
-        question_name: "Bienvenue sur notre Wizard Form",
+        question_name: "Bienvenue sur notre Survey Wizard",
         question_subtitle:
-          "Veuillez noter que cet exemple de l'application n'est pas lié à un back-end et que vos réponses ne sont sauvegardées qu'au niveau de votre navigateur. De plus il ne vous sera pas possible d'uploader un fichier à la question type 'FileUpload', il n'est donc obligatoire de répondre à cette question pour continuer.",
+          "Cet exemple de l'application implémente une question pour chaque question type existant. Veuillez noter que cet exemple n'est pas lié à un back-end et que vos réponses ne sont sauvegardées qu'au niveau de votre navigateur.",
         question_picture:
           "https://via.placeholder.com/800x300/2e84dd/e3e6e9?text=Placeholder",
         question_type_id: 15,

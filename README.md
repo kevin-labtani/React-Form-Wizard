@@ -1,92 +1,56 @@
-# Catch-Up Wizard Form
+# Survey Wizard
 
-## Question types
+![Aperçu du projet - capture d’écran](./readme-assets/screenshot.png)
 
-- multiple_choice
-- single_choice
-- yes_no
-- legal
-- rating
-- short_text
-- opinion_scale
-- email
-- number
+## Présentation du Projet
 
-## Prototyping
+Projet créé par [**Kevin Labtani**](https://github.com/kevin-labtani) dans le cadre de mon stage chez [Hike-Up](https://hike-up.be/) de début avril à fin juillet 2020.
 
-### Multi-step form with react
+Le but du projet est de développer la partie front-end utilisateur d'une application d'enquêtes en ligne équivalent à Typeform mais répondant aux besoins spécifiques de Hike-Up. L'outil de création d'enquêtes et le back-end sont gérés de manière séparée à cette application.
 
-`Form` is the parent component and keep track of the step (a number corresponding to the specific form step we're at), the state for all the fields and methods `nextStep()` and `prevStep()` to navigate through the form. We use a switch statement to keep track of which component to serve to the user.  
-Then we simply have one component for each page.  
-Interaction with back-end would be on Confirm page.  
-You could process the form at each steps in the `cont()` or `back()` function.
+nb: J'ai obtenu l'autorisation de partager le code à des fins non commerciales.
 
-### Formik clone with react hooks
+## Fonctionalités de l'Application
 
-We start with a classic react class component ans build a Formik clone with hooks in order to handle our forms.  
-While extra verbose, the advantage of our `useFormik` hooks is that it is completely decoupled from our Form component.  
-handleBlur is used to inform us that a user has touched the field; we use blur (vs mousedown) for error display reasons, we don't want to show a validation error until the user has touched the field.  
-useEffect is used to validate the form when a user makes a change and blur  
-nb: typically we'll want to disable the submit button while another submission is going on, that's why `isSubmitting` is important.
-To go further we could put formik into context
 
-### Using formik 2.0
+## Installation de l'Application
 
-We're using yup for validation and material-ui for the ui.  
-`useFormik` doesn't allow you to wrap your componenet in a context, so we use the `Formik` instead.  
-Note how we can simplify our code using the formik `Field` component:
+`npm install` pour installer les dépendance
+`npm start` pour lancer l'application en mode développement
 
-```js
-<Field placeholder="first name" name="firstName" type="input" as={TextField}/>
-// is equivalent to: (and the placeholder prop is passed to MUI TextField)
-<TextField
-  placeholder="first name"
-  name="firstName" // line up with what we want stores in the formik state
-  value={values.firstName}
-  onChange={handleChange}
-  onBlur={handleBlur}
-/>
-```
+Cette application étant créée par `create-react-app`, veuillez vous référer à leur [documentation](https://create-react-app.dev/docs/getting-started/) pour plus de détails.
 
-we can also use the `Form` component to not have to manually pass a `handleSubmit()` method to the form  
-When an UI component doesn't map cleanly to a formik `Field` we can create a custom Field component
+## Exigences d'implémentation relatif à l'API back-end
 
-### Using react-hook-form
+Cette application est dépendante d'une API REST fournissant les routes suivantes:
 
-Validation using react-hook-form.  
-We register each input ref into react-hook-form so it can subscribe and listen to the changes and valdiate data at the end.  
-Errors auto clear when user corrects them.
+- Route GET pour récupérer les questions au niveau de la fonction `getQuestions` du fichier [`QuestionState.js`](./src/context/questions/QuestionsState.js). Une implémentation de chaque question type est fournie dans l'`initialState` de ce même fichier.
+- Route GET pour récupérer les options de configuration au niveau de la fonction `getConfig` du fichier [`ConfigState.js`](./src/context/config/ConfigState.js) Une implémentation type est fournie dans l'`initialState` de ce même fichier.
+- Route POST pour envoyer les réponses au niveau de la fonction `sendAnswer` du fichier [`Form.js`](./src/components/Form.js). La réponse est construite par la fonction `constructAnswer`; alternativement, vous pouvez décommenter le `console.log(data);` dans la fonction `sendAnswer` et soumettre un questionnaire rempli (soumission par la question type recap), ce qui vous permettra d'avoir dans la console l'objet envoyé en réponse à l'API.
+- Route POST pour gérer une soumission partielle du questionnaire au niveau de la fonction `window.onbeforeunload` du fichier [`Form.js`](./src/components/Form.js). Lorsqu'un utilisateur quitte prématurément le questionnaire, l'application envoye par la méthode `sendBeacon` de l'API Web `Navigator` une requête vers la route `https://url/to/api/${responseUuid}/false/${lastLocation}/${assessmentId}` pour informer le back-end du fait qu'un utilisateur a quitté le questionnaire sans le soumettre avec l'id de la dernière réponse atteinte par l'utilisateur (lastLocation), l'id du questionnaire (assessmentId) et l'uuiid assigné à cet utilisateur (responseUuid).
+- Route POST (Content-Type: multipart/form-data) pour envoyer des fichiers (eg. images ou pdf) au niveau de la fonction `uploadHandler` du fichier [`FileUpload.js`](./src/components/questionType/FileUpload.js) pour la question type FileUpload.
 
-### Multi-step form with react-hook-form
+## Structure du Projet
 
-We're using react-router for routing and little-state-machine as our equivalent of redux and for persistent storage.
+Le projet contient ??
 
-### Multi-step form with formik
+## Contributeur
 
-Let's compare our implementation of a multi step form with formik tot he react-hook-form implementation
+- [**Kevin Labtani**](https://github.com/kevin-labtani)
 
-### Formik wizard form example
+## Technologies
 
-Example from formik doc
+- React par `create-react-app`, avec les packages `react-router-dom` pour le routing et `framer-motion` pour les animations.
+- Axios pour les requêtes http.
+- Bootstrap + Sass.
+- Font Awesome pour les icônes.
 
-### React hook form wizard form final
+code formaté par `prettier` et linté par `eslint`.
 
-We'll be using the following packages:
+## Progression
 
-- react-router-dom for routing
-- react-hook-form for form creation and validation
-- little-state-machine for state management
+Projet terminé le 17 juillet 2020 suite à la fin de mon stage.
 
-I ran into problems with conditional routing due to the fact that react-hook-form works with uncontrolled components and having to push() to a specific route dependent on state at the same time as having to update said state
+## Remerciements
 
-## Survey Wizard
-
-We'll be continuing with the react-multi-step-form prototype.  
-The app is created with [create-react-app (cra)](https://create-react-app.dev/), using npx by running `npx create-react-app .` in the app folder  
-We are using bootstrap for styling, see [here](https://blog.logrocket.com/how-to-use-bootstrap-with-react-a354715d1121/) for options on how to install bootstrap in react project, as of now we added bootstrap as a dependency, and webpack is running in the background of cra, so do a `npm install bootstrap` and import the css in our `index.js`, we'll need to add popper.js and jquery if we want to use bootstrap's js components  
-Routing is handled by [react-router-dom](https://reacttraining.com/react-router/web/guides/quick-start), so `npm install react-router-dom`
-We need `uuid` for random id generation, `npm install uuid`
-We use `sass` to write our css, `npm install node-sass`
-We'll use `validator.js` for validation, `npm install validator`
-
-TODO: integrate font-awesome?
+- Christophe Masse, Sébastien Archambeau & Dominique Pellegrino [Hike-Up](https://hike-up.be/) pour l'opportunité de prester mon stage chez eux.
