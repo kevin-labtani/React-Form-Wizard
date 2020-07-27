@@ -10,8 +10,52 @@ Le but du projet est de développer la partie front-end utilisateur d'une applic
 
 nb: J'ai obtenu l'autorisation de partager le code à des fins non commerciales.
 
-## Fonctionalités de l'Application
+## Fonctionnalités de l'Application
 
+15 questions type sont implémentés:
+
+- **MultipleChoice** pour les questions à choix multiples.
+- **SingleChoice** pour les questions à choix unique.
+- **YesNo** pour les questions de type oui-non ou vrai-faux.
+- **Legal** pour les questions oui-non de type legal.
+- **Rating** pour les questions de type évaluation.
+- **ShortText** pour les questions de type textes courts.
+- **OpinionScale** pour les questions de type opinion.
+- **Email** pour les questions de type email.
+- **Number** pour les questions de type nombre.
+- **PhoneNumber** pour les questions de type numéro de téléphone.
+- **LongText** pour les questions de type textes longs.
+- **FileUpload** pour les questions de type upload de fichier.
+- **Welcome** pour la première page du questionnaire (à usage unique).
+- **ThankYou** pour la dernière page du questionnaire (à usage unique).
+- **Recap** pour présenter une récapitulation des réponses et soumettre le questionnaire (à usage unique).
+
+### Fonctionnalités Générales de l'Application
+
+Le temps (en secondes) passé par l'utilisateur sur chaque question est enregistré et envoyé au back-end lors de la soumission des réponses.
+
+Les données suivantes sont extraites du browser de l'utilisateur et envoyées au back-end lors de la soumission des réponses: nom du browser, useragent du browser, langue préférée de l'utilisateur, platforme de l'utilisateur (eg. windows), referrer, et dans le cas où l'utilisateur est sur un mobile: type d'appareil mobile (gsm ou tablette) et OS du Mobile.
+
+Un mode de soumission partielle est implémenté, si l'utilisateur quitte le questionnaire sans soumettre ses réponses, un appel vers le back-end est effectué pour enregistrer l'id de la dernière question répondue, l'id du questionnaire et l'id assigné à l'utilisateur.
+De plus, les données nécessaires à la reprise en cours du questionnnaire sont enregistrées en `localStorage`, l'utilisateur a donc la possibilité lors d'une session ultérieure de reprendre le questionnaire là où il en était si il le souhaite, cette option lui sera automatiquement présentée lors qu'il rechargera le questionnaire.
+
+### Fonctionnalités spécifiques aux questions
+
+Veuillez vous référer à la variable `initialState` du fichier [`QuestionsState.js`](./src/context/questions/QuestionsState.js) pour une exemple d'implémentation de chaque question type. Une description des fonctionnalités notables suit.
+
+Toutes les questions type sauf les questions type **Welcome**, **ThankYou** & **Recap**:
+
+- peuvent être rendues obligatoires ou optionnelles par la clé `question_required`; les questions obligatoires sont marquées par une `*` après le titre de la question.
+- ont la possibilité d'intégrer une image dans la bulle question, en dessous du titre de la question, par la clé `question_picture`.
+- ont la possibilité d'avoir un `avatar_answer` et un `avatar_question` différent par question, par les clés du même nom.
+- une validation est implémentée spécifiquement question type par question type (eg. un email valide doit être entré pour la question type email où un message d'erreur sera affiché à l'utilisateur).
+
+Les questions présentant un choix unique (**YesNo**, **Legal**, **SingleChoice**, **OpinionScale**) ont la possibilité d'implémenter une navigation conditionnelle dans le questionnaire, sur base du choix effectué, en passant une `question_id` valide à la clé `next_id_if_selected` (qui va passer outre la clé par défaut `default_next_id`) de chaque choix (`box_values`) pour les quatre questions sus-citées.
+
+Les questions type **SingleChoice** & **MultipleChoice**:
+
+- acceptent un paramètre optionel `other` permettant une réponse libre de l'utilisateur.
+- acceptent un paramètre optionel `picture` permettant l'affichage d'une image pour chaque choix, avec ou sans `label`, pour autant qu'une clé `picture` soit présente pour chaque choix (`box_values`).
 
 ## Installation de l'Application
 
@@ -53,4 +97,4 @@ Projet terminé le 17 juillet 2020 suite à la fin de mon stage.
 
 ## Remerciements
 
-- Christophe Masse, Sébastien Archambeau & Dominique Pellegrino [Hike-Up](https://hike-up.be/) pour l'opportunité de prester mon stage chez eux.
+- Christophe Masse, Sébastien Archambeau & Dominique Pellegrino de chez [Hike-Up](https://hike-up.be/) pour l'opportunité de prester mon stage chez eux.

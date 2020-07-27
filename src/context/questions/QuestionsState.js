@@ -454,7 +454,7 @@ const QuestionsState = (props) => {
         question_id: 11,
         question_name: "Bienvenue sur notre Survey Wizard",
         question_subtitle:
-          "Cet exemple de l'application implémente une question pour chaque question type existant. Veuillez noter que cet exemple n'est pas lié à un back-end et que vos réponses ne sont sauvegardées qu'au niveau de votre navigateur.",
+          "Cet exemple de l'application implémente une question pour chaque question type existant. Veuillez noter que cet exemple de l'application n'est pas lié à un back-end et que vos réponses ne sont sauvegardées qu'au niveau de votre navigateur.",
         question_picture:
           "https://via.placeholder.com/800x300/2e84dd/e3e6e9?text=Placeholder",
         question_type_id: 15,
