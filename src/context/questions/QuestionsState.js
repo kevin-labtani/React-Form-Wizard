@@ -94,7 +94,7 @@ const QuestionsState = (props) => {
             id: "15",
             label: "Aquamarine",
             picture:
-              "https://via.placeholder.com/600x300/7FFFD4/e3e6e9?text=Placeholder",
+              "https://via.placeholder.com/600x150/7FFFD4/e3e6e9?text=Placeholder",
             next_id_if_selected: "",
             col_order: "1",
           },
@@ -102,7 +102,7 @@ const QuestionsState = (props) => {
             id: "19",
             label: "Turquoise",
             picture:
-              "https://via.placeholder.com/600x300/40E0D0/e3e6e9?text=Placeholder",
+              "https://via.placeholder.com/600x150/40E0D0/e3e6e9?text=Placeholder",
             next_id_if_selected: "",
             col_order: "3",
           },
@@ -110,7 +110,7 @@ const QuestionsState = (props) => {
             id: "16",
             label: "SteelBlue",
             picture:
-              "https://via.placeholder.com/600x300/4682B4/e3e6e9?text=Placeholder",
+              "https://via.placeholder.com/600x150/4682B4/e3e6e9?text=Placeholder",
             next_id_if_selected: "",
             col_order: "2",
           },
@@ -118,7 +118,7 @@ const QuestionsState = (props) => {
             id: "18",
             label: "RoyalBlue",
             picture:
-              "https://via.placeholder.com/600x300/4169E1/e3e6e9?text=Placeholder",
+              "https://via.placeholder.com/600x150/4169E1/e3e6e9?text=Placeholder",
             next_id_if_selected: "",
             col_order: "4",
           },

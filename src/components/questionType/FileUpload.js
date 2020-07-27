@@ -63,7 +63,7 @@ const FileUpload = ({
     try {
       let res = await axios.post(
         // add your url to the backend api
-        "",
+        "https://jsonplaceholder.typicode.com/posts",
         fd,
         {
           headers: {
