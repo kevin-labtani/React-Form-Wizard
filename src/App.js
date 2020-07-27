@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
+import { MemoryRouter as Router } from "react-router-dom";
 import AlertState from "./context/alert/AlertState";
 import QuestionsState from "./context/questions/QuestionsState";
 import ConfigState from "./context/config/ConfigState";
