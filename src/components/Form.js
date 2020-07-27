@@ -85,14 +85,6 @@ const Form = () => {
     }
   }, []);
 
-  // save data to localStorage now in onbeforeupload
-  // useEffect(() => {
-  //   localStorage.setItem("answers", JSON.stringify(answers));
-  //   localStorage.setItem("timings", JSON.stringify(timings));
-  //   localStorage.setItem("responseUuid", JSON.stringify(responseUuid));
-  //   localStorage.setItem("lastLocation", JSON.stringify(lastLocation));
-  // }, [answers, timings, responseUuid, lastLocation]);
-
   // initialize answer object
   //  QUESTION ID KEY:
   // 1: MultipleChoice
@@ -300,7 +292,8 @@ const Form = () => {
     try {
       // console.log(data);
       let res = await axios.post(
-        `https://url/to/api/${responseUuid}/true`,
+        // `https://url/to/api/${responseUuid}/true`,
+        `https://jsonplaceholder.typicode.com/posts`,
         JSON.stringify(data),
         {
           headers: {
