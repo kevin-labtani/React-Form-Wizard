@@ -300,7 +300,7 @@ const Form = () => {
     try {
       // console.log(data);
       let res = await axios.post(
-        `https://preprod.hike-up.be/api/fillARH/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434/${responseUuid}/true`,
+        `https://url/to/api/${responseUuid}/true`,
         JSON.stringify(data),
         {
           headers: {
@@ -334,7 +334,7 @@ const Form = () => {
     });
 
     navigator.sendBeacon(
-      `https://preprod.hike-up.be/api/fillARH/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434/${responseUuid}/false/${lastLocation}/${assessmentId}`,
+      `https://url/to/api/${responseUuid}/false/${lastLocation}/${assessmentId}`,
       "partialSubmit"
     );
     return "Are you sure you want to leave?";

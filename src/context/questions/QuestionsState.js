@@ -13,23 +13,24 @@ export const useQuestions = () => {
 
 // get questions from api
 export const getQuestions = async (dispatch) => {
-  // req user from api (nb: set loading to default to true)
-  try {
-    const res = await axios.get(
-      "https://preprod.hike-up.be/api/getATH/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434/13"
-      // "path/to/api"
-    );
-    // console.log(res.data);
-    dispatch({
-      type: GET_QUESTIONS,
-      payload: res.data,
-    });
-  } catch (error) {
-    // console.log(error);
-    dispatch({
-      type: QUESTION_ERROR,
-    });
-  }
+  // uncomment code block and add your url to the backend api
+  // // req user from api (nb: set loadingQuestions to default to true)
+  // try {
+  //   const res = await axios.get(
+  //     "https://url/to/api"
+  //     // "path/to/api"
+  //   );
+  //   // console.log(res.data);
+  //   dispatch({
+  //     type: GET_QUESTIONS,
+  //     payload: res.data,
+  //   });
+  // } catch (error) {
+  //   // console.log(error);
+  //   dispatch({
+  //     type: QUESTION_ERROR,
+  //   });
+  // }
 };
 
 const QuestionsState = (props) => {
@@ -37,13 +38,12 @@ const QuestionsState = (props) => {
     questions: [
       {
         assessment_id: 13,
-        assessment_name: "Suivi entretiens",
+        assessment_name: "App Demo",
         assessment_creation_date: "2020-05-07 08:40:20",
         question_id: 1,
-        question_name: "Adresse email du client",
-        question_subtitle: "Step 1: email",
-        question_picture:
-          "https://via.placeholder.com/300x150/2e84dd/e3e6e9?text=Hike Up Placeholder",
+        question_name: "Veuillez entrer votre adresse email",
+        question_subtitle: "Question Type 1: email",
+        question_picture: null,
         question_required: false,
         question_type_id: 8,
         question_type_name: "email",
@@ -57,11 +57,11 @@ const QuestionsState = (props) => {
       },
       {
         assessment_id: 13,
-        assessment_name: "Suivi entretiens",
+        assessment_name: "App Demo",
         assessment_creation_date: "2020-05-07 08:40:20",
         question_id: 2,
-        question_name: "Nom du client",
-        question_subtitle: "Step 2: short text",
+        question_name: "Veuillez entrer votre nom",
+        question_subtitle: "Question Type 2: short text",
         question_picture: null,
         question_required: true,
         question_type_id: 6,
@@ -76,11 +76,11 @@ const QuestionsState = (props) => {
       },
       {
         assessment_id: 13,
-        assessment_name: "Suivi entretiens",
+        assessment_name: "App Demo",
         assessment_creation_date: "2020-05-07 08:40:20",
         question_id: 3,
-        question_name: "Quelle est la marque de la chaudière à fioul ?",
-        question_subtitle: "Step 3: single choice",
+        question_name: "Quelle est votre couleur bleue préférée ?",
+        question_subtitle: "Question Type 3: single choice",
         question_picture: null,
         question_required: true,
         question_type_id: 2,
@@ -92,43 +92,35 @@ const QuestionsState = (props) => {
         box_values: [
           {
             id: "15",
-            label: "Vaillant",
+            label: "Aquamarine",
             picture:
-              "https://via.placeholder.com/600x300/FFA07A/e3e6e9?text=Hike Up Placeholder",
-            next_id_if_selected: "5",
-            col_order: "10",
+              "https://via.placeholder.com/600x300/7FFFD4/e3e6e9?text=Placeholder",
+            next_id_if_selected: "",
+            col_order: "1",
           },
           {
             id: "19",
-            label: "Viessmann",
+            label: "Turquoise",
             picture:
-              "https://via.placeholder.com/600x300/F08080/e3e6e9?text=Hike Up Placeholder",
+              "https://via.placeholder.com/600x300/40E0D0/e3e6e9?text=Placeholder",
             next_id_if_selected: "",
-            col_order: "5",
+            col_order: "3",
           },
           {
             id: "16",
-            label: "Saint Roch",
+            label: "SteelBlue",
             picture:
-              "https://via.placeholder.com/600x300/DC143C/e3e6e9?text=Hike Up Placeholder",
+              "https://via.placeholder.com/600x300/4682B4/e3e6e9?text=Placeholder",
             next_id_if_selected: "",
             col_order: "2",
           },
           {
             id: "18",
-            label: "Elco",
+            label: "RoyalBlue",
             picture:
-              "https://via.placeholder.com/600x300/B22222/e3e6e9?text=Hike Up Placeholder",
+              "https://via.placeholder.com/600x300/4169E1/e3e6e9?text=Placeholder",
             next_id_if_selected: "",
             col_order: "4",
-          },
-          {
-            id: "17",
-            label: "Buderus",
-            picture:
-              "https://via.placeholder.com/600x300/8B0000/e3e6e9?text=Hike Up Placeholder",
-            next_id_if_selected: "",
-            col_order: "3",
           },
         ],
         parameters: [
@@ -147,11 +139,11 @@ const QuestionsState = (props) => {
       },
       {
         assessment_id: 13,
-        assessment_name: "Suivi entretiens",
+        assessment_name: "App Demo",
         assessment_creation_date: "2020-05-07 08:40:20",
         question_id: 4,
-        question_name: "Can we send you emails?",
-        question_subtitle: "Step 4: legal",
+        question_name: "Pouvons-nous vous contacter par email ?",
+        question_subtitle: "Question Type 4: legal",
         question_picture: null,
         question_required: true,
         question_type_id: 4,
@@ -163,13 +155,13 @@ const QuestionsState = (props) => {
         box_values: [
           {
             id: "11",
-            label: "True",
+            label: "Non",
             next_id_if_selected: "",
             col_order: "2",
           },
           {
             id: "12",
-            label: "False",
+            label: "Oui",
             next_id_if_selected: "",
             col_order: "1",
           },
@@ -179,11 +171,12 @@ const QuestionsState = (props) => {
       },
       {
         assessment_id: 13,
-        assessment_name: "Suivi entretiens",
+        assessment_name: "App Demo",
         assessment_creation_date: "2020-05-07 08:40:20",
         question_id: 5,
-        question_name: "What is your opinion from 1 to 10?",
-        question_subtitle: "Step 5: opinion scale",
+        question_name:
+          "Quelle note donneriez-vous aux animations de cette application ?",
+        question_subtitle: "Question Type 5: opinion scale",
         question_picture: null,
         question_required: true,
         question_type_id: 7,
@@ -270,11 +263,11 @@ const QuestionsState = (props) => {
       },
       {
         assessment_id: 13,
-        assessment_name: "Suivi entretiens",
+        assessment_name: "App Demo",
         assessment_creation_date: "2020-05-07 08:40:20",
         question_id: 6,
-        question_name: "La chaudière fioul est-elle à condensation ?",
-        question_subtitle: "Step 6: yes/no",
+        question_name: "Est-ce que vous êtes allergiques aux chats ?",
+        question_subtitle: "Question Type 6: yes/no",
         question_picture: null,
         question_required: true,
         question_type_id: 3,
@@ -286,13 +279,13 @@ const QuestionsState = (props) => {
         box_values: [
           {
             id: "13",
-            label: "True",
+            label: "Non",
             next_id_if_selected: "",
             col_order: "2",
           },
           {
             id: "14",
-            label: "False",
+            label: "Oui",
             next_id_if_selected: "",
             col_order: "1",
           },
@@ -302,11 +295,11 @@ const QuestionsState = (props) => {
       },
       {
         assessment_id: 13,
-        assessment_name: "Suivi entretiens",
+        assessment_name: "App Demo",
         assessment_creation_date: "2020-05-07 08:40:20",
         question_id: 7,
-        question_name: "Numéro de maison du client",
-        question_subtitle: "Step 7: number",
+        question_name: "Veuillez entrer un nombre entre 10 et 100",
+        question_subtitle: "Question Type 7: number",
         question_picture: null,
         question_required: true,
         question_type_id: 9,
@@ -332,11 +325,11 @@ const QuestionsState = (props) => {
       },
       {
         assessment_id: 13,
-        assessment_name: "Suivi entretiens",
+        assessment_name: "App Demo",
         assessment_creation_date: "2020-05-07 08:40:20",
         question_id: 8,
-        question_name: "Dans le cadre de l'entretien de la chaudière fioul",
-        question_subtitle: "Step 8: multiple choice",
+        question_name: "Quels sont vos langages de programmation préférés ?",
+        question_subtitle: "Question Type 8: multiple choice",
         question_picture: null,
         question_required: true,
         question_type_id: 1,
@@ -348,51 +341,51 @@ const QuestionsState = (props) => {
         box_values: [
           {
             id: "6",
-            label: "Nettoyage du filtre à mazout",
+            label: "Python",
             picture:
-              "https://via.placeholder.com/600x300/CD853F/e3e6e9?text=Hike Up Placeholder",
+              "https://via.placeholder.com/600x300/CD853F/e3e6e9?text=Placeholder",
             col_order: "2",
           },
           {
             id: "9",
-            label: "Ramonage du conduit de fumée",
+            label: "JavaScript",
             picture:
-              "https://via.placeholder.com/600x300/BC8F8F/e3e6e9?text=Hike Up Placeholder",
+              "https://via.placeholder.com/600x300/BC8F8F/e3e6e9?text=Placeholder",
             col_order: "5",
           },
           {
             id: "10",
-            label: "Test de combustion + réglages",
+            label: "Java",
             picture:
-              "https://via.placeholder.com/600x300/F4A460/e3e6e9?text=Hike Up Placeholder",
+              "https://via.placeholder.com/600x300/F4A460/e3e6e9?text=Placeholder",
             col_order: "6",
           },
           {
             id: "11",
-            label: "Test de la dureté de l eau",
+            label: "Rust",
             picture:
-              "https://via.placeholder.com/600x300/DAA520/e3e6e9?text=Hike Up Placeholder",
+              "https://via.placeholder.com/600x300/DAA520/e3e6e9?text=Placeholder",
             col_order: "7",
           },
           {
             id: "5",
-            label: "Nettoyage du corps de chauffe",
+            label: "C#",
             picture:
-              "https://via.placeholder.com/600x300/D2691E/e3e6e9?text=Hike Up Placeholder",
+              "https://via.placeholder.com/600x300/D2691E/e3e6e9?text=Placeholder",
             col_order: "1",
           },
           {
             id: "7",
-            label: "Nettoyage du bruleur",
+            label: "C++",
             picture:
-              "https://via.placeholder.com/600x300/A0522D/e3e6e9?text=Hike Up Placeholder",
+              "https://via.placeholder.com/600x300/A0522D/e3e6e9?text=Placeholder",
             col_order: "3",
           },
           {
             id: "8",
-            label: "Changement du gicleur",
+            label: "Kotlin",
             picture:
-              "https://via.placeholder.com/600x300/A52A2A/e3e6e9?text=Hike Up Placeholder",
+              "https://via.placeholder.com/600x300/A52A2A/e3e6e9?text=Placeholder",
             col_order: "4",
           },
         ],
@@ -405,18 +398,18 @@ const QuestionsState = (props) => {
           {
             id: "99",
             name: "picture",
-            value: "true",
+            value: "false",
           },
         ],
         default_next_id: 9,
       },
       {
         assessment_id: 13,
-        assessment_name: "Suivi entretiens",
+        assessment_name: "App Demo",
         assessment_creation_date: "2020-05-07 08:40:20",
         question_id: 9,
-        question_name: "How many stars do you rate us?",
-        question_subtitle: "Step 9: rating",
+        question_name: "Quelle note donneriez-vous à cette application ?",
+        question_subtitle: "Question Type 9: rating",
         question_picture: null,
         question_required: true,
         question_type_id: 5,
@@ -437,11 +430,11 @@ const QuestionsState = (props) => {
       },
       {
         assessment_id: 13,
-        assessment_name: "Suivi entretiens",
+        assessment_name: "App Demo",
         assessment_creation_date: "2020-05-07 08:40:20",
         question_id: 10,
-        question_name: "Numéro de téléphone",
-        question_subtitle: "Step 10: phone number",
+        question_name: "Veuillez entrer votre numéro de téléphone",
+        question_subtitle: "Question Type 10: phone number",
         question_picture: null,
         question_required: true,
         question_type_id: 10,
@@ -456,14 +449,14 @@ const QuestionsState = (props) => {
       },
       {
         assessment_id: 13,
-        assessment_name: "Suivi entretiens",
+        assessment_name: "App Demo",
         assessment_creation_date: "2020-05-07 08:40:20",
         question_id: 11,
-        question_name: "Welcome to the Hike Up Wizard Form",
+        question_name: "Bienvenue sur notre Wizard Form",
         question_subtitle:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum optio incidunt sint cumque illo nobis exercitationem aliquam  repellendus.",
+          "Veuillez noter que cet exemple de l'application n'est pas lié à un back-end et que vos réponses ne sont sauvegardées qu'au niveau de votre navigateur. De plus il ne vous sera pas possible d'uploader un fichier à la question type 'FileUpload', il n'est donc obligatoire de répondre à cette question pour continuer.",
         question_picture:
-          "https://via.placeholder.com/800x300/2e84dd/e3e6e9?text=Hike Up Placeholder",
+          "https://via.placeholder.com/800x300/2e84dd/e3e6e9?text=Placeholder",
         question_type_id: 15,
         question_type_name: "welcome",
         box_values: null,
@@ -472,11 +465,11 @@ const QuestionsState = (props) => {
       },
       {
         assessment_id: 13,
-        assessment_name: "Suivi entretiens",
+        assessment_name: "App Demo",
         assessment_creation_date: "2020-05-07 08:40:20",
         question_id: 12,
-        question_name: "Remarques",
-        question_subtitle: "Step 11: long text",
+        question_name: "Est-ce que vous avez des remarques ?",
+        question_subtitle: "Question Type 11: long text",
         question_picture: null,
         question_required: true,
         question_type_id: 12,
@@ -491,14 +484,14 @@ const QuestionsState = (props) => {
       },
       {
         assessment_id: 13,
-        assessment_name: "Suivi entretiens",
+        assessment_name: "App Demo",
         assessment_creation_date: "2020-05-07 08:40:20",
         question_id: 13,
         question_name: "Thank you for your submission",
         question_subtitle:
           "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum optio incidunt sint cumque illo nobis exercitationem aliquam  repellendus.",
         question_picture:
-          "https://via.placeholder.com/800x300/2e84dd/e3e6e9?text=Hike Up Placeholder",
+          "https://via.placeholder.com/800x300/2e84dd/e3e6e9?text=Placeholder",
         question_type_id: 16,
         question_type_name: "thank_you",
         box_values: null,
@@ -507,11 +500,12 @@ const QuestionsState = (props) => {
       },
       {
         assessment_id: 13,
-        assessment_name: "Suivi entretiens",
+        assessment_name: "App Demo",
         assessment_creation_date: "2020-05-07 08:40:20",
         question_id: 14,
-        question_subtitle: "Step 12: file upload",
-        question_name: "Photo installation 1",
+        question_subtitle: "Question Type 12: file upload",
+        question_name:
+          "Veuillez uploader une photo de votre animal de compagnie",
         question_picture: null,
         question_required: false,
         question_type_id: 13,
@@ -526,10 +520,10 @@ const QuestionsState = (props) => {
       },
       {
         assessment_id: 13,
-        assessment_name: "Suivi entretiens",
+        assessment_name: "App Demo",
         assessment_creation_date: "2020-05-07 08:40:20",
         question_id: 15,
-        question_name: "Do you want to proceed?",
+        question_name: "Voulez-vous soumettre vos réponses ?",
         question_subtitle:
           "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum optio incidunt sint cumque illo nobis exercitationem aliquam  repellendus.",
         question_type_id: 17,
@@ -551,7 +545,7 @@ const QuestionsState = (props) => {
         default_next_id: 13,
       },
     ],
-    loadingQuestions: true,
+    loadingQuestions: false, // switch to true
     errorLoadingQuestions: false,
   };
 

@@ -62,7 +62,8 @@ const FileUpload = ({
     // console.log(fd.get("file"));
     try {
       let res = await axios.post(
-        "https://preprod.hike-up.be/api/storeFileForm/5c9ccc2c-c64f-4af8-8a7d-ed52dcee8434",
+        // add your url to the backend api
+        "",
         fd,
         {
           headers: {

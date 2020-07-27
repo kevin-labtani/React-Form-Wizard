@@ -13,7 +13,7 @@ const ErrorPage = () => {
           animate="visible"
           exit="exit"
         >
-          <h1 className="mb-3">Hike Up Wizard</h1>
+          <h1 className="mb-3">Form Wizard</h1>
           <p className="lead">Sorry, there was an error accessing our API</p>
           <button
             className="btn btn-primary btn-lg mt-3"
