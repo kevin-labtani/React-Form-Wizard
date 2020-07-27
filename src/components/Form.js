@@ -292,6 +292,7 @@ const Form = () => {
     try {
       // console.log(data);
       let res = await axios.post(
+        // add your url to the backend api
         // `https://url/to/api/${responseUuid}/true`,
         `https://jsonplaceholder.typicode.com/posts`,
         JSON.stringify(data),
@@ -327,6 +328,7 @@ const Form = () => {
     });
 
     navigator.sendBeacon(
+      // add your url to the backend api
       `https://url/to/api/${responseUuid}/false/${lastLocation}/${assessmentId}`,
       "partialSubmit"
     );
