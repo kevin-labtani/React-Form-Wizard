@@ -66,7 +66,7 @@ Les questions type **SingleChoice** & **MultipleChoice**:
 
 Cette application étant créée par `create-react-app`, veuillez vous référer à leur [documentation](https://create-react-app.dev/docs/getting-started/) pour plus de détails.
 
-## Exigences d'implémentation relatif à l'API back-end
+## Exigences d'implémentation relatives à l'API backend
 
 Cette application est dépendante d'une API REST fournissant les routes suivantes:
 
@@ -99,10 +99,6 @@ Cela dit, la création d'un custom hook et l'utilisation de `useReducer` plutôt
 
 Certains des Composants implémentant les questions type sont relativement lourds, il devrait être possible d'extraire un Composant `Input` paramétrable qui permettrait de réduire la duplication de code d'un Composant à l'autre.
 
-## Contributeur
-
-- [**Kevin Labtani**](https://github.com/kevin-labtani)
-
 ## Technologies
 
 - React par `create-react-app`, avec les packages `react-router-dom` pour le routing et `framer-motion` pour les animations.
@@ -112,9 +108,13 @@ Certains des Composants implémentant les questions type sont relativement lourd
 
 code formaté par `prettier` et linté par `eslint`.
 
+## Contributeur
+
+- [**Kevin Labtani**](https://github.com/kevin-labtani)
+
 ## Progression
 
-Projet terminé le 17 juillet 2020 suite à la fin de mon stage.
+Projet arrêté le 17 juillet 2020 suite à la fin de mon stage.
 
 ## Remerciements
 
