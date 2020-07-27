@@ -34,10 +34,12 @@ nb: J'ai l'autorisation de partager le code à des fins non commerciales.
 
 Le temps (en secondes) passé par l'utilisateur sur chaque question est enregistré et envoyé au back-end lors de la soumission des réponses.
 
-Les données suivantes sont extraites du browser de l'utilisateur et envoyées au back-end lors de la soumission des réponses: nom du browser, useragent du browser, langue préférée de l'utilisateur, plateforme de l'utilisateur (eg. windows), referrer, et dans le cas où l'utilisateur est sur un mobile: type d'appareil mobile (gsm ou tablette) et OS du Mobile.
+Les données suivantes sont extraites du browser de l'utilisateur et envoyées au back-end lors de la soumission des réponses: nom du browser, useragent du browser, langue préférée de l'utilisateur, plateforme de l'utilisateur (eg. windows), referrer, et dans le cas où l'utilisateur est sur un mobile: type d'appareil mobile (gsm ou tablette) et OS du mobile.
 
 Un mode de soumission partielle est implémenté, si l'utilisateur quitte le questionnaire sans soumettre ses réponses, un appel vers le back-end est effectué pour enregistrer l'id de la dernière question répondue, l'id du questionnaire et l'id assigné à l'utilisateur.
 De plus, les données nécessaires à la reprise en cours du questionnaire sont enregistrées en `localStorage`, l'utilisateur a donc la possibilité lors d'une session ultérieure de reprendre le questionnaire là où il en était si il le souhaite, cette option lui sera automatiquement présentée lors qu'il rechargera le questionnaire.
+
+Le support multi-langues est implémenté, toute les strings statiques non dépendantes des questions (eg. messages d'erreur, placeholders) sont récupérées du back-end par la route pour les options de configuration.
 
 ### Fonctionnalités spécifiques aux questions
 
@@ -55,7 +57,7 @@ Les questions présentant un choix unique (**YesNo**, **Legal**, **SingleChoice*
 Les questions type **SingleChoice** & **MultipleChoice**:
 
 - acceptent un paramètre optionnel `other` permettant une réponse libre de l'utilisateur. [(Exemple visuel)](./readme-assets/freetext.png)
-- acceptent un paramètre optionnel `picture` permettant l'affichage d'une image pour chaque choix, avec ou sans `label`, pour autant qu'une clé `picture` soit présente pour chaque choix (`box_values`). 
+- acceptent un paramètre optionnel `picture` permettant l'affichage d'une image pour chaque choix, avec ou sans `label`, pour autant qu'une clé `picture` soit présente pour chaque choix (`box_values`).
 
 ## Installation de l'Application
 
@@ -71,12 +73,31 @@ Cette application est dépendante d'une API REST fournissant les routes suivante
 - Route GET pour récupérer les questions au niveau de la fonction `getQuestions` du fichier [`QuestionState.js`](./src/context/questions/QuestionsState.js). Une implémentation de chaque question type est fournie dans l'`initialState` de ce même fichier.
 - Route GET pour récupérer les options de configuration au niveau de la fonction `getConfig` du fichier [`ConfigState.js`](./src/context/config/ConfigState.js) Une implémentation type est fournie dans l'`initialState` de ce même fichier.
 - Route POST pour envoyer les réponses au niveau de la fonction `sendAnswer` du fichier [`Form.js`](./src/components/Form.js). La réponse est construite par la fonction `constructAnswer`; alternativement, vous pouvez décommenter le `console.log(data);` dans la fonction `sendAnswer` et soumettre un questionnaire rempli (soumission par la question type **Recap**), ce qui vous permettra d'avoir dans la console l'objet envoyé en réponse à l'API.
-- Route POST pour gérer une soumission partielle du questionnaire au niveau de la fonction `window.onbeforeunload` du fichier [`Form.js`](./src/components/Form.js). Lorsqu'un utilisateur quitte prématurément le questionnaire, l'application envoye par la méthode `sendBeacon` de l'API Web `Navigator` une requête vers la route `https://url/to/api/${responseUuid}/false/${lastLocation}/${assessmentId}` pour informer le back-end du fait qu'un utilisateur a quitté le questionnaire sans le soumettre avec l'id de la dernière réponse atteinte par l'utilisateur (lastLocation), l'id du questionnaire (assessmentId) et l'uuiid assigné à cet utilisateur (responseUuid).
+- Route POST pour gérer une soumission partielle du questionnaire au niveau de la fonction `window.onbeforeunload` du fichier [`Form.js`](./src/components/Form.js). Lorsqu'un utilisateur quitte prématurément le questionnaire, l'application envoie par la méthode `sendBeacon` de l'API Web `Navigator` une requête vers la route `https://url/to/api/${responseUuid}/false/${lastLocation}/${assessmentId}` pour informer le back-end du fait qu'un utilisateur a quitté le questionnaire sans le soumettre avec l'id de la dernière réponse atteinte par l'utilisateur (lastLocation), l'id du questionnaire (assessmentId) et l'uuiid assigné à cet utilisateur (responseUuid).
 - Route POST (Content-Type: multipart/form-data) pour envoyer des fichiers (eg. images ou pdf) au niveau de la fonction `uploadHandler` du fichier [`FileUpload.js`](./src/components/questionType/FileUpload.js) pour la question type FileUpload.
 
 ## Structure du Projet
 
-Le projet contient ??
+- `src/components` contient
+
+  - un sous-dossier pour les Composants React de layout.
+  - un sous-dossier pour les Composants React implémentant les 15 questions type.
+  - le Composant React ErrorPage qui sera rendu à l'écran si l'une des deux requêtes GET (pour récupérer les questions et les options de configurations) rencontre un problème.
+  - le Composant React principal `Form`. L'état relatif aux réponses et aux timings de réponse est géré à ce niveau.
+
+- `src/context` contient trois sous-dossiers pour les trois Contextes React implémentés, un pour les questions, un pour les alertes et un pour la configuration. Les implémentations sont basées sur le [Flux Pattern](https://facebook.github.io/flux/)
+
+## Remarques & Améliorations possibles
+
+J'ai choisi d'utiliser bootstrap en tant que module npm plutôt que d'utiliser une librairie de Composants React tel que [React Bootstrap](https://react-bootstrap.netlify.app/) ou [reactstrap](https://reactstrap.github.io/) dû au degré de personnalisation nécessaire (eg. les boutons pour les questions type à choix unique ou multiple sont en fait des labels stylisés pour ressembler à des boutons), je pense qu'utiliser une librairie de Composants aurait rendu la tâche plus compliquée. De plus je n'utilise que la partie css de bootstrap, je n'importe pas les dépendances js dans l'application.
+
+Je devais assurer la rétrocompatibilité avec les systèmes existant au niveau du back-end (en PHP) et de la database, ce qui explique le format parfois particulier dans lequel je récupère (/et renvoie) les données depuis (/vers) l'API.  
+Aussi pour raison de rétrocompatibilité, les Composants implémentant les questions type **Legal** et **YesNo** sont fonctionnellement identiques.
+
+J'ai implémenté un système d'alertes pour les erreurs, et effectue la validation "à la main" plutôt que d'utiliser `formik` ou `react-hook-form` car j'avais confiance en ma capacité à délivrer une application fonctionnelle en codant cette partie à la main alors que je n'étais pas sûr de pouvoir adapter `formik` à mon cas d'utilisation particulier.  
+Cela dit, la création d'un custom hook et l'utilisation de `useReducer` plutôt que du `useState` pour gérer les réponses et les timings m'aurait permis d'extraire une partie de la logique hors du Composant `Form` et aurait rendu celui-ci plus lisible.
+
+Certains des Composants implémentant les questions type sont relativement lourds, il devrait être possible d'extraire un Composant `Input` paramétrable qui permettrait de réduire la duplication de code d'un Composant à l'autre.
 
 ## Contributeur
 
